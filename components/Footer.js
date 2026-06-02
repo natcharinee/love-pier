@@ -1,5 +1,12 @@
-export default function Footer({ tagline = 'THE SEA IS <em>ALWAYS OPEN</em>' }) {
-  const html = tagline.replace(/<em>/g, '<em class="italic text-gold">');
+import { useLanguage } from '../lib/language'
+
+export default function Footer({ tagline }) {
+  const { lang } = useLanguage()
+  const fallbackTagline = lang === 'th' ? 'ทะเล <em>เปิดเสมอ</em>' : 'THE SEA IS <em>ALWAYS OPEN</em>'
+  const html = (tagline || fallbackTagline).replace(/<em>/g, '<em class="italic text-gold">');
+  const copy = lang === 'th'
+    ? { rights: '© 2026 Love Pier Beach Cafe · สงวนลิขสิทธิ์', brand: 'เลิฟ เพียร์' }
+    : { rights: '© 2026 Love Pier Beach Cafe · All Rights Reserved', brand: 'Love Pier' }
   return (
     <footer className="bg-ink px-10 pt-16 pb-10 overflow-hidden reveal">
       <div
@@ -7,8 +14,8 @@ export default function Footer({ tagline = 'THE SEA IS <em>ALWAYS OPEN</em>' }) 
         dangerouslySetInnerHTML={{ __html: html }}
       />
       <div className="mt-10 pt-5 border-t border-white/[0.08] flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-        <div className="text-[10px] tracking-[0.2em] text-white/30 uppercase">© 2026 Love Pier Beach Cafe · All Rights Reserved</div>
-        <div className="font-display text-base font-light text-white/50 tracking-[0.2em]">Love Pier</div>
+        <div className="text-[10px] tracking-[0.2em] text-white/30 uppercase">{copy.rights}</div>
+        <div className="font-display text-base font-light text-white/50 tracking-[0.2em]">{copy.brand}</div>
       </div>
     </footer>
   )

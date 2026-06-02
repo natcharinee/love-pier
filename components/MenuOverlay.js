@@ -1,20 +1,50 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useLanguage } from '../lib/language'
 
-const NAV_ITEMS = [
-  { href: '/',           label: 'Home' },
-  { href: '/menu',       label: 'Menu' },
-  { href: '/gallery',    label: 'Gallery' },
-  { href: '/reservation',label: 'Reservation' },
-  { href: '/location',   label: 'Location' },
-  { href: '/events',     label: 'Events' },
-  { href: '/promotion',  label: 'Promotion' },
-  { href: '/about',      label: 'About Us' },
-  { href: '/contact',    label: 'Contact' },
-]
+const COPY = {
+  en: {
+    navItems: [
+      { href: '/',           label: 'Home' },
+      { href: '/menu',       label: 'Menu' },
+      { href: '/gallery',    label: 'Gallery' },
+      { href: '/reservation',label: 'Reservation' },
+      { href: '/location',   label: 'Location' },
+      { href: '/events',     label: 'Events' },
+      { href: '/promotion',  label: 'Promotion' },
+      { href: '/about',      label: 'About Us' },
+      { href: '/contact',    label: 'Contact' },
+    ],
+    visit: 'Visit',
+    hours: 'Hours',
+    contact: 'Contact',
+    address: '123 Moo 4, Narathat Beach Rd<br/>Chonburi 76120',
+    hoursValue: 'Daily · 09:00-18:00',
+  },
+  th: {
+    navItems: [
+      { href: '/',           label: 'หน้าหลัก' },
+      { href: '/menu',       label: 'เมนู' },
+      { href: '/gallery',    label: 'แกลเลอรี' },
+      { href: '/reservation',label: 'จองโต๊ะ' },
+      { href: '/location',   label: 'ที่ตั้ง' },
+      { href: '/events',     label: 'อีเวนต์' },
+      { href: '/promotion',  label: 'โปรโมชัน' },
+      { href: '/about',      label: 'เกี่ยวกับเรา' },
+      { href: '/contact',    label: 'ติดต่อ' },
+    ],
+    visit: 'ที่ตั้ง',
+    hours: 'เวลาเปิดทำการ',
+    contact: 'ติดต่อ',
+    address: '123 หมู่ 4 ถนนนราธร บีชโรด<br/>ชลบุรี 76120',
+    hoursValue: 'ทุกวัน · 09:00-18:00',
+  },
+}
 
 export default function MenuOverlay({ isOpen, onClose }) {
   const { pathname } = useRouter()
+  const { lang } = useLanguage()
+  const dict = COPY[lang] || COPY.en
   return (
     <div className={`menu-overlay${isOpen ? ' is-open' : ''}`} aria-hidden={!isOpen}>
       {/* top bar */}
@@ -28,7 +58,7 @@ export default function MenuOverlay({ isOpen, onClose }) {
       {/* body */}
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 items-center p-8 lg:p-10 gap-10 lg:gap-20 overflow-y-auto">
         <nav className="flex flex-col gap-1">
-          {NAV_ITEMS.map((item, i) => (
+          {dict.navItems.map((item, i) => (
             <Link
               key={item.href}
               href={item.href}
@@ -42,15 +72,15 @@ export default function MenuOverlay({ isOpen, onClose }) {
         </nav>
         <aside className="border-t border-white/[0.08] pt-8 lg:border-t-0 lg:border-l lg:border-white/[0.08] lg:pl-16 flex flex-col gap-8">
           <div>
-            <h4 className="text-[10px] tracking-[0.35em] uppercase text-white/40 mb-2.5">Visit</h4>
-            <p className="text-[13px] text-white/70 leading-[1.8] font-light">123 Moo 4, Narathat Beach Rd<br/>Cha-am, Phetchaburi 76120</p>
+            <h4 className="text-[10px] tracking-[0.35em] uppercase text-white/40 mb-2.5">{dict.visit}</h4>
+            <p className="text-[13px] text-white/70 leading-[1.8] font-light" dangerouslySetInnerHTML={{ __html: dict.address }} />
           </div>
           <div>
-            <h4 className="text-[10px] tracking-[0.35em] uppercase text-white/40 mb-2.5">Hours</h4>
-            <p className="text-[13px] text-white/70 leading-[1.8] font-light">Mon–Fri · 08:00 – 21:00<br/>Sat–Sun · 07:00 – 22:00</p>
+            <h4 className="text-[10px] tracking-[0.35em] uppercase text-white/40 mb-2.5">{dict.hours}</h4>
+            <p className="text-[13px] text-white/70 leading-[1.8] font-light">{dict.hoursValue}</p>
           </div>
           <div>
-            <h4 className="text-[10px] tracking-[0.35em] uppercase text-white/40 mb-2.5">Contact</h4>
+            <h4 className="text-[10px] tracking-[0.35em] uppercase text-white/40 mb-2.5">{dict.contact}</h4>
             <p className="text-[13px] text-white/70 leading-[1.8] font-light">
               <a href="tel:+6632123456" className="hover:text-gold transition-colors">+66 32 123 456</a><br/>
               <a href="mailto:hello@lovepier.cafe" className="hover:text-gold transition-colors">hello@lovepier.cafe</a>

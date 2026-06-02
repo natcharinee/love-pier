@@ -1,30 +1,96 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import Footer from '../components/Footer'
+import { useLanguage } from '../lib/language'
 
 export default function Home() {
+  const { lang } = useLanguage()
+  const t = lang === 'th'
+    ? {
+        title: 'Love Pier Beach Cafe — หน้าหลัก',
+        city: 'chonburi . thailand',
+        hoursLabel: 'เวลาเปิดทำการ',
+        hoursValue: 'ทุกวัน 09:00-18:00',
+        est: 'ก่อตั้ง',
+        location: 'ที่ตั้ง',
+        locationValue: '123 หมู่ 4 ถนนนราธร บีชโรด\nชลบุรี',
+        exploreMenu: 'ดูเมนู',
+        since: 'ตั้งแต่ปี 2026',
+        about1: 'Love Pier Beach Cafe ตั้งอยู่ใกล้แนวชายฝั่งของชลบุรี เป็นคาเฟ่ที่ตั้งใจให้ทุกช่วงเวลาเรียบง่ายและผ่อนคลาย',
+        about2: 'เราเสิร์ฟกาแฟและเมนูอาหารที่คัดวัตถุดิบสดใหม่ในทุกวัน เพื่อให้ได้รสชาติที่สมดุลและจริงใจ',
+        about3: 'ที่นี่ไม่ใช่แค่คาเฟ่ แต่เป็นพื้นที่ให้คุณพักใจ สูดลมทะเล และใช้เวลาอย่างช้าๆ',
+        where: 'เมื่อชายฝั่ง\nมาเจอกับ\n<em class="italic text-gold">แก้วโปรด</em>',
+        numbers: 'ตัวเลขของเรา',
+        little: 'เล็กน้อยเกี่ยวกับ\n<em className="italic text-gold">สิ่งที่เราทำ</em>',
+        yearsOpen: 'ปีที่เปิดบริการ',
+        yearsDesc: 'ให้บริการชุมชนริมทะเลตั้งแต่ปี 2026',
+        toShore: 'ระยะถึงชายหาด',
+        toShoreDesc: 'เดินเพียงไม่กี่นาที ก็ถึงหาดทราย',
+        menuItems: 'รายการเมนู',
+        menuItemsDesc: 'กาแฟและอาหารที่ตั้งใจทำสดใหม่ทุกวัน',
+        address: 'ที่อยู่',
+        addressValue: '123 หมู่ 4 ถนนนราธร บีชโรด\nชลบุรี 76120',
+        hoursCompact: 'ทุกวัน · 09:00-18:00',
+        contact: 'ติดต่อ',
+        follow: 'ติดตาม',
+      }
+    : {
+        title: 'Love Pier Beach Cafe — Home',
+        city: 'chonburi . thailand',
+        hoursLabel: 'Hours',
+        hoursValue: 'Daily 09:00-18:00',
+        est: 'Est.',
+        location: 'Location',
+        locationValue: '123 Moo 4, Narathat Beach Rd\nChonburi',
+        exploreMenu: 'Explore Menu',
+        since: 'Since 2026',
+        about1: 'Love Pier Beach Cafe sits close to the shoreline in Chonburi, where calm mornings and sea air set the pace for the day.',
+        about2: 'Our menu is shaped by fresh ingredients, specialty coffee, and simple dishes prepared with care.',
+        about3: 'This is more than a cafe. It is a place to slow down, stay longer, and leave refreshed.',
+        where: 'Where the\nshore meets\n<em class="italic text-gold">the cup</em>',
+        numbers: 'The Numbers',
+        little: 'A little about\n<em className="italic text-gold">what we do</em>',
+        yearsOpen: 'Years Open',
+        yearsDesc: 'Serving our beachside community since 2026.',
+        toShore: 'To the Shore',
+        toShoreDesc: 'Only a short walk and your feet are in the sand.',
+        menuItems: 'Menu Items',
+        menuItemsDesc: 'Coffee and dishes prepared fresh every day.',
+        address: 'Address',
+        addressValue: '123 Moo 4, Narathat Beach Rd\nChonburi 76120',
+        hoursCompact: 'Daily · 09:00-18:00',
+        contact: 'Contact',
+        follow: 'Follow',
+      }
+  const renderLines = (text) => text.split('\n').map((line, idx, arr) => (
+    <span key={`${line}-${idx}`}>
+      {line}
+      {idx < arr.length - 1 ? <br /> : null}
+    </span>
+  ))
+
   return (
     <>
       <Head>
-        <title>Love Pier Beach Cafe — Home</title>
+        <title>{t.title}</title>
       </Head>
 
       {/* HERO HEADER */}
       <header className="px-10 pt-12 pb-8 text-center reveal lg:px-10 md:px-5 sm:px-5">
-        <div className="text-[10px] tracking-[0.4em] uppercase text-muted mb-3">PHETCHABURI · THAILAND</div>
+        <div className="text-[10px] tracking-[0.4em] uppercase text-muted mb-3">{t.city}</div>
         <h1 className="font-display font-light leading-[0.95] text-ink tracking-[-0.02em] text-[clamp(40px,7vw,88px)]">Love Pier<br/>Beach Cafe</h1>
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] mt-8 pt-5 border-t border-black/10 items-start gap-4 lg:gap-0">
           <div className="text-center lg:text-left">
-            <span className="block text-[9px] tracking-[0.35em] uppercase text-[#aaa] mb-1.5">Hours</span>
-            <div className="text-xs text-[#444] leading-relaxed font-light">Mon–Fri 08:00–21:00<br/>Sat–Sun 07:00–22:00</div>
+            <span className="block text-[9px] tracking-[0.35em] uppercase text-[#aaa] mb-1.5">{t.hoursLabel}</span>
+            <div className="text-xs text-[#444] leading-relaxed font-light">{t.hoursValue}</div>
           </div>
           <div className="text-center lg:px-10">
-            <span className="block text-[9px] tracking-[0.35em] uppercase text-[#aaa] mb-1.5">Est.</span>
-            <div className="text-xs text-[#444] leading-relaxed font-display text-[22px]">2017</div>
+            <span className="block text-[9px] tracking-[0.35em] uppercase text-[#aaa] mb-1.5">{t.est}</span>
+            <div className="text-xs text-[#444] leading-relaxed font-display text-[22px]">2026</div>
           </div>
           <div className="text-center lg:text-right">
-            <span className="block text-[9px] tracking-[0.35em] uppercase text-[#aaa] mb-1.5">Location</span>
-            <div className="text-xs text-[#444] leading-relaxed font-light">123 Moo 4, Narathat Beach Rd<br/>Cha-am, Phetchaburi</div>
+            <span className="block text-[9px] tracking-[0.35em] uppercase text-[#aaa] mb-1.5">{t.location}</span>
+            <div className="text-xs text-[#444] leading-relaxed font-light">{renderLines(t.locationValue)}</div>
           </div>
         </div>
         <div className="flex items-center justify-center gap-2.5 mt-5 text-[9px] tracking-[0.35em] uppercase text-[#bbb]">
@@ -47,14 +113,14 @@ export default function Home() {
       <section className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] px-10 py-20 items-start reveal lg:px-10 sm:px-5 sm:py-16">
         <div>
           <h2 className="font-display font-light leading-[0.92] text-ink tracking-[-0.02em] text-[clamp(40px,6vw,72px)]">Love<br/>Pier<br/><em className="italic text-gold">&amp; Coffee</em></h2>
-          <Link href="/menu" className="mt-8 inline-flex items-center gap-3 text-[10px] tracking-[0.3em] uppercase text-[#666] after:content-['→'] after:text-sm after:transition-transform after:duration-200 hover:after:translate-x-1">Explore Menu</Link>
+          <Link href="/menu" className="mt-8 inline-flex items-center gap-3 text-[10px] tracking-[0.3em] uppercase text-[#666] after:content-['→'] after:text-sm after:transition-transform after:duration-200 hover:after:translate-x-1">{t.exploreMenu}</Link>
         </div>
         <div className="pt-2">
-          <div className="text-[9px] tracking-[0.4em] uppercase text-[#bbb] mb-5 flex items-center gap-3 before:content-[''] before:block before:w-6 before:h-px before:bg-[#bbb]">Since 2017</div>
+          <div className="text-[9px] tracking-[0.4em] uppercase text-[#bbb] mb-5 flex items-center gap-3 before:content-[''] before:block before:w-6 before:h-px before:bg-[#bbb]">{t.since}</div>
           <div className="text-sm leading-[1.9] text-[#555] font-light max-w-[520px]">
-            <p className="mb-4">Love Pier Beach Cafe sits 200 meters from the shoreline of Cha-am, where the Gulf of Thailand meets a quieter kind of morning. We opened with a single conviction: that great coffee and great views belong together.</p>
-            <p className="mb-4">Our menu is shaped by the sea — cold brews steeped overnight, single-origin pour-overs, and plates built from ingredients sourced the same day from local fishermen and farmers.</p>
-            <p>We are not just a cafe. We are a place to arrive slowly, stay longer, and leave with a full chest.</p>
+            <p className="mb-4">{t.about1}</p>
+            <p className="mb-4">{t.about2}</p>
+            <p>{t.about3}</p>
           </div>
         </div>
       </section>
@@ -62,29 +128,29 @@ export default function Home() {
       <div className="relative w-full aspect-[16/8] overflow-hidden mt-[3px] reveal-img">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img className="w-full h-full object-cover [filter:brightness(0.55)_saturate(0.5)]" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600&q=85" alt="atmosphere" />
-        <div className="absolute bottom-10 left-10 font-display font-light text-[rgba(255,255,255,0.85)] leading-[1.1] text-[clamp(28px,4vw,48px)] sm:bottom-6 sm:left-6">Where the<br/>shore meets<br/><em className="italic text-gold">the cup</em></div>
+        <div className="absolute bottom-10 left-10 font-display font-light text-[rgba(255,255,255,0.85)] leading-[1.1] text-[clamp(28px,4vw,48px)] sm:bottom-6 sm:left-6" dangerouslySetInnerHTML={{ __html: t.where.replace(/\n/g, '<br/>') }} />
       </div>
 
       <section className="bg-white px-10 py-16 reveal lg:px-10 sm:px-5">
         <div className="mb-12">
-          <span className="block text-[9px] tracking-[0.4em] uppercase text-[#bbb] mb-3">The Numbers</span>
-          <h3 className="font-display font-light leading-[1.05] text-ink text-[clamp(28px,3.5vw,44px)]">A little about<br/><em className="italic text-gold">what we do</em></h3>
+          <span className="block text-[9px] tracking-[0.4em] uppercase text-[#bbb] mb-3">{t.numbers}</span>
+          <h3 className="font-display font-light leading-[1.05] text-ink text-[clamp(28px,3.5vw,44px)]" dangerouslySetInnerHTML={{ __html: t.little.replace(/\n/g, '<br/>') }} />
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 border-t border-l border-[#eee]">
           <div className="px-8 py-10 border-r border-b border-[#eee] sm:px-6 sm:py-7">
             <div className="font-display text-[56px] font-light text-ink leading-none tracking-[-0.02em]">8+</div>
-            <span className="block text-[10px] tracking-[0.25em] uppercase text-[#bbb] mt-2.5">Years Open</span>
-            <div className="text-[13px] text-[#777] mt-2.5 leading-relaxed font-light max-w-[220px]">Serving the beach community since 2017, rain and sun alike.</div>
+            <span className="block text-[10px] tracking-[0.25em] uppercase text-[#bbb] mt-2.5">{t.yearsOpen}</span>
+            <div className="text-[13px] text-[#777] mt-2.5 leading-relaxed font-light max-w-[220px]">{t.yearsDesc}</div>
           </div>
           <div className="px-8 py-10 border-r border-b border-[#eee] sm:px-6 sm:py-7">
             <div className="font-display text-[56px] font-light text-ink leading-none tracking-[-0.02em]">200m</div>
-            <span className="block text-[10px] tracking-[0.25em] uppercase text-[#bbb] mt-2.5">To the Shore</span>
-            <div className="text-[13px] text-[#777] mt-2.5 leading-relaxed font-light max-w-[220px]">Walk two minutes and your feet are in the sand.</div>
+            <span className="block text-[10px] tracking-[0.25em] uppercase text-[#bbb] mt-2.5">{t.toShore}</span>
+            <div className="text-[13px] text-[#777] mt-2.5 leading-relaxed font-light max-w-[220px]">{t.toShoreDesc}</div>
           </div>
           <div className="px-8 py-10 border-r border-b border-[#eee] sm:px-6 sm:py-7">
             <div className="font-display text-[56px] font-light text-ink leading-none tracking-[-0.02em]">70+</div>
-            <span className="block text-[10px] tracking-[0.25em] uppercase text-[#bbb] mt-2.5">Menu Items</span>
-            <div className="text-[13px] text-[#777] mt-2.5 leading-relaxed font-light max-w-[220px]">From specialty coffee to fresh-catch plates, crafted daily.</div>
+            <span className="block text-[10px] tracking-[0.25em] uppercase text-[#bbb] mt-2.5">{t.menuItems}</span>
+            <div className="text-[13px] text-[#777] mt-2.5 leading-relaxed font-light max-w-[220px]">{t.menuItemsDesc}</div>
           </div>
         </div>
       </section>
@@ -116,19 +182,19 @@ export default function Home() {
         </div>
         <div className="bg-bg border-t border-black/10 px-10 py-7 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_auto] gap-10 items-start sm:px-5 sm:gap-6">
           <div>
-            <span className="block text-[9px] tracking-[0.35em] uppercase text-[#bbb] mb-2">Address</span>
-            <div className="text-[13px] text-[#444] leading-[1.7] font-light">123 Moo 4, Narathat Beach Rd<br/>Cha-am, Phetchaburi 76120</div>
+            <span className="block text-[9px] tracking-[0.35em] uppercase text-[#bbb] mb-2">{t.address}</span>
+            <div className="text-[13px] text-[#444] leading-[1.7] font-light">{renderLines(t.addressValue)}</div>
           </div>
           <div>
-            <span className="block text-[9px] tracking-[0.35em] uppercase text-[#bbb] mb-2">Hours</span>
-            <div className="text-[13px] text-[#444] leading-[1.7] font-light">Mon–Fri · 08:00 – 21:00<br/>Sat–Sun · 07:00 – 22:00</div>
+            <span className="block text-[9px] tracking-[0.35em] uppercase text-[#bbb] mb-2">{t.hoursLabel}</span>
+            <div className="text-[13px] text-[#444] leading-[1.7] font-light">{t.hoursCompact}</div>
           </div>
           <div>
-            <span className="block text-[9px] tracking-[0.35em] uppercase text-[#bbb] mb-2">Contact</span>
+            <span className="block text-[9px] tracking-[0.35em] uppercase text-[#bbb] mb-2">{t.contact}</span>
             <div className="text-[13px] text-[#444] leading-[1.7] font-light"><a href="tel:+6632123456" className="text-muted hover:text-ink transition-colors">+66 32 123 456</a><br/><a href="mailto:hello@lovepier.cafe" className="text-muted hover:text-ink transition-colors">hello@lovepier.cafe</a></div>
           </div>
           <div>
-            <span className="block text-[9px] tracking-[0.35em] uppercase text-[#bbb] mb-2">Follow</span>
+            <span className="block text-[9px] tracking-[0.35em] uppercase text-[#bbb] mb-2">{t.follow}</span>
             <div className="flex gap-3 items-center flex-wrap">
               <a href="#" className="text-muted border border-black/[0.12] p-2 hover:border-ink hover:text-ink hover:bg-ink hover:[&_svg]:text-bg transition-all flex items-center justify-center w-8 h-8" aria-label="Instagram"><svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor"/></svg></a>
               <a href="#" className="text-muted border border-black/[0.12] p-2 hover:border-ink hover:text-ink hover:bg-ink transition-all flex items-center justify-center w-8 h-8" aria-label="Facebook"><svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.5h2.5l.5-3h-3V8.5c0-.9.3-1.5 1.6-1.5H17V4.3c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4.1V10.5H8v3h2.5V21h3z"/></svg></a>
@@ -139,7 +205,7 @@ export default function Home() {
         </div>
       </div>
 
-      <Footer tagline="THE SEA IS <em>ALWAYS OPEN</em>" />
+      <Footer />
     </>
   )
 }

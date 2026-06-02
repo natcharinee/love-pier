@@ -1,6 +1,7 @@
 import '../styles/globals.css'
 import { useEffect } from 'react'
 import Layout from '../components/Layout'
+import { LanguageProvider } from '../lib/language'
 
 export default function App({ Component, pageProps }) {
   useEffect(() => {
@@ -40,5 +41,9 @@ export default function App({ Component, pageProps }) {
     }
   }, [])
 
-  return <Layout><Component {...pageProps} /></Layout>
+  return (
+    <LanguageProvider>
+      <Layout><Component {...pageProps} /></Layout>
+    </LanguageProvider>
+  )
 }
