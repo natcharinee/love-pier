@@ -19,7 +19,7 @@ const COPY = {
     hours: 'Hours',
     contact: 'Contact',
     address: '800 108 Saensuk<br/>Mueang Chonburi, Chonburi 20130',
-    hoursValue: 'Daily · 09:00-18:00',
+    hoursValue: 'Open daily (except Wed) · 09:00-18:00',
   },
   th: {
     navItems: [
@@ -37,7 +37,7 @@ const COPY = {
     hours: 'เวลาเปิดทำการ',
     contact: 'ติดต่อ',
     address: '800 108 แสนสุข<br/>อำเภอเมือง จังหวัดชลบุรี 20130',
-    hoursValue: 'ทุกวัน · 09:00-18:00',
+    hoursValue: 'เปิดทุกวัน (ยกเว้นวันพุธ) · 09:00-18:00',
   },
   zh: {
     navItems: [
@@ -55,7 +55,7 @@ const COPY = {
     hours: '营业时间',
     contact: '联系方式',
     address: '800 108 Saensuk<br/>Mueang Chonburi, Chonburi 20130',
-    hoursValue: '每日 · 09:00-18:00',
+    hoursValue: '每日营业（周三除外） · 09:00-18:00',
   },
 }
 
