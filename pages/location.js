@@ -13,13 +13,17 @@ export default function Location() {
         address: 'ที่อยู่',
         addressVal: '800 108 แสนสุข\nอำเภอเมือง จังหวัดชลบุรี 20130',
         hours: 'เวลาเปิดทำการ',
-        hoursVal: 'ทุกวัน · 09:00-18:00',
+        hoursVal: 'เปิดทุกวัน (ยกเว้นวันพุธ) · 09:00-18:00',
         phone: 'โทรศัพท์',
         coords: 'พิกัด',
         openGoogle: 'เปิดใน Google Maps',
         how: 'วิธีการ\nเดินทางมา',
         howSub: 'จากกรุงเทพฯ ใช้เวลาประมาณ 2 ชั่วโมงกว่า',
         apple: 'เปิดใน Apple Maps',
+        directions: [
+          { mode: 'โดยรถยนต์', title: 'ประมาณ 2 ชั่วโมง จากกรุงเทพฯ', text: 'สามารถปักหมุดตาม Google Maps ได้เลย ที่ตั้งร้านจะอยู่ภายใน เดอะ ซิมโพนี่ คอนโด บางแสน-ศรีราชา' },
+          { mode: 'โดยรถบัส', title: 'ประมาณ 2 ชั่วโมง 30 นาที จากสถานีขนส่ง หมอชิต', text: 'มีรถตู้ออกทุกชั่วโมง ลงที่จุดจอดหนองมน หรือใกล้เคียง ต่อรถอีกเล็กน้อย' },
+        ],
       }
     : lang === 'zh'
       ? {
@@ -30,13 +34,17 @@ export default function Location() {
           address: '地址',
           addressVal: '800 108 Saensuk\nMueang Chonburi, Chonburi 20130',
           hours: '营业时间',
-          hoursVal: '每日 · 09:00-18:00',
+          hoursVal: '每日营业（周三除外） · 09:00-18:00',
           phone: '电话',
           coords: '坐标',
           openGoogle: '在 Google Maps 打开',
           how: '如何\n到达',
           howSub: '从曼谷沿海岸南下，约 2 小时 20 分钟车程。',
           apple: '在 Apple Maps 打开',
+          directions: [
+            { mode: '驾车', title: '从曼谷出发约 2 小时', text: '可直接在 Google Maps 导航，门店位于 The Symphony Condo Bangsaen-Sriracha 内。' },
+            { mode: '巴士', title: '从曼谷 Mochit 汽车站约 2 小时 30 分钟', text: '每小时有小巴发车。可在 Nong Mon 或附近站点下车，再短程转车前往。' },
+          ],
         }
       : {
           title: 'Location — Love Pier Beach Cafe',
@@ -46,13 +54,17 @@ export default function Location() {
           address: 'Address',
           addressVal: '800 108 Saensuk\nMueang Chonburi, Chonburi 20130',
           hours: 'Hours',
-          hoursVal: 'Daily · 09:00-18:00',
+          hoursVal: 'Open daily (except Wed) · 09:00-18:00',
           phone: 'Phone',
           coords: 'Coordinates',
           openGoogle: 'Open in Google Maps',
           how: 'How to get\nhere',
           howSub: 'From Bangkok, head south along the coast. About 2 hours and 20 minutes.',
           apple: 'Open in Apple Maps',
+          directions: [
+            { mode: 'By car', title: 'About 2 hours from Bangkok', text: 'You can pin us directly on Google Maps. The cafe is inside The Symphony Condo Bangsaen-Sriracha.' },
+            { mode: 'By bus', title: 'About 2 hours 30 minutes from Mochit Bus Terminal', text: 'Minivans leave every hour. Get off at Nong Mon or a nearby stop, then take a short local ride.' },
+          ],
         }
   const renderLines = (s) => s.split('\n').map((line, idx, arr) => <span key={`${line}-${idx}`}>{line}{idx < arr.length - 1 ? <br/> : null}</span>)
   return (
@@ -118,10 +130,7 @@ export default function Location() {
           </div>
         </div>
         <div className="flex flex-col">
-          {[
-            { mode:'By car', title:'2h 20m from Bangkok', text:'Take Phetkasem Road south. Free parking on site for 18 cars and a small motorbike lot at the rear.' },
-            { mode:'By bus', title:'2h 30m from Bangkok Southern Bus Terminal', text:'Direct minivans run hourly. Ask for the Cha-am beach stop.' },
-          ].map(({ mode, title, text }) => (
+          {t.directions.map(({ mode, title, text }) => (
             <div key={mode} className="grid grid-cols-[80px_1fr] gap-6 py-6 border-t border-black/10 sm:grid-cols-[60px_1fr] sm:gap-4">
               <div className="text-[10px] tracking-[0.3em] uppercase text-[#aaa] pt-1">{mode}</div>
               <div>
