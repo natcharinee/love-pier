@@ -81,7 +81,7 @@ export default function MenuOverlay({ isOpen, onClose }) {
               key={item.href}
               href={item.href}
               onClick={onClose}
-              className={`font-display font-light leading-[1.05] tracking-[-0.02em] flex items-baseline gap-5 transition-all duration-200 hover:text-bg hover:translate-x-2 text-[clamp(40px,5.5vw,70px)] ${pathname === item.href ? 'text-gold' : 'text-white/45'}`}
+              className={`font-display font-light leading-[1.05] tracking-[-0.02em] flex items-baseline gap-5 transition-all duration-200 hover:text-bg hover:translate-x-2 text-[clamp(34px,4.8vw,60px)] ${pathname === item.href ? 'text-gold' : 'text-white/45'}`}
             >
               <span className="font-sans text-[11px] tracking-[0.2em] font-light text-white/30 -translate-y-2">{String(i + 1).padStart(2, '0')}</span>
               {item.label}

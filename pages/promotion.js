@@ -83,7 +83,7 @@ export default function Promotion() {
           <p className="mt-5 text-sm leading-[1.8] text-[rgba(245,243,239,0.75)] font-light max-w-[480px]">{t.desc}</p>
           <div className="mt-8 flex gap-3 flex-wrap">
             <Link href="/reservation" className="inline-block bg-gold text-ink text-[11px] tracking-[0.25em] uppercase px-7 py-3.5 hover:bg-bg transition-colors duration-300">{t.reserve}</Link>
-            <Link href="/menu" className="inline-block bg-transparent text-bg text-[11px] tracking-[0.25em] uppercase px-7 py-3.5 border border-white/30 hover:border-white hover:text-white transition-colors duration-300">{t.view}</Link>
+            <Link href="/menu" className="inline-block bg-[rgba(236,231,220,0.2)] text-bg text-[12px] tracking-[0.22em] uppercase px-7 py-3.5 border border-[rgba(236,231,220,0.55)] hover:bg-[rgba(236,231,220,0.32)] hover:text-white transition-colors duration-300">{t.view}</Link>
           </div>
         </div>
       </section>
