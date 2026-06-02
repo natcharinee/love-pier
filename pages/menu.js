@@ -1,16 +1,7 @@
 import Head from 'next/head'
 import { useState } from 'react'
 import Footer from '../components/Footer'
-
-const TABS = [
-  { label: 'All', cat: null },
-  { label: 'Coffee', cat: 'coffee' },
-  { label: 'Tea & Refreshers', cat: 'tea' },
-  { label: 'Breakfast', cat: 'breakfast' },
-  { label: 'Mains', cat: 'mains' },
-  { label: 'Sweets', cat: 'sweets' },
-  { label: 'Drinks', cat: 'drinks' },
-]
+import { useLanguage } from '../lib/language'
 
 function MenuItem({ num, name, badge, desc, price }) {
   return (
@@ -114,28 +105,48 @@ const MENU_DATA = [
 ]
 
 export default function Menu() {
+  const { lang } = useLanguage()
+  const tabs = lang === 'th'
+    ? [
+        { label: 'ทั้งหมด', cat: null }, { label: 'กาแฟ', cat: 'coffee' }, { label: 'ชาและรีเฟรชเชอร์', cat: 'tea' },
+        { label: 'อาหารเช้า', cat: 'breakfast' }, { label: 'จานหลัก', cat: 'mains' }, { label: 'ของหวาน', cat: 'sweets' }, { label: 'เครื่องดื่ม', cat: 'drinks' },
+      ]
+    : lang === 'zh'
+      ? [
+          { label: '全部', cat: null }, { label: '咖啡', cat: 'coffee' }, { label: '茶与清爽饮品', cat: 'tea' },
+          { label: '早餐', cat: 'breakfast' }, { label: '主菜', cat: 'mains' }, { label: '甜品', cat: 'sweets' }, { label: '饮品', cat: 'drinks' },
+        ]
+      : [
+          { label: 'All', cat: null }, { label: 'Coffee', cat: 'coffee' }, { label: 'Tea & Refreshers', cat: 'tea' },
+          { label: 'Breakfast', cat: 'breakfast' }, { label: 'Mains', cat: 'mains' }, { label: 'Sweets', cat: 'sweets' }, { label: 'Drinks', cat: 'drinks' },
+        ]
+  const t = lang === 'th'
+    ? { title: 'Menu — Love Pier Beach Cafe', menu: 'เมนู', hero: 'เมนูที่ตั้งใจ\nเพื่อกลิ่นทะเล', desc: 'เมนูของเราปรับตามวัตถุดิบสดใหม่ในแต่ละช่วงเวลา', specials: 'เมนูพิเศษวันนี้', chef: 'ตัวเลือกพิเศษ\nตามฤดูกาล' }
+    : lang === 'zh'
+      ? { title: 'Menu — Love Pier Beach Cafe', menu: '菜单', hero: '用心制作\n与海相伴', desc: '我们的菜单根据当季食材与每日新鲜度持续调整。', specials: '今日推荐', chef: '主厨精选\n当季限定' }
+      : { title: 'Menu — Love Pier Beach Cafe', menu: 'The Menu', hero: 'Crafted with\nthe sea in mind', desc: "Every drink and dish is built around what's fresh right now.", specials: "Today's Specials", chef: "Chef's choice\nof the season" }
   const [activeTab, setActiveTab] = useState(null)
 
   return (
     <>
       <Head>
-        <title>Menu — Love Pier Beach Cafe</title>
+        <title>{t.title}</title>
       </Head>
 
       {/* Menu Hero */}
       <section className="grid grid-cols-1 lg:grid-cols-2 border-b border-black/10 reveal">
         <div className="px-16 py-20 flex flex-col justify-center sm:px-6 sm:py-12">
-          <span className="text-[10px] tracking-[0.4em] uppercase text-muted mb-4 block">The Menu</span>
-          <h1 className="font-display font-light leading-[0.95] text-ink tracking-[-0.02em] mb-5 text-[clamp(48px,6vw,76px)]">Crafted with<br/><em className="italic text-gold">the sea in mind</em></h1>
-          <p className="text-[15px] leading-[1.9] text-[#555] font-light max-w-[480px]">Every drink and dish on our menu is built around what&apos;s growing, swimming, and being roasted at this moment. Sourcing changes weekly; care is constant.</p>
+          <span className="text-[10px] tracking-[0.4em] uppercase text-muted mb-4 block">{t.menu}</span>
+          <h1 className="font-display font-light leading-[0.95] text-ink tracking-[-0.02em] mb-5 text-[clamp(48px,6vw,76px)]">{t.hero.split('\n').map((l,i)=><span key={i}>{l}{i===0?<br/>:null}</span>)}</h1>
+          <p className="text-[15px] leading-[1.9] text-[#555] font-light max-w-[480px]">{t.desc}</p>
         </div>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="w-full aspect-[4/5] object-cover [filter:saturate(0.7)]" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1000&q=85" alt="menu hero" />
+        <img className="w-full aspect-[4/5] object-cover [filter:saturate(0.7)]" src="/uploads/menu-hero-custom.png" alt="menu hero" />
       </section>
 
       {/* Category tabs */}
       <div className="flex gap-7 px-10 py-8 border-b border-black/10 overflow-x-auto [scrollbar-width:none] bg-white sticky top-[67px] z-50 reveal sm:px-6 sm:py-5 sm:gap-4 sm:top-[60px]">
-        {TABS.map(({ label, cat }) => (
+        {tabs.map(({ label, cat }) => (
           <button
             key={label}
             onClick={() => setActiveTab(cat)}
@@ -155,8 +166,8 @@ export default function Menu() {
 
       {/* Featured */}
       <section className="bg-ink text-bg px-10 py-20 reveal sm:px-6 sm:py-14">
-        <div className="text-[10px] tracking-[0.4em] uppercase text-gold mb-4">Today&apos;s Specials</div>
-        <h2 className="font-display font-light leading-[1.1] mb-12 max-w-[800px] text-[clamp(36px,5vw,60px)]">Chef&apos;s choice<br/>of the <em className="italic text-gold">season</em></h2>
+        <div className="text-[10px] tracking-[0.4em] uppercase text-gold mb-4">{t.specials}</div>
+        <h2 className="font-display font-light leading-[1.1] mb-12 max-w-[800px] text-[clamp(36px,5vw,60px)]">{t.chef.split('\n').map((l,i)=><span key={i}>{l}{i===0?<br/>:null}</span>)}</h2>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
           {[
             { img:'https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=600&q=80', name:'Grilled Sea Bass', sub:'Whole, lemon, herbs', price:'฿420' },

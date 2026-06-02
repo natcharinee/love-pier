@@ -69,7 +69,7 @@
           <aside class="menu-overlay-aside">
             <div>
               <h4>Visit</h4>
-              <p>123 Moo 4, Narathat Beach Rd<br/>Cha-am, Phetchaburi 76120</p>
+              <p>800 108 Saensuk<br/>Mueang Chonburi, Chonburi 20130</p>
             </div>
             <div>
               <h4>Hours</h4>

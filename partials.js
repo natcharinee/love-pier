@@ -79,7 +79,7 @@
           <aside class="border-t border-[rgba(255,255,255,0.08)] pt-8 lg:border-t-0 lg:border-l lg:border-[rgba(255,255,255,0.08)] lg:pl-16 flex flex-col gap-8">
             <div>
               <h4 class="text-[10px] tracking-[0.35em] uppercase text-[rgba(245,243,239,0.4)] mb-2.5">Visit</h4>
-              <p class="text-[13px] text-[rgba(245,243,239,0.7)] leading-[1.8] font-light">123 Moo 4, Narathat Beach Rd<br/>Cha-am, Phetchaburi 76120</p>
+              <p class="text-[13px] text-[rgba(245,243,239,0.7)] leading-[1.8] font-light">800 108 Saensuk<br/>Mueang Chonburi, Chonburi 20130</p>
             </div>
             <div>
               <h4 class="text-[10px] tracking-[0.35em] uppercase text-[rgba(245,243,239,0.4)] mb-2.5">Hours</h4>

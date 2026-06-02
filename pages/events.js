@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import Footer from '../components/Footer'
+import { useLanguage } from '../lib/language'
 
 const EVENT_LIST = [
   { day:'10', month:'May 2026', title:'Sunset Jazz Session', sub:'18:00 – 22:00 · The Terrace', cat:'Music', price: null, free: true },
@@ -19,17 +20,23 @@ const RECURRING = [
 ]
 
 export default function Events() {
+  const { lang } = useLanguage()
+  const t = lang === 'th'
+    ? { title:'Events — Love Pier Beach Cafe', up:'อีเวนต์ที่กำลังจะมา', hero:'เช้าช้าๆ\nค่ำคืนคึกคัก', desc:'ดนตรีสด เวิร์กช็อป และกิจกรรมประจำสัปดาห์', featured:'แนะนำ · สุดสัปดาห์นี้', reserve:'จองโต๊ะ', add:'เพิ่มลงปฏิทิน', next:'กิจกรรมถัดไป', weekly:'กิจกรรมประจำสัปดาห์', weeklyDesc:'กิจกรรมที่คุณมาได้ทุกสัปดาห์' }
+    : lang === 'zh'
+      ? { title:'Events — Love Pier Beach Cafe', up:'即将举行', hero:'慢节奏清晨\n热闹夜晚', desc:'现场音乐、工作坊与每周固定活动。', featured:'精选 · 本周末', reserve:'预订座位', add:'加入日历', next:'接下来', weekly:'每周固定活动', weeklyDesc:'无需预订，直接到店即可。' }
+      : { title:'Events — Love Pier Beach Cafe', up:'Upcoming Events', hero:'Slow mornings,\nloud nights', desc:'Live music, workshops, supper clubs, and sunrise yoga.', featured:'Featured · This weekend', reserve:'Reserve a Table', add:'Add to calendar', next:"What's next", weekly:'Every week, without fail', weeklyDesc:'Things you can count on. No reservation needed — just show up.' }
   return (
     <>
       <Head>
-        <title>Events — Love Pier Beach Cafe</title>
+        <title>{t.title}</title>
       </Head>
 
       {/* Page header */}
       <header className="px-10 pt-16 pb-10 text-center border-b border-black/10 reveal sm:px-5 sm:pt-10 sm:pb-7">
-        <div className="text-[10px] tracking-[0.4em] uppercase text-muted mb-3">Upcoming Events</div>
-        <h1 className="font-display font-light leading-[0.95] text-ink tracking-[-0.02em] text-[clamp(48px,7vw,88px)]">Slow mornings,<br/>loud <em className="italic text-gold">nights</em></h1>
-        <p className="mt-4 text-sm text-[#666] font-light max-w-[580px] mx-auto leading-[1.8]">Live music, workshops, supper clubs, and quiet sunrise yoga. Find your next reason to come back.</p>
+        <div className="text-[10px] tracking-[0.4em] uppercase text-muted mb-3">{t.up}</div>
+        <h1 className="font-display font-light leading-[0.95] text-ink tracking-[-0.02em] text-[clamp(48px,7vw,88px)]">{t.hero.split('\n').map((l,i)=><span key={i}>{l}{i===0?<br/>:null}</span>)}</h1>
+        <p className="mt-4 text-sm text-[#666] font-light max-w-[580px] mx-auto leading-[1.8]">{t.desc}</p>
       </header>
 
       {/* Featured event */}
@@ -37,7 +44,7 @@ export default function Events() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img className="w-full aspect-[4/3] object-cover [filter:saturate(0.7)]" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1000&q=85" alt="featured event" />
         <div className="px-16 py-20 flex flex-col justify-center sm:px-6 sm:py-12">
-          <span className="inline-flex text-[10px] tracking-[0.3em] uppercase text-gold border border-gold/50 px-3 py-1.5 mb-5 w-fit">Featured · This weekend</span>
+          <span className="inline-flex text-[10px] tracking-[0.3em] uppercase text-gold border border-gold/50 px-3 py-1.5 mb-5 w-fit">{t.featured}</span>
           <h2 className="font-display font-light leading-none text-ink tracking-[-0.02em] mb-4 text-[clamp(40px,5vw,64px)]">Sunset Jazz<br/><em className="italic text-gold">Session</em></h2>
           <div className="flex gap-8 mb-6 py-4 border-t border-b border-black/10 flex-wrap sm:gap-5">
             <div className="text-[11px] tracking-[0.2em] text-muted uppercase"><strong className="text-ink font-medium">Sat 17 May</strong><br/>2026</div>
@@ -46,15 +53,15 @@ export default function Events() {
           </div>
           <p className="text-sm text-[#555] leading-[1.9] font-light mb-8 max-w-[480px]">A trio of Bangkok-based musicians, two singers, and a sunset that paints the room gold. Cocktails poured all evening; small plates from 18:30.</p>
           <div className="flex gap-3 flex-wrap">
-            <Link href="/reservation" className="inline-block bg-ink text-bg text-[11px] tracking-[0.25em] uppercase px-7 py-3.5 hover:bg-gold hover:text-ink transition-colors duration-300">Reserve a Table</Link>
-            <a href="#" className="inline-flex items-center gap-2.5 text-[10px] tracking-[0.3em] uppercase text-[#666] hover:text-ink transition-colors after:content-['→'] after:text-sm after:transition-transform hover:after:translate-x-1">Add to calendar</a>
+            <Link href="/reservation" className="inline-block bg-ink text-bg text-[11px] tracking-[0.25em] uppercase px-7 py-3.5 hover:bg-gold hover:text-ink transition-colors duration-300">{t.reserve}</Link>
+            <a href="#" className="inline-flex items-center gap-2.5 text-[10px] tracking-[0.3em] uppercase text-[#666] hover:text-ink transition-colors after:content-['→'] after:text-sm after:transition-transform hover:after:translate-x-1">{t.add}</a>
           </div>
         </div>
       </section>
 
       {/* Events list */}
       <section className="px-10 py-20 reveal sm:px-6 sm:py-14">
-        <h3 className="font-display font-light mb-12 leading-[1.05] text-[clamp(32px,4vw,48px)]">What&apos;s <em className="italic text-gold">next</em></h3>
+        <h3 className="font-display font-light mb-12 leading-[1.05] text-[clamp(32px,4vw,48px)]">{t.next}</h3>
         <div className="border-t border-black/10">
           {EVENT_LIST.map((ev, i) => (
             <div key={i} className="group grid items-center gap-8 py-7 border-b border-black/10 cursor-pointer hover:bg-[rgba(201,169,110,0.04)] hover:pl-3 transition-all duration-200 sm:gap-5 sm:py-5" style={{ gridTemplateColumns:'100px 1fr 1fr auto 32px' }}>
@@ -79,8 +86,8 @@ export default function Events() {
 
       {/* Recurring */}
       <section className="bg-ink text-bg px-10 py-20 reveal sm:px-6 sm:py-14">
-        <h3 className="font-display font-light mb-3.5 leading-[1.05] text-[clamp(32px,4vw,48px)]">Every week, <em className="italic text-gold">without fail</em></h3>
-        <p className="text-sm text-[rgba(245,243,239,0.5)] mb-12 max-w-[480px] leading-[1.8]">Things you can count on. No reservation needed — just show up.</p>
+        <h3 className="font-display font-light mb-3.5 leading-[1.05] text-[clamp(32px,4vw,48px)]">{t.weekly}</h3>
+        <p className="text-sm text-[rgba(245,243,239,0.5)] mb-12 max-w-[480px] leading-[1.8]">{t.weeklyDesc}</p>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {RECURRING.map(({ day, title, text, time }) => (
             <div key={day} className="border border-white/10 px-8 py-8 hover:border-gold hover:bg-[rgba(201,169,110,0.05)] transition-all duration-300">

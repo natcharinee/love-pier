@@ -1,11 +1,18 @@
 import Head from 'next/head'
 import Footer from '../components/Footer'
+import { useLanguage } from '../lib/language'
 
 export default function About() {
+  const { lang } = useLanguage()
+  const t = lang === 'th'
+    ? { title:'About — Love Pier Beach Cafe', story:'เรื่องราวของเรา · ตั้งแต่ปี 2026', hero:'คาเฟ่ที่สร้างขึ้น\nเพื่อเวลาที่ช้าลง', brief:'8 ปีในภาพรวม', timeline:'ไทม์ไลน์', values:'สิ่งที่เราให้ความสำคัญ', people:'ทีมของเรา' }
+    : lang === 'zh'
+      ? { title:'About — Love Pier Beach Cafe', story:'我们的故事 · 自 2026 年', hero:'一间咖啡馆\n为慢节奏而生', brief:'八年回顾', timeline:'时间线', values:'我们的坚持', people:'我们的团队' }
+      : { title:'About — Love Pier Beach Cafe', story:'Our Story · Since 2026', hero:'A cafe\nbuilt on slow time', brief:'Eight years, in brief', timeline:'A timeline', values:'What we care about', people:'The people' }
   return (
     <>
       <Head>
-        <title>About — Love Pier Beach Cafe</title>
+        <title>{t.title}</title>
       </Head>
 
       {/* Story hero */}
@@ -13,8 +20,8 @@ export default function About() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img className="w-full h-full object-cover [filter:saturate(0.6)_brightness(0.85)]" src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1600&q=85" alt="story hero" />
         <div className="absolute inset-0 flex flex-col justify-end p-16 text-bg lg:p-16 sm:p-6">
-          <div className="text-[10px] tracking-[0.4em] uppercase text-[rgba(245,243,239,0.6)] mb-4">Our Story · Since 2017</div>
-          <h1 className="font-display font-light leading-[0.9] tracking-[-0.03em] max-w-[1000px] text-[clamp(56px,8vw,110px)]">A cafe<br/>built on <em className="italic text-gold">slow time</em></h1>
+          <div className="text-[10px] tracking-[0.4em] uppercase text-[rgba(245,243,239,0.6)] mb-4">{t.story}</div>
+          <h1 className="font-display font-light leading-[0.9] tracking-[-0.03em] max-w-[1000px] text-[clamp(56px,8vw,110px)]">{t.hero.split('\n').map((l,i)=><span key={i}>{l}{i===0?<br/>:null}</span>)}</h1>
         </div>
       </section>
 
@@ -33,8 +40,8 @@ export default function About() {
       {/* Timeline */}
       <section className="px-10 py-24 border-b border-black/10 bg-white reveal lg:px-10 sm:px-6 sm:py-16">
         <div className="mb-16">
-          <span className="block text-[10px] tracking-[0.4em] uppercase text-muted mb-3">Eight years, in brief</span>
-          <h2 className="font-display font-light leading-[1.05] text-[clamp(36px,4.5vw,56px)]">A <em className="italic text-gold">timeline</em></h2>
+          <span className="block text-[10px] tracking-[0.4em] uppercase text-muted mb-3">{t.brief}</span>
+          <h2 className="font-display font-light leading-[1.05] text-[clamp(36px,4.5vw,56px)]">{t.timeline}</h2>
         </div>
         <div className="grid" style={{ gridTemplateColumns:'80px 1fr' }}>
           {[
@@ -62,7 +69,7 @@ export default function About() {
       {/* Values */}
       <section className="px-10 py-24 bg-ink text-bg reveal lg:px-10 sm:px-6 sm:py-16">
         <div className="flex justify-between items-end mb-16 gap-10 flex-wrap">
-          <h2 className="font-display font-light leading-[1.05] text-[clamp(36px,4.5vw,60px)]">What we<br/>care <em className="italic text-gold">about</em></h2>
+          <h2 className="font-display font-light leading-[1.05] text-[clamp(36px,4.5vw,60px)]">{t.values}</h2>
           <p className="text-[13px] text-[rgba(245,243,239,0.5)] max-w-xs leading-[1.8]">Four things hold steady, no matter how busy the season. They show up in every cup we pour and every plate we send out.</p>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 border-t border-l border-[rgba(255,255,255,0.08)]">
@@ -94,7 +101,7 @@ export default function About() {
       {/* Team */}
       <section className="px-10 py-24 border-b border-black/10 reveal lg:px-10 sm:px-6 sm:py-16">
         <div className="mb-14">
-          <h2 className="font-display font-light leading-[1.05] text-[clamp(36px,4.5vw,56px)]">The <em className="italic text-gold">people</em></h2>
+          <h2 className="font-display font-light leading-[1.05] text-[clamp(36px,4.5vw,56px)]">{t.people}</h2>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {[

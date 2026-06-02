@@ -18,7 +18,7 @@ const COPY = {
     visit: 'Visit',
     hours: 'Hours',
     contact: 'Contact',
-    address: '123 Moo 4, Narathat Beach Rd<br/>Chonburi 76120',
+    address: '800 108 Saensuk<br/>Mueang Chonburi, Chonburi 20130',
     hoursValue: 'Daily · 09:00-18:00',
   },
   th: {
@@ -36,8 +36,26 @@ const COPY = {
     visit: 'ที่ตั้ง',
     hours: 'เวลาเปิดทำการ',
     contact: 'ติดต่อ',
-    address: '123 หมู่ 4 ถนนนราธร บีชโรด<br/>ชลบุรี 76120',
+    address: '800 108 แสนสุข<br/>อำเภอเมือง จังหวัดชลบุรี 20130',
     hoursValue: 'ทุกวัน · 09:00-18:00',
+  },
+  zh: {
+    navItems: [
+      { href: '/',           label: '首页' },
+      { href: '/menu',       label: '菜单' },
+      { href: '/gallery',    label: '图库' },
+      { href: '/reservation',label: '预订' },
+      { href: '/location',   label: '地址' },
+      { href: '/events',     label: '活动' },
+      { href: '/promotion',  label: '优惠' },
+      { href: '/about',      label: '关于我们' },
+      { href: '/contact',    label: '联系' },
+    ],
+    visit: '地址',
+    hours: '营业时间',
+    contact: '联系方式',
+    address: '800 108 Saensuk<br/>Mueang Chonburi, Chonburi 20130',
+    hoursValue: '每日 · 09:00-18:00',
   },
 }
 

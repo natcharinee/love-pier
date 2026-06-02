@@ -13,6 +13,11 @@ const COPY = {
     right: [{ href: '/location', label: 'ที่ตั้ง' }, { href: '/contact', label: 'ติดต่อ' }],
     reserve: 'จองโต๊ะ',
   },
+  zh: {
+    left: [{ href: '/', label: '首页' }, { href: '/menu', label: '菜单' }, { href: '/gallery', label: '图库' }],
+    right: [{ href: '/location', label: '地址' }, { href: '/contact', label: '联系' }],
+    reserve: '预订',
+  },
 }
 
 export default function Nav({ onOpenMenu }) {
@@ -35,11 +40,12 @@ export default function Nav({ onOpenMenu }) {
         <img src="/uploads/logo-8dc1f126.png" alt="Love Pier Beach Cafe" className="h-[52px] w-auto mix-blend-multiply block" />
       </Link>
       <div className="flex items-center gap-6">
+        {dict.right.map(n => <Link key={n.href} href={n.href} className={lc(n.href)}>{n.label}</Link>)}
         <div className="hidden md:flex items-center border border-black/[0.12]">
           <button onClick={() => setLang('en')} className={`px-2.5 py-1 text-[10px] tracking-[0.2em] uppercase ${lang === 'en' ? 'bg-ink text-bg' : 'text-muted hover:text-ink'}`} aria-label="Switch to English">EN</button>
           <button onClick={() => setLang('th')} className={`px-2.5 py-1 text-[10px] tracking-[0.2em] uppercase ${lang === 'th' ? 'bg-ink text-bg' : 'text-muted hover:text-ink'}`} aria-label="Switch to Thai">TH</button>
+          <button onClick={() => setLang('zh')} className={`px-2.5 py-1 text-[10px] tracking-[0.2em] uppercase ${lang === 'zh' ? 'bg-ink text-bg' : 'text-muted hover:text-ink'}`} aria-label="Switch to Chinese">ZH</button>
         </div>
-        {dict.right.map(n => <Link key={n.href} href={n.href} className={lc(n.href)}>{n.label}</Link>)}
         <Link href="/reservation" className="text-[10px] tracking-[0.25em] uppercase text-bg bg-ink px-[18px] py-[9px] hover:bg-gold hover:text-ink transition-colors duration-200">{dict.reserve}</Link>
       </div>
     </nav>

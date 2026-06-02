@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import Footer from '../components/Footer'
+import { useLanguage } from '../lib/language'
 
 const DEALS = [
   {
@@ -60,10 +61,16 @@ const DEALS = [
 ]
 
 export default function Promotion() {
+  const { lang } = useLanguage()
+  const t = lang === 'th'
+    ? { title:'Promotion — Love Pier Beach Cafe', may:'โปรโมชันเดือนนี้ · จำกัดเวลา', hero:'Sunset Hour\nลดครึ่งราคา', desc:'ทุกวันธรรมดา 17:00–18:30 เครื่องดื่มลด 50%', reserve:'จองที่นั่ง', view:'ดูเมนู', month:'เดือนนี้', deals:'ดีลพิเศษและ\nข้อเสนอประจำฤดูกาล', loyalty:'The Pier Loyalty', join:'สมัครฟรี' }
+    : lang === 'zh'
+      ? { title:'Promotion — Love Pier Beach Cafe', may:'本月优惠 · 限时', hero:'Sunset Hour\n半价优惠', desc:'工作日 17:00–18:30 饮品全部五折。', reserve:'预订座位', view:'查看菜单', month:'本月', deals:'套餐优惠与\n季节限定', loyalty:'The Pier Loyalty', join:'免费加入' }
+      : { title:'Promotion — Love Pier Beach Cafe', may:'May Promotion · Limited', hero:'Sunset Hour\nat half-price', desc:'Every weekday from 17:00–18:30, all coffee and refresher drinks are 50% off.', reserve:'Reserve a Spot', view:'View Menu', month:'This month', deals:'Set deals &\nseasonal offers', loyalty:'The Pier Loyalty', join:'Join free' }
   return (
     <>
       <Head>
-        <title>Promotion — Love Pier Beach Cafe</title>
+        <title>{t.title}</title>
       </Head>
 
       {/* Hero promo */}
@@ -71,12 +78,12 @@ export default function Promotion() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img className="w-full h-full object-cover [filter:brightness(0.6)_saturate(0.6)]" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1600&q=85" alt="promotion hero" />
         <div className="absolute inset-0 flex flex-col justify-center px-16 text-bg max-w-[720px] sm:px-6">
-          <span className="inline-flex text-[10px] tracking-[0.4em] uppercase text-gold px-3.5 py-1.5 border border-gold/50 mb-6 w-fit">May Promotion · Limited</span>
-          <h1 className="font-display font-light leading-[0.95] tracking-[-0.02em] text-[clamp(48px,7vw,92px)]">Sunset Hour<br/>at <em className="italic text-gold">half-price</em></h1>
-          <p className="mt-5 text-sm leading-[1.8] text-[rgba(245,243,239,0.75)] font-light max-w-[480px]">Every weekday from 17:00–18:30, all coffee and refresher drinks are 50% off. No code, no fine print — just walk in.</p>
+          <span className="inline-flex text-[10px] tracking-[0.4em] uppercase text-gold px-3.5 py-1.5 border border-gold/50 mb-6 w-fit">{t.may}</span>
+          <h1 className="font-display font-light leading-[0.95] tracking-[-0.02em] text-[clamp(48px,7vw,92px)]">{t.hero.split('\n').map((l,i)=><span key={i}>{l}{i===0?<br/>:null}</span>)}</h1>
+          <p className="mt-5 text-sm leading-[1.8] text-[rgba(245,243,239,0.75)] font-light max-w-[480px]">{t.desc}</p>
           <div className="mt-8 flex gap-3 flex-wrap">
-            <Link href="/reservation" className="inline-block bg-gold text-ink text-[11px] tracking-[0.25em] uppercase px-7 py-3.5 hover:bg-bg transition-colors duration-300">Reserve a Spot</Link>
-            <Link href="/menu" className="inline-block bg-transparent text-bg text-[11px] tracking-[0.25em] uppercase px-7 py-3.5 border border-white/30 hover:border-white hover:text-white transition-colors duration-300">View Menu</Link>
+            <Link href="/reservation" className="inline-block bg-gold text-ink text-[11px] tracking-[0.25em] uppercase px-7 py-3.5 hover:bg-bg transition-colors duration-300">{t.reserve}</Link>
+            <Link href="/menu" className="inline-block bg-transparent text-bg text-[11px] tracking-[0.25em] uppercase px-7 py-3.5 border border-white/30 hover:border-white hover:text-white transition-colors duration-300">{t.view}</Link>
           </div>
         </div>
       </section>
@@ -85,8 +92,8 @@ export default function Promotion() {
       <section className="px-10 py-20 border-b border-black/10 reveal sm:px-6 sm:py-14">
         <div className="flex justify-between items-end mb-12 gap-8 flex-wrap">
           <div>
-            <span className="block text-[10px] tracking-[0.4em] uppercase text-gold mb-3">This month</span>
-            <h2 className="font-display font-light leading-[1.05] text-[clamp(36px,4.5vw,56px)]">Set deals &amp;<br/>seasonal <em className="italic text-gold">offers</em></h2>
+            <span className="block text-[10px] tracking-[0.4em] uppercase text-gold mb-3">{t.month}</span>
+            <h2 className="font-display font-light leading-[1.05] text-[clamp(36px,4.5vw,56px)]">{t.deals.split('\n').map((l,i)=><span key={i}>{l}{i===0?<br/>:null}</span>)}</h2>
           </div>
           <p className="text-xs text-[#999] tracking-[0.05em] max-w-[280px] leading-relaxed">Available in-store only. Cannot be combined with loyalty redemptions.</p>
         </div>
@@ -118,9 +125,9 @@ export default function Promotion() {
       {/* Loyalty */}
       <section className="bg-ink text-bg px-10 py-20 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center reveal sm:px-6 sm:py-14 sm:gap-9">
         <div>
-          <h2 className="font-display font-light leading-none tracking-[-0.02em] mb-5 text-[clamp(40px,5vw,60px)]">The Pier <em className="italic text-gold">Loyalty</em></h2>
+          <h2 className="font-display font-light leading-none tracking-[-0.02em] mb-5 text-[clamp(40px,5vw,60px)]">{t.loyalty}</h2>
           <p className="text-sm text-[rgba(245,243,239,0.65)] leading-[1.9] font-light mb-7 max-w-[460px]">One card. Every coffee counts. Reach a new tier and unlock perks that don&apos;t expire — we keep track so you don&apos;t have to.</p>
-          <a href="#" className="inline-block bg-gold text-ink text-[11px] tracking-[0.25em] uppercase px-7 py-3.5 hover:bg-bg transition-colors duration-300">Join free</a>
+          <a href="#" className="inline-block bg-gold text-ink text-[11px] tracking-[0.25em] uppercase px-7 py-3.5 hover:bg-bg transition-colors duration-300">{t.join}</a>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-1 bg-white/[0.06] p-1">
           {[

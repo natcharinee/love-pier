@@ -2,11 +2,17 @@ import { useLanguage } from '../lib/language'
 
 export default function Footer({ tagline }) {
   const { lang } = useLanguage()
-  const fallbackTagline = lang === 'th' ? 'ทะเล <em>เปิดเสมอ</em>' : 'THE SEA IS <em>ALWAYS OPEN</em>'
+  const fallbackTagline = lang === 'th'
+    ? 'ทะเล <em>เปิดเสมอ</em>'
+    : lang === 'zh'
+      ? '海洋 <em>始终开放</em>'
+      : 'THE SEA IS <em>ALWAYS OPEN</em>'
   const html = (tagline || fallbackTagline).replace(/<em>/g, '<em class="italic text-gold">');
   const copy = lang === 'th'
     ? { rights: '© 2026 Love Pier Beach Cafe · สงวนลิขสิทธิ์', brand: 'เลิฟ เพียร์' }
-    : { rights: '© 2026 Love Pier Beach Cafe · All Rights Reserved', brand: 'Love Pier' }
+    : lang === 'zh'
+      ? { rights: '© 2026 Love Pier Beach Cafe · 版权所有', brand: 'Love Pier' }
+      : { rights: '© 2026 Love Pier Beach Cafe · All Rights Reserved', brand: 'Love Pier' }
   return (
     <footer className="bg-ink px-10 pt-16 pb-10 overflow-hidden reveal">
       <div

@@ -1,18 +1,71 @@
 import Head from 'next/head'
 import Footer from '../components/Footer'
+import { useLanguage } from '../lib/language'
 
 export default function Location() {
+  const { lang } = useLanguage()
+  const t = lang === 'th'
+    ? {
+        title: 'Location — Love Pier Beach Cafe',
+        find: 'การเดินทาง',
+        hero: 'ห่างทะเลเพียง\nสองร้อยเมตร',
+        sub: 'เราอยู่ในโซนที่เงียบสงบ เดินทางสะดวกและนั่งสบาย',
+        address: 'ที่อยู่',
+        addressVal: '800 108 แสนสุข\nอำเภอเมือง จังหวัดชลบุรี 20130',
+        hours: 'เวลาเปิดทำการ',
+        hoursVal: 'ทุกวัน · 09:00-18:00',
+        phone: 'โทรศัพท์',
+        coords: 'พิกัด',
+        openGoogle: 'เปิดใน Google Maps',
+        how: 'วิธีการ\nเดินทางมา',
+        howSub: 'จากกรุงเทพฯ ใช้เวลาประมาณ 2 ชั่วโมงกว่า',
+        apple: 'เปิดใน Apple Maps',
+      }
+    : lang === 'zh'
+      ? {
+          title: 'Location — Love Pier Beach Cafe',
+          find: '如何找到我们',
+          hero: '距离海边\n仅两百米',
+          sub: '我们位于安静路段，容易抵达，也适合久坐。',
+          address: '地址',
+          addressVal: '800 108 Saensuk\nMueang Chonburi, Chonburi 20130',
+          hours: '营业时间',
+          hoursVal: '每日 · 09:00-18:00',
+          phone: '电话',
+          coords: '坐标',
+          openGoogle: '在 Google Maps 打开',
+          how: '如何\n到达',
+          howSub: '从曼谷沿海岸南下，约 2 小时 20 分钟车程。',
+          apple: '在 Apple Maps 打开',
+        }
+      : {
+          title: 'Location — Love Pier Beach Cafe',
+          find: 'Find us',
+          hero: 'Two hundred\nmeters from the sea',
+          sub: 'We sit at the quiet end of the road. Easy to find, easier to stay.',
+          address: 'Address',
+          addressVal: '800 108 Saensuk\nMueang Chonburi, Chonburi 20130',
+          hours: 'Hours',
+          hoursVal: 'Daily · 09:00-18:00',
+          phone: 'Phone',
+          coords: 'Coordinates',
+          openGoogle: 'Open in Google Maps',
+          how: 'How to get\nhere',
+          howSub: 'From Bangkok, head south along the coast. About 2 hours and 20 minutes.',
+          apple: 'Open in Apple Maps',
+        }
+  const renderLines = (s) => s.split('\n').map((line, idx, arr) => <span key={`${line}-${idx}`}>{line}{idx < arr.length - 1 ? <br/> : null}</span>)
   return (
     <>
       <Head>
-        <title>Location — Love Pier Beach Cafe</title>
+        <title>{t.title}</title>
       </Head>
 
       {/* Page header */}
       <header className="px-10 pt-16 pb-10 text-center border-b border-black/10 reveal sm:px-5 sm:pt-10 sm:pb-7">
-        <div className="text-[10px] tracking-[0.4em] uppercase text-muted mb-3">Find us</div>
-        <h1 className="font-display font-light leading-[0.95] text-ink tracking-[-0.02em] text-[clamp(48px,7vw,88px)]">Two hundred<br/>meters from <em className="italic text-gold">the sea</em></h1>
-        <p className="mt-4 text-sm text-[#666] font-light max-w-[580px] mx-auto leading-[1.8]">We sit at the quiet end of Narathat Beach Road. Easy to find, easier to stay.</p>
+        <div className="text-[10px] tracking-[0.4em] uppercase text-muted mb-3">{t.find}</div>
+        <h1 className="font-display font-light leading-[0.95] text-ink tracking-[-0.02em] text-[clamp(48px,7vw,88px)]">{renderLines(t.hero)}</h1>
+        <p className="mt-4 text-sm text-[#666] font-light max-w-[580px] mx-auto leading-[1.8]">{t.sub}</p>
       </header>
 
       {/* Big map (iframe) */}
@@ -30,15 +83,15 @@ export default function Location() {
       {/* Info bar */}
       <div className="bg-bg px-10 py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 border-b border-black/10 reveal sm:px-6 sm:py-7 sm:gap-6">
         <div>
-          <h4 className="text-[10px] tracking-[0.4em] uppercase text-gold mb-3">Address</h4>
-          <p className="text-sm text-ink leading-[1.7] font-light">123 Moo 4, Narathat Beach Road<br/>Cha-am, Phetchaburi 76120<br/><span className="text-muted text-xs">Thailand</span></p>
+          <h4 className="text-[10px] tracking-[0.4em] uppercase text-gold mb-3">{t.address}</h4>
+          <p className="text-sm text-ink leading-[1.7] font-light">{renderLines(t.addressVal)}<br/><span className="text-muted text-xs">Thailand</span></p>
         </div>
         <div>
-          <h4 className="text-[10px] tracking-[0.4em] uppercase text-gold mb-3">Hours</h4>
-          <p className="text-sm text-ink leading-[1.7] font-light">Mon–Fri · 08:00 – 21:00<br/>Sat–Sun · 07:00 – 22:00<br/><span className="text-muted text-xs">Kitchen closes 30 min before</span></p>
+          <h4 className="text-[10px] tracking-[0.4em] uppercase text-gold mb-3">{t.hours}</h4>
+          <p className="text-sm text-ink leading-[1.7] font-light">{t.hoursVal}<br/><span className="text-muted text-xs">Kitchen closes 30 min before</span></p>
         </div>
         <div>
-          <h4 className="text-[10px] tracking-[0.4em] uppercase text-gold mb-3">Phone</h4>
+          <h4 className="text-[10px] tracking-[0.4em] uppercase text-gold mb-3">{t.phone}</h4>
           <p className="text-sm text-ink leading-[1.7] font-light">
             <a href="tel:+6632123456" className="hover:text-gold transition-colors">+66 32 123 456</a><br/>
             <a href="mailto:hello@lovepier.cafe" className="hover:text-gold transition-colors">hello@lovepier.cafe</a><br/>
@@ -46,10 +99,10 @@ export default function Location() {
           </p>
         </div>
         <div>
-          <h4 className="text-[10px] tracking-[0.4em] uppercase text-gold mb-3">Coordinates</h4>
+          <h4 className="text-[10px] tracking-[0.4em] uppercase text-gold mb-3">{t.coords}</h4>
           <p className="text-sm text-ink leading-[1.7] font-light">
             13.2537° N<br/>100.9287° E<br/>
-            <span className="text-muted text-xs"><a href="https://maps.app.goo.gl/CYDRrd6hoxRv7z4j8" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">Open in Google Maps</a></span>
+            <span className="text-muted text-xs"><a href="https://maps.app.goo.gl/CYDRrd6hoxRv7z4j8" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">{t.openGoogle}</a></span>
           </p>
         </div>
       </div>
@@ -57,11 +110,11 @@ export default function Location() {
       {/* Directions */}
       <section className="px-10 py-20 grid grid-cols-1 lg:grid-cols-2 gap-20 border-b border-black/10 reveal sm:px-6 sm:py-14 sm:gap-12">
         <div>
-          <h2 className="font-display font-light mb-6 leading-[1.05] text-[clamp(36px,4.5vw,56px)]">How to get<br/><em className="italic text-gold">here</em></h2>
-          <p className="text-sm text-[#555] leading-[1.9] font-light mb-8 max-w-[480px]">From Bangkok, head south along the coast. The drive is about 2 hours and 20 minutes — most of it is windows-down beach road.</p>
+          <h2 className="font-display font-light mb-6 leading-[1.05] text-[clamp(36px,4.5vw,56px)]">{renderLines(t.how)}</h2>
+          <p className="text-sm text-[#555] leading-[1.9] font-light mb-8 max-w-[480px]">{t.howSub}</p>
           <div className="flex gap-3 flex-wrap">
-            <a href="https://maps.app.goo.gl/CYDRrd6hoxRv7z4j8" target="_blank" rel="noopener noreferrer" className="inline-block bg-ink text-bg text-[11px] tracking-[0.25em] uppercase px-7 py-3.5 hover:bg-gold hover:text-ink transition-colors duration-300">Open in Google Maps</a>
-            <a href="https://maps.apple.com/?ll=13.2537115,100.9287388&q=Love+Pier+Beach+Cafe" target="_blank" rel="noopener noreferrer" className="inline-block bg-transparent text-ink text-[11px] tracking-[0.25em] uppercase px-7 py-3.5 border border-black/20 hover:border-gold hover:text-gold transition-colors duration-300">Open in Apple Maps</a>
+            <a href="https://maps.app.goo.gl/CYDRrd6hoxRv7z4j8" target="_blank" rel="noopener noreferrer" className="inline-block bg-ink text-bg text-[11px] tracking-[0.25em] uppercase px-7 py-3.5 hover:bg-gold hover:text-ink transition-colors duration-300">{t.openGoogle}</a>
+            <a href="https://maps.apple.com/?ll=13.2537115,100.9287388&q=Love+Pier+Beach+Cafe" target="_blank" rel="noopener noreferrer" className="inline-block bg-transparent text-ink text-[11px] tracking-[0.25em] uppercase px-7 py-3.5 border border-black/20 hover:border-gold hover:text-gold transition-colors duration-300">{t.apple}</a>
           </div>
         </div>
         <div className="flex flex-col">

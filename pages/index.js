@@ -13,7 +13,7 @@ export default function Home() {
         hoursValue: 'ทุกวัน 09:00-18:00',
         est: 'ก่อตั้ง',
         location: 'ที่ตั้ง',
-        locationValue: '123 หมู่ 4 ถนนนราธร บีชโรด\nชลบุรี',
+        locationValue: '800 108 แสนสุข\nอำเภอเมือง จังหวัดชลบุรี 20130',
         exploreMenu: 'ดูเมนู',
         since: 'ตั้งแต่ปี 2026',
         about1: 'Love Pier Beach Cafe ตั้งอยู่ใกล้แนวชายฝั่งของชลบุรี เป็นคาเฟ่ที่ตั้งใจให้ทุกช่วงเวลาเรียบง่ายและผ่อนคลาย',
@@ -21,7 +21,7 @@ export default function Home() {
         about3: 'ที่นี่ไม่ใช่แค่คาเฟ่ แต่เป็นพื้นที่ให้คุณพักใจ สูดลมทะเล และใช้เวลาอย่างช้าๆ',
         where: 'เมื่อชายฝั่ง\nมาเจอกับ\n<em class="italic text-gold">แก้วโปรด</em>',
         numbers: 'ตัวเลขของเรา',
-        little: 'เล็กน้อยเกี่ยวกับ\n<em className="italic text-gold">สิ่งที่เราทำ</em>',
+        little: 'เล็กน้อยเกี่ยวกับ\n<em class="italic text-gold">สิ่งที่เราทำ</em>',
         yearsOpen: 'ปีที่เปิดบริการ',
         yearsDesc: 'ให้บริการชุมชนริมทะเลตั้งแต่ปี 2026',
         toShore: 'ระยะถึงชายหาด',
@@ -29,19 +29,48 @@ export default function Home() {
         menuItems: 'รายการเมนู',
         menuItemsDesc: 'กาแฟและอาหารที่ตั้งใจทำสดใหม่ทุกวัน',
         address: 'ที่อยู่',
-        addressValue: '123 หมู่ 4 ถนนนราธร บีชโรด\nชลบุรี 76120',
+        addressValue: '800 108 แสนสุข\nอำเภอเมือง จังหวัดชลบุรี 20130',
         hoursCompact: 'ทุกวัน · 09:00-18:00',
         contact: 'ติดต่อ',
         follow: 'ติดตาม',
       }
-    : {
+    : lang === 'zh'
+      ? {
+          title: 'Love Pier Beach Cafe — 首页',
+          city: 'chonburi . thailand',
+          hoursLabel: '营业时间',
+          hoursValue: '每日 09:00-18:00',
+          est: '创立',
+          location: '地址',
+          locationValue: '800 108 Saensuk\nMueang Chonburi, Chonburi 20130',
+          exploreMenu: '查看菜单',
+          since: '自 2026 年起',
+          about1: 'Love Pier Beach Cafe 位于春武里海岸附近，清晨海风与宁静氛围相伴。',
+          about2: '我们坚持使用新鲜食材，提供精品咖啡与用心制作的简餐。',
+          about3: '这里不只是咖啡馆，更是让你放慢节奏、久坐放松的地方。',
+          where: '当海岸\n遇见\n<em class="italic text-gold">一杯咖啡</em>',
+          numbers: '我们的数据',
+          little: '关于我们\n<em class="italic text-gold">做的事</em>',
+          yearsOpen: '营业年数',
+          yearsDesc: '自 2026 年起服务海边社区。',
+          toShore: '到海边距离',
+          toShoreDesc: '步行片刻即可踏上沙滩。',
+          menuItems: '菜单数量',
+          menuItemsDesc: '咖啡与餐点每日新鲜制作。',
+          address: '地址',
+          addressValue: '800 108 Saensuk\nMueang Chonburi, Chonburi 20130',
+          hoursCompact: '每日 · 09:00-18:00',
+          contact: '联系',
+          follow: '关注我们',
+        }
+      : {
         title: 'Love Pier Beach Cafe — Home',
         city: 'chonburi . thailand',
         hoursLabel: 'Hours',
         hoursValue: 'Daily 09:00-18:00',
         est: 'Est.',
         location: 'Location',
-        locationValue: '123 Moo 4, Narathat Beach Rd\nChonburi',
+        locationValue: '800 108 Saensuk\nMueang Chonburi, Chonburi 20130',
         exploreMenu: 'Explore Menu',
         since: 'Since 2026',
         about1: 'Love Pier Beach Cafe sits close to the shoreline in Chonburi, where calm mornings and sea air set the pace for the day.',
@@ -49,7 +78,7 @@ export default function Home() {
         about3: 'This is more than a cafe. It is a place to slow down, stay longer, and leave refreshed.',
         where: 'Where the\nshore meets\n<em class="italic text-gold">the cup</em>',
         numbers: 'The Numbers',
-        little: 'A little about\n<em className="italic text-gold">what we do</em>',
+        little: 'A little about\n<em class="italic text-gold">what we do</em>',
         yearsOpen: 'Years Open',
         yearsDesc: 'Serving our beachside community since 2026.',
         toShore: 'To the Shore',
@@ -57,7 +86,7 @@ export default function Home() {
         menuItems: 'Menu Items',
         menuItemsDesc: 'Coffee and dishes prepared fresh every day.',
         address: 'Address',
-        addressValue: '123 Moo 4, Narathat Beach Rd\nChonburi 76120',
+        addressValue: '800 108 Saensuk\nMueang Chonburi, Chonburi 20130',
         hoursCompact: 'Daily · 09:00-18:00',
         contact: 'Contact',
         follow: 'Follow',
@@ -103,9 +132,9 @@ export default function Home() {
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img className="w-full aspect-video object-cover [filter:saturate(0.75)] reveal-img" src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1600&q=85" alt="Love Pier Beach Cafe" />
 
-      <div className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-[3px] mt-[3px] reveal">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-[3px] mt-[3px] reveal">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="w-full aspect-[4/3] object-cover [filter:saturate(0.7)] hover:[filter:saturate(1)] transition-[filter] duration-500" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80" alt="coffee" />
+        <img className="w-full aspect-[4/3] object-cover [filter:saturate(0.7)] hover:[filter:saturate(1)] transition-[filter] duration-500" src="/uploads/drink-can-set.png" alt="Love Pier canned drinks" />
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img className="w-full aspect-[4/3] object-cover [filter:saturate(0.7)] hover:[filter:saturate(1)] transition-[filter] duration-500" src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=1000&q=80" alt="cafe" />
       </div>
@@ -136,12 +165,7 @@ export default function Home() {
           <span className="block text-[9px] tracking-[0.4em] uppercase text-[#bbb] mb-3">{t.numbers}</span>
           <h3 className="font-display font-light leading-[1.05] text-ink text-[clamp(28px,3.5vw,44px)]" dangerouslySetInnerHTML={{ __html: t.little.replace(/\n/g, '<br/>') }} />
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-3 border-t border-l border-[#eee]">
-          <div className="px-8 py-10 border-r border-b border-[#eee] sm:px-6 sm:py-7">
-            <div className="font-display text-[56px] font-light text-ink leading-none tracking-[-0.02em]">8+</div>
-            <span className="block text-[10px] tracking-[0.25em] uppercase text-[#bbb] mt-2.5">{t.yearsOpen}</span>
-            <div className="text-[13px] text-[#777] mt-2.5 leading-relaxed font-light max-w-[220px]">{t.yearsDesc}</div>
-          </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 border-t border-l border-[#eee]">
           <div className="px-8 py-10 border-r border-b border-[#eee] sm:px-6 sm:py-7">
             <div className="font-display text-[56px] font-light text-ink leading-none tracking-[-0.02em]">200m</div>
             <span className="block text-[10px] tracking-[0.25em] uppercase text-[#bbb] mt-2.5">{t.toShore}</span>

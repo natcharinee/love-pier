@@ -1,15 +1,7 @@
 import Head from 'next/head'
 import { useState } from 'react'
 import Footer from '../components/Footer'
-
-const FILTERS = [
-  { label: 'All', cat: null },
-  { label: 'Interior', cat: 'interior' },
-  { label: 'Food & Drink', cat: 'food' },
-  { label: 'Beach', cat: 'beach' },
-  { label: 'Events', cat: 'events' },
-  { label: 'Guests', cat: 'guests' },
-]
+import { useLanguage } from '../lib/language'
 
 const TILES = [
   { cat:'beach',    col:6, row:2, ratio:'4/5',  src:'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&q=80',  cap:'Morning by the pier' },
@@ -26,6 +18,17 @@ const TILES = [
 ]
 
 export default function Gallery() {
+  const { lang } = useLanguage()
+  const filters = lang === 'th'
+    ? [{label:'ทั้งหมด',cat:null},{label:'ภายในร้าน',cat:'interior'},{label:'อาหารและเครื่องดื่ม',cat:'food'},{label:'ชายหาด',cat:'beach'},{label:'อีเวนต์',cat:'events'},{label:'ผู้มาเยือน',cat:'guests'}]
+    : lang === 'zh'
+      ? [{label:'全部',cat:null},{label:'店内',cat:'interior'},{label:'餐饮',cat:'food'},{label:'海边',cat:'beach'},{label:'活动',cat:'events'},{label:'客人',cat:'guests'}]
+      : [{label:'All',cat:null},{label:'Interior',cat:'interior'},{label:'Food & Drink',cat:'food'},{label:'Beach',cat:'beach'},{label:'Events',cat:'events'},{label:'Guests',cat:'guests'}]
+  const t = lang === 'th'
+    ? { title:'Gallery — Love Pier Beach Cafe', g:'แกลเลอรี', h:'ช่วงเวลา\nริมทะเล', d:'รวมบรรยากาศกาแฟ แสงเช้า และผู้คนที่แวะเวียน', share:'แชร์ช่วงเวลาของคุณ', shareD:'แท็ก #lovepiercafe เพื่อให้เรารีโพสต์' }
+    : lang === 'zh'
+      ? { title:'Gallery — Love Pier Beach Cafe', g:'图库', h:'海边的\n日常片段', d:'收录咖啡、日落与每位来访者的片刻。', share:'分享你的时刻', shareD:'在 Instagram 使用 #lovepiercafe' }
+      : { title:'Gallery — Love Pier Beach Cafe', g:'Gallery', h:'Moments by\nthe shore', d:'A slice of life at Love Pier.', share:'Share your moment with us', shareD:'Tag #lovepiercafe on Instagram.' }
   const [activeFilter, setActiveFilter] = useState(null)
 
   const visible = activeFilter ? TILES.filter(t => t.cat === activeFilter) : TILES
@@ -33,19 +36,19 @@ export default function Gallery() {
   return (
     <>
       <Head>
-        <title>Gallery — Love Pier Beach Cafe</title>
+        <title>{t.title}</title>
       </Head>
 
       {/* Page header */}
       <header className="px-10 pt-16 pb-10 text-center border-b border-black/10 reveal sm:px-5 sm:pt-10 sm:pb-7">
-        <div className="text-[10px] tracking-[0.4em] uppercase text-muted mb-3">Gallery</div>
-        <h1 className="font-display font-light leading-[0.95] text-ink tracking-[-0.02em] text-[clamp(48px,7vw,88px)]">Moments by<br/><em className="italic text-gold">the shore</em></h1>
-        <p className="mt-4 text-sm text-[#666] font-light max-w-[580px] mx-auto leading-[1.8]">Eight years of mornings, sunsets, lattes, and a community that keeps returning. Browse a slice of life at Love Pier.</p>
+        <div className="text-[10px] tracking-[0.4em] uppercase text-muted mb-3">{t.g}</div>
+        <h1 className="font-display font-light leading-[0.95] text-ink tracking-[-0.02em] text-[clamp(48px,7vw,88px)]">{t.h.split('\n').map((l,i)=><span key={i}>{l}{i===0?<br/>:null}</span>)}</h1>
+        <p className="mt-4 text-sm text-[#666] font-light max-w-[580px] mx-auto leading-[1.8]">{t.d}</p>
       </header>
 
       {/* Gallery filters */}
       <div className="flex gap-6 px-10 py-8 border-b border-black/10 bg-white flex-wrap reveal sm:px-6 sm:py-5 sm:gap-3.5">
-        {FILTERS.map(({ label, cat }) => (
+        {filters.map(({ label, cat }) => (
           <button
             key={label}
             onClick={() => setActiveFilter(cat)}
@@ -73,8 +76,8 @@ export default function Gallery() {
 
       {/* CTA strip */}
       <section className="bg-ink text-bg px-10 py-20 text-center reveal sm:px-6 sm:py-14">
-        <h2 className="font-display font-light mb-7 leading-[1.05] text-[clamp(40px,5vw,64px)]">Share <em className="italic text-gold">your moment</em><br/>with us</h2>
-        <p className="text-sm text-[rgba(245,243,239,0.6)] mb-8 max-w-[480px] mx-auto leading-[1.8]">Tag #lovepiercafe on Instagram. We re-share our favorites every week and feature one guest each month in our window display.</p>
+        <h2 className="font-display font-light mb-7 leading-[1.05] text-[clamp(40px,5vw,64px)]">{t.share}</h2>
+        <p className="text-sm text-[rgba(245,243,239,0.6)] mb-8 max-w-[480px] mx-auto leading-[1.8]">{t.shareD}</p>
         <a href="#" className="inline-block bg-gold text-ink text-[11px] tracking-[0.25em] uppercase px-7 py-3.5 hover:bg-bg transition-colors duration-300">@lovepier.cafe</a>
       </section>
 
