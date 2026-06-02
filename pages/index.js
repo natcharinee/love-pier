@@ -198,10 +198,16 @@ export default function Home() {
             <line x1="600" y1="0" x2="600" y2="320" stroke="white" strokeWidth="4" opacity="0.4"/>
             <line x1="900" y1="0" x2="900" y2="320" stroke="white" strokeWidth="5" opacity="0.45"/>
           </svg>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-2">
-            <div className="w-5 h-5 rounded-full bg-ink" style={{ boxShadow:'0 0 0 6px rgba(26,26,26,0.12),0 0 0 12px rgba(26,26,26,0.06)' }}></div>
-            <div className="text-[11px] tracking-[0.2em] uppercase text-[#444] bg-[rgba(245,243,239,0.9)] px-3 py-1">Love Pier Beach Cafe</div>
-          </div>
+          <a
+            href="https://maps.app.goo.gl/CYDRrd6hoxRv7z4j8"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open Love Pier Beach Cafe in Google Maps"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-2 group"
+          >
+            <div className="w-5 h-5 rounded-full bg-ink group-hover:scale-110 transition-transform" style={{ boxShadow:'0 0 0 6px rgba(26,26,26,0.12),0 0 0 12px rgba(26,26,26,0.06)' }}></div>
+            <div className="text-[11px] tracking-[0.2em] uppercase text-[#444] bg-[rgba(245,243,239,0.9)] px-3 py-1 group-hover:bg-[rgba(245,243,239,1)] transition-colors">Love Pier Beach Cafe</div>
+          </a>
         </div>
         <div className="bg-bg border-t border-black/10 px-10 py-7 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_auto] gap-10 items-start sm:px-5 sm:gap-6">
           <div>
@@ -214,7 +220,7 @@ export default function Home() {
           </div>
           <div>
             <span className="block text-[9px] tracking-[0.35em] uppercase text-[#bbb] mb-2">{t.contact}</span>
-            <div className="text-[13px] text-[#444] leading-[1.7] font-light"><a href="tel:+6632123456" className="text-muted hover:text-ink transition-colors">+66 32 123 456</a><br/><a href="mailto:hello@lovepier.cafe" className="text-muted hover:text-ink transition-colors">hello@lovepier.cafe</a></div>
+            <div className="text-[13px] text-[#444] leading-[1.7] font-light"><a href="tel:0642523293" className="text-muted hover:text-ink transition-colors">064-252-3293</a><br/><a href="mailto:cafe.lovepier@gmail.com" className="text-muted hover:text-ink transition-colors">cafe.lovepier@gmail.com</a></div>
           </div>
           <div>
             <span className="block text-[9px] tracking-[0.35em] uppercase text-[#bbb] mb-2">{t.follow}</span>
