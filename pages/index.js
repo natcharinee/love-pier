@@ -111,12 +111,12 @@ export default function Home() {
       <header className="px-4 pt-10 pb-7 text-center reveal sm:px-6 lg:px-10 lg:pt-12 lg:pb-8">
         <div className="text-[10px] tracking-[0.4em] uppercase text-muted mb-3">{t.city}</div>
         <h1 className="font-display font-light leading-[0.95] text-ink tracking-[-0.02em] text-[clamp(40px,7vw,88px)]">Love Pier<br/>Beach Cafe</h1>
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] mt-8 pt-5 border-t border-black/10 items-start gap-4 lg:gap-0">
-          <div className="text-center lg:text-left">
+        <div className="grid grid-cols-1 lg:grid-cols-2 mt-8 pt-5 border-t border-black/10 items-start gap-4 lg:gap-0">
+          <div className="text-left">
             <span className="block text-[9px] tracking-[0.35em] uppercase text-[#aaa] mb-1.5">{t.hoursLabel}</span>
             <div className="text-xs text-[#444] leading-relaxed font-light">{t.hoursValue}</div>
           </div>
-          <div className="text-center lg:text-right">
+          <div className="text-right lg:justify-self-end">
             <span className="block text-[9px] tracking-[0.35em] uppercase text-[#aaa] mb-1.5">{t.location}</span>
             <div className="text-xs text-[#444] leading-relaxed font-light">{renderLines(t.locationValue)}</div>
           </div>
@@ -182,7 +182,7 @@ export default function Home() {
       <div className="grid gap-[3px] mt-[3px] reveal grid-cols-1 md:grid-cols-2 lg:grid-cols-12 auto-rows-[220px] sm:auto-rows-[240px] lg:auto-rows-[280px]">
         <div className="overflow-hidden bg-[#e8e4de] md:col-span-2 lg:col-span-7 lg:row-span-2"><img className="w-full h-full object-cover [filter:saturate(0.6)] hover:[filter:saturate(0.9)] hover:scale-[1.03] transition-all duration-700" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1000&q=80" alt="beach" /></div>
         <div className="overflow-hidden bg-[#e8e4de] md:col-span-1 lg:col-span-5"><img className="w-full h-full object-cover [filter:saturate(0.6)] hover:[filter:saturate(0.9)] hover:scale-[1.03] transition-all duration-700" src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=600&q=80" alt="cafe" /></div>
-        <div className="overflow-hidden bg-[#e8e4de] md:col-span-1 lg:col-span-3"><img className="w-full h-full object-cover [filter:saturate(0.6)] hover:[filter:saturate(0.9)] hover:scale-[1.03] transition-all duration-700" src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&q=80" alt="coffee" /></div>
+        <div className="overflow-hidden bg-[#e8e4de] md:col-span-1 lg:col-span-3"><img className="w-full h-full object-cover object-top [filter:saturate(0.6)] hover:[filter:saturate(0.9)] hover:scale-[1.03] transition-all duration-700" src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&q=80" alt="coffee" /></div>
       </div>
 
       {/* Map section */}

@@ -48,8 +48,8 @@ function CoffeePriceHeader({ priceLabels }) {
   )
 }
 
-function MenuItem({ num, name, badge, desc, price, prices, showCoffeePrices }) {
-  const priceCell = prices && showCoffeePrices ? (
+function MenuItem({ num, name, badge, desc, price, prices, showDrinkPrices }) {
+  const priceCell = prices && showDrinkPrices ? (
     <div className="flex justify-end gap-5 sm:gap-6 shrink-0 min-w-[108px] sm:min-w-[120px] pt-0.5">
       {COFFEE_PRICE_KEYS.map((key) => (
         <span
@@ -91,7 +91,27 @@ function CoffeeAddOns({ items }) {
   )
 }
 
-function MenuSection({ num, cat, title, titleEm, subtitle, items, bg, priceLabels, coffeeAddOns }) {
+function MatchaTasteNotes({ notes }) {
+  return (
+    <div className="mt-10 pt-8 border-t border-dashed border-black/10 lg:col-span-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14">
+        {notes.map((note) => (
+          <div key={note.title} className="flex gap-4 items-start">
+            <div className={`w-11 h-11 rounded-full shrink-0 mt-0.5 ring-1 ring-black/10 ${note.swatch}`} aria-hidden />
+            <div>
+              <h3 className="text-[11px] tracking-[0.15em] uppercase text-[#888] font-light leading-snug mb-2.5">{note.title}</h3>
+              <p className="text-sm text-[#555] font-light leading-[1.85]">{note.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+const TIERED_PRICE_CATEGORIES = ['coffee']
+
+function MenuSection({ num, cat, title, titleEm, subtitle, items, bg, priceLabels, menuAddOns, tasteNotes }) {
   return (
     <section className={`px-4 py-14 border-b border-black/10 reveal sm:px-6 sm:py-14 lg:px-10 lg:py-20${bg ? ' bg-white' : ''}`} data-cat={cat}>
       <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-8 lg:gap-16 mb-10 lg:mb-16 sm:gap-4 sm:mb-9">
@@ -107,9 +127,10 @@ function MenuSection({ num, cat, title, titleEm, subtitle, items, bg, priceLabel
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16">
         {priceLabels && <CoffeePriceHeader priceLabels={priceLabels} />}
         {items.map((item) => (
-          <MenuItem key={item.num} {...item} showCoffeePrices={!!priceLabels} />
+          <MenuItem key={item.num} {...item} showDrinkPrices={!!priceLabels} />
         ))}
-        {coffeeAddOns?.length ? <CoffeeAddOns items={coffeeAddOns} /> : null}
+        {menuAddOns?.length ? <CoffeeAddOns items={menuAddOns} /> : null}
+        {tasteNotes?.length ? <MatchaTasteNotes notes={tasteNotes} /> : null}
       </div>
     </section>
   )
@@ -117,7 +138,47 @@ function MenuSection({ num, cat, title, titleEm, subtitle, items, bg, priceLabel
 
 const MENU_DATA = [
   {
-    num: '01', cat: 'coffee', title: 'Coffee', titleEm: '', bg: false,
+    num: '01', cat: 'chickenRice', title: 'Singapore', titleEm: 'Chicken Rice', bg: false,
+    subtitle: 'Tender poached chicken with fragrant chicken rice, three signature sauces, and warm chicken soup.',
+    items: [
+      { num:'01', name:'Set — Mixed Chicken · Small', desc:'1 plate of rice · mixed parts', price:'150' },
+      { num:'02', name:'Set — Mixed Chicken · Medium', desc:'2 plates of rice · mixed parts', price:'280' },
+      { num:'03', name:'Set — Mixed Chicken · Large', desc:'4 plates of rice · mixed parts', price:'550' },
+      { num:'04', name:'Signature Chicken Rice Tray', badge:'Signature', desc:'4 plates of rice · thigh or breast', price:'670' },
+      { num:'05', name:'Sesame Oil Liver', desc:'Plate', price:'150' },
+      { num:'06', name:'Boiled Chicken Blood', desc:'Plate', price:'100' },
+      { num:'07', name:'Chicken Rice', desc:'Bowl', price:'35' },
+      { num:'08', name:'Orange Chili Ginger Sauce', desc:'Small jar', price:'25' },
+      { num:'09', name:'Ginger Oil Sauce', desc:'Small jar', price:'25' },
+      { num:'10', name:'Soybean Paste Dipping Sauce', desc:'Soybean paste, ginger, fresh chili · small jar', price:'25' },
+      { num:'11', name:'Dine-in Dipping Sauces', desc:'Various sauces for dine-in', price:'Free' },
+    ],
+  },
+  {
+    num: '02', cat: 'mains', title: 'Mains', titleEm: '& the Sea', bg: true,
+    subtitle: 'Catch of the day, slow-cooked plates, and bowls built around what came in this morning. Substantial, unhurried, honest.',
+    items: [
+      { num:'32', name:'Grilled Sea Bass', badge:'Signature', desc:'Whole fish, lemon-herb butter, sea salt potatoes, house salad.', price:'420' },
+      { num:'33', name:'Pier Prawn Pasta', desc:'Tiger prawns, cherry tomato, garlic, chilli, linguine, basil oil.', price:'360' },
+      { num:'34', name:'Thai Basil Fish Bowl', desc:'Flash-fried barramundi, holy basil, jasmine rice, fried egg.', price:'280' },
+      { num:'35', name:'Mushroom Risotto', desc:'Porcini, oyster mushroom, parmesan, truffle oil, fresh herb.', price:'320' },
+      { num:'36', name:'Beach BBQ Plate', desc:'Mixed grill — chicken thigh, corn, sweet potato, slaw, BBQ glaze.', price:'380' },
+      { num:'37', name:'Som Tum Salad Bowl', desc:'Green papaya, peanuts, dried shrimp, cherry tomato, lime dressing.', price:'220' },
+    ],
+  },
+  {
+    num: '03', cat: 'breakfast', title: 'Breakfast', titleEm: 'all day', bg: false,
+    subtitle: 'Light plates and sandwiches — served from open to close.',
+    items: [
+      { num:'01', name:'Pier Breakfast Plate', badge:'Signature', price:'280' },
+      { num:'02', name:'Smoked Salmon Sandwich', price:'240' },
+      { num:'03', name:'Chicken & Avocado Ciabatta', price:'220' },
+      { num:'04', name:'Eggs Benedict', price:'260' },
+      { num:'05', name:'Coconut Granola Bowl', price:'220' },
+    ],
+  },
+  {
+    num: '04', cat: 'coffee', title: 'Coffee', titleEm: '', bg: false,
     subtitle: 'Hot, iced, and frappe — prices per menu.',
     items: [
       { num:'01', name:'Americano', prices:{ hot:'90', iced:'100', blended:null } },
@@ -134,57 +195,64 @@ const MENU_DATA = [
     ],
   },
   {
-    num: '02', cat: 'tea', title: 'Tea', titleEm: '& Refreshers', bg: true,
-    subtitle: 'Loose-leaf teas, herbal infusions, and seasonal coolers built for warm afternoons by the shore.',
+    num: '05', cat: 'matcha', title: 'Matcha', titleEm: '', bg: true,
+    subtitle: 'Stone-ground matcha whisked to order — pure, creamy, and gently sweet.',
     items: [
-      { num:'24', name:'Matcha Serenity', badge:'Signature', desc:'Ceremonial-grade matcha, oat milk, raw honey.', price:'140' },
-      { num:'25', name:'Coconut Pandan Cooler', desc:'Pandan-infused coconut water, lime, mint.', price:'120' },
-      { num:'26', name:'Butterfly Lemonade', desc:'Butterfly pea flower, soda, lemon. Color-changing.', price:'110' },
-      { num:'27', name:'Earl Grey Foam', desc:'Cold-steeped earl grey, salted cream cap.', price:'130' },
+      { num:'00', name:'PANG Signature', badge:'Signature', desc:'Matcha x Khao Lam Latte', price:'179' },
+      { num:'01', name:'Pure Matcha', price:'140' },
+      { num:'02', name:'Matcha Latte', price:'150' },
+      { num:'03', name:'Dirty Matcha', price:'150' },
+      { num:'04', name:'Coconut Matcha', price:'150' },
+      { num:'05', name:'Orange Matcha', price:'150' },
+      { num:'06', name:'Matcha Yuzu', price:'150' },
+      { num:'07', name:'Soft Matcha', price:'160' },
     ],
   },
   {
-    num: '03', cat: 'breakfast', title: 'Breakfast', titleEm: 'all day', bg: false,
-    subtitle: 'Slow mornings deserve good food. Served from open to close.',
+    num: '06', cat: 'nonCoffee', title: 'Non Coffee', titleEm: '', bg: true,
+    subtitle: 'Thai tea, chocolate, and creamy frappes — no espresso.',
     items: [
-      { num:'28', name:'Pier Breakfast Plate', badge:'Signature', desc:'Two eggs, sourdough, avocado, smoked salmon, garden greens.', price:'280' },
-      { num:'29', name:'Coconut Granola Bowl', desc:'House granola, coconut yogurt, seasonal fruit, honey.', price:'220' },
-      { num:'30', name:'Eggs Benedict', desc:'Poached eggs, brioche, ham, lemon hollandaise.', price:'260' },
-      { num:'31', name:'Rice Porridge with Prawn', desc:'Fresh prawns, ginger, fried garlic, soft-boiled egg.', price:'240' },
+      { num:'01', name:'Premium Thai Tea', price:'100' },
+      { num:'02', name:'Thai Tea Frappe', price:'120' },
+      { num:'03', name:'Chocolate', price:'100' },
+      { num:'04', name:'Chocolate Frappe', price:'120' },
+      { num:'05', name:'Coconut Milk Frappe', price:'120' },
     ],
   },
   {
-    num: '04', cat: 'mains', title: 'Mains', titleEm: '& the Sea', bg: true,
-    subtitle: 'Catch of the day, slow-cooked plates, and bowls built around what came in this morning. Substantial, unhurried, honest.',
+    num: '07', cat: 'italianSoda', title: 'Italian Soda', titleEm: '', bg: false,
+    subtitle: 'Sparkling sodas with fruit, honey, and coastal brightness.',
     items: [
-      { num:'32', name:'Grilled Sea Bass', badge:'Signature', desc:'Whole fish, lemon-herb butter, sea salt potatoes, house salad.', price:'420' },
-      { num:'33', name:'Pier Prawn Pasta', desc:'Tiger prawns, cherry tomato, garlic, chilli, linguine, basil oil.', price:'360' },
-      { num:'34', name:'Thai Basil Fish Bowl', desc:'Flash-fried barramundi, holy basil, jasmine rice, fried egg.', price:'280' },
-      { num:'35', name:'Mushroom Risotto', desc:'Porcini, oyster mushroom, parmesan, truffle oil, fresh herb.', price:'320' },
-      { num:'36', name:'Beach BBQ Plate', desc:'Mixed grill — chicken thigh, corn, sweet potato, slaw, BBQ glaze.', price:'380' },
-      { num:'37', name:'Som Tum Salad Bowl', desc:'Green papaya, peanuts, dried shrimp, cherry tomato, lime dressing.', price:'220' },
+      { num:'01', name:'Lemon Honey Soda', price:'120' },
+      { num:'02', name:'Yuzu Soda', price:'120' },
+      { num:'03', name:'Strawberry Soda', price:'120' },
+      { num:'04', name:'Lychee Soda', price:'120' },
+      { num:'05', name:'Blue Ocean Soda', price:'120' },
     ],
   },
   {
-    num: '05', cat: 'sweets', title: 'Sweets', titleEm: '& endings', bg: false,
-    subtitle: 'Small plates to close on — local fruit, house-made pastries, and things that go well with a last cup of coffee.',
+    num: '08', cat: 'other', title: 'Other', titleEm: '', bg: true,
+    subtitle: 'Still and sparkling water, soft drinks, and everyday essentials.',
     items: [
-      { num:'38', name:'Coconut Panna Cotta', badge:'Signature', desc:'Kaffir lime infusion, mango coulis, sesame tuile.', price:'180' },
-      { num:'39', name:'Thai Tea Crème Brûlée', desc:'Classic custard steeped with Thai tea, caramelised crust.', price:'160' },
-      { num:'40', name:'Banana Foster Waffle', desc:'Brioche waffle, caramelised banana, rum butter, vanilla cream.', price:'200' },
-      { num:'41', name:'Seasonal Fruit Plate', desc:'Whatever is ripe today — sliced and served with honey yogurt dip.', price:'120' },
+      { num:'01', name:'Purra Water', price:'20' },
+      { num:'02', name:'Evian Mineral Water', price:'60' },
+      { num:'03', name:'Coke', price:'40' },
+      { num:'04', name:'Coke Zero', price:'40' },
     ],
   },
   {
-    num: '06', cat: 'drinks', title: 'Drinks', titleEm: '& mocktails', bg: true,
-    subtitle: 'From freshly pressed juices and craft sodas to alcohol-free cocktails that taste like the coast smells.',
+    num: '09', cat: 'sweets', title: 'Sweet', titleEm: 'Desserts', bg: false,
+    subtitle: 'House-made cakes, pies, and classics to close the meal.',
     items: [
-      { num:'42', name:'Pier Lemonade', badge:'Signature', desc:'House lemon syrup, soda, fresh mint, salted rim.', price:'90' },
-      { num:'43', name:'Green Mango Soda', desc:'Pressed green mango, ginger syrup, sparkling water.', price:'95' },
-      { num:'44', name:'Young Coconut', desc:'Straight from the shell, served with a straw and a spoon.', price:'80' },
-      { num:'45', name:'Watermelon Fizz', desc:'Fresh watermelon, lime, basil seed, lychee soda.', price:'100' },
-      { num:'46', name:'Fresh Orange & Ginger', desc:'Cold-pressed, no sugar added. Served over ice.', price:'110' },
-      { num:'47', name:'Sparkling Water', desc:'Perrier or S.Pellegrino, 330ml.', price:'60' },
+      { num:'01', name:'Coconut Cake', price:'150' },
+      { num:'02', name:'Strawberry Cheese Pie', price:'189' },
+      { num:'03', name:'Blueberry Cheese Pie', price:'189' },
+      { num:'04', name:'Chocolate Cake', price:'140' },
+      { num:'05', name:'Banoffee', price:'150' },
+      { num:'06', name:'Red Velvet Cake', price:'130' },
+      { num:'07', name:'Orange Cake', price:'90' },
+      { num:'08', name:'Egg Tart', price:'55' },
+      { num:'09', name:'Tiramisu', price:'150' },
     ],
   },
 ]
@@ -192,19 +260,198 @@ const MENU_DATA = [
 const SECTION_COPY = {
   th: {
     coffee: { title: 'Coffee', titleEm: '', subtitle: 'ร้อน · เย็น · ปั่น — ราคาตามเมนู' },
-    tea: { title: 'ชา', titleEm: '& เครื่องดื่มสดชื่น', subtitle: 'ชาและเครื่องดื่มเย็นที่ออกแบบมาให้สดชื่นพอดีกับบรรยากาศริมทะเล' },
-    breakfast: { title: 'อาหารเช้า', titleEm: 'ตลอดวัน', subtitle: 'เมนูเช้าซิกเนเจอร์ที่พร้อมเสิร์ฟได้ทุกเวลาแบบไม่ต้องรีบ' },
-    mains: { title: 'จานหลัก', titleEm: '& กลิ่นทะเล', subtitle: 'จานหลักรสกลมกล่อมจากวัตถุดิบสดใหม่ประจำวัน' },
-    sweets: { title: 'ของหวาน', titleEm: '& ปิดมื้อ', subtitle: 'ของหวานโฮมเมดที่ช่วยให้มื้อนี้จบอย่างน่าจดจำ' },
-    drinks: { title: 'เครื่องดื่ม', titleEm: '& ม็อกเทล', subtitle: 'น้ำผลไม้สด โซดา และม็อกเทลรสบาลานซ์ ดื่มง่ายทุกแก้ว' },
+    matcha: { title: 'Matcha', titleEm: '', subtitle: 'มัทฉะเกรดพรีเมี่ยม ตีฟองทีละแก้ว หอมนุ่มละมุน' },
+    nonCoffee: { title: 'Non Coffee', titleEm: '', subtitle: 'ชาไทย ช็อกโกแลต และเครื่องดื่มปั่น — ไม่มีกาแฟ' },
+    italianSoda: { title: 'Italian Soda', titleEm: '', subtitle: 'โซดาผสมผลไม้และน้ำผึ้ง สดชื่นเหมาะกับอากาศริมทะเล' },
+    other: { title: 'Other', titleEm: '', subtitle: 'น้ำดื่ม น้ำแร่ และเครื่องดื่มอัดลม' },
+    chickenRice: { title: 'ข้าวมันไก่', titleEm: 'สิงคโปร์ / ไหหลำ', subtitle: 'ไก่ต้มนุ่ม ข้าวมันหอม น้ำจิ้มสูตรเด็ด 3 แบบ และซุปไก่ร้อนๆ' },
+    mains: { title: 'จานหลัก', titleEm: 'วัตถุดิบชั้นดี', subtitle: 'จานหลักรสกลมกล่อมจากวัตถุดิบสดใหม่ประจำวัน' },
+    breakfast: { title: 'อาหารเช้า', titleEm: 'ตลอดวัน', subtitle: 'จานเบาและแซนด์วิช เสิร์ฟได้ทุกเวลา สบายๆ ริมทะเล' },
+    sweets: { title: 'Sweet', titleEm: 'Desserts', subtitle: 'เค้กและพายโฮมเมด หวานกำลังดีปิดมื้ออย่างลงตัว' },
   },
   zh: {
     coffee: { title: 'Coffee', titleEm: '', subtitle: '热饮 · 冰饮 · 冰沙 — 价格见菜单。' },
-    tea: { title: '茶饮', titleEm: '& 清爽特调', subtitle: '花草茶与季节冷饮，入口清爽，最适合海边午后。' },
-    breakfast: { title: '早餐', titleEm: '全天供应', subtitle: '从早到晚都能吃到的招牌早餐，轻松却不简单。' },
+    matcha: { title: 'Matcha', titleEm: '', subtitle: '石磨抹茶现点现打，香气清甜，口感细腻。' },
+    nonCoffee: { title: 'Non Coffee', titleEm: '', subtitle: '泰茶、巧克力与冰沙饮品，不含咖啡。' },
+    italianSoda: { title: 'Italian Soda', titleEm: '', subtitle: '气泡苏打配水果与蜂蜜，清爽顺口。' },
+    other: { title: 'Other', titleEm: '', subtitle: '饮用水、矿泉水与汽水。' },
+    chickenRice: { title: '海南鸡饭', titleEm: '新加坡 / 海南', subtitle: '嫩滑白切鸡、香浓鸡油饭、三款招牌蘸料与热鸡汤。' },
     mains: { title: '主菜', titleEm: '& 海味', subtitle: '以当日新鲜食材为主角，口味平衡、份量满足。' },
-    sweets: { title: '甜点', titleEm: '& 收尾', subtitle: '自制甜点与时令水果，让每一餐都收得漂亮。' },
-    drinks: { title: '饮品', titleEm: '& 无酒精特调', subtitle: '鲜榨果汁与气泡特调，口感明亮、回味清爽。' },
+    breakfast: { title: '早餐', titleEm: '全天供应', subtitle: '轻食与三明治，从早到晚都能点，海边吃更舒服。' },
+    sweets: { title: 'Sweet', titleEm: 'Desserts', subtitle: '自制蛋糕与派点，甜度适中，收尾刚好。' },
+  },
+}
+
+const BREAKFAST_DESC_COPY = {
+  en: {
+    '01': { badge: 'Signature', desc: 'Two eggs any style, sourdough, avocado, smoked salmon, and garden greens.' },
+    '02': { desc: 'Smoked salmon, cream cheese, cucumber, and dill on toasted sourdough.' },
+    '03': { desc: 'Grilled chicken, avocado, tomato, and herb mayo on ciabatta.' },
+    '04': { desc: 'Poached eggs, brioche, ham, and lemon hollandaise.' },
+    '05': { desc: 'House granola, coconut yogurt, seasonal fruit, and honey.' },
+  },
+  th: {
+    '01': { name: 'เพียร์เบรกฟาสต์เพลต', badge: 'เมนูแนะนำ', desc: 'ไข่ 2 ฟอง ซาวโดว์ อะโวคาโด แซลมอนรมควัน และผักสด' },
+    '02': { name: 'แซนด์วิชแซลมอนรมควัน', desc: 'ครีมชีส แตงกวา ดิล บนขนมปังซาวโดว์ปิ้ง' },
+    '03': { name: 'แซนด์วิชไก่อะโวคาโด', desc: 'ไก่ย่าง อะโวคาโด มะเขือเทศ มายองเนสสมุนไพร บนขนมปังเซียบัตตา' },
+    '04': { name: 'เอ้กเบเนดิกต์', desc: 'ไข่ลวก บริยอช แฮม และซอสฮอลแลนเดส' },
+    '05': { name: 'โคโคนัทกราโนล่าโบวล์', desc: 'กราโนล่าโฮมเมด โยเกิร์ตมะพร้าว ผลไม้ตามฤดูกาล และน้ำผึ้ง' },
+  },
+  zh: {
+    '01': { badge: '招牌', desc: '两颗蛋、酸种面包、牛油果、烟熏三文鱼与鲜蔬。' },
+    '02': { desc: '烟熏三文鱼、奶油芝士、黄瓜与莳萝，配烤酸种面包。' },
+    '03': { desc: '烤鸡、牛油果、番茄与香草蛋黄酱，配夏巴塔。' },
+    '04': { desc: '水波蛋、布里欧修、火腿与荷兰酱。' },
+    '05': { desc: '自制麦片、椰子酸奶、时令水果与蜂蜜。' },
+  },
+}
+
+const CHICKEN_RICE_DESC_COPY = {
+  en: {
+    '01': { desc: 'Mixed chicken parts · 1 plate of chicken rice' },
+    '02': { desc: 'Mixed chicken parts · 2 plates of chicken rice' },
+    '03': { desc: 'Mixed chicken parts · 4 plates of chicken rice' },
+    '04': { badge: 'Signature', desc: 'Thigh or breast · 4 plates of chicken rice' },
+    '05': { desc: 'Sesame oil liver — plate' },
+    '06': { desc: 'Boiled chicken blood — plate' },
+    '07': { desc: 'Fragrant chicken rice — bowl' },
+    '08': { desc: 'Orange chili ginger sauce — small jar' },
+    '09': { desc: 'Ginger oil sauce — small jar' },
+    '10': { desc: 'Soybean paste, ginger, and fresh chili — small jar' },
+    '11': { desc: 'Various dipping sauces for dine-in' },
+  },
+  th: {
+    '01': { name: 'เซต — ข้าวมันไก่ ขนาดเล็ก', desc: 'เนื้อไก่คละส่วน · ข้าวมัน 1 จาน' },
+    '02': { name: 'เซต — ข้าวมันไก่ ขนาดกลาง', desc: 'เนื้อไก่คละส่วน · ข้าวมัน 2 จาน' },
+    '03': { name: 'เซต — ข้าวมันไก่ ขนาดใหญ่', desc: 'เนื้อไก่คละส่วน · ข้าวมัน 4 จาน' },
+    '04': { name: 'ข้าวมันไก่ซิกเนเจอร์ เสิร์ฟเป็นถาด', badge: 'เมนูแนะนำ', desc: 'น่องสะโพกหรือเนื้ออก · ข้าวมัน 4 จาน' },
+    '05': { name: 'ตับน้ำมันงา', desc: 'จาน' },
+    '06': { name: 'เลือดไก่ต้ม', desc: 'จาน' },
+    '07': { name: 'ข้าวมัน', desc: 'ชาม' },
+    '08': { name: 'น้ำจิ้มพริกส้มขิง', desc: 'กระปุกเล็ก' },
+    '09': { name: 'น้ำจิ้มน้ำมันขิง', desc: 'กระปุกเล็ก' },
+    '10': { name: 'น้ำจิ้มเต้าเจี๊ยว + ขิง + พริกสด', desc: 'กระปุกเล็ก' },
+    '11': { name: 'น้ำจิ้มต่างๆ ทานที่ร้าน', desc: 'ฟรี' },
+  },
+  zh: {
+    '01': { desc: '鸡肉混搭部位 · 鸡油饭 1 盘' },
+    '02': { desc: '鸡肉混搭部位 · 鸡油饭 2 盘' },
+    '03': { desc: '鸡肉混搭部位 · 鸡油饭 4 盘' },
+    '04': { badge: '招牌', desc: '鸡腿或鸡胸 · 鸡油饭 4 盘' },
+    '05': { desc: '麻油鸡肝 · 盘' },
+    '06': { desc: '白切鸡血 · 盘' },
+    '07': { desc: '鸡油饭 · 碗' },
+    '08': { desc: '橘椒姜蘸酱 · 小罐' },
+    '09': { desc: '姜油蘸酱 · 小罐' },
+    '10': { desc: '豆酱 + 姜 + 鲜辣椒 · 小罐' },
+    '11': { desc: '堂食蘸料（多款）' },
+  },
+}
+
+const SWEETS_DESC_COPY = {
+  en: {
+    '01': { desc: 'Fluffy coconut sponge with cream and toasted coconut — light, tropical, and fragrant.' },
+    '02': { desc: 'Cream cheese pie topped with fresh strawberries and glossy berry glaze.' },
+    '03': { desc: 'Cream cheese pie with a thick blueberry compote — tangy, sweet, and rich.' },
+    '04': { desc: 'Dark chocolate layer cake — moist, deep cocoa, and indulgent.' },
+    '05': { desc: 'Banana, caramel, biscuit base, and whipped cream — classic banoffee in a glass.' },
+    '06': { desc: 'Red velvet with cream cheese frosting — soft crumb, gentle cocoa, and balanced sweetness.' },
+    '07': { desc: 'Orange layer cake with citrus glaze — bright, moist, and refreshing.' },
+    '08': { desc: 'Golden egg tarts with buttery pastry and silky custard.' },
+    '09': { desc: 'Espresso-soaked layers, mascarpone cream, and cocoa — smooth and aromatic.' },
+  },
+  th: {
+    '01': { desc: 'เค้กมะพร้าวเนื้อนุ่ม ครีมหอมมะพร้าว โรยมะพร้าวคั่ว' },
+    '02': { desc: 'ชีสพายครีมชีส ท็อปสตรอเบอร์รี่สด ซอสผลไม้เงาใส' },
+    '03': { desc: 'ชีสพายครีมชีส ท็อปบลูเบอร์รี่เข้มข้น เปรี้ยวหวานกลมกล่อม' },
+    '04': { desc: 'เค้กช็อกโกแลตชั้นละมุน โกโก้เข้ม หวานน้อยพอดี' },
+    '05': { desc: 'บานอฟฟี่เลเยอร์กล้วย คาราเมล บิสกิต และวิปครีม' },
+    '06': { desc: 'เรดเวลเวทนุ่ม ฟรอสติ้งครีมชีส รสกลมกล่อม' },
+    '07': { desc: 'เค้กส้มชั้นนุ่ม น้ำส้มหอม เปรี้ยวหวานสดชื่น' },
+    '08': { desc: 'ทาร์ตไข่กรอบนอก เนื้อคัสตาร์ดเนียน หอมเนย' },
+    '09': { desc: 'ทีรามิสุชั้นเอสเพรสโซ ครีมมาสคาร์โพนี โรยโกโก้' },
+  },
+  zh: {
+    '01': { desc: '椰香海绵蛋糕配奶油与烤椰丝，轻盈热带。' },
+    '02': { desc: '芝士派配新鲜草莓与亮面莓果酱。' },
+    '03': { desc: '芝士派配浓郁蓝莓酱，酸甜饱满。' },
+    '04': { desc: '巧克力层蛋糕，湿润浓郁，可可香气足。' },
+    '05': { desc: '香蕉焦糖、饼干底与鲜奶油，经典班夫风味。' },
+    '06': { desc: '红丝绒配奶油芝士霜，口感柔软，甜度均衡。' },
+    '07': { desc: '橙子层蛋糕配柑橘淋面，清新湿润。' },
+    '08': { desc: '金黄蛋挞，酥皮黄油香，内馅丝滑。' },
+    '09': { desc: '浓缩咖啡浸润层次，马斯卡彭奶油，可可香气。' },
+  },
+}
+
+const DRINK_MENU_CATS = ['nonCoffee', 'italianSoda', 'other']
+
+const DRINK_MENU_DESC_COPY = {
+  nonCoffee: {
+    en: {
+      '01': { desc: 'Premium Thai tea, iced — rich, aromatic, and classic.' },
+      '02': { desc: 'Thai tea blended smooth with ice.' },
+      '03': { desc: 'Iced chocolate — deep cocoa, creamy finish.' },
+      '04': { desc: 'Chocolate blended frappe — thick, cold, and indulgent.' },
+      '05': { desc: 'Fresh coconut milk blended — creamy, tropical, lightly sweet.' },
+    },
+    th: {
+      '01': { desc: 'ชาไทยพรีเมี่ยมเย็น หอมเครื่องเทศ รสเข้มกลมกล่อม' },
+      '02': { desc: 'ชาไทยปั่น เนื้อเนียน เย็นจัด หวานมันกำลังดี' },
+      '03': { desc: 'ช็อกโกแลตเย็น โกโก้เข้ม รสนุ่มครีมมี่' },
+      '04': { desc: 'ช็อกโกแลตปั่น เนื้อหนา เย็นสดชื่น' },
+      '05': { desc: 'มะพร้าวนมสดปั่น หอมมะพร้าว ครีมมี่ หวานน้อย' },
+    },
+    zh: {
+      '01': { desc: '精品泰式冰茶，茶香浓郁，经典顺口。' },
+      '02': { desc: '泰茶冰沙，细腻冰爽，甜润均衡。' },
+      '03': { desc: '冰巧克力，可可浓郁，口感顺滑。' },
+      '04': { desc: '巧克力冰沙，绵密冰爽，甜而不腻。' },
+      '05': { desc: '鲜椰奶冰沙，椰香细腻，热带清甜。' },
+    },
+  },
+  italianSoda: {
+    en: {
+      '01': { desc: 'Sparkling soda with lemon and honey — bright and gently sweet.' },
+      '02': { desc: 'Yuzu soda with citrus pulp — tangy, aromatic, refreshing.' },
+      '03': { desc: 'Strawberry soda — fruity, vibrant, and ice-cold.' },
+      '04': { desc: 'Lychee soda — floral, sweet, and crystal clear.' },
+      '05': { desc: 'Blue ocean soda — layered blue, tropical, and eye-catching.' },
+    },
+    th: {
+      '01': { desc: 'โซดาเลมอนผสมน้ำผึ้ง เปรี้ยวหวานสดชื่น' },
+      '02': { desc: 'โซดายูซุ กลิ่นส้มซ่า เนื้อผลสด ดื่มเย็นสดชื่น' },
+      '03': { desc: 'โซดาสตรอเบอร์รี่ หอมผลไม้ สีสด รสหวานอมเปรี้ยว' },
+      '04': { desc: 'โซดาลิ้นจี่ หอมดอกไม้ หวานกลมกล่อม' },
+      '05': { desc: 'โซดาบลูโอเชียน ชั้นสีฟ้า หวานสดชื่น ดื่มง่าย' },
+    },
+    zh: {
+      '01': { desc: '柠檬蜂蜜苏打，酸甜明亮，清爽顺口。' },
+      '02': { desc: '柚子苏打，果香清新，冰爽解渴。' },
+      '03': { desc: '草莓苏打，果味鲜明，冰凉甜美。' },
+      '04': { desc: '荔枝苏打，花香清甜，透亮爽口。' },
+      '05': { desc: '蓝色海洋苏打，层次分明，热带清爽。' },
+    },
+  },
+  other: {
+    en: {
+      '01': { desc: 'Purra drinking water.' },
+      '02': { desc: 'Evian mineral water.' },
+      '03': { desc: 'Coca-Cola, chilled.' },
+      '04': { desc: 'Coca-Cola Zero, chilled.' },
+    },
+    th: {
+      '01': { desc: 'น้ำดื่มเพอร์ร่า' },
+      '02': { desc: 'น้ำแร่เอเวียง' },
+      '03': { desc: 'โค้กเย็น' },
+      '04': { desc: 'โค้กซีโร่เย็น' },
+    },
+    zh: {
+      '01': { desc: 'Purra 饮用水。' },
+      '02': { desc: '依云矿泉水。' },
+      '03': { desc: '冰镇可口可乐。' },
+      '04': { desc: '冰镇零度可乐。' },
+    },
   },
 }
 
@@ -250,58 +497,118 @@ const COFFEE_DESC_COPY = {
   },
 }
 
+const MATCHA_TASTE_NOTES = {
+  en: [
+    {
+      swatch: 'bg-[#b5d39a]',
+      title: 'Premium Matcha from Japan — Yame City',
+      desc: 'Creamy and mellow with rich, kusa mochi and buttery flavours evocative of walnuts and almonds.',
+    },
+    {
+      swatch: 'bg-[#3a5630]',
+      title: 'Premium Matcha from Japan',
+      desc: 'Seaweed, roasted nut, umami salty, rich and creamy.',
+    },
+  ],
+  th: [
+    {
+      swatch: 'bg-[#b5d39a]',
+      title: 'มัทฉะพรีเมี่ยมจากประเทศญี่ปุ่น เมืองยาเมะ',
+      desc: 'นุ่มครีมมี่ ละมุน เข้มข้น หอมหญ้าหนูหน้าและเนย โน้ตถั่ววอลนัทและอัลมอนด์',
+    },
+    {
+      swatch: 'bg-[#3a5630]',
+      title: 'มัทฉะพรีเมี่ยมจากประเทศญี่ปุ่น',
+      desc: 'สาหร่าย ถั่วคั่ว อูมามิเค็ม เข้มข้นและครีมมี่',
+    },
+  ],
+  zh: [
+    {
+      swatch: 'bg-[#b5d39a]',
+      title: '日本精品抹茶 — 八女市',
+      desc: '口感绵密柔和，带有糯米与黄油香气，并浮现核桃与杏仁的坚果韵。',
+    },
+    {
+      swatch: 'bg-[#3a5630]',
+      title: '日本精品抹茶',
+      desc: '海苔、焙炒坚果、鲜咸旨味，浓郁而顺滑。',
+    },
+  ],
+}
+
+const MATCHA_DESC_COPY = {
+  en: {
+    '00': { desc: 'Matcha x Khao Lam Latte — our house signature blend.' },
+    '01': { desc: 'Premium matcha whisked pure — rich, grassy, and clean.' },
+    '02': { desc: 'Matcha with steamed milk, smooth and balanced.' },
+    '03': { desc: 'Chilled milk topped with matcha — layered, bold, and smooth.' },
+    '04': { desc: 'Matcha with coconut — creamy, tropical, and gently sweet.' },
+    '05': { desc: 'Matcha with fresh orange — bright, tangy, and refreshing.' },
+    '06': { desc: 'Matcha with yuzu — citrusy, aromatic, and crisp.' },
+    '07': { desc: 'Soft matcha blend — light-bodied, mellow, and easy to drink.' },
+  },
+  th: {
+    '00': { badge: 'ซิกเนเจอร์', desc: 'มัทฉะ x ข้าวหลามหนองมน ลาเต้ — สูตรซิกเนเจอร์เฉพาะร้าน' },
+    '01': { desc: 'มัทฉะพรีเมียมตีฟองแบบเพียว หอมเขียว เข้มข้น รสสะอาด' },
+    '02': { desc: 'มัทฉะผสมนมสตีม เนื้อนุ่ม รสกลมกล่อม' },
+    '03': { desc: 'นมเย็นท็อปมัทฉะ ชั้นชัด รสเข้มแต่ลื่น' },
+    '04': { desc: 'มัทฉะผสมมะพร้าว หอมครีมมี่ ท็อปปิคอลนุ่มละมุน' },
+    '05': { desc: 'มัทฉะผสมส้มสด เปรี้ยวหอม สดชื่น' },
+    '06': { desc: 'มัทฉะผสมยูซุ กลิ่นส้มซ่า สดกลมกล่อม' },
+    '07': { desc: 'มัทฉะสูตรซอฟท์ เนื้อเบา หวานน้อย ดื่มง่าย' },
+  },
+  zh: {
+    '00': { badge: '招牌', desc: '抹茶 x 烤糯米香拿铁 — 门店招牌特调，层次丰富、顺口耐喝。' },
+    '01': { desc: '精品抹茶纯饮，茶香浓郁，口感干净。' },
+    '02': { desc: '抹茶与蒸奶，顺滑平衡。' },
+    '03': { desc: '冰牛奶上浇抹茶，层次分明。' },
+    '04': { desc: '抹茶配椰子，椰香细腻，热带顺口。' },
+    '05': { desc: '抹茶配鲜橙，果香酸甜，清爽解渴。' },
+    '06': { desc: '抹茶配柚子，柑橘明亮，香气清新。' },
+    '07': { desc: '轻柔抹茶，口感轻盈，微甜顺口。' },
+  },
+}
+
 const ITEM_COPY = {
   th: {
-    '24': { name: 'มัทฉะเซเรนิตี้', badge: 'ซิกเนเจอร์', desc: 'มัทฉะเกรดพิธีการเข้มข้น ผสมนมโอ๊ตเนียนนุ่มและน้ำผึ้งดิบ' },
-    '25': { name: 'โคโคนัทแพนดานคูลเลอร์', desc: 'น้ำมะพร้าวผสมใบเตย มะนาว และมินต์' },
-    '26': { name: 'บัตเตอร์ฟลายเลมอนเนด', desc: 'อัญชัน โซดา เลมอน เปลี่ยนสีได้' },
-    '27': { name: 'เอิร์ลเกรย์โฟม', desc: 'ชาเอิร์ลเกรย์สกัดเย็น ท็อปครีมเค็มนุ่ม' },
-    '28': { name: 'เพียร์เบรกฟาสต์เพลต', badge: 'ซิกเนเจอร์', desc: 'เซ็ตยอดนิยมครบจบในจานเดียว ไข่ ซาวโดว์ อะโวคาโด และแซลมอนรมควัน' },
-    '29': { name: 'โคโคนัทกราโนล่าโบวล์', desc: 'กราโนล่าโฮมเมด โยเกิร์ตมะพร้าว ผลไม้ตามฤดูกาล' },
-    '30': { name: 'เอ้กเบเนดิกต์', desc: 'ไข่ลวก ขนมปังบริยอช แฮม และซอสฮอลแลนเดส' },
-    '31': { name: 'โจ๊กกุ้ง', desc: 'กุ้งสด ขิง กระเทียมเจียว และไข่ลวก' },
     '32': { name: 'ปลากะพงย่าง', badge: 'ซิกเนเจอร์', desc: 'ปลากะพงย่างทั้งตัว หอมเนยสมุนไพร เสิร์ฟพร้อมมันฝรั่งและสลัดสด' },
     '33': { name: 'พาสตากุ้งเพียร์', desc: 'กุ้งลายเสือ มะเขือเทศเชอร์รี กระเทียม พริก และลิงกวีนี' },
     '34': { name: 'โบวล์ปลากะเพรา', desc: 'ปลากะพงทอด กะเพรา ข้าวหอมมะลิ และไข่ดาว' },
     '35': { name: 'ริซอตโตเห็ด', desc: 'พอร์ชินี เห็ดนางรม พาร์เมซาน และทรัฟเฟิลออยล์' },
     '36': { name: 'บีชบาร์บีคิวเพลต', desc: 'รวมย่าง ไก่ ข้าวโพด มันหวาน และสลอว์' },
     '37': { name: 'ส้มตำโบวล์', desc: 'มะละกอ ถั่วลิสง กุ้งแห้ง มะเขือเทศ และน้ำยำมะนาว' },
-    '38': { name: 'โคโคนัทพานาคอตตา', badge: 'ซิกเนเจอร์', desc: 'พานาคอตตาเนื้อเนียน หอมใบมะกรูด ตัดรสด้วยซอสมะม่วง' },
-    '39': { name: 'ไทยทีเครมบรูเล', desc: 'คัสตาร์ดชาไทย หน้าน้ำตาลคาราเมลกรอบ' },
-    '40': { name: 'บานาน่าฟอสเตอร์วาฟเฟิล', desc: 'วาฟเฟิลบริยอช กล้วยคาราเมล และครีมวานิลลา' },
-    '41': { name: 'ผลไม้ตามฤดูกาล', desc: 'ผลไม้สดประจำวัน เสิร์ฟพร้อมโยเกิร์ตน้ำผึ้ง' },
-    '42': { name: 'เพียร์เลมอนเนด', badge: 'ซิกเนเจอร์', desc: 'เลมอนเนดโฮมเมดซาบซ่า สดชื่นด้วยมินต์และโซดา' },
-    '43': { name: 'กรีนแมงโก้โซดา', desc: 'มะม่วงเขียวคั้นสด ไซรัปขิง และโซดา' },
-    '44': { name: 'มะพร้าวอ่อน', desc: 'เสิร์ฟทั้งลูก พร้อมช้อนและหลอด' },
-    '45': { name: 'วอเตอร์เมลอนฟิซ', desc: 'แตงโมสด มะนาว เม็ดแมงลัก และโซดาลิ้นจี่' },
-    '46': { name: 'ส้มขิงคั้นสด', desc: 'คั้นสด ไม่เติมน้ำตาล เสิร์ฟพร้อมน้ำแข็ง' },
-    '47': { name: 'น้ำแร่ซ่า', desc: 'Perrier หรือ S.Pellegrino ขนาด 330ml' },
   },
   zh: {
-    '24': { name: '静谧抹茶', badge: '招牌', desc: '仪式级抹茶搭配燕麦奶与生蜂蜜，香气更圆润。' },
-    '25': { name: '斑斓椰香清饮', desc: '斑斓浸泡椰子水、青柠与薄荷。' },
-    '26': { name: '蝶豆花柠檬汽水', desc: '蝶豆花、苏打与柠檬，颜色会变化。' },
-    '27': { name: '伯爵奶盖', desc: '冷泡伯爵茶，咸奶盖。' },
-    '28': { name: 'Pier 早餐拼盘', badge: '招牌', desc: '店内高人气早餐拼盘，一份就能满足早午餐需求。' },
-    '29': { name: '椰香格兰诺拉碗', desc: '自制麦片、椰子酸奶与时令水果。' },
-    '30': { name: '班尼迪克蛋', desc: '水波蛋、布里欧修、火腿与荷兰酱。' },
-    '31': { name: '鲜虾粥', desc: '鲜虾、姜、蒜酥与溏心蛋。' },
     '32': { name: '香烤海鲈', badge: '招牌', desc: '整尾海鲈搭配柠檬香草黄油，鲜味层次更突出。' },
     '33': { name: 'Pier 大虾意面', desc: '虎虾、樱桃番茄、蒜香辣味与罗勒油。' },
     '34': { name: '罗勒鱼饭碗', desc: '脆煎海鲈配圣罗勒、茉莉香米与煎蛋。' },
     '35': { name: '蘑菇烩饭', desc: '牛肝菌、平菇、帕玛森与松露油。' },
     '36': { name: '海滩烧烤拼盘', desc: '烤鸡腿、玉米、红薯、卷心菜沙拉。' },
     '37': { name: '青木瓜沙拉碗', desc: '青木瓜、花生、虾米与青柠酱汁。' },
-    '38': { name: '椰子奶冻', badge: '招牌', desc: '细腻椰香奶冻，配芒果酱与芝麻脆片，清爽不腻。' },
-    '39': { name: '泰奶焦糖布蕾', desc: '泰式奶茶风味布蕾，焦糖脆面。' },
-    '40': { name: '香蕉焦糖华夫', desc: '布里欧修华夫、焦糖香蕉与香草奶油。' },
-    '41': { name: '时令水果盘', desc: '当日新鲜水果，搭配蜂蜜酸奶蘸酱。' },
-    '42': { name: 'Pier 柠檬汽水', badge: '招牌', desc: '自制柠檬糖浆与气泡感平衡，入口明快。' },
-    '43': { name: '青芒果苏打', desc: '青芒鲜榨、姜糖浆与气泡水。' },
-    '44': { name: '椰青', desc: '整颗上桌，附吸管与小勺。' },
-    '45': { name: '西瓜气泡饮', desc: '西瓜、青柠、罗勒籽与荔枝汽水。' },
-    '46': { name: '鲜橙姜汁', desc: '冷压鲜榨，无添加糖。' },
-    '47': { name: '气泡矿泉水', desc: 'Perrier 或 S.Pellegrino 330ml。' },
+  },
+}
+
+const MENU_PAGE_COPY = {
+  en: {
+    title: 'Menu — Love Pier Beach Cafe',
+    hero: 'Menu <em class="italic text-gold">Love Pier Beach Cafe</em>',
+    desc: "Every drink and dish is built around what's fresh right now.",
+    specialsLabel: "Today's Specials",
+    chefLine1: 'Recommended Specials',
+  },
+  th: {
+    title: 'Menu — Love Pier Beach Cafe',
+    hero: 'Menu <em class="italic text-gold">Love Pier Beach Cafe</em>',
+    desc: 'เมนูของเราปรับตามวัตถุดิบสดใหม่ในแต่ละช่วงเวลา',
+    specialsLabel: 'เมนูพิเศษวันนี้',
+    chefLine1: 'เมนูพิเศษ',
+  },
+  zh: {
+    title: 'Menu — Love Pier Beach Cafe',
+    hero: 'Menu <em class="italic text-gold">Love Pier Beach Cafe</em>',
+    desc: '我们的菜单根据当季食材与每日新鲜度持续调整。',
+    specialsLabel: '今日推荐',
+    chefLine1: '精选推荐',
   },
 }
 
@@ -324,9 +631,10 @@ const FEATURED_COPY = {
 }
 
 const TAB_SECTION_CATS = {
-  food: ['breakfast', 'mains'],
+  food: ['chickenRice', 'mains', 'breakfast'],
   coffee: ['coffee'],
-  drinks: ['tea', 'drinks'],
+  matcha: ['matcha'],
+  drinks: ['nonCoffee', 'italianSoda', 'other'],
   sweets: ['sweets'],
 }
 
@@ -341,16 +649,40 @@ function itemsForTab(section, activeTab) {
   return section.items
 }
 
+function drinkPriceLabels(lang) {
+  return COFFEE_PRICE_LABELS[lang] || COFFEE_PRICE_LABELS.en
+}
+
+function menuAddOnsForCategory(cat, lang) {
+  if (cat === 'coffee') return COFFEE_ADDONS_COPY[lang] || COFFEE_ADDONS_COPY.en
+  return undefined
+}
+
+function matchaTasteNotes(lang) {
+  return MATCHA_TASTE_NOTES[lang] || MATCHA_TASTE_NOTES.en
+}
+
 function localizeMenuData(data, lang) {
-  if (!ITEM_COPY[lang] && !SECTION_COPY[lang] && !COFFEE_DESC_COPY[lang]) return data
+  if (!ITEM_COPY[lang] && !SECTION_COPY[lang] && !COFFEE_DESC_COPY[lang] && !MATCHA_DESC_COPY[lang] && !SWEETS_DESC_COPY[lang] && !CHICKEN_RICE_DESC_COPY[lang] && !BREAKFAST_DESC_COPY[lang] && !DRINK_MENU_DESC_COPY.nonCoffee[lang]) return data
   return data.map((section) => {
     const sectionCopy = SECTION_COPY[lang]?.[section.cat] || {}
     return {
       ...section,
       ...sectionCopy,
       items: section.items.map((item) => {
-        if (section.cat === 'coffee') {
-          const copy = COFFEE_DESC_COPY[lang]?.[item.num] || COFFEE_DESC_COPY.en?.[item.num] || {}
+        if (section.cat === 'coffee' || section.cat === 'matcha' || section.cat === 'sweets' || section.cat === 'chickenRice' || section.cat === 'breakfast') {
+          const copySource =
+            section.cat === 'coffee' ? COFFEE_DESC_COPY
+            : section.cat === 'matcha' ? MATCHA_DESC_COPY
+            : section.cat === 'sweets' ? SWEETS_DESC_COPY
+            : section.cat === 'breakfast' ? BREAKFAST_DESC_COPY
+            : CHICKEN_RICE_DESC_COPY
+          const copy = copySource[lang]?.[item.num] || copySource.en?.[item.num] || {}
+          return { ...item, ...copy }
+        }
+        if (DRINK_MENU_CATS.includes(section.cat)) {
+          const copySource = DRINK_MENU_DESC_COPY[section.cat]
+          const copy = copySource[lang]?.[item.num] || copySource.en?.[item.num] || {}
           return { ...item, ...copy }
         }
         return {
@@ -358,6 +690,7 @@ function localizeMenuData(data, lang) {
           ...(lang === 'th'
             ? (() => {
                 const localized = ITEM_COPY[lang]?.[item.num] || {}
+                if (section.cat === 'mains') return localized
                 const { name, ...rest } = localized
                 return rest
               })()
@@ -376,6 +709,7 @@ export default function Menu() {
         { label: 'Signatrue', cat: 'signature' },
         { label: 'อาหาร', cat: 'food' },
         { label: 'กาแฟ', cat: 'coffee' },
+        { label: 'มัทฉะ', cat: 'matcha' },
         { label: 'เครื่องดื่ม', cat: 'drinks' },
         { label: 'ของหวาน', cat: 'sweets' },
       ]
@@ -385,6 +719,7 @@ export default function Menu() {
           { label: 'Signatrue', cat: 'signature' },
           { label: '餐食', cat: 'food' },
           { label: '咖啡', cat: 'coffee' },
+          { label: '抹茶', cat: 'matcha' },
           { label: '饮品', cat: 'drinks' },
           { label: '甜品', cat: 'sweets' },
         ]
@@ -393,14 +728,11 @@ export default function Menu() {
           { label: 'Signatrue', cat: 'signature' },
           { label: 'Food', cat: 'food' },
           { label: 'Coffee', cat: 'coffee' },
+          { label: 'Matcha', cat: 'matcha' },
           { label: 'Drinks', cat: 'drinks' },
           { label: 'Sweets', cat: 'sweets' },
         ]
-  const t = lang === 'th'
-    ? { title: 'Menu — Love Pier Beach Cafe', hero: 'Menu <em class="italic text-gold">Love Pier Beach Cafe</em>', desc: 'เมนูของเราปรับตามวัตถุดิบสดใหม่ในแต่ละช่วงเวลา', specials: 'เมนูพิเศษวันนี้', chef: 'ตัวเลือกพิเศษ\nตามฤดูกาล' }
-    : lang === 'zh'
-      ? { title: 'Menu — Love Pier Beach Cafe', hero: 'Menu <em class="italic text-gold">Love Pier Beach Cafe</em>', desc: '我们的菜单根据当季食材与每日新鲜度持续调整。', specials: '今日推荐', chef: '主厨精选\n当季限定' }
-      : { title: 'Menu — Love Pier Beach Cafe', hero: 'Menu <em class="italic text-gold">Love Pier Beach Cafe</em>', desc: "Every drink and dish is built around what's fresh right now.", specials: "Today's Specials", chef: "Chef's choice\nof the season" }
+  const t = MENU_PAGE_COPY[lang] || MENU_PAGE_COPY.en
   const [activeTab, setActiveTab] = useState(null)
   const menuData = localizeMenuData(MENU_DATA, lang)
   const featured = FEATURED_COPY[lang] || FEATURED_COPY.en
@@ -418,7 +750,7 @@ export default function Menu() {
           <p className="text-[15px] leading-[1.9] text-[#555] font-light max-w-[480px]">{t.desc}</p>
         </div>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="w-full aspect-[4/5] object-cover [filter:saturate(0.7)]" src="/uploads/menu-hero-custom.png" alt="menu hero" />
+        <img className="w-full aspect-[4/5] object-cover object-[50%_62%] [filter:saturate(0.7)]" src="/uploads/menu-hero-custom.png" alt="menu hero" />
       </section>
 
       {/* Category tabs */}
@@ -443,16 +775,17 @@ export default function Menu() {
             key={section.cat}
             {...section}
             items={items}
-            priceLabels={section.cat === 'coffee' ? (COFFEE_PRICE_LABELS[lang] || COFFEE_PRICE_LABELS.en) : undefined}
-            coffeeAddOns={section.cat === 'coffee' ? (COFFEE_ADDONS_COPY[lang] || COFFEE_ADDONS_COPY.en) : undefined}
+            priceLabels={TIERED_PRICE_CATEGORIES.includes(section.cat) ? drinkPriceLabels(lang) : undefined}
+            menuAddOns={menuAddOnsForCategory(section.cat, lang)}
+            tasteNotes={section.cat === 'matcha' ? matchaTasteNotes(lang) : undefined}
           />
         )
       })}
 
       {/* Featured */}
       <section className="bg-ink text-bg px-4 py-14 reveal sm:px-6 sm:py-14 lg:px-10 lg:py-20">
-        <div className="text-[10px] tracking-[0.4em] uppercase text-gold mb-4">{t.specials}</div>
-        <h2 className="font-display font-light leading-[1.1] mb-12 max-w-[800px] text-[clamp(36px,5vw,60px)]">{t.chef.split('\n').map((l,i)=><span key={i}>{l}{i===0?<br/>:null}</span>)}</h2>
+        <div className="text-[10px] tracking-[0.4em] uppercase text-gold mb-4">{t.specialsLabel}</div>
+        <h2 className="font-display font-light leading-[1.1] mb-12 max-w-[800px] text-[clamp(36px,5vw,60px)]">{t.chefLine1}</h2>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
           {[
             { img:'/uploads/grilled-sea-bass-custom.png', ...featured[0] },

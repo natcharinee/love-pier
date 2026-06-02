@@ -24,6 +24,19 @@ export default function Location() {
           { mode: 'โดยรถยนต์', title: 'ประมาณ 2 ชั่วโมง จากกรุงเทพฯ', text: 'สามารถปักหมุดตาม Google Maps ได้เลย ที่ตั้งร้านจะอยู่ภายใน เดอะ ซิมโพนี่ คอนโด บางแสน-ศรีราชา' },
           { mode: 'โดยรถบัส', title: 'ประมาณ 2 ชั่วโมง 30 นาที จากสถานีขนส่ง หมอชิต', text: 'มีรถตู้ออกทุกชั่วโมง ลงที่จุดจอดหนองมน หรือใกล้เคียง ต่อรถอีกเล็กน้อย' },
         ],
+        countryLabel: 'ประเทศไทย',
+        kitchenNote: 'ครัวปิดก่อนเวลาปิด 30 นาที',
+        mapTitle: 'แผนที่ Love Pier Beach Cafe',
+        parkingTitle: 'ที่จอดรถ',
+        parkingTitleEm: '& ทางเข้า',
+        parkingDesc: 'จอดฟรีในที่ มีที่จอดรถให้บริการ — เดินไปชายหาดได้ในระยะใกล้',
+        parkingItems: [
+          'ที่จอดรถในพื้นที่',
+          'ที่จอดมอเตอร์ไซค์และจักรยาน',
+          'ทางเข้าและห้องน้ำรองรับรถเข็น',
+        ],
+        footerTagline: 'หาเจอง่าย <em>ทุกครั้งที่มา</em>',
+        parkingImageAlt: 'บรรยากาศรอบร้าน',
       }
     : lang === 'zh'
       ? {
@@ -45,6 +58,19 @@ export default function Location() {
             { mode: '驾车', title: '从曼谷出发约 2 小时', text: '可直接在 Google Maps 导航，门店位于 The Symphony Condo Bangsaen-Sriracha 内。' },
             { mode: '巴士', title: '从曼谷 Mochit 汽车站约 2 小时 30 分钟', text: '每小时有小巴发车。可在 Nong Mon 或附近站点下车，再短程转车前往。' },
           ],
+          countryLabel: '泰国',
+          kitchenNote: '厨房在关店前 30 分钟停止接单',
+          mapTitle: 'Love Pier Beach Cafe 地图',
+          parkingTitle: '停车',
+          parkingTitleEm: '与到达',
+          parkingDesc: '流程简单：店内免费代客停车，步行即可到海边。',
+          parkingItems: [
+            '店内免费车位',
+            '摩托车与自行车停放区',
+            '无障碍入口与洗手间',
+          ],
+          footerTagline: '总是 <em>容易找到</em>',
+          parkingImageAlt: '门店外观',
         }
       : {
           title: 'Location — Love Pier Beach Cafe',
@@ -65,6 +91,19 @@ export default function Location() {
             { mode: 'By car', title: 'About 2 hours from Bangkok', text: 'You can pin us directly on Google Maps. The cafe is inside The Symphony Condo Bangsaen-Sriracha.' },
             { mode: 'By bus', title: 'About 2 hours 30 minutes from Mochit Bus Terminal', text: 'Minivans leave every hour. Get off at Nong Mon or a nearby stop, then take a short local ride.' },
           ],
+          countryLabel: 'Thailand',
+          kitchenNote: 'Kitchen closes 30 min before',
+          mapTitle: 'Love Pier Beach Cafe location',
+          parkingTitle: 'Parking',
+          parkingTitleEm: '& access',
+          parkingDesc: "We've kept things simple. Free, attended parking on site — and the beach is one short walk away.",
+          parkingItems: [
+            'Free on-site parking',
+            'Dedicated motorbike & bicycle racks',
+            'Wheelchair-accessible entrance & restroom',
+          ],
+          footerTagline: 'ALWAYS <em>EASY TO FIND</em>',
+          parkingImageAlt: 'Cafe exterior',
         }
   const renderLines = (s) => s.split('\n').map((line, idx, arr) => <span key={`${line}-${idx}`}>{line}{idx < arr.length - 1 ? <br/> : null}</span>)
   return (
@@ -88,7 +127,7 @@ export default function Location() {
           allowFullScreen=""
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
-          title="Love Pier Beach Cafe location"
+          title={t.mapTitle}
         />
       </div>
 
@@ -96,11 +135,11 @@ export default function Location() {
       <div className="bg-bg px-4 py-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 border-b border-black/10 reveal sm:px-6 sm:py-7 sm:gap-6">
         <div>
           <h4 className="text-[10px] tracking-[0.4em] uppercase text-gold mb-3">{t.address}</h4>
-          <p className="text-sm text-ink leading-[1.7] font-light">{renderLines(t.addressVal)}<br/><span className="text-muted text-xs">Thailand</span></p>
+          <p className="text-sm text-ink leading-[1.7] font-light">{renderLines(t.addressVal)}<br/><span className="text-muted text-xs">{t.countryLabel}</span></p>
         </div>
         <div>
           <h4 className="text-[10px] tracking-[0.4em] uppercase text-gold mb-3">{t.hours}</h4>
-          <p className="text-sm text-ink leading-[1.7] font-light">{t.hoursVal}<br/><span className="text-muted text-xs">Kitchen closes 30 min before</span></p>
+          <p className="text-sm text-ink leading-[1.7] font-light">{t.hoursVal}<br/><span className="text-muted text-xs">{t.kitchenNote}</span></p>
         </div>
         <div>
           <h4 className="text-[10px] tracking-[0.4em] uppercase text-gold mb-3">{t.phone}</h4>
@@ -146,26 +185,22 @@ export default function Location() {
       <section className="bg-ink text-bg px-4 py-14 grid grid-cols-1 lg:grid-cols-2 gap-9 lg:gap-16 items-center reveal sm:px-6 sm:py-14 lg:px-10 lg:py-20">
         <div className="reveal-img">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="w-full aspect-[4/3] object-cover [filter:saturate(0.55)_brightness(0.8)]" src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=900&q=80" alt="exterior" />
+          <img className="w-full aspect-[4/3] object-cover [filter:saturate(0.55)_brightness(0.8)]" src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=900&q=80" alt={t.parkingImageAlt} />
         </div>
         <div>
-          <h2 className="font-display font-light mb-4 leading-[1.05] text-[clamp(32px,4vw,52px)]">Parking <em className="italic text-gold">&amp; access</em></h2>
-          <p className="text-sm text-[rgba(245,243,239,0.65)] leading-[1.8] mb-4 font-light">We&apos;ve kept things simple. Free, attended parking on site — and the beach is one short walk away.</p>
+          <h2 className="font-display font-light mb-4 leading-[1.05] text-[clamp(32px,4vw,52px)]">
+            {t.parkingTitle} <em className="italic text-gold">{t.parkingTitleEm}</em>
+          </h2>
+          <p className="text-sm text-[rgba(245,243,239,0.65)] leading-[1.8] mb-4 font-light">{t.parkingDesc}</p>
           <ul className="list-none text-[13px] text-[rgba(245,243,239,0.7)] font-light">
-            {[
-              '18 free car spaces on site',
-              'Dedicated motorbike & bicycle racks',
-              'Wheelchair-accessible entrance & restroom',
-              'Dog-friendly terrace seating',
-              'EV charging station (Type 2 · 7kW)',
-            ].map(item => (
+            {t.parkingItems.map(item => (
               <li key={item} className="py-2.5 border-b border-white/[0.08] before:content-['·'] before:text-gold before:mr-3">{item}</li>
             ))}
           </ul>
         </div>
       </section>
 
-      <Footer tagline="ALWAYS <em>EASY TO FIND</em>" />
+      <Footer tagline={t.footerTagline} />
     </>
   )
 }
