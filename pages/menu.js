@@ -217,7 +217,13 @@ function localizeMenuData(data, lang) {
       ...sectionCopy,
       items: section.items.map((item) => ({
         ...item,
-        ...(ITEM_COPY[lang]?.[item.num] || {}),
+        ...(lang === 'th'
+          ? (() => {
+              const localized = ITEM_COPY[lang]?.[item.num] || {}
+              const { name, ...rest } = localized
+              return rest
+            })()
+          : (ITEM_COPY[lang]?.[item.num] || {})),
       })),
     }
   })

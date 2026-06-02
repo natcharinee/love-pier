@@ -185,7 +185,6 @@ export default function Home() {
         <div className="overflow-hidden bg-[#e8e4de]" style={{ gridColumn:'span 5' }}><img className="w-full h-full object-cover [filter:saturate(0.6)] hover:[filter:saturate(0.9)] hover:scale-[1.03] transition-all duration-700" src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=600&q=80" alt="cafe" /></div>
         <div className="overflow-hidden bg-[#e8e4de]" style={{ gridColumn:'span 3' }}><img className="w-full h-full object-cover [filter:saturate(0.6)] hover:[filter:saturate(0.9)] hover:scale-[1.03] transition-all duration-700" src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&q=80" alt="coffee" /></div>
         <div className="overflow-hidden bg-[#e8e4de]" style={{ gridColumn:'span 2' }}><img className="w-full h-full object-cover [filter:saturate(0.6)] hover:[filter:saturate(0.9)] hover:scale-[1.03] transition-all duration-700" src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=400&q=80" alt="interior" /></div>
-        <div className="overflow-hidden bg-[#e8e4de]" style={{ gridColumn:'span 5' }}><img className="w-full h-full object-cover [filter:saturate(0.6)] hover:[filter:saturate(0.9)] hover:scale-[1.03] transition-all duration-700" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800&q=80" alt="pier" /></div>
       </div>
 
       {/* Map section */}
