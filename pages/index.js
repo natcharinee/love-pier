@@ -16,9 +16,10 @@ export default function Home() {
         locationValue: '800 108 แสนสุข\nอำเภอเมือง จังหวัดชลบุรี 20130',
         exploreMenu: 'ดูเมนู',
         since: 'ตั้งแต่ปี 2026',
-        about1: 'Love Pier Beach Cafe ตั้งอยู่ใกล้แนวชายฝั่งของชลบุรี เป็นคาเฟ่ที่ตั้งใจให้ทุกช่วงเวลาเรียบง่ายและผ่อนคลาย',
-        about2: 'เราเสิร์ฟกาแฟและเมนูอาหารที่คัดวัตถุดิบสดใหม่ในทุกวัน เพื่อให้ได้รสชาติที่สมดุลและจริงใจ',
-        about3: 'ที่นี่ไม่ใช่แค่คาเฟ่ แต่เป็นพื้นที่ให้คุณพักใจ สูดลมทะเล และใช้เวลาอย่างช้าๆ',
+        about1: '<strong>LOVE PIER BEACH CAFE</strong> คาเฟ่ริมชายหาดบางแสน ที่ให้ทุกมื้อพิเศษกว่าที่เคย',
+        about2: 'สัมผัสรสชาติของ "<strong>ข้าวมันไก่สิงคโปร์และข้าวมันไก่ไหหลำ สูตรต้นตำรับ</strong>" พร้อมจิบเครื่องดื่มซิกเนเจอร์ ที่ได้แรงบันดาลใจจาก "<strong>ข้าวหลามหนองมน</strong>" เอกลักษณ์แห่งบางแสนที่ถูกถ่ายทอดออกมาในรูปแบบใหม่ อย่างละมุน',
+        about3: 'นั่งรับลมทะเล ฟังเสียงคลื่นเบา ๆ ท่ามกลางบรรยากาศอบอุ่นริมชายหาด และเก็บภาพความทรงจำที่มุมท่าเรือสุดโรแมนติก',
+        about4: 'เพราะบางช่วงเวลาที่สวยงาม ไม่ได้ต้องการอะไรมากไปกว่าอาหารดี ๆ เครื่องดื่มแก้วโปรด และคนพิเศษที่นั่งมองพระอาทิตย์ตกไปด้วยกัน ที่ LOVE PIER BEACH CAFE',
         where: 'เมื่อชายฝั่ง\nมาเจอกับ\n<em class="italic text-gold">แก้วโปรด</em>',
         numbers: 'ตัวเลขของเรา',
         little: 'เล็กน้อยเกี่ยวกับ\n<em class="italic text-gold">สิ่งที่เราทำ</em>',
@@ -45,9 +46,10 @@ export default function Home() {
           locationValue: '800 108 Saensuk\nMueang Chonburi, Chonburi 20130',
           exploreMenu: '查看菜单',
           since: '自 2026 年起',
-          about1: 'Love Pier Beach Cafe 位于春武里海岸附近，清晨海风与宁静氛围相伴。',
-          about2: '我们坚持使用新鲜食材，提供精品咖啡与用心制作的简餐。',
-          about3: '这里不只是咖啡馆，更是让你放慢节奏、久坐放松的地方。',
+          about1: 'Love Pier Cafe 是邦盛海边的一家咖啡馆，让每一餐都比以往更特别。',
+          about2: '品尝“新加坡鸡饭与海南鸡饭（传统原味）”，再搭配受“农蒙竹筒糯米饭”启发的招牌饮品，把邦盛在地风味以更细腻的方式重新呈现。',
+          about3: '在温暖的海边氛围里吹着海风、听着轻柔浪声，也在通往海面的浪漫码头留下属于你的回忆。',
+          about4: '有些美好时刻，其实只需要好食物、喜欢的那杯饮品，以及一起看夕阳的人。就在 LOVE PIER BEACH CAFE。',
           where: '当海岸\n遇见\n<em class="italic text-gold">一杯咖啡</em>',
           numbers: '我们的数据',
           little: '关于我们\n<em class="italic text-gold">做的事</em>',
@@ -73,9 +75,10 @@ export default function Home() {
         locationValue: '800 108 Saensuk\nMueang Chonburi, Chonburi 20130',
         exploreMenu: 'Explore Menu',
         since: 'Since 2026',
-        about1: 'Love Pier Beach Cafe sits close to the shoreline in Chonburi, where calm mornings and sea air set the pace for the day.',
-        about2: 'Our menu is shaped by fresh ingredients, specialty coffee, and simple dishes prepared with care.',
-        about3: 'This is more than a cafe. It is a place to slow down, stay longer, and leave refreshed.',
+        about1: 'Love Pier Cafe is a beachside cafe in Bangsaen where every meal feels more special.',
+        about2: 'Enjoy signature Singaporean and Hainanese chicken rice made from original recipes, paired with house drinks inspired by Nong Mon khao lam, reimagined with a softer, modern touch.',
+        about3: 'Sit by the sea breeze, listen to the gentle waves, and capture memories at our romantic pier stretching out toward the water.',
+        about4: 'Some beautiful moments only need great food, a favorite drink, and someone special to watch the sunset with at LOVE PIER BEACH CAFE.',
         where: 'Where the\nshore meets\n<em class="italic text-gold">the cup</em>',
         numbers: 'The Numbers',
         little: 'A little about\n<em class="italic text-gold">what we do</em>',
@@ -141,15 +144,15 @@ export default function Home() {
 
       <section className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] px-4 py-14 items-start reveal sm:px-6 sm:py-16 lg:px-10 lg:py-20 gap-10 lg:gap-0">
         <div>
-          <h2 className="font-display font-light leading-[0.92] text-ink tracking-[-0.02em] text-[clamp(40px,6vw,72px)]">Love<br/>Pier<br/><em className="italic text-gold">&amp; Coffee</em></h2>
-          <Link href="/menu" className="mt-8 inline-flex items-center gap-3 text-[10px] tracking-[0.3em] uppercase text-[#666] after:content-['→'] after:text-sm after:transition-transform after:duration-200 hover:after:translate-x-1">{t.exploreMenu}</Link>
+          <h2 className="font-display font-light leading-[0.92] text-ink tracking-[-0.02em] text-[clamp(40px,6vw,72px)]">Beach Vibes,<br/>Cafe by The Sea,<br/><em className="italic text-gold">Singapore Chicken Rice</em></h2>
+          <Link href="/menu" className="mt-8 inline-flex items-center gap-3 text-[11px] tracking-[0.25em] uppercase text-[#5f5a51] bg-[#ece7dc] border border-[#d8cdbb] px-5 py-2.5 hover:bg-[#e4dccd] hover:text-ink transition-colors duration-200 after:content-['→'] after:text-base after:transition-transform after:duration-200 hover:after:translate-x-1">{t.exploreMenu}</Link>
         </div>
         <div className="pt-2">
           <div className="text-[9px] tracking-[0.4em] uppercase text-[#bbb] mb-5 flex items-center gap-3 before:content-[''] before:block before:w-6 before:h-px before:bg-[#bbb]">{t.since}</div>
-          <div className="text-sm leading-[1.9] text-[#555] font-light max-w-[520px]">
-            <p className="mb-4">{t.about1}</p>
-            <p className="mb-4">{t.about2}</p>
-            <p>{t.about3}</p>
+          <div className="text-sm leading-[1.9] text-[#555] font-light max-w-none">
+            <p className="mb-4" dangerouslySetInnerHTML={{ __html: t.about1 }} />
+            <p className="mb-4" dangerouslySetInnerHTML={{ __html: t.about2 }} />
+            <p>{t.about3}{'about4' in t ? ` ${t.about4}` : ''}</p>
           </div>
         </div>
       </section>
