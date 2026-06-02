@@ -96,7 +96,7 @@
           <div>© 2026 Love Pier Beach Cafe</div>
           <div class="flex gap-3.5">
             <a href="#" aria-label="Instagram" class="text-[rgba(245,243,239,0.5)] hover:text-gold transition-colors duration-200">${SOCIAL_SVGS.instagram}</a>
-            <a href="#" aria-label="Facebook" class="text-[rgba(245,243,239,0.5)] hover:text-gold transition-colors duration-200">${SOCIAL_SVGS.facebook}</a>
+            <a href="https://www.facebook.com/profile.php?id=61590549024692" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="text-[rgba(245,243,239,0.5)] hover:text-gold transition-colors duration-200">${SOCIAL_SVGS.facebook}</a>
             <a href="#" aria-label="LINE" class="text-[rgba(245,243,239,0.5)] hover:text-gold transition-colors duration-200">${SOCIAL_SVGS.line}</a>
           </div>
         </div>

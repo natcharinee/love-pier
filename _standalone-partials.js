@@ -85,7 +85,7 @@
           <div>© 2026 Love Pier Beach Cafe</div>
           <div class="menu-overlay-socials">
             <a href="#" aria-label="Instagram">${SOCIAL_SVGS.instagram}</a>
-            <a href="#" aria-label="Facebook">${SOCIAL_SVGS.facebook}</a>
+            <a href="https://www.facebook.com/profile.php?id=61590549024692" target="_blank" rel="noopener noreferrer" aria-label="Facebook">${SOCIAL_SVGS.facebook}</a>
             <a href="#" aria-label="LINE">${SOCIAL_SVGS.line}</a>
           </div>
         </div>

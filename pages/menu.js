@@ -104,6 +104,125 @@ const MENU_DATA = [
   },
 ]
 
+const SECTION_COPY = {
+  th: {
+    coffee: { title: 'กาแฟ', titleEm: '& เอสเพรสโซ', subtitle: 'เมล็ดคัดพิเศษคั่วสดทุกสัปดาห์ เสิร์ฟแก้วต่อแก้วด้วยความแม่นยำ' },
+    tea: { title: 'ชา', titleEm: '& เครื่องดื่มสดชื่น', subtitle: 'ชาและเครื่องดื่มเย็นที่ออกแบบมาให้สดชื่นพอดีกับบรรยากาศริมทะเล' },
+    breakfast: { title: 'อาหารเช้า', titleEm: 'ตลอดวัน', subtitle: 'เมนูเช้าซิกเนเจอร์ที่พร้อมเสิร์ฟได้ทุกเวลาแบบไม่ต้องรีบ' },
+    mains: { title: 'จานหลัก', titleEm: '& กลิ่นทะเล', subtitle: 'จานหลักรสกลมกล่อมจากวัตถุดิบสดใหม่ประจำวัน' },
+    sweets: { title: 'ของหวาน', titleEm: '& ปิดมื้อ', subtitle: 'ของหวานโฮมเมดที่ช่วยให้มื้อนี้จบอย่างน่าจดจำ' },
+    drinks: { title: 'เครื่องดื่ม', titleEm: '& ม็อกเทล', subtitle: 'น้ำผลไม้สด โซดา และม็อกเทลรสบาลานซ์ ดื่มง่ายทุกแก้ว' },
+  },
+  zh: {
+    coffee: { title: '咖啡', titleEm: '& 浓缩', subtitle: '每周新鲜烘焙精品豆，风味层次更干净、更稳定。' },
+    tea: { title: '茶饮', titleEm: '& 清爽特调', subtitle: '花草茶与季节冷饮，入口清爽，最适合海边午后。' },
+    breakfast: { title: '早餐', titleEm: '全天供应', subtitle: '从早到晚都能吃到的招牌早餐，轻松却不简单。' },
+    mains: { title: '主菜', titleEm: '& 海味', subtitle: '以当日新鲜食材为主角，口味平衡、份量满足。' },
+    sweets: { title: '甜点', titleEm: '& 收尾', subtitle: '自制甜点与时令水果，让每一餐都收得漂亮。' },
+    drinks: { title: '饮品', titleEm: '& 无酒精特调', subtitle: '鲜榨果汁与气泡特调，口感明亮、回味清爽。' },
+  },
+}
+
+const ITEM_COPY = {
+  th: {
+    '01': { name: 'โคลด์บรูว์ซันไรส์', badge: 'ซิกเนเจอร์', desc: 'สกัดเย็น 12 ชั่วโมง เสิร์ฟพร้อมไซรัปโฮมเมดและผิวส้ม' },
+    '02': { name: 'ซีบรีซลาเต้', desc: 'ดับเบิลเอสเพรสโซ นมสตีม และเกลือทะเลเล็กน้อย' },
+    '03': { name: 'เอสเพรสโซโทนิก', desc: 'เอสเพรสโซกับโทนิก น้ำแข็ง และมะนาวฝาน' },
+    '04': { name: 'พัวร์โอเวอร์ประจำสัปดาห์', desc: 'เมล็ดเดี่ยวคัดพิเศษ ชงมือทีละแก้ว' },
+    '05': { name: 'คาปูชิโน', desc: 'สูตรคลาสสิก 1:1:1 เสิร์ฟร้อนขนาดพอดี' },
+    '06': { name: 'กาแฟเย็นไทย', desc: 'เข้ม หอม หวาน ในสไตล์ไทยแท้' },
+    '07': { name: 'มัทฉะเซเรนิตี้', badge: 'ซิกเนเจอร์', desc: 'มัทฉะเกรดพิธีการเข้มข้น ผสมนมโอ๊ตเนียนนุ่มและน้ำผึ้งดิบ' },
+    '08': { name: 'โคโคนัทแพนดานคูลเลอร์', desc: 'น้ำมะพร้าวผสมใบเตย มะนาว และมินต์' },
+    '09': { name: 'บัตเตอร์ฟลายเลมอนเนด', desc: 'อัญชัน โซดา เลมอน เปลี่ยนสีได้' },
+    '10': { name: 'เอิร์ลเกรย์โฟม', desc: 'ชาเอิร์ลเกรย์สกัดเย็น ท็อปครีมเค็มนุ่ม' },
+    '11': { name: 'เพียร์เบรกฟาสต์เพลต', badge: 'ซิกเนเจอร์', desc: 'เซ็ตยอดนิยมครบจบในจานเดียว ไข่ ซาวโดว์ อะโวคาโด และแซลมอนรมควัน' },
+    '12': { name: 'โคโคนัทกราโนล่าโบวล์', desc: 'กราโนล่าโฮมเมด โยเกิร์ตมะพร้าว ผลไม้ตามฤดูกาล' },
+    '13': { name: 'เอ้กเบเนดิกต์', desc: 'ไข่ลวก ขนมปังบริยอช แฮม และซอสฮอลแลนเดส' },
+    '14': { name: 'โจ๊กกุ้ง', desc: 'กุ้งสด ขิง กระเทียมเจียว และไข่ลวก' },
+    '15': { name: 'ปลากะพงย่าง', badge: 'ซิกเนเจอร์', desc: 'ปลากะพงย่างทั้งตัว หอมเนยสมุนไพร เสิร์ฟพร้อมมันฝรั่งและสลัดสด' },
+    '16': { name: 'พาสตากุ้งเพียร์', desc: 'กุ้งลายเสือ มะเขือเทศเชอร์รี กระเทียม พริก และลิงกวีนี' },
+    '17': { name: 'โบวล์ปลากะเพรา', desc: 'ปลากะพงทอด กะเพรา ข้าวหอมมะลิ และไข่ดาว' },
+    '18': { name: 'ริซอตโตเห็ด', desc: 'พอร์ชินี เห็ดนางรม พาร์เมซาน และทรัฟเฟิลออยล์' },
+    '19': { name: 'บีชบาร์บีคิวเพลต', desc: 'รวมย่าง ไก่ ข้าวโพด มันหวาน และสลอว์' },
+    '20': { name: 'ส้มตำโบวล์', desc: 'มะละกอ ถั่วลิสง กุ้งแห้ง มะเขือเทศ และน้ำยำมะนาว' },
+    '21': { name: 'โคโคนัทพานาคอตตา', badge: 'ซิกเนเจอร์', desc: 'พานาคอตตาเนื้อเนียน หอมใบมะกรูด ตัดรสด้วยซอสมะม่วง' },
+    '22': { name: 'ไทยทีเครมบรูเล', desc: 'คัสตาร์ดชาไทย หน้าน้ำตาลคาราเมลกรอบ' },
+    '23': { name: 'บานาน่าฟอสเตอร์วาฟเฟิล', desc: 'วาฟเฟิลบริยอช กล้วยคาราเมล และครีมวานิลลา' },
+    '24': { name: 'ผลไม้ตามฤดูกาล', desc: 'ผลไม้สดประจำวัน เสิร์ฟพร้อมโยเกิร์ตน้ำผึ้ง' },
+    '25': { name: 'เพียร์เลมอนเนด', badge: 'ซิกเนเจอร์', desc: 'เลมอนเนดโฮมเมดซาบซ่า สดชื่นด้วยมินต์และโซดา' },
+    '26': { name: 'กรีนแมงโก้โซดา', desc: 'มะม่วงเขียวคั้นสด ไซรัปขิง และโซดา' },
+    '27': { name: 'มะพร้าวอ่อน', desc: 'เสิร์ฟทั้งลูก พร้อมช้อนและหลอด' },
+    '28': { name: 'วอเตอร์เมลอนฟิซ', desc: 'แตงโมสด มะนาว เม็ดแมงลัก และโซดาลิ้นจี่' },
+    '29': { name: 'ส้มขิงคั้นสด', desc: 'คั้นสด ไม่เติมน้ำตาล เสิร์ฟพร้อมน้ำแข็ง' },
+    '30': { name: 'น้ำแร่ซ่า', desc: 'Perrier หรือ S.Pellegrino ขนาด 330ml' },
+  },
+  zh: {
+    '01': { name: '日出冷萃', badge: '招牌', desc: '12 小时冷萃，搭配自制糖浆与橙皮。' },
+    '02': { name: '海风拿铁', desc: '双份浓缩、蒸奶与一抹海盐。' },
+    '03': { name: '浓缩汤力', desc: '浓缩咖啡加入汤力水、冰块与青柠。' },
+    '04': { name: '本周手冲', desc: '每周单品豆，由咖啡师手冲。' },
+    '05': { name: '卡布奇诺', desc: '经典 1:1:1 配比，小杯热饮。' },
+    '06': { name: '泰式冰咖啡', desc: '浓郁香甜，经典泰式风味。' },
+    '07': { name: '静谧抹茶', badge: '招牌', desc: '仪式级抹茶搭配燕麦奶与生蜂蜜，香气更圆润。' },
+    '08': { name: '斑斓椰香清饮', desc: '斑斓浸泡椰子水、青柠与薄荷。' },
+    '09': { name: '蝶豆花柠檬汽水', desc: '蝶豆花、苏打与柠檬，颜色会变化。' },
+    '10': { name: '伯爵奶盖', desc: '冷泡伯爵茶，咸奶盖。' },
+    '11': { name: 'Pier 早餐拼盘', badge: '招牌', desc: '店内高人气早餐拼盘，一份就能满足早午餐需求。' },
+    '12': { name: '椰香格兰诺拉碗', desc: '自制麦片、椰子酸奶与时令水果。' },
+    '13': { name: '班尼迪克蛋', desc: '水波蛋、布里欧修、火腿与荷兰酱。' },
+    '14': { name: '鲜虾粥', desc: '鲜虾、姜、蒜酥与溏心蛋。' },
+    '15': { name: '香烤海鲈', badge: '招牌', desc: '整尾海鲈搭配柠檬香草黄油，鲜味层次更突出。' },
+    '16': { name: 'Pier 大虾意面', desc: '虎虾、樱桃番茄、蒜香辣味与罗勒油。' },
+    '17': { name: '罗勒鱼饭碗', desc: '脆煎海鲈配圣罗勒、茉莉香米与煎蛋。' },
+    '18': { name: '蘑菇烩饭', desc: '牛肝菌、平菇、帕玛森与松露油。' },
+    '19': { name: '海滩烧烤拼盘', desc: '烤鸡腿、玉米、红薯、卷心菜沙拉。' },
+    '20': { name: '青木瓜沙拉碗', desc: '青木瓜、花生、虾米与青柠酱汁。' },
+    '21': { name: '椰子奶冻', badge: '招牌', desc: '细腻椰香奶冻，配芒果酱与芝麻脆片，清爽不腻。' },
+    '22': { name: '泰奶焦糖布蕾', desc: '泰式奶茶风味布蕾，焦糖脆面。' },
+    '23': { name: '香蕉焦糖华夫', desc: '布里欧修华夫、焦糖香蕉与香草奶油。' },
+    '24': { name: '时令水果盘', desc: '当日新鲜水果，搭配蜂蜜酸奶蘸酱。' },
+    '25': { name: 'Pier 柠檬汽水', badge: '招牌', desc: '自制柠檬糖浆与气泡感平衡，入口明快。' },
+    '26': { name: '青芒果苏打', desc: '青芒鲜榨、姜糖浆与气泡水。' },
+    '27': { name: '椰青', desc: '整颗上桌，附吸管与小勺。' },
+    '28': { name: '西瓜气泡饮', desc: '西瓜、青柠、罗勒籽与荔枝汽水。' },
+    '29': { name: '鲜橙姜汁', desc: '冷压鲜榨，无添加糖。' },
+    '30': { name: '气泡矿泉水', desc: 'Perrier 或 S.Pellegrino 330ml。' },
+  },
+}
+
+const FEATURED_COPY = {
+  en: [
+    { name: 'Singapore Chicken Rice & Hainanese Chicken Rice', sub: 'A classic chicken rice', price: '฿150-฿670' },
+    { name: 'PANG Signature', sub: 'Matcha x Khao Lam Latte', price: '฿179' },
+    { name: 'DIRTY COFFEE', sub: 'LIMITED EDITION : COFFEE', price: '฿130' },
+  ],
+  th: [
+    { name: 'Singapore Chicken Rice & Hainanese Chicken Rice', sub: 'A classic chicken rice', price: '฿150-฿670' },
+    { name: 'PANG Signature', sub: 'Matcha x Khao Lam Latte', price: '฿179' },
+    { name: 'DIRTY COFFEE', sub: 'LIMITED EDITION : COFFEE', price: '฿130' },
+  ],
+  zh: [
+    { name: 'Singapore Chicken Rice & Hainanese Chicken Rice', sub: 'A classic chicken rice', price: '฿150-฿670' },
+    { name: 'PANG Signature', sub: '门店特调配方，层次丰富、顺口耐喝', price: '฿179' },
+    { name: 'DIRTY COFFEE', sub: 'LIMITED EDITION : COFFEE', price: '฿130' },
+  ],
+}
+
+function localizeMenuData(data, lang) {
+  if (!ITEM_COPY[lang] && !SECTION_COPY[lang]) return data
+  return data.map((section) => {
+    const sectionCopy = SECTION_COPY[lang]?.[section.cat] || {}
+    return {
+      ...section,
+      ...sectionCopy,
+      items: section.items.map((item) => ({
+        ...item,
+        ...(ITEM_COPY[lang]?.[item.num] || {}),
+      })),
+    }
+  })
+}
+
 export default function Menu() {
   const { lang } = useLanguage()
   const tabs = lang === 'th'
@@ -126,6 +245,8 @@ export default function Menu() {
       ? { title: 'Menu — Love Pier Beach Cafe', menu: '菜单', hero: '用心制作\n与海相伴', desc: '我们的菜单根据当季食材与每日新鲜度持续调整。', specials: '今日推荐', chef: '主厨精选\n当季限定' }
       : { title: 'Menu — Love Pier Beach Cafe', menu: 'The Menu', hero: 'Crafted with\nthe sea in mind', desc: "Every drink and dish is built around what's fresh right now.", specials: "Today's Specials", chef: "Chef's choice\nof the season" }
   const [activeTab, setActiveTab] = useState(null)
+  const menuData = localizeMenuData(MENU_DATA, lang)
+  const featured = FEATURED_COPY[lang] || FEATURED_COPY.en
 
   return (
     <>
@@ -158,7 +279,7 @@ export default function Menu() {
       </div>
 
       {/* Menu sections */}
-      {MENU_DATA.map(section => (
+      {menuData.map(section => (
         (!activeTab || activeTab === section.cat) && (
           <MenuSection key={section.cat} {...section} />
         )
@@ -170,9 +291,9 @@ export default function Menu() {
         <h2 className="font-display font-light leading-[1.1] mb-12 max-w-[800px] text-[clamp(36px,5vw,60px)]">{t.chef.split('\n').map((l,i)=><span key={i}>{l}{i===0?<br/>:null}</span>)}</h2>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
           {[
-            { img:'https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=600&q=80', name:'Grilled Sea Bass', sub:'Whole, lemon, herbs', price:'฿420' },
-            { img:'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600&q=80', name:'Weekend Brunch Plate', sub:'Sat–Sun only · until 14:00', price:'฿380' },
-            { img:'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&q=80', name:'Caramel Sea Salt Latte', sub:'Limited edition · May', price:'฿150' },
+            { img:'/uploads/grilled-sea-bass-custom.png', ...featured[0] },
+            { img:'/uploads/weekend-brunch-custom.png', ...featured[1] },
+            { img:'/uploads/caramel-sea-salt-custom.png', ...featured[2] },
           ].map(({ img, name, sub, price }) => (
             <div key={name} className="group flex flex-col gap-3">
               {/* eslint-disable-next-line @next/next/no-img-element */}

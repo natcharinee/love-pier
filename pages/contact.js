@@ -85,14 +85,14 @@ export default function Contact() {
           <p className="mt-6 text-sm text-[#666] leading-[1.9] font-light max-w-[420px]">{t.intro}</p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
-          <a href="tel:+6632123456" className="flex flex-col gap-2 p-8 bg-white border border-black/10 hover:bg-[#fffdf6] hover:border-gold transition-all duration-200 sm:p-7">
+          <a href="tel:0642523293" className="flex flex-col gap-2 p-8 bg-white border border-black/10 hover:bg-[#fffdf6] hover:border-gold transition-all duration-200 sm:p-7">
             <span className="text-[10px] tracking-[0.3em] uppercase text-gold">{t.phone}</span>
-            <div className="font-display text-[22px] font-normal text-ink leading-[1.2]">+66 32 123 456</div>
+            <div className="font-display text-[22px] font-normal text-ink leading-[1.2]">064-252-3293</div>
             <div className="text-xs text-muted font-light mt-1">Open hours only</div>
           </a>
-          <a href="mailto:hello@lovepier.cafe" className="flex flex-col gap-2 p-8 bg-white border border-black/10 hover:bg-[#fffdf6] hover:border-gold transition-all duration-200 sm:p-7">
+          <a href="mailto:cafe.lovepier@gmail.com" className="flex flex-col gap-2 p-8 bg-white border border-black/10 hover:bg-[#fffdf6] hover:border-gold transition-all duration-200 sm:p-7">
             <span className="text-[10px] tracking-[0.3em] uppercase text-gold">{t.email}</span>
-            <div className="font-display text-[22px] font-normal text-ink leading-[1.2]">hello@lovepier.cafe</div>
+            <div className="font-display text-[22px] font-normal text-ink leading-[1.2]">cafe.lovepier@gmail.com</div>
             <div className="text-xs text-muted font-light mt-1">Reply within 24h</div>
           </a>
           <a href="#" className="flex flex-col gap-2 p-8 bg-white border border-black/10 hover:bg-[#fffdf6] hover:border-gold transition-all duration-200 sm:p-7">
@@ -178,7 +178,7 @@ export default function Contact() {
         <p className="text-sm text-[#777] mb-9 font-light">{t.followDesc}</p>
         <div className="flex justify-center gap-4 flex-wrap">
           <a href="#" className="flex items-center gap-3 px-6 py-3.5 border border-black/[0.12] text-[11px] tracking-[0.25em] uppercase text-[#555] hover:bg-ink hover:text-bg hover:border-ink transition-all duration-200"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor"/></svg>Instagram</a>
-          <a href="#" className="flex items-center gap-3 px-6 py-3.5 border border-black/[0.12] text-[11px] tracking-[0.25em] uppercase text-[#555] hover:bg-ink hover:text-bg hover:border-ink transition-all duration-200"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.5h2.5l.5-3h-3V8.5c0-.9.3-1.5 1.6-1.5H17V4.3c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4.1V10.5H8v3h2.5V21h3z"/></svg>Facebook</a>
+          <a href="https://www.facebook.com/profile.php?id=61590549024692" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 px-6 py-3.5 border border-black/[0.12] text-[11px] tracking-[0.25em] uppercase text-[#555] hover:bg-ink hover:text-bg hover:border-ink transition-all duration-200"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.5h2.5l.5-3h-3V8.5c0-.9.3-1.5 1.6-1.5H17V4.3c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4.1V10.5H8v3h2.5V21h3z"/></svg>Facebook</a>
           <a href="#" className="flex items-center gap-3 px-6 py-3.5 border border-black/[0.12] text-[11px] tracking-[0.25em] uppercase text-[#555] hover:bg-ink hover:text-bg hover:border-ink transition-all duration-200"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.5 3 2 6.6 2 11c0 4 3.6 7.3 8.5 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.6 1.1-.5 6-3.5 8.2-6 1.5-1.7 2.6-3.4 2.6-4.9 0-4.4-4.5-8-10-8z"/></svg>LINE Official</a>
           <a href="#" className="flex items-center gap-3 px-6 py-3.5 border border-black/[0.12] text-[11px] tracking-[0.25em] uppercase text-[#555] hover:bg-ink hover:text-bg hover:border-ink transition-all duration-200"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.8a4.3 4.3 0 0 1-2.6-1.6 4.3 4.3 0 0 1-.8-2.2h-3v12c0 1-.8 1.9-1.9 1.9a1.9 1.9 0 0 1-1.9-1.9c0-1 .8-1.9 1.9-1.9.2 0 .4 0 .6.1V9.1a5 5 0 0 0-.6 0 5 5 0 1 0 5 5V8.4a7.4 7.4 0 0 0 4.3 1.4V6.7a4.4 4.4 0 0 1-1-.9z"/></svg>TikTok</a>
         </div>
