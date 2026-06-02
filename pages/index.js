@@ -105,7 +105,7 @@ export default function Home() {
       </Head>
 
       {/* HERO HEADER */}
-      <header className="px-10 pt-12 pb-8 text-center reveal lg:px-10 md:px-5 sm:px-5">
+      <header className="px-4 pt-10 pb-7 text-center reveal sm:px-6 lg:px-10 lg:pt-12 lg:pb-8">
         <div className="text-[10px] tracking-[0.4em] uppercase text-muted mb-3">{t.city}</div>
         <h1 className="font-display font-light leading-[0.95] text-ink tracking-[-0.02em] text-[clamp(40px,7vw,88px)]">Love Pier<br/>Beach Cafe</h1>
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] mt-8 pt-5 border-t border-black/10 items-start gap-4 lg:gap-0">
@@ -139,7 +139,7 @@ export default function Home() {
         <img className="w-full aspect-[4/3] object-cover [filter:saturate(0.7)] hover:[filter:saturate(1)] transition-[filter] duration-500" src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=1000&q=80" alt="cafe" />
       </div>
 
-      <section className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] px-10 py-20 items-start reveal lg:px-10 sm:px-5 sm:py-16">
+      <section className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] px-4 py-14 items-start reveal sm:px-6 sm:py-16 lg:px-10 lg:py-20 gap-10 lg:gap-0">
         <div>
           <h2 className="font-display font-light leading-[0.92] text-ink tracking-[-0.02em] text-[clamp(40px,6vw,72px)]">Love<br/>Pier<br/><em className="italic text-gold">&amp; Coffee</em></h2>
           <Link href="/menu" className="mt-8 inline-flex items-center gap-3 text-[10px] tracking-[0.3em] uppercase text-[#666] after:content-['→'] after:text-sm after:transition-transform after:duration-200 hover:after:translate-x-1">{t.exploreMenu}</Link>
@@ -154,25 +154,25 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="relative w-full aspect-[16/8] overflow-hidden mt-[3px] reveal-img">
+      <div className="relative w-full aspect-[16/10] md:aspect-[16/8] overflow-hidden mt-[3px] reveal-img">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img className="w-full h-full object-cover [filter:brightness(0.55)_saturate(0.5)]" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600&q=85" alt="atmosphere" />
         <div className="absolute bottom-10 left-10 font-display font-light text-[rgba(255,255,255,0.85)] leading-[1.1] text-[clamp(28px,4vw,48px)] sm:bottom-6 sm:left-6" dangerouslySetInnerHTML={{ __html: t.where.replace(/\n/g, '<br/>') }} />
       </div>
 
-      <section className="bg-white px-10 py-16 reveal lg:px-10 sm:px-5">
+      <section className="bg-white px-4 py-14 reveal sm:px-6 sm:py-16 lg:px-10">
         <div className="mb-12">
           <span className="block text-[9px] tracking-[0.4em] uppercase text-[#bbb] mb-3">{t.numbers}</span>
           <h3 className="font-display font-light leading-[1.05] text-ink text-[clamp(28px,3.5vw,44px)]" dangerouslySetInnerHTML={{ __html: t.little.replace(/\n/g, '<br/>') }} />
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 border-t border-l border-[#eee]">
           <div className="px-8 py-10 border-r border-b border-[#eee] sm:px-6 sm:py-7">
-            <div className="font-display text-[56px] font-light text-ink leading-none tracking-[-0.02em]">200m</div>
+            <div className="font-display text-[44px] sm:text-[56px] font-light text-ink leading-none tracking-[-0.02em]">200m</div>
             <span className="block text-[10px] tracking-[0.25em] uppercase text-[#bbb] mt-2.5">{t.toShore}</span>
             <div className="text-[13px] text-[#777] mt-2.5 leading-relaxed font-light max-w-[220px]">{t.toShoreDesc}</div>
           </div>
           <div className="px-8 py-10 border-r border-b border-[#eee] sm:px-6 sm:py-7">
-            <div className="font-display text-[56px] font-light text-ink leading-none tracking-[-0.02em]">70+</div>
+            <div className="font-display text-[44px] sm:text-[56px] font-light text-ink leading-none tracking-[-0.02em]">70+</div>
             <span className="block text-[10px] tracking-[0.25em] uppercase text-[#bbb] mt-2.5">{t.menuItems}</span>
             <div className="text-[13px] text-[#777] mt-2.5 leading-relaxed font-light max-w-[220px]">{t.menuItemsDesc}</div>
           </div>
@@ -180,16 +180,16 @@ export default function Home() {
       </section>
 
       {/* Mosaic grid */}
-      <div className="grid gap-[3px] mt-[3px] reveal" style={{ gridTemplateColumns:'repeat(12,1fr)', gridTemplateRows:'280px 280px' }}>
-        <div className="overflow-hidden bg-[#e8e4de]" style={{ gridColumn:'span 7', gridRow:'span 2' }}><img className="w-full h-full object-cover [filter:saturate(0.6)] hover:[filter:saturate(0.9)] hover:scale-[1.03] transition-all duration-700" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1000&q=80" alt="beach" /></div>
-        <div className="overflow-hidden bg-[#e8e4de]" style={{ gridColumn:'span 5' }}><img className="w-full h-full object-cover [filter:saturate(0.6)] hover:[filter:saturate(0.9)] hover:scale-[1.03] transition-all duration-700" src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=600&q=80" alt="cafe" /></div>
-        <div className="overflow-hidden bg-[#e8e4de]" style={{ gridColumn:'span 3' }}><img className="w-full h-full object-cover [filter:saturate(0.6)] hover:[filter:saturate(0.9)] hover:scale-[1.03] transition-all duration-700" src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&q=80" alt="coffee" /></div>
-        <div className="overflow-hidden bg-[#e8e4de]" style={{ gridColumn:'span 2' }}><img className="w-full h-full object-cover [filter:saturate(0.6)] hover:[filter:saturate(0.9)] hover:scale-[1.03] transition-all duration-700" src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=400&q=80" alt="interior" /></div>
+      <div className="grid gap-[3px] mt-[3px] reveal grid-cols-1 md:grid-cols-2 lg:grid-cols-12 auto-rows-[220px] sm:auto-rows-[240px] lg:auto-rows-[280px]">
+        <div className="overflow-hidden bg-[#e8e4de] md:col-span-2 lg:col-span-7 lg:row-span-2"><img className="w-full h-full object-cover [filter:saturate(0.6)] hover:[filter:saturate(0.9)] hover:scale-[1.03] transition-all duration-700" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1000&q=80" alt="beach" /></div>
+        <div className="overflow-hidden bg-[#e8e4de] md:col-span-1 lg:col-span-5"><img className="w-full h-full object-cover [filter:saturate(0.6)] hover:[filter:saturate(0.9)] hover:scale-[1.03] transition-all duration-700" src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=600&q=80" alt="cafe" /></div>
+        <div className="overflow-hidden bg-[#e8e4de] md:col-span-1 lg:col-span-3"><img className="w-full h-full object-cover [filter:saturate(0.6)] hover:[filter:saturate(0.9)] hover:scale-[1.03] transition-all duration-700" src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&q=80" alt="coffee" /></div>
+        <div className="overflow-hidden bg-[#e8e4de] md:col-span-1 lg:col-span-2"><img className="w-full h-full object-cover [filter:saturate(0.6)] hover:[filter:saturate(0.9)] hover:scale-[1.03] transition-all duration-700" src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=400&q=80" alt="interior" /></div>
       </div>
 
       {/* Map section */}
       <div className="reveal">
-        <div className="w-full h-80 bg-[#dedad3] relative overflow-hidden">
+        <div className="w-full h-72 sm:h-80 bg-[#dedad3] relative overflow-hidden">
           <div className="absolute inset-0" style={{ backgroundImage:'linear-gradient(rgba(0,0,0,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,0.06) 1px,transparent 1px)', backgroundSize:'40px 40px' }}></div>
           <svg style={{ position:'absolute', inset:0, width:'100%', height:'100%', opacity:0.5 }} viewBox="0 0 1200 320" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
             <line x1="0" y1="120" x2="1200" y2="120" stroke="white" strokeWidth="8" opacity="0.6"/>
@@ -203,13 +203,13 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Open Love Pier Beach Cafe in Google Maps"
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-2 group"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-2 group max-w-[90vw]"
           >
             <div className="w-5 h-5 rounded-full bg-ink group-hover:scale-110 transition-transform" style={{ boxShadow:'0 0 0 6px rgba(26,26,26,0.12),0 0 0 12px rgba(26,26,26,0.06)' }}></div>
-            <div className="text-[11px] tracking-[0.2em] uppercase text-[#444] bg-[rgba(245,243,239,0.9)] px-3 py-1 group-hover:bg-[rgba(245,243,239,1)] transition-colors">Love Pier Beach Cafe</div>
+            <div className="text-[10px] sm:text-[11px] tracking-[0.16em] sm:tracking-[0.2em] uppercase text-[#444] bg-[rgba(245,243,239,0.9)] px-3 py-1 group-hover:bg-[rgba(245,243,239,1)] transition-colors text-center">Love Pier Beach Cafe</div>
           </a>
         </div>
-        <div className="bg-bg border-t border-black/10 px-10 py-7 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_auto] gap-10 items-start sm:px-5 sm:gap-6">
+        <div className="bg-bg border-t border-black/10 px-4 py-7 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_auto] gap-8 lg:gap-10 items-start sm:px-6">
           <div>
             <span className="block text-[9px] tracking-[0.35em] uppercase text-[#bbb] mb-2">{t.address}</span>
             <div className="text-[13px] text-[#444] leading-[1.7] font-light">{renderLines(t.addressValue)}</div>

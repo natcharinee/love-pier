@@ -48,3 +48,22 @@ textarea.res-input, textarea.c-input { resize: vertical; min-height: 80px; }
 .g-tile:hover img { transform: scale(1.04); filter: saturate(0.95); }
 .g-tile-caption { position: absolute; inset: auto 0 0 0; padding: 14px 16px; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); color: #f5f3ef; font-family: 'Cormorant Garamond', serif; font-size: 16px; font-weight: 300; opacity: 0; transition: opacity 0.3s; }
 .g-tile:hover .g-tile-caption { opacity: 1; }
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.gallery-item {
+  grid-column: span var(--mcol, 1);
+  grid-row: span var(--mrow, 1);
+}
+
+@media (min-width: 768px) {
+  .gallery-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+  .gallery-item {
+    grid-column: span var(--col, 3);
+    grid-row: span var(--row, 1);
+  }
+}

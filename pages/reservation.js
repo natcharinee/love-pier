@@ -68,17 +68,17 @@ export default function Reservation() {
 
       <section className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] min-h-screen border-b border-black/10">
         {/* Image side */}
-        <div className="relative overflow-hidden aspect-[16/10] lg:aspect-auto reveal-img">
+        <div className="relative overflow-hidden aspect-[16/11] sm:aspect-[16/10] lg:aspect-auto reveal-img">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img className="w-full h-full object-cover [filter:saturate(0.7)]" src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=900&q=85" alt="cafe interior" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent"></div>
-          <div className="absolute bottom-10 left-10 text-bg max-w-[80%] sm:bottom-6 sm:left-6">
+          <div className="absolute bottom-6 left-4 sm:bottom-6 sm:left-6 lg:bottom-10 lg:left-10 text-bg max-w-[85%] sm:max-w-[80%]">
             <span className="block text-[10px] tracking-[0.4em] uppercase text-[rgba(245,243,239,0.6)] mb-3">{t.heroTag}</span>
             <h1 className="font-display font-light leading-none tracking-[-0.02em] text-[clamp(40px,5vw,60px)]">{t.heroTitle.split('\n').map((l,i)=><span key={i}>{l}{i===0?<br/>:null}</span>)}</h1>
           </div>
         </div>
         {/* Form side */}
-        <div className="px-16 py-20 flex flex-col justify-center reveal sm:px-6 sm:py-12">
+        <div className="px-4 py-12 flex flex-col justify-center reveal sm:px-6 sm:py-12 lg:px-16 lg:py-20">
           <div className="text-[10px] tracking-[0.4em] uppercase text-gold mb-4">{t.step}</div>
           <h2 className="font-display font-light mb-3 leading-[1.1] text-[clamp(32px,3.5vw,44px)]">{t.formTitle.split('\n').map((l,i)=><span key={i}>{l}{i===0?<br/>:null}</span>)}</h2>
           <p className="text-[13px] text-[#777] font-light mb-10 leading-[1.7] max-w-[420px]">{t.intro}</p>
@@ -156,7 +156,7 @@ export default function Reservation() {
       </section>
 
       {/* Policy strip */}
-      <section className="bg-white px-10 py-16 border-b border-black/10 reveal sm:px-6 sm:py-12">
+      <section className="bg-white px-4 py-12 border-b border-black/10 reveal sm:px-6 sm:py-12 lg:px-10 lg:py-16">
         <h3 className="font-display font-light mb-8 text-[clamp(28px,3vw,40px)]">{t.fine}</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-7">
           {[

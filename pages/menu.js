@@ -5,24 +5,24 @@ import { useLanguage } from '../lib/language'
 
 function MenuItem({ num, name, badge, desc, price }) {
   return (
-    <div className="grid grid-cols-[60px_1fr_auto] gap-5 py-6 border-b border-dashed border-black/[0.08] items-start cursor-pointer">
+    <div className="grid grid-cols-[44px_1fr_auto] sm:grid-cols-[60px_1fr_auto] gap-3 sm:gap-5 py-5 sm:py-6 border-b border-dashed border-black/[0.08] items-start cursor-pointer">
       <span className="text-[10px] tracking-[0.25em] text-[#bbb] pt-1">{num}</span>
       <div>
-        <div className="font-display text-[22px] font-light text-ink leading-[1.1]">
+        <div className="font-display text-[20px] sm:text-[22px] font-light text-ink leading-[1.1]">
           {name}{badge && <span className="font-sans text-[9px] tracking-[0.25em] text-gold uppercase ml-2 align-middle">{badge}</span>}
         </div>
         <div className="text-xs text-muted mt-1.5 leading-relaxed font-light">{desc}</div>
       </div>
-      <div className="font-display text-[22px] text-gold whitespace-nowrap pt-0.5">{price}</div>
+      <div className="font-display text-[20px] sm:text-[22px] text-gold whitespace-nowrap pt-0.5">{price}</div>
     </div>
   )
 }
 
 function MenuSection({ num, cat, title, titleEm, subtitle, items, bg }) {
   return (
-    <section className={`px-10 py-20 border-b border-black/10 reveal sm:px-6 sm:py-14${bg ? ' bg-white' : ''}`} data-cat={cat}>
-      <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-16 mb-16 sm:gap-4 sm:mb-9">
-        <div><div className="font-display text-[80px] text-black/[0.08] leading-none font-light sm:text-5xl">{num}</div></div>
+    <section className={`px-4 py-14 border-b border-black/10 reveal sm:px-6 sm:py-14 lg:px-10 lg:py-20${bg ? ' bg-white' : ''}`} data-cat={cat}>
+      <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-8 lg:gap-16 mb-10 lg:mb-16 sm:gap-4 sm:mb-9">
+        <div><div className="font-display text-6xl lg:text-[80px] text-black/[0.08] leading-none font-light sm:text-5xl">{num}</div></div>
         <div>
           <h2 className="font-display font-light leading-[1.05] text-ink text-[clamp(36px,4vw,52px)]">{title} <em className="italic text-gold">{titleEm}</em></h2>
           <p className="text-sm text-[#777] leading-[1.8] font-light mt-3.5 max-w-[540px]">{subtitle}</p>
@@ -262,7 +262,7 @@ export default function Menu() {
 
       {/* Menu Hero */}
       <section className="grid grid-cols-1 lg:grid-cols-2 border-b border-black/10 reveal">
-        <div className="px-16 py-20 flex flex-col justify-center sm:px-6 sm:py-12">
+        <div className="px-4 py-12 flex flex-col justify-center sm:px-6 sm:py-12 lg:px-16 lg:py-20">
           <span className="text-[10px] tracking-[0.4em] uppercase text-muted mb-4 block">{t.menu}</span>
           <h1 className="font-display font-light leading-[0.95] text-ink tracking-[-0.02em] mb-5 text-[clamp(48px,6vw,76px)]">{t.hero.split('\n').map((l,i)=><span key={i}>{l}{i===0?<br/>:null}</span>)}</h1>
           <p className="text-[15px] leading-[1.9] text-[#555] font-light max-w-[480px]">{t.desc}</p>
@@ -272,7 +272,7 @@ export default function Menu() {
       </section>
 
       {/* Category tabs */}
-      <div className="flex gap-7 px-10 py-8 border-b border-black/10 overflow-x-auto [scrollbar-width:none] bg-white sticky top-[67px] z-50 reveal sm:px-6 sm:py-5 sm:gap-4 sm:top-[60px]">
+      <div className="flex gap-5 lg:gap-7 px-4 py-5 lg:py-8 border-b border-black/10 overflow-x-auto [scrollbar-width:none] bg-white sticky top-[61px] lg:top-[67px] z-50 reveal sm:px-6 sm:gap-4">
         {tabs.map(({ label, cat }) => (
           <button
             key={label}
@@ -292,7 +292,7 @@ export default function Menu() {
       ))}
 
       {/* Featured */}
-      <section className="bg-ink text-bg px-10 py-20 reveal sm:px-6 sm:py-14">
+      <section className="bg-ink text-bg px-4 py-14 reveal sm:px-6 sm:py-14 lg:px-10 lg:py-20">
         <div className="text-[10px] tracking-[0.4em] uppercase text-gold mb-4">{t.specials}</div>
         <h2 className="font-display font-light leading-[1.1] mb-12 max-w-[800px] text-[clamp(36px,5vw,60px)]">{t.chef.split('\n').map((l,i)=><span key={i}>{l}{i===0?<br/>:null}</span>)}</h2>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">

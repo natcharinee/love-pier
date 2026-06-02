@@ -62,14 +62,14 @@ export default function Location() {
       </Head>
 
       {/* Page header */}
-      <header className="px-10 pt-16 pb-10 text-center border-b border-black/10 reveal sm:px-5 sm:pt-10 sm:pb-7">
+      <header className="px-4 pt-12 pb-8 text-center border-b border-black/10 reveal sm:px-6 lg:px-10 lg:pt-16 lg:pb-10">
         <div className="text-[10px] tracking-[0.4em] uppercase text-muted mb-3">{t.find}</div>
         <h1 className="font-display font-light leading-[0.95] text-ink tracking-[-0.02em] text-[clamp(48px,7vw,88px)]">{renderLines(t.hero)}</h1>
         <p className="mt-4 text-sm text-[#666] font-light max-w-[580px] mx-auto leading-[1.8]">{t.sub}</p>
       </header>
 
       {/* Big map (iframe) */}
-      <div className="w-full h-[540px] bg-[#dedad3] relative overflow-hidden border-b border-black/10 reveal sm:h-[360px]">
+      <div className="w-full h-[420px] lg:h-[540px] bg-[#dedad3] relative overflow-hidden border-b border-black/10 reveal sm:h-[360px]">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2189!2d100.9272293!3d13.2520411!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3102b54b8ceda3d5%3A0x6dad4e501d5d1adf!2sLOVE%20PIER%20BEACH%20CAFE!5e1!3m2!1sth!2sth!4v1716000000000"
           style={{ position:'absolute', inset:0, width:'100%', height:'100%', border:0, filter:'saturate(0.7) contrast(1.05)' }}
@@ -81,7 +81,7 @@ export default function Location() {
       </div>
 
       {/* Info bar */}
-      <div className="bg-bg px-10 py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 border-b border-black/10 reveal sm:px-6 sm:py-7 sm:gap-6">
+      <div className="bg-bg px-4 py-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 border-b border-black/10 reveal sm:px-6 sm:py-7 sm:gap-6">
         <div>
           <h4 className="text-[10px] tracking-[0.4em] uppercase text-gold mb-3">{t.address}</h4>
           <p className="text-sm text-ink leading-[1.7] font-light">{renderLines(t.addressVal)}<br/><span className="text-muted text-xs">Thailand</span></p>
@@ -93,8 +93,8 @@ export default function Location() {
         <div>
           <h4 className="text-[10px] tracking-[0.4em] uppercase text-gold mb-3">{t.phone}</h4>
           <p className="text-sm text-ink leading-[1.7] font-light">
-            <a href="tel:+6632123456" className="hover:text-gold transition-colors">+66 32 123 456</a><br/>
-            <a href="mailto:hello@lovepier.cafe" className="hover:text-gold transition-colors">hello@lovepier.cafe</a><br/>
+            <a href="tel:0642523293" className="hover:text-gold transition-colors">064-252-3293</a><br/>
+            <a href="mailto:cafe.lovepier@gmail.com" className="hover:text-gold transition-colors">cafe.lovepier@gmail.com</a><br/>
             <span className="text-muted text-xs">LINE: @lovepier</span>
           </p>
         </div>
@@ -108,7 +108,7 @@ export default function Location() {
       </div>
 
       {/* Directions */}
-      <section className="px-10 py-20 grid grid-cols-1 lg:grid-cols-2 gap-20 border-b border-black/10 reveal sm:px-6 sm:py-14 sm:gap-12">
+      <section className="px-4 py-14 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 border-b border-black/10 reveal sm:px-6 sm:py-14 sm:gap-12 lg:px-10 lg:py-20">
         <div>
           <h2 className="font-display font-light mb-6 leading-[1.05] text-[clamp(36px,4.5vw,56px)]">{renderLines(t.how)}</h2>
           <p className="text-sm text-[#555] leading-[1.9] font-light mb-8 max-w-[480px]">{t.howSub}</p>
@@ -136,7 +136,7 @@ export default function Location() {
       </section>
 
       {/* Parking strip */}
-      <section className="bg-ink text-bg px-10 py-20 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center reveal sm:px-6 sm:py-14 sm:gap-9">
+      <section className="bg-ink text-bg px-4 py-14 grid grid-cols-1 lg:grid-cols-2 gap-9 lg:gap-16 items-center reveal sm:px-6 sm:py-14 lg:px-10 lg:py-20">
         <div className="reveal-img">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img className="w-full aspect-[4/3] object-cover [filter:saturate(0.55)_brightness(0.8)]" src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=900&q=80" alt="exterior" />

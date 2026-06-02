@@ -16,17 +16,17 @@ export default function About() {
       </Head>
 
       {/* Story hero */}
-      <section className="relative h-[70vh] min-h-[480px] overflow-hidden border-b border-black/10 reveal-img">
+      <section className="relative h-[62vh] lg:h-[70vh] min-h-[420px] lg:min-h-[480px] overflow-hidden border-b border-black/10 reveal-img">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img className="w-full h-full object-cover [filter:saturate(0.6)_brightness(0.85)]" src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1600&q=85" alt="story hero" />
-        <div className="absolute inset-0 flex flex-col justify-end p-16 text-bg lg:p-16 sm:p-6">
+        <div className="absolute inset-0 flex flex-col justify-end p-4 sm:p-6 lg:p-16 text-bg">
           <div className="text-[10px] tracking-[0.4em] uppercase text-[rgba(245,243,239,0.6)] mb-4">{t.story}</div>
           <h1 className="font-display font-light leading-[0.9] tracking-[-0.03em] max-w-[1000px] text-[clamp(56px,8vw,110px)]">{t.hero.split('\n').map((l,i)=><span key={i}>{l}{i===0?<br/>:null}</span>)}</h1>
         </div>
       </section>
 
       {/* Story intro */}
-      <section className="px-10 py-24 grid grid-cols-1 lg:grid-cols-2 gap-24 items-start border-b border-black/10 reveal lg:px-10 sm:px-6 sm:py-16 sm:gap-8">
+      <section className="px-4 py-16 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-24 items-start border-b border-black/10 reveal sm:px-6 sm:py-16 sm:gap-8 lg:px-10 lg:py-24">
         <div className="font-display font-light leading-[1.35] text-ink tracking-[-0.01em] text-[clamp(28px,3vw,38px)]">
           <em className="italic text-gold">Love Pier</em> started with one decision: that the sea should be louder than the coffee machine. Everything else followed.
         </div>
@@ -38,12 +38,12 @@ export default function About() {
       </section>
 
       {/* Timeline */}
-      <section className="px-10 py-24 border-b border-black/10 bg-white reveal lg:px-10 sm:px-6 sm:py-16">
+      <section className="px-4 py-16 border-b border-black/10 bg-white reveal sm:px-6 sm:py-16 lg:px-10 lg:py-24">
         <div className="mb-16">
           <span className="block text-[10px] tracking-[0.4em] uppercase text-muted mb-3">{t.brief}</span>
           <h2 className="font-display font-light leading-[1.05] text-[clamp(36px,4.5vw,56px)]">{t.timeline}</h2>
         </div>
-        <div className="grid" style={{ gridTemplateColumns:'80px 1fr' }}>
+        <div className="grid grid-cols-[64px_1fr] sm:grid-cols-[80px_1fr]">
           {[
             { year:'2017', title:'The doors opened', text:'A small cafe with eleven menu items, twenty seats, and a hand-painted sign. We served thirty-four people on our first day. We remember every one of them.', img:'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&q=80' },
             { year:'2019', title:'The terrace was built', text:'We added the outdoor terrace overlooking the beach road. It was supposed to seat twelve. On most evenings it seats twenty-five, depending on how friendly the crowd is.', img:'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80' },
@@ -67,7 +67,7 @@ export default function About() {
       </section>
 
       {/* Values */}
-      <section className="px-10 py-24 bg-ink text-bg reveal lg:px-10 sm:px-6 sm:py-16">
+      <section className="px-4 py-16 bg-ink text-bg reveal sm:px-6 sm:py-16 lg:px-10 lg:py-24">
         <div className="flex justify-between items-end mb-16 gap-10 flex-wrap">
           <h2 className="font-display font-light leading-[1.05] text-[clamp(36px,4.5vw,60px)]">{t.values}</h2>
           <p className="text-[13px] text-[rgba(245,243,239,0.5)] max-w-xs leading-[1.8]">Four things hold steady, no matter how busy the season. They show up in every cup we pour and every plate we send out.</p>
@@ -81,8 +81,8 @@ export default function About() {
             { n:'05', title:'Hire kind people', text:'Skills can be taught. Warmth cannot. Our team is small for a reason — we work with people we want to work with.' },
             { n:'06', title:'Care for the coast', text:'1% of every coffee sold goes to local beach cleanup. We pick up after ourselves; we pick up after others when needed.' },
           ].map(({ n, title, text }) => (
-            <div key={n} className="px-8 py-10 border-r border-b border-[rgba(255,255,255,0.08)]">
-              <div className="font-display text-[56px] font-light text-gold leading-none tracking-[-0.02em]">{n}</div>
+            <div key={n} className="px-6 py-8 sm:px-8 sm:py-10 border-r border-b border-[rgba(255,255,255,0.08)]">
+              <div className="font-display text-[44px] sm:text-[56px] font-light text-gold leading-none tracking-[-0.02em]">{n}</div>
               <h4 className="font-display text-[22px] font-light mt-4 mb-2.5">{title}</h4>
               <p className="text-[13px] text-[rgba(245,243,239,0.6)] leading-[1.8] font-light">{text}</p>
             </div>
@@ -91,7 +91,7 @@ export default function About() {
       </section>
 
       {/* Pull quote */}
-      <section className="bg-white px-16 py-24 text-center reveal sm:px-6 sm:py-16">
+      <section className="bg-white px-4 py-16 text-center reveal sm:px-6 sm:py-16 lg:px-16 lg:py-24">
         <blockquote className="font-display font-light leading-[1.3] text-ink tracking-[-0.01em] max-w-[900px] mx-auto text-[clamp(28px,3.5vw,44px)]">
           &ldquo;<em className="italic text-gold">The sea</em> doesn&rsquo;t care if it&rsquo;s a busy Tuesday. Neither, in our best moments, do we.&rdquo;
         </blockquote>
@@ -99,7 +99,7 @@ export default function About() {
       </section>
 
       {/* Team */}
-      <section className="px-10 py-24 border-b border-black/10 reveal lg:px-10 sm:px-6 sm:py-16">
+      <section className="px-4 py-16 border-b border-black/10 reveal sm:px-6 sm:py-16 lg:px-10 lg:py-24">
         <div className="mb-14">
           <h2 className="font-display font-light leading-[1.05] text-[clamp(36px,4.5vw,56px)]">{t.people}</h2>
         </div>

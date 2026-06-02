@@ -66,15 +66,15 @@ export default function MenuOverlay({ isOpen, onClose }) {
   return (
     <div className={`menu-overlay${isOpen ? ' is-open' : ''}`} aria-hidden={!isOpen}>
       {/* top bar */}
-      <div className="px-10 py-[14px] flex items-center justify-between border-b border-white/[0.08]">
+      <div className="px-4 py-3 sm:px-6 lg:px-10 lg:py-[14px] flex items-center justify-between border-b border-white/[0.08] gap-3">
         <Link href="/" onClick={onClose}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/uploads/logo-8dc1f126.png" alt="Love Pier" className="h-11 block" style={{ filter: 'invert(1) brightness(2) opacity(0.85)' }} />
+          <img src="/uploads/logo-8dc1f126.png" alt="Love Pier" className="h-9 sm:h-10 lg:h-11 block" style={{ filter: 'invert(1) brightness(2) opacity(0.85)' }} />
         </Link>
-        <button onClick={onClose} className="bg-transparent border border-white/[0.15] w-[38px] h-[38px] flex items-center justify-center text-white/70 text-lg hover:border-white hover:text-white transition-colors" aria-label="Close menu">✕</button>
+        <button onClick={onClose} className="bg-transparent border border-white/[0.15] w-9 h-9 sm:w-[38px] sm:h-[38px] flex items-center justify-center text-white/70 text-lg hover:border-white hover:text-white transition-colors shrink-0" aria-label="Close menu">✕</button>
       </div>
       {/* body */}
-      <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 items-center p-8 lg:p-10 gap-10 lg:gap-20 overflow-y-auto">
+      <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 items-center p-5 sm:p-7 lg:p-10 gap-8 lg:gap-20 overflow-y-auto">
         <nav className="flex flex-col gap-1">
           {dict.navItems.map((item, i) => (
             <Link
@@ -88,7 +88,7 @@ export default function MenuOverlay({ isOpen, onClose }) {
             </Link>
           ))}
         </nav>
-        <aside className="border-t border-white/[0.08] pt-8 lg:border-t-0 lg:border-l lg:border-white/[0.08] lg:pl-16 flex flex-col gap-8">
+        <aside className="border-t border-white/[0.08] pt-6 sm:pt-8 lg:border-t-0 lg:border-l lg:border-white/[0.08] lg:pl-16 flex flex-col gap-7 sm:gap-8">
           <div>
             <h4 className="text-[10px] tracking-[0.35em] uppercase text-white/40 mb-2.5">{dict.visit}</h4>
             <p className="text-[13px] text-white/70 leading-[1.8] font-light" dangerouslySetInnerHTML={{ __html: dict.address }} />
@@ -100,15 +100,15 @@ export default function MenuOverlay({ isOpen, onClose }) {
           <div>
             <h4 className="text-[10px] tracking-[0.35em] uppercase text-white/40 mb-2.5">{dict.contact}</h4>
             <p className="text-[13px] text-white/70 leading-[1.8] font-light">
-              <a href="tel:+6632123456" className="hover:text-gold transition-colors">+66 32 123 456</a><br/>
-              <a href="mailto:hello@lovepier.cafe" className="hover:text-gold transition-colors">hello@lovepier.cafe</a>
+              <a href="tel:0642523293" className="hover:text-gold transition-colors">064-252-3293</a><br/>
+              <a href="mailto:cafe.lovepier@gmail.com" className="hover:text-gold transition-colors">cafe.lovepier@gmail.com</a>
             </p>
           </div>
         </aside>
       </div>
       {/* bottom */}
-      <div className="px-10 py-[18px] border-t border-white/[0.08] flex justify-between items-center text-[10px] tracking-[0.2em] uppercase text-white/30">
-        <div>© 2026 Love Pier Beach Cafe</div>
+      <div className="px-4 py-4 sm:px-6 lg:px-10 lg:py-[18px] border-t border-white/[0.08] flex justify-between items-center text-[10px] tracking-[0.2em] uppercase text-white/30">
+        <div className="leading-relaxed">© 2026 Love Pier Beach Cafe</div>
       </div>
     </div>
   )

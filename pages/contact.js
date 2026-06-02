@@ -78,29 +78,29 @@ export default function Contact() {
       </Head>
 
       {/* Contact hero */}
-      <section className="px-10 pt-20 pb-16 grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-20 items-start border-b border-black/10 reveal sm:px-6 sm:pt-12 sm:pb-10 sm:gap-9">
+      <section className="px-4 pt-12 pb-10 grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-9 lg:gap-20 items-start border-b border-black/10 reveal sm:px-6 lg:pt-20 lg:pb-16">
         <div>
           <span className="block text-[10px] tracking-[0.4em] uppercase text-muted mb-5">{t.getInTouch}</span>
           <h1 className="font-display font-light leading-[0.95] text-ink tracking-[-0.02em] text-[clamp(48px,6vw,80px)]">{t.hero.split('\n').map((l,i)=><span key={i}>{l}{i===0?<br/>:null}</span>)}</h1>
           <p className="mt-6 text-sm text-[#666] leading-[1.9] font-light max-w-[420px]">{t.intro}</p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
-          <a href="tel:0642523293" className="flex flex-col gap-2 p-8 bg-white border border-black/10 hover:bg-[#fffdf6] hover:border-gold transition-all duration-200 sm:p-7">
+          <a href="tel:0642523293" className="flex flex-col gap-2 p-6 sm:p-7 lg:p-8 bg-white border border-black/10 hover:bg-[#fffdf6] hover:border-gold transition-all duration-200">
             <span className="text-[10px] tracking-[0.3em] uppercase text-gold">{t.phone}</span>
             <div className="font-display text-[22px] font-normal text-ink leading-[1.2]">064-252-3293</div>
             <div className="text-xs text-muted font-light mt-1">Open hours only</div>
           </a>
-          <a href="mailto:cafe.lovepier@gmail.com" className="flex flex-col gap-2 p-8 bg-white border border-black/10 hover:bg-[#fffdf6] hover:border-gold transition-all duration-200 sm:p-7">
+          <a href="mailto:cafe.lovepier@gmail.com" className="flex flex-col gap-2 p-6 sm:p-7 lg:p-8 bg-white border border-black/10 hover:bg-[#fffdf6] hover:border-gold transition-all duration-200">
             <span className="text-[10px] tracking-[0.3em] uppercase text-gold">{t.email}</span>
             <div className="font-display text-[22px] font-normal text-ink leading-[1.2]">cafe.lovepier@gmail.com</div>
             <div className="text-xs text-muted font-light mt-1">Reply within 24h</div>
           </a>
-          <a href="#" className="flex flex-col gap-2 p-8 bg-white border border-black/10 hover:bg-[#fffdf6] hover:border-gold transition-all duration-200 sm:p-7">
+          <a href="#" className="flex flex-col gap-2 p-6 sm:p-7 lg:p-8 bg-white border border-black/10 hover:bg-[#fffdf6] hover:border-gold transition-all duration-200">
             <span className="text-[10px] tracking-[0.3em] uppercase text-gold">{t.line}</span>
             <div className="font-display text-[22px] font-normal text-ink leading-[1.2]">@lovepier</div>
             <div className="text-xs text-muted font-light mt-1">Fastest for last-minute</div>
           </a>
-          <Link href="/reservation" className="flex flex-col gap-2 p-8 bg-white border border-black/10 hover:bg-[#fffdf6] hover:border-gold transition-all duration-200 sm:p-7">
+          <Link href="/reservation" className="flex flex-col gap-2 p-6 sm:p-7 lg:p-8 bg-white border border-black/10 hover:bg-[#fffdf6] hover:border-gold transition-all duration-200">
             <span className="text-[10px] tracking-[0.3em] uppercase text-gold">{t.reservation}</span>
             <div className="font-display text-[22px] font-normal text-ink leading-[1.2]">{t.bookArrow}</div>
             <div className="text-xs text-muted font-light mt-1">Confirmed in 2 hours</div>
@@ -109,7 +109,7 @@ export default function Contact() {
       </section>
 
       {/* Form section */}
-      <section className="px-10 py-24 grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-20 items-start border-b border-black/10 bg-white reveal sm:px-6 sm:py-16 sm:gap-9">
+      <section className="px-4 py-16 grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-9 lg:gap-20 items-start border-b border-black/10 bg-white reveal sm:px-6 sm:py-16">
         <div>
           <h2 className="font-display font-light leading-[1.05] mb-5 text-[clamp(36px,4.5vw,56px)]">{t.sendTitle.split('\n').map((l,i)=><span key={i}>{l}{i===0?<br/>:null}</span>)}</h2>
           <p className="text-sm text-[#666] leading-[1.9] mb-8 font-light">{t.sendDesc}</p>
@@ -173,7 +173,7 @@ export default function Contact() {
       </section>
 
       {/* Socials block */}
-      <section className="px-10 py-20 border-b border-black/10 text-center reveal sm:px-6 sm:py-14">
+      <section className="px-4 py-14 border-b border-black/10 text-center reveal sm:px-6 sm:py-14 lg:px-10 lg:py-20">
         <h3 className="font-display font-light mb-4 text-[clamp(32px,4vw,48px)]">{t.followTitle}</h3>
         <p className="text-sm text-[#777] mb-9 font-light">{t.followDesc}</p>
         <div className="flex justify-center gap-4 flex-wrap">
@@ -185,7 +185,7 @@ export default function Contact() {
       </section>
 
       {/* FAQ */}
-      <section className="px-10 py-20 border-b border-black/10 reveal sm:px-6 sm:py-14">
+      <section className="px-4 py-14 border-b border-black/10 reveal sm:px-6 sm:py-14 lg:px-10 lg:py-20">
         <div className="mb-12">
           <h3 className="font-display font-light leading-[1.05] text-[clamp(32px,4vw,48px)]">{t.quick}</h3>
         </div>

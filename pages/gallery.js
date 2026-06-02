@@ -40,14 +40,14 @@ export default function Gallery() {
       </Head>
 
       {/* Page header */}
-      <header className="px-10 pt-16 pb-10 text-center border-b border-black/10 reveal sm:px-5 sm:pt-10 sm:pb-7">
+      <header className="px-4 pt-12 pb-8 text-center border-b border-black/10 reveal sm:px-6 lg:px-10 lg:pt-16 lg:pb-10">
         <div className="text-[10px] tracking-[0.4em] uppercase text-muted mb-3">{t.g}</div>
         <h1 className="font-display font-light leading-[0.95] text-ink tracking-[-0.02em] text-[clamp(48px,7vw,88px)]">{t.h.split('\n').map((l,i)=><span key={i}>{l}{i===0?<br/>:null}</span>)}</h1>
         <p className="mt-4 text-sm text-[#666] font-light max-w-[580px] mx-auto leading-[1.8]">{t.d}</p>
       </header>
 
       {/* Gallery filters */}
-      <div className="flex gap-6 px-10 py-8 border-b border-black/10 bg-white flex-wrap reveal sm:px-6 sm:py-5 sm:gap-3.5">
+      <div className="flex gap-4 lg:gap-6 px-4 py-5 lg:py-8 border-b border-black/10 bg-white flex-wrap reveal sm:px-6 sm:gap-3.5">
         {filters.map(({ label, cat }) => (
           <button
             key={label}
@@ -60,12 +60,12 @@ export default function Gallery() {
       </div>
 
       {/* Gallery grid */}
-      <div className="gallery-grid p-1.5 reveal" style={{ display:'grid', gridTemplateColumns:'repeat(12,1fr)', gap:'6px' }}>
+      <div className="gallery-grid p-1.5 reveal">
         {visible.map((tile, i) => (
           <div
             key={i}
-            className="g-tile"
-            style={{ gridColumn:`span ${tile.col}`, gridRow:`span ${tile.row}`, aspectRatio: tile.ratio }}
+            className="g-tile gallery-item"
+            style={{ '--col': tile.col, '--row': tile.row, '--mcol': tile.col >= 6 ? 2 : 1, '--mrow': 1, aspectRatio: tile.ratio }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={tile.src} alt="" />
@@ -75,7 +75,7 @@ export default function Gallery() {
       </div>
 
       {/* CTA strip */}
-      <section className="bg-ink text-bg px-10 py-20 text-center reveal sm:px-6 sm:py-14">
+      <section className="bg-ink text-bg px-4 py-14 text-center reveal sm:px-6 sm:py-14 lg:px-10 lg:py-20">
         <h2 className="font-display font-light mb-7 leading-[1.05] text-[clamp(40px,5vw,64px)]">{t.share}</h2>
         <p className="text-sm text-[rgba(245,243,239,0.6)] mb-8 max-w-[480px] mx-auto leading-[1.8]">{t.shareD}</p>
         <a href="#" className="inline-block bg-gold text-ink text-[11px] tracking-[0.25em] uppercase px-7 py-3.5 hover:bg-bg transition-colors duration-300">@lovepier.cafe</a>

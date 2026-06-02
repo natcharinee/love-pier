@@ -74,10 +74,10 @@ export default function Promotion() {
       </Head>
 
       {/* Hero promo */}
-      <section className="relative w-full h-[480px] overflow-hidden border-b border-black/10 reveal-img sm:h-[380px]">
+      <section className="relative w-full h-[420px] lg:h-[480px] overflow-hidden border-b border-black/10 reveal-img sm:h-[380px]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img className="w-full h-full object-cover [filter:brightness(0.6)_saturate(0.6)]" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1600&q=85" alt="promotion hero" />
-        <div className="absolute inset-0 flex flex-col justify-center px-16 text-bg max-w-[720px] sm:px-6">
+        <div className="absolute inset-0 flex flex-col justify-center px-4 sm:px-6 lg:px-16 text-bg max-w-[720px]">
           <span className="inline-flex text-[10px] tracking-[0.4em] uppercase text-gold px-3.5 py-1.5 border border-gold/50 mb-6 w-fit">{t.may}</span>
           <h1 className="font-display font-light leading-[0.95] tracking-[-0.02em] text-[clamp(48px,7vw,92px)]">{t.hero.split('\n').map((l,i)=><span key={i}>{l}{i===0?<br/>:null}</span>)}</h1>
           <p className="mt-5 text-sm leading-[1.8] text-[rgba(245,243,239,0.75)] font-light max-w-[480px]">{t.desc}</p>
@@ -89,7 +89,7 @@ export default function Promotion() {
       </section>
 
       {/* Promo section */}
-      <section className="px-10 py-20 border-b border-black/10 reveal sm:px-6 sm:py-14">
+      <section className="px-4 py-14 border-b border-black/10 reveal sm:px-6 sm:py-14 lg:px-10 lg:py-20">
         <div className="flex justify-between items-end mb-12 gap-8 flex-wrap">
           <div>
             <span className="block text-[10px] tracking-[0.4em] uppercase text-gold mb-3">{t.month}</span>
@@ -103,7 +103,7 @@ export default function Promotion() {
             <div key={title} className="flex flex-col bg-white overflow-hidden border border-black/10 hover:-translate-y-1 hover:shadow-[0_16px_32px_rgba(0,0,0,0.06)] transition-all duration-300">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img className="w-full aspect-[4/3] object-cover [filter:saturate(0.7)]" src={img} alt={title} />
-              <div className="p-7 flex flex-col gap-3 flex-1">
+              <div className="p-6 sm:p-7 flex flex-col gap-3 flex-1">
                 <span className="text-[9px] tracking-[0.3em] uppercase text-gold border border-gold/40 px-2.5 py-1 self-start">{badge}</span>
                 <h3 className="font-display text-[26px] font-light text-ink leading-[1.1]">{title}</h3>
                 <div className="flex items-baseline gap-3 mt-1">
@@ -123,7 +123,7 @@ export default function Promotion() {
       </section>
 
       {/* Loyalty */}
-      <section className="bg-ink text-bg px-10 py-20 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center reveal sm:px-6 sm:py-14 sm:gap-9">
+      <section className="bg-ink text-bg px-4 py-14 grid grid-cols-1 lg:grid-cols-2 gap-9 lg:gap-16 items-center reveal sm:px-6 sm:py-14 lg:px-10 lg:py-20">
         <div>
           <h2 className="font-display font-light leading-none tracking-[-0.02em] mb-5 text-[clamp(40px,5vw,60px)]">{t.loyalty}</h2>
           <p className="text-sm text-[rgba(245,243,239,0.65)] leading-[1.9] font-light mb-7 max-w-[460px]">One card. Every coffee counts. Reach a new tier and unlock perks that don&apos;t expire — we keep track so you don&apos;t have to.</p>
@@ -145,7 +145,7 @@ export default function Promotion() {
       </section>
 
       {/* Fine print */}
-      <section className="bg-bg px-10 py-12 text-center sm:px-6 sm:py-8">
+      <section className="bg-bg px-4 py-10 text-center sm:px-6 sm:py-8 lg:px-10 lg:py-12">
         <p className="text-[11px] text-[#aaa] leading-[1.8] tracking-[0.05em] max-w-[760px] mx-auto">All promotions valid in-store only and subject to availability. Set deals cannot be combined. Discounts apply to listed items only and are not stackable with loyalty redemptions. Love Pier reserves the right to amend offers at any time. See staff for current terms.</p>
       </section>
 

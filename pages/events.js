@@ -33,7 +33,7 @@ export default function Events() {
       </Head>
 
       {/* Page header */}
-      <header className="px-10 pt-16 pb-10 text-center border-b border-black/10 reveal sm:px-5 sm:pt-10 sm:pb-7">
+      <header className="px-4 pt-12 pb-8 text-center border-b border-black/10 reveal sm:px-6 lg:px-10 lg:pt-16 lg:pb-10">
         <div className="text-[10px] tracking-[0.4em] uppercase text-muted mb-3">{t.up}</div>
         <h1 className="font-display font-light leading-[0.95] text-ink tracking-[-0.02em] text-[clamp(48px,7vw,88px)]">{t.hero.split('\n').map((l,i)=><span key={i}>{l}{i===0?<br/>:null}</span>)}</h1>
         <p className="mt-4 text-sm text-[#666] font-light max-w-[580px] mx-auto leading-[1.8]">{t.desc}</p>
@@ -43,7 +43,7 @@ export default function Events() {
       <section className="grid grid-cols-1 lg:grid-cols-2 border-b border-black/10 reveal-img">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img className="w-full aspect-[4/3] object-cover [filter:saturate(0.7)]" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1000&q=85" alt="featured event" />
-        <div className="px-16 py-20 flex flex-col justify-center sm:px-6 sm:py-12">
+        <div className="px-4 py-12 flex flex-col justify-center sm:px-6 sm:py-12 lg:px-16 lg:py-20">
           <span className="inline-flex text-[10px] tracking-[0.3em] uppercase text-gold border border-gold/50 px-3 py-1.5 mb-5 w-fit">{t.featured}</span>
           <h2 className="font-display font-light leading-none text-ink tracking-[-0.02em] mb-4 text-[clamp(40px,5vw,64px)]">Sunset Jazz<br/><em className="italic text-gold">Session</em></h2>
           <div className="flex gap-8 mb-6 py-4 border-t border-b border-black/10 flex-wrap sm:gap-5">
@@ -60,11 +60,11 @@ export default function Events() {
       </section>
 
       {/* Events list */}
-      <section className="px-10 py-20 reveal sm:px-6 sm:py-14">
+      <section className="px-4 py-14 reveal sm:px-6 sm:py-14 lg:px-10 lg:py-20">
         <h3 className="font-display font-light mb-12 leading-[1.05] text-[clamp(32px,4vw,48px)]">{t.next}</h3>
         <div className="border-t border-black/10">
           {EVENT_LIST.map((ev, i) => (
-            <div key={i} className="group grid items-center gap-8 py-7 border-b border-black/10 cursor-pointer hover:bg-[rgba(201,169,110,0.04)] hover:pl-3 transition-all duration-200 sm:gap-5 sm:py-5" style={{ gridTemplateColumns:'100px 1fr 1fr auto 32px' }}>
+            <div key={i} className="group grid items-center gap-4 sm:gap-5 lg:gap-8 py-5 sm:py-6 lg:py-7 border-b border-black/10 cursor-pointer hover:bg-[rgba(201,169,110,0.04)] transition-all duration-200 lg:hover:pl-3 grid-cols-1 sm:grid-cols-[100px_1fr_auto] lg:grid-cols-[100px_1fr_1fr_auto_32px]">
               <div>
                 <div className="font-display text-[44px] font-light leading-none text-ink sm:text-3xl">{ev.day}</div>
                 <div className="text-[10px] tracking-[0.25em] uppercase text-[#aaa] mt-0.5">{ev.month}</div>
@@ -73,24 +73,24 @@ export default function Events() {
                 <div className="font-display text-[22px] font-light text-ink">{ev.title}</div>
                 <div className="text-[11px] tracking-[0.18em] uppercase text-muted mt-1.5">{ev.sub}</div>
               </div>
-              <div className="text-[10px] tracking-[0.25em] uppercase text-gold">{ev.cat}</div>
+              <div className="text-[10px] tracking-[0.25em] uppercase text-gold lg:justify-self-start">{ev.cat}</div>
               {ev.free
                 ? <div className="text-[11px] tracking-[0.2em] uppercase text-gold border border-gold/50 px-2.5 py-1">Free</div>
                 : <div className="font-display text-lg text-ink">{ev.price}</div>
               }
-              <div className="text-muted text-base group-hover:text-ink group-hover:translate-x-1 transition-all duration-200">→</div>
+              <div className="hidden lg:block text-muted text-base group-hover:text-ink group-hover:translate-x-1 transition-all duration-200">→</div>
             </div>
           ))}
         </div>
       </section>
 
       {/* Recurring */}
-      <section className="bg-ink text-bg px-10 py-20 reveal sm:px-6 sm:py-14">
+      <section className="bg-ink text-bg px-4 py-14 reveal sm:px-6 sm:py-14 lg:px-10 lg:py-20">
         <h3 className="font-display font-light mb-3.5 leading-[1.05] text-[clamp(32px,4vw,48px)]">{t.weekly}</h3>
         <p className="text-sm text-[rgba(245,243,239,0.5)] mb-12 max-w-[480px] leading-[1.8]">{t.weeklyDesc}</p>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {RECURRING.map(({ day, title, text, time }) => (
-            <div key={day} className="border border-white/10 px-8 py-8 hover:border-gold hover:bg-[rgba(201,169,110,0.05)] transition-all duration-300">
+            <div key={day} className="border border-white/10 px-6 py-7 sm:px-8 sm:py-8 hover:border-gold hover:bg-[rgba(201,169,110,0.05)] transition-all duration-300">
               <div className="text-[11px] tracking-[0.3em] uppercase text-gold mb-4">{day}</div>
               <h4 className="font-display text-[26px] font-light mb-3">{title}</h4>
               <p className="text-[13px] text-[rgba(245,243,239,0.6)] leading-[1.8] font-light">{text}</p>
