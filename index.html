@@ -51,11 +51,6 @@ tailwind.config = {
       <div class="text-xs text-[#444] leading-relaxed font-light">800 108 Saensuk<br/>Mueang Chonburi, Chonburi 20130</div>
     </div>
   </div>
-  <div class="flex items-center justify-center gap-2.5 mt-5 text-[9px] tracking-[0.35em] uppercase text-[#bbb]">
-    <div class="w-8 h-px bg-[#ccc]"></div>
-    scroll
-    <div class="w-8 h-px bg-[#ccc]"></div>
-  </div>
 </header>
 
 <img class="w-full aspect-video object-cover [filter:saturate(0.75)] reveal-img" src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1600&q=85" alt="Love Pier Beach Cafe" />
@@ -67,8 +62,14 @@ tailwind.config = {
 
 <section class="grid grid-cols-1 lg:grid-cols-[5fr_7fr] px-10 py-20 items-start reveal lg:px-10 px-5 py-16 sm:px-5">
   <div>
-    <h2 class="font-display font-light leading-[0.92] text-ink tracking-[-0.02em] text-[clamp(40px,6vw,72px)]">Beach Vibes,<br/>Cafe by The Sea,<br/><em>Singapore Chicken Rice</em></h2>
-    <a href="menu.html" class="mt-8 inline-flex items-center gap-3 text-[11px] tracking-[0.25em] uppercase text-[#5f5a51] bg-[#ece7dc] border border-[#d8cdbb] px-5 py-2.5 hover:bg-[#e4dccd] hover:text-ink transition-colors duration-200 after:content-['→'] after:text-base after:transition-transform after:duration-200 hover:after:translate-x-1">Explore Menu</a>
+    <h2 class="font-display font-light leading-[0.92] text-ink tracking-[-0.02em] text-[clamp(40px,6vw,72px)]">
+      Beach Vibes,<br/>
+      Cafe by The Sea,<br/>
+      <span class="inline-flex flex-wrap items-baseline gap-x-4 gap-y-3">
+        <em class="italic text-gold">Singapore Chicken Rice</em>
+        <a href="menu.html" class="inline-flex shrink-0 items-center gap-3 text-[11px] tracking-[0.25em] uppercase text-[#5f5a51] bg-[#ece7dc] border border-[#d8cdbb] px-5 py-2.5 hover:bg-[#e4dccd] hover:text-ink transition-colors duration-200 after:content-['→'] after:text-base after:transition-transform after:duration-200 hover:after:translate-x-1">Explore Menu</a>
+      </span>
+    </h2>
   </div>
   <div class="pt-2">
     <div class="text-[9px] tracking-[0.4em] uppercase text-[#bbb] mb-5 flex items-center gap-3 before:content-[''] before:block before:w-6 before:h-px before:bg-[#bbb]">Since 2017</div>
@@ -88,7 +89,7 @@ tailwind.config = {
 <section class="bg-white px-10 py-16 reveal lg:px-10 sm:px-5">
   <div class="mb-12">
     <span class="block text-[9px] tracking-[0.4em] uppercase text-[#bbb] mb-3">The Numbers</span>
-    <h3 class="font-display font-light leading-[1.05] text-ink text-[clamp(28px,3.5vw,44px)]">A little about<br/><em>what we do</em></h3>
+    <h3 class="font-display font-light leading-[1.05] text-ink text-[clamp(28px,3.5vw,44px)]">About<br/><em class="italic text-gold">Love Pier</em></h3>
   </div>
   <div class="grid grid-cols-1 lg:grid-cols-3 border-t border-l border-[#eee]">
     <div class="px-8 py-10 border-r border-b border-[#eee] sm:px-6 sm:py-7">

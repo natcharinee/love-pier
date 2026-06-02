@@ -17,12 +17,12 @@ export default function Home() {
         exploreMenu: 'ดูเมนู',
         since: 'ตั้งแต่ปี 2026',
         about1: '<strong>LOVE PIER BEACH CAFE</strong> คาเฟ่ริมชายหาดบางแสน ที่ให้ทุกมื้อพิเศษกว่าที่เคย',
-        about2: 'สัมผัสรสชาติของ "<strong>ข้าวมันไก่สิงคโปร์และข้าวมันไก่ไหหลำ สูตรต้นตำรับ</strong>" พร้อมจิบเครื่องดื่มซิกเนเจอร์ ที่ได้แรงบันดาลใจจาก "<strong>ข้าวหลามหนองมน</strong>" เอกลักษณ์แห่งบางแสนที่ถูกถ่ายทอดออกมาในรูปแบบใหม่ อย่างละมุน',
+        about2: 'สัมผัสรสชาติของ "<em class="italic">ข้าวมันไก่สิงคโปร์และข้าวมันไก่ไหหลำ สูตรต้นตำรับ</em>" พร้อมจิบเครื่องดื่มซิกเนเจอร์ ที่ได้แรงบันดาลใจจาก "<em class="italic">ข้าวหลามหนองมน</em>" เอกลักษณ์แห่งบางแสนที่ถูกถ่ายทอดออกมาในรูปแบบใหม่ อย่างละมุน',
         about3: 'นั่งรับลมทะเล ฟังเสียงคลื่นเบา ๆ ท่ามกลางบรรยากาศอบอุ่นริมชายหาด และเก็บภาพความทรงจำที่มุมท่าเรือสุดโรแมนติก',
-        about4: 'เพราะบางช่วงเวลาที่สวยงาม ไม่ได้ต้องการอะไรมากไปกว่าอาหารดี ๆ เครื่องดื่มแก้วโปรด และคนพิเศษที่นั่งมองพระอาทิตย์ตกไปด้วยกัน ที่ LOVE PIER BEACH CAFE',
-        where: 'เมื่อชายฝั่ง\nมาเจอกับ\n<em class="italic text-gold">แก้วโปรด</em>',
+        about4: 'เพราะบางช่วงเวลาที่สวยงาม ไม่ได้ต้องการอะไรมากไปกว่าอาหารดี ๆ เครื่องดื่มแก้วโปรด และคนพิเศษที่นั่งมองพระอาทิตย์ตกไปด้วยกัน ที่ <strong class="italic">LOVE PIER BEACH CAFE</strong>',
+        where: 'เมื่อชายฝั่ง\nมาเจอกับ\n<em class="italic text-gold">จานโปรด</em>',
         numbers: 'ตัวเลขของเรา',
-        little: 'เล็กน้อยเกี่ยวกับ\n<em class="italic text-gold">สิ่งที่เราทำ</em>',
+        little: 'เกี่ยวกับ\n<em class="italic text-gold">Love Pier</em>',
         yearsOpen: 'ปีที่เปิดบริการ',
         yearsDesc: 'ให้บริการชุมชนริมทะเลตั้งแต่ปี 2026',
         toShore: 'ระยะถึงชายหาด',
@@ -47,12 +47,12 @@ export default function Home() {
           exploreMenu: '查看菜单',
           since: '自 2026 年起',
           about1: 'Love Pier Cafe 是邦盛海边的一家咖啡馆，让每一餐都比以往更特别。',
-          about2: '品尝“新加坡鸡饭与海南鸡饭（传统原味）”，再搭配受“农蒙竹筒糯米饭”启发的招牌饮品，把邦盛在地风味以更细腻的方式重新呈现。',
+          about2: '品尝<em class="italic">“新加坡鸡饭与海南鸡饭（传统原味）”</em>，再搭配受<em class="italic">“农蒙竹筒糯米饭”</em>启发的招牌饮品，把邦盛在地风味以更细腻的方式重新呈现。',
           about3: '在温暖的海边氛围里吹着海风、听着轻柔浪声，也在通往海面的浪漫码头留下属于你的回忆。',
-          about4: '有些美好时刻，其实只需要好食物、喜欢的那杯饮品，以及一起看夕阳的人。就在 LOVE PIER BEACH CAFE。',
+          about4: '有些美好时刻，其实只需要好食物、喜欢的那杯饮品，以及一起看夕阳的人。就在 <strong class="italic">LOVE PIER BEACH CAFE</strong>。',
           where: '当海岸\n遇见\n<em class="italic text-gold">一杯咖啡</em>',
           numbers: '我们的数据',
-          little: '关于我们\n<em class="italic text-gold">做的事</em>',
+          little: '关于\n<em class="italic text-gold">Love Pier</em>',
           yearsOpen: '营业年数',
           yearsDesc: '自 2026 年起服务海边社区。',
           toShore: '到海边距离',
@@ -78,10 +78,10 @@ export default function Home() {
         about1: 'Love Pier Cafe is a beachside cafe in Bangsaen where every meal feels more special.',
         about2: 'Enjoy signature Singaporean and Hainanese chicken rice made from original recipes, paired with house drinks inspired by Nong Mon khao lam, reimagined with a softer, modern touch.',
         about3: 'Sit by the sea breeze, listen to the gentle waves, and capture memories at our romantic pier stretching out toward the water.',
-        about4: 'Some beautiful moments only need great food, a favorite drink, and someone special to watch the sunset with at LOVE PIER BEACH CAFE.',
+        about4: 'Some beautiful moments only need great food, a favorite drink, and someone special to watch the sunset with at <strong class="italic">LOVE PIER BEACH CAFE</strong>.',
         where: 'Where the\nshore meets\n<em class="italic text-gold">the cup</em>',
         numbers: 'The Numbers',
-        little: 'A little about\n<em class="italic text-gold">what we do</em>',
+        little: 'About\n<em class="italic text-gold">Love Pier</em>',
         yearsOpen: 'Years Open',
         yearsDesc: 'Serving our beachside community since 2026.',
         toShore: 'To the Shore',
@@ -116,19 +116,10 @@ export default function Home() {
             <span className="block text-[9px] tracking-[0.35em] uppercase text-[#aaa] mb-1.5">{t.hoursLabel}</span>
             <div className="text-xs text-[#444] leading-relaxed font-light">{t.hoursValue}</div>
           </div>
-          <div className="text-center lg:px-10">
-            <span className="block text-[9px] tracking-[0.35em] uppercase text-[#aaa] mb-1.5">{t.est}</span>
-            <div className="text-xs text-[#444] leading-relaxed font-display text-[22px]">2026</div>
-          </div>
           <div className="text-center lg:text-right">
             <span className="block text-[9px] tracking-[0.35em] uppercase text-[#aaa] mb-1.5">{t.location}</span>
             <div className="text-xs text-[#444] leading-relaxed font-light">{renderLines(t.locationValue)}</div>
           </div>
-        </div>
-        <div className="flex items-center justify-center gap-2.5 mt-5 text-[9px] tracking-[0.35em] uppercase text-[#bbb]">
-          <div className="w-8 h-px bg-[#ccc]"></div>
-          scroll
-          <div className="w-8 h-px bg-[#ccc]"></div>
         </div>
       </header>
 
@@ -144,15 +135,21 @@ export default function Home() {
 
       <section className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] px-4 py-14 items-start reveal sm:px-6 sm:py-16 lg:px-10 lg:py-20 gap-10 lg:gap-0">
         <div>
-          <h2 className="font-display font-light leading-[0.92] text-ink tracking-[-0.02em] text-[clamp(40px,6vw,72px)]">Beach Vibes,<br/>Cafe by The Sea,<br/><em className="italic text-gold">Singapore Chicken Rice</em></h2>
-          <Link href="/menu" className="mt-8 inline-flex items-center gap-3 text-[11px] tracking-[0.25em] uppercase text-[#5f5a51] bg-[#ece7dc] border border-[#d8cdbb] px-5 py-2.5 hover:bg-[#e4dccd] hover:text-ink transition-colors duration-200 after:content-['→'] after:text-base after:transition-transform after:duration-200 hover:after:translate-x-1">{t.exploreMenu}</Link>
+          <h2 className="font-display font-light leading-[0.92] text-ink tracking-[-0.02em] text-[clamp(40px,6vw,72px)]">
+            Beach Vibes,<br/>
+            Cafe by The Sea,<br/>
+            <span className="inline-flex flex-wrap items-baseline gap-x-4 gap-y-3">
+              <em className="italic text-gold">Singapore Chicken Rice</em>
+              <Link href="/menu" className="inline-flex shrink-0 items-center gap-3 text-[11px] tracking-[0.25em] uppercase text-[#5f5a51] bg-[#ece7dc] border border-[#d8cdbb] px-5 py-2.5 hover:bg-[#e4dccd] hover:text-ink transition-colors duration-200 after:content-['→'] after:text-base after:transition-transform after:duration-200 hover:after:translate-x-1">{t.exploreMenu}</Link>
+            </span>
+          </h2>
         </div>
         <div className="pt-2">
           <div className="text-[9px] tracking-[0.4em] uppercase text-[#bbb] mb-5 flex items-center gap-3 before:content-[''] before:block before:w-6 before:h-px before:bg-[#bbb]">{t.since}</div>
           <div className="text-sm leading-[1.9] text-[#555] font-light max-w-none">
             <p className="mb-4" dangerouslySetInnerHTML={{ __html: t.about1 }} />
             <p className="mb-4" dangerouslySetInnerHTML={{ __html: t.about2 }} />
-            <p>{t.about3}{'about4' in t ? ` ${t.about4}` : ''}</p>
+            <p dangerouslySetInnerHTML={{ __html: `${t.about3}${'about4' in t ? ` ${t.about4}` : ''}` }} />
           </div>
         </div>
       </section>
@@ -165,7 +162,6 @@ export default function Home() {
 
       <section className="bg-white px-4 py-14 reveal sm:px-6 sm:py-16 lg:px-10">
         <div className="mb-12">
-          <span className="block text-[9px] tracking-[0.4em] uppercase text-[#bbb] mb-3">{t.numbers}</span>
           <h3 className="font-display font-light leading-[1.05] text-ink text-[clamp(28px,3.5vw,44px)]" dangerouslySetInnerHTML={{ __html: t.little.replace(/\n/g, '<br/>') }} />
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 border-t border-l border-[#eee]">

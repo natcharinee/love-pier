@@ -42,13 +42,13 @@ export default function Nav({ onOpenMenu }) {
       <div className="flex items-center gap-2 sm:gap-4 lg:gap-6 min-w-0">
         {dict.right.map(n => <Link key={n.href} href={n.href} className={lc(n.href)}>{n.label}</Link>)}
         <div className="flex md:hidden items-center border border-black/[0.12] shrink-0">
-          <button onClick={() => setLang('en')} className={`px-1.5 py-1 text-[9px] tracking-[0.08em] uppercase ${lang === 'en' ? 'bg-ink text-bg' : 'text-muted hover:text-ink'}`} aria-label="Switch to English">EN</button>
           <button onClick={() => setLang('th')} className={`px-1.5 py-1 text-[9px] tracking-[0.08em] uppercase ${lang === 'th' ? 'bg-ink text-bg' : 'text-muted hover:text-ink'}`} aria-label="Switch to Thai">TH</button>
+          <button onClick={() => setLang('en')} className={`px-1.5 py-1 text-[9px] tracking-[0.08em] uppercase ${lang === 'en' ? 'bg-ink text-bg' : 'text-muted hover:text-ink'}`} aria-label="Switch to English">EN</button>
           <button onClick={() => setLang('zh')} className={`px-1.5 py-1 text-[9px] tracking-[0.08em] uppercase ${lang === 'zh' ? 'bg-ink text-bg' : 'text-muted hover:text-ink'}`} aria-label="Switch to Chinese">ZH</button>
         </div>
         <div className="hidden md:flex items-center border border-black/[0.12] shrink-0">
-          <button onClick={() => setLang('en')} className={`px-2.5 py-1 text-[10px] tracking-[0.2em] uppercase ${lang === 'en' ? 'bg-ink text-bg' : 'text-muted hover:text-ink'}`} aria-label="Switch to English">EN</button>
           <button onClick={() => setLang('th')} className={`px-2.5 py-1 text-[10px] tracking-[0.2em] uppercase ${lang === 'th' ? 'bg-ink text-bg' : 'text-muted hover:text-ink'}`} aria-label="Switch to Thai">TH</button>
+          <button onClick={() => setLang('en')} className={`px-2.5 py-1 text-[10px] tracking-[0.2em] uppercase ${lang === 'en' ? 'bg-ink text-bg' : 'text-muted hover:text-ink'}`} aria-label="Switch to English">EN</button>
           <button onClick={() => setLang('zh')} className={`px-2.5 py-1 text-[10px] tracking-[0.2em] uppercase ${lang === 'zh' ? 'bg-ink text-bg' : 'text-muted hover:text-ink'}`} aria-label="Switch to Chinese">ZH</button>
         </div>
         <Link href="/reservation" className="text-[9px] sm:text-[10px] tracking-[0.12em] sm:tracking-[0.2em] uppercase text-bg bg-ink px-3 py-2 sm:px-[18px] sm:py-[9px] hover:bg-gold hover:text-ink transition-colors duration-200 whitespace-nowrap">{dict.reserve}</Link>
