@@ -102,7 +102,7 @@ export default function Location() {
           <h4 className="text-[10px] tracking-[0.4em] uppercase text-gold mb-3">{t.coords}</h4>
           <p className="text-sm text-ink leading-[1.7] font-light">
             13.2537° N<br/>100.9287° E<br/>
-            <span className="text-muted text-xs"><a href="https://maps.app.goo.gl/CYDRrd6hoxRv7z4j8" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">{t.openGoogle}</a></span>
+            <span className="text-muted text-xs"><a href="https://www.google.com/maps/search/?api=1&query=Love+Pier+Beach+Cafe+Chonburi" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">{t.openGoogle}</a></span>
           </p>
         </div>
       </div>
@@ -113,16 +113,14 @@ export default function Location() {
           <h2 className="font-display font-light mb-6 leading-[1.05] text-[clamp(36px,4.5vw,56px)]">{renderLines(t.how)}</h2>
           <p className="text-sm text-[#555] leading-[1.9] font-light mb-8 max-w-[480px]">{t.howSub}</p>
           <div className="flex gap-3 flex-wrap">
-            <a href="https://maps.app.goo.gl/CYDRrd6hoxRv7z4j8" target="_blank" rel="noopener noreferrer" className="inline-block bg-ink text-bg text-[11px] tracking-[0.25em] uppercase px-7 py-3.5 hover:bg-gold hover:text-ink transition-colors duration-300">{t.openGoogle}</a>
-            <a href="https://maps.apple.com/?ll=13.2537115,100.9287388&q=Love+Pier+Beach+Cafe" target="_blank" rel="noopener noreferrer" className="inline-block bg-transparent text-ink text-[11px] tracking-[0.25em] uppercase px-7 py-3.5 border border-black/20 hover:border-gold hover:text-gold transition-colors duration-300">{t.apple}</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Love+Pier+Beach+Cafe+Chonburi" target="_blank" rel="noopener noreferrer" className="inline-block bg-ink text-bg text-[11px] tracking-[0.25em] uppercase px-7 py-3.5 hover:bg-gold hover:text-ink transition-colors duration-300">{t.openGoogle}</a>
+            <a href="https://maps.apple.com/?q=1%2F1%20Soi%20Sukhumvit%2020%2C%20Saen%20Suk%2C%20Mueang%20Chonburi%20District%2C%20Chon%20Buri%2020130%2C%20Thailand" target="_blank" rel="noopener noreferrer" className="inline-block bg-transparent text-ink text-[11px] tracking-[0.25em] uppercase px-7 py-3.5 border border-black/20 hover:border-gold hover:text-gold transition-colors duration-300">{t.apple}</a>
           </div>
         </div>
         <div className="flex flex-col">
           {[
             { mode:'By car', title:'2h 20m from Bangkok', text:'Take Phetkasem Road south. Free parking on site for 18 cars and a small motorbike lot at the rear.' },
-            { mode:'By train', title:'3h from Hua Lamphong', text:'Take the train to Cha-am Station, then a 12-minute songthaew or taxi to the beach road.' },
             { mode:'By bus', title:'2h 30m from Bangkok Southern Bus Terminal', text:'Direct minivans run hourly. Ask for the Cha-am beach stop.' },
-            { mode:'Walking', title:'2 min from the shore', text:"Walk straight from the main beach pier, cross Narathat Road. We're the building with the wide blue awning." },
           ].map(({ mode, title, text }) => (
             <div key={mode} className="grid grid-cols-[80px_1fr] gap-6 py-6 border-t border-black/10 sm:grid-cols-[60px_1fr] sm:gap-4">
               <div className="text-[10px] tracking-[0.3em] uppercase text-[#aaa] pt-1">{mode}</div>
