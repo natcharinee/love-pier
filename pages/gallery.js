@@ -4,31 +4,178 @@ import Footer from '../components/Footer'
 import { useLanguage } from '../lib/language'
 
 const TILES = [
-  { cat:'beach',    col:6, row:2, ratio:'4/5',  src:'/uploads/gallery-sea-texture.png',  cap:'Sunset sea texture', tone:'warm' },
-  { cat:'food',     col:3, row:1, ratio:'1',    src:'/uploads/gallery-espresso-cup.png',  cap:'Love Pier espresso', tone:'softWarm' },
-  { cat:'food',     col:3, row:1, ratio:'1',    src:'/uploads/gallery-can-coffee.png',  cap:'Love Pier canned latte', tone:'brandWarm' },
-  { cat:'interior', col:6, row:2, ratio:'4/5',  src:'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=500&q=80',     cap:'Interior' },
-  { cat:'events',   col:6, row:1, ratio:'16/9', src:'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1000&q=80', cap:'Evening lights' },
-  { cat:'food',     col:4, row:1, ratio:'4/5',  src:'/uploads/gallery-hainanese-rice.png',  cap:'Hainanese chicken rice', tone:'foodWarm' },
-  { cat:'guests',   col:4, row:1, ratio:'4/5',  src:'https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&q=80',    cap:'Beach walk' },
-  { cat:'beach',    col:4, row:1, ratio:'4/5',  src:'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=600&q=80',  cap:'Sand & surf' },
+  {
+    id: 'sunset',
+    cat: 'beach',
+    col: 8,
+    row: 2,
+    mcol: 2,
+    mrow: 2,
+    layout: 'hero',
+    pos: '50% 55%',
+    src: '/uploads/gallery-sunset-sea.png',
+    cap: { th: 'พระอาทิตย์ตกริมทะเล', en: 'Sunset by the shore', zh: '海边日落' },
+  },
+  {
+    id: 'golden-water',
+    cat: 'beach',
+    col: 4,
+    row: 2,
+    mcol: 1,
+    mrow: 2,
+    layout: 'tall',
+    pos: '50% 45%',
+    src: '/uploads/gallery-golden-water.png',
+    cap: { th: 'แสงทองบนผิวน้ำ', en: 'Golden light on the water', zh: '水面金光' },
+  },
+  {
+    id: 'latte-table',
+    cat: 'interior',
+    col: 4,
+    row: 2,
+    mcol: 1,
+    mrow: 2,
+    layout: 'tall',
+    pos: '50% 40%',
+    src: '/uploads/gallery-latte-table.png',
+    cap: { th: 'ลาเต้อาร์ตริมทะเล', en: 'Latte art by the pier', zh: '码头拉花拿铁' },
+  },
+  {
+    id: 'matcha-forest',
+    cat: 'food',
+    col: 5,
+    row: 2,
+    mcol: 2,
+    mrow: 1,
+    layout: 'tall',
+    pos: '50% 35%',
+    src: '/uploads/gallery-matcha-forest.png',
+    cap: { th: 'มัทฉะในสวนป่า', en: 'Matcha in the forest', zh: '森林抹茶' },
+  },
+  {
+    id: 'matcha-moss',
+    cat: 'food',
+    col: 3,
+    row: 2,
+    mcol: 1,
+    mrow: 2,
+    layout: 'tall',
+    pos: '50% 50%',
+    src: '/uploads/gallery-matcha-moss.png',
+    cap: { th: 'มัทฉะช้าๆ กลางธรรมชาติ', en: 'Slow matcha, wild greens', zh: '自然里的抹茶' },
+  },
+  {
+    id: 'espresso-card',
+    cat: 'food',
+    col: 4,
+    row: 1,
+    mcol: 1,
+    mrow: 1,
+    layout: 'sq',
+    pos: '50% 70%',
+    src: '/uploads/gallery-espresso-card.png',
+    cap: { th: 'เอสเพรสโซ่ Love Pier', en: 'Love Pier espresso', zh: 'Love Pier 浓缩' },
+  },
+  {
+    id: 'can-latte',
+    cat: 'food',
+    col: 4,
+    row: 1,
+    mcol: 1,
+    mrow: 1,
+    layout: 'sq',
+    pos: '50% 35%',
+    src: '/uploads/gallery-can-latte.png',
+    cap: { th: 'กาแฟนมแคนสด', en: 'Iced latte in a can', zh: '罐装冰拿铁' },
+  },
+  {
+    id: 'can-citrus',
+    cat: 'food',
+    col: 4,
+    row: 1,
+    mcol: 1,
+    mrow: 1,
+    layout: 'sq',
+    pos: '50% 40%',
+    src: '/uploads/gallery-can-citrus.png',
+    cap: { th: 'คอฟฟี่ผสมส้ม', en: 'Citrus coffee blend', zh: '柑橘咖啡' },
+  },
+  {
+    id: 'frappe-sand',
+    cat: 'beach',
+    col: 12,
+    row: 1,
+    mcol: 2,
+    mrow: 1,
+    layout: 'wide',
+    pos: '50% 30%',
+    src: '/uploads/gallery-frappe-sand.png',
+    cap: { th: 'เฟรปเป้บนผืนทราย', en: 'Frappe on warm sand', zh: '沙滩冰沙' },
+  },
 ]
+
+const FILTER_COPY = {
+  th: [
+    { label: 'ทั้งหมด', cat: null },
+    { label: 'อาหารและเครื่องดื่ม', cat: 'food' },
+    { label: 'ชายหาด', cat: 'beach' },
+    { label: 'บรรยากาศร้าน', cat: 'interior' },
+  ],
+  zh: [
+    { label: '全部', cat: null },
+    { label: '餐饮', cat: 'food' },
+    { label: '海边', cat: 'beach' },
+    { label: '店内氛围', cat: 'interior' },
+  ],
+  en: [
+    { label: 'All', cat: null },
+    { label: 'Food & Drink', cat: 'food' },
+    { label: 'Beach', cat: 'beach' },
+    { label: 'Atmosphere', cat: 'interior' },
+  ],
+}
+
+const PAGE_COPY = {
+  th: {
+    title: 'Gallery — Love Pier Beach Cafe',
+    g: 'แกลเลอรี',
+    h: 'ช่วงเวลา\nริมทะเล',
+    d: 'กาแฟ มัทฉะ แสงทอง และท้องฟ้ายามเย็น — ภาพจาก Love Pier Beach Cafe',
+    share: 'แชร์ช่วงเวลาของคุณ',
+    shareD: 'แท็ก #lovepiercafe บน Instagram แล้วเราอาจรีโพสต์ให้',
+    footer: 'ทุกมุมมอง <em>มีเรื่องราว</em>',
+  },
+  zh: {
+    title: 'Gallery — Love Pier Beach Cafe',
+    g: '图库',
+    h: '海边的\n日常片段',
+    d: '咖啡、抹茶、金色波光与日落——Love Pier Beach Cafe 的真实瞬间。',
+    share: '分享你的时刻',
+    shareD: '在 Instagram 使用 #lovepiercafe，我们可能会转发。',
+    footer: '每个角度 <em>都有故事</em>',
+  },
+  en: {
+    title: 'Gallery — Love Pier Beach Cafe',
+    g: 'Gallery',
+    h: 'Moments by\nthe shore',
+    d: 'Coffee, matcha, golden water, and slow sunsets — captured at Love Pier Beach Cafe.',
+    share: 'Share your moment with us',
+    shareD: 'Tag #lovepiercafe on Instagram — we may repost your shot.',
+    footer: 'EVERY ANGLE, <em>A STORY</em>',
+  },
+}
+
+function tileCaption(tile, lang) {
+  return tile.cap[lang] || tile.cap.en
+}
 
 export default function Gallery() {
   const { lang } = useLanguage()
-  const filters = lang === 'th'
-    ? [{label:'ทั้งหมด',cat:null},{label:'ภายในร้าน',cat:'interior'},{label:'อาหารและเครื่องดื่ม',cat:'food'},{label:'ชายหาด',cat:'beach'},{label:'อีเวนต์',cat:'events'},{label:'ผู้มาเยือน',cat:'guests'}]
-    : lang === 'zh'
-      ? [{label:'全部',cat:null},{label:'店内',cat:'interior'},{label:'餐饮',cat:'food'},{label:'海边',cat:'beach'},{label:'活动',cat:'events'},{label:'客人',cat:'guests'}]
-      : [{label:'All',cat:null},{label:'Interior',cat:'interior'},{label:'Food & Drink',cat:'food'},{label:'Beach',cat:'beach'},{label:'Events',cat:'events'},{label:'Guests',cat:'guests'}]
-  const t = lang === 'th'
-    ? { title:'Gallery — Love Pier Beach Cafe', g:'แกลเลอรี', h:'ช่วงเวลา\nริมทะเล', d:'รวมบรรยากาศกาแฟ แสงเช้า และผู้คนที่แวะเวียน', share:'แชร์ช่วงเวลาของคุณ', shareD:'แท็ก #lovepiercafe เพื่อให้เรารีโพสต์' }
-    : lang === 'zh'
-      ? { title:'Gallery — Love Pier Beach Cafe', g:'图库', h:'海边的\n日常片段', d:'收录咖啡、日落与每位来访者的片刻。', share:'分享你的时刻', shareD:'在 Instagram 使用 #lovepiercafe' }
-      : { title:'Gallery — Love Pier Beach Cafe', g:'Gallery', h:'Moments by\nthe shore', d:'A slice of life at Love Pier.', share:'Share your moment with us', shareD:'Tag #lovepiercafe on Instagram.' }
+  const filters = FILTER_COPY[lang] || FILTER_COPY.en
+  const t = PAGE_COPY[lang] || PAGE_COPY.en
   const [activeFilter, setActiveFilter] = useState(null)
 
-  const visible = activeFilter ? TILES.filter(t => t.cat === activeFilter) : TILES
+  const visible = activeFilter ? TILES.filter((tile) => tile.cat === activeFilter) : TILES
 
   return (
     <>
@@ -36,63 +183,71 @@ export default function Gallery() {
         <title>{t.title}</title>
       </Head>
 
-      {/* Page header */}
       <header className="px-4 pt-12 pb-8 text-center border-b border-black/10 reveal sm:px-6 lg:px-10 lg:pt-16 lg:pb-10">
         <div className="text-[10px] tracking-[0.4em] uppercase text-muted mb-3">{t.g}</div>
-        <h1 className="font-display font-light leading-[0.95] text-ink tracking-[-0.02em] text-[clamp(48px,7vw,88px)]">{t.h.split('\n').map((l,i)=><span key={i}>{l}{i===0?<br/>:null}</span>)}</h1>
+        <h1 className="font-display font-light leading-[0.95] text-ink tracking-[-0.02em] text-[clamp(48px,7vw,88px)]">
+          {t.h.split('\n').map((l, i) => (
+            <span key={i}>
+              {l}
+              {i === 0 ? <br /> : null}
+            </span>
+          ))}
+        </h1>
         <p className="mt-4 text-sm text-[#666] font-light max-w-[580px] mx-auto leading-[1.8]">{t.d}</p>
       </header>
 
-      {/* Gallery filters */}
-      <div className="flex gap-4 lg:gap-6 px-4 py-5 lg:py-8 border-b border-black/10 bg-white flex-wrap reveal sm:px-6 sm:gap-3.5">
+      <div className="flex gap-4 lg:gap-6 px-4 py-5 lg:py-8 border-b border-black/10 bg-bg flex-wrap reveal sm:px-6 sm:gap-3.5">
         {filters.map(({ label, cat }) => (
           <button
             key={label}
+            type="button"
             onClick={() => setActiveFilter(cat)}
-            className={`text-[11px] tracking-[0.25em] uppercase bg-transparent border-none px-0 py-1.5 border-b cursor-pointer transition-colors ${activeFilter === cat ? 'text-ink border-gold' : 'text-[#aaa] border-transparent hover:text-ink'}`}
+            className={`text-[11px] tracking-[0.25em] uppercase bg-transparent border-none px-0 py-1.5 border-b-2 cursor-pointer transition-colors ${
+              activeFilter === cat ? 'text-ink border-gold' : 'text-[#aaa] border-transparent hover:text-ink'
+            }`}
           >
             {label}
           </button>
         ))}
       </div>
 
-      {/* Gallery grid */}
-      <div className="gallery-grid p-0 reveal">
-        {visible.map((tile, i) => (
+      <div className="gallery-grid reveal">
+        {visible.map((tile) => (
           <div
-            key={i}
-            className="g-tile gallery-item"
-            style={{ '--col': tile.col, '--row': tile.row, '--mcol': tile.col >= 6 ? 2 : 1, '--mrow': 1, aspectRatio: tile.ratio }}
+            key={tile.id}
+            className={`g-tile gallery-item gallery-item--${tile.layout}`}
+            style={{
+              '--col': tile.col,
+              '--row': tile.row,
+              '--mcol': tile.mcol,
+              '--mrow': tile.mrow,
+            }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={tile.src}
-              alt=""
-              style={
-                tile.tone === 'warm'
-                  ? { filter:'saturate(0.78) contrast(0.97) brightness(0.96) sepia(0.06)' }
-                  : tile.tone === 'softWarm'
-                    ? { filter:'saturate(0.74) contrast(0.95) brightness(0.97) sepia(0.08)' }
-                    : tile.tone === 'brandWarm'
-                      ? { filter:'saturate(0.82) contrast(0.96) brightness(0.98) sepia(0.07)' }
-                    : tile.tone === 'foodWarm'
-                      ? { filter:'saturate(0.8) contrast(0.95) brightness(0.96) sepia(0.09)' }
-                    : undefined
-              }
+              alt={tileCaption(tile, lang)}
+              style={{ objectPosition: tile.pos }}
             />
-            <div className="g-tile-caption">{tile.cap}</div>
+            <div className="g-tile-caption">{tileCaption(tile, lang)}</div>
           </div>
         ))}
       </div>
 
-      {/* CTA strip */}
       <section className="bg-ink text-bg px-4 py-14 text-center reveal sm:px-6 sm:py-14 lg:px-10 lg:py-20">
         <h2 className="font-display font-light mb-7 leading-[1.05] text-[clamp(40px,5vw,64px)]">{t.share}</h2>
         <p className="text-sm text-[rgba(245,243,239,0.6)] mb-8 max-w-[480px] mx-auto leading-[1.8]">{t.shareD}</p>
-        <a href="#" className="inline-block bg-gold text-ink text-[11px] tracking-[0.25em] uppercase px-7 py-3.5 hover:bg-bg transition-colors duration-300">@lovepier.cafe</a>
+        <a
+          href="https://www.instagram.com/lovepier.cafe"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block bg-gold text-ink text-[11px] tracking-[0.25em] uppercase px-7 py-3.5 hover:bg-bg transition-colors duration-300"
+        >
+          @lovepier.cafe
+        </a>
       </section>
 
-      <Footer tagline="EVERY VISIT, <em>A NEW VIEW</em>" />
+      <Footer tagline={t.footer} />
     </>
   )
 }
