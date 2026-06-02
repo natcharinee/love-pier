@@ -4,12 +4,12 @@ import Footer from '../components/Footer'
 import { useLanguage } from '../lib/language'
 
 const TILES = [
-  { cat:'beach',    col:6, row:2, ratio:'4/5',  src:'/uploads/gallery-sunset-boat.png',  cap:'Sunset by the pier', tone:'warm' },
+  { cat:'beach',    col:6, row:2, ratio:'4/5',  src:'/uploads/gallery-sea-texture.png',  cap:'Sunset sea texture', tone:'warm' },
   { cat:'food',     col:3, row:1, ratio:'1',    src:'/uploads/gallery-espresso-cup.png',  cap:'Love Pier espresso', tone:'softWarm' },
   { cat:'food',     col:3, row:1, ratio:'1',    src:'/uploads/gallery-can-coffee.png',  cap:'Love Pier canned latte', tone:'brandWarm' },
   { cat:'interior', col:6, row:2, ratio:'4/5',  src:'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=500&q=80',     cap:'Interior' },
   { cat:'events',   col:6, row:1, ratio:'16/9', src:'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1000&q=80', cap:'Evening lights' },
-  { cat:'food',     col:4, row:1, ratio:'4/5',  src:'https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=600&q=80',  cap:'Brunch plate' },
+  { cat:'food',     col:4, row:1, ratio:'4/5',  src:'/uploads/gallery-hainanese-rice.png',  cap:'Hainanese chicken rice', tone:'foodWarm' },
   { cat:'guests',   col:4, row:1, ratio:'4/5',  src:'https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&q=80',    cap:'Beach walk' },
   { cat:'beach',    col:4, row:1, ratio:'4/5',  src:'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=600&q=80',  cap:'Sand & surf' },
 ]
@@ -75,6 +75,8 @@ export default function Gallery() {
                     ? { filter:'saturate(0.74) contrast(0.95) brightness(0.97) sepia(0.08)' }
                     : tile.tone === 'brandWarm'
                       ? { filter:'saturate(0.82) contrast(0.96) brightness(0.98) sepia(0.07)' }
+                    : tile.tone === 'foodWarm'
+                      ? { filter:'saturate(0.8) contrast(0.95) brightness(0.96) sepia(0.09)' }
                     : undefined
               }
             />
