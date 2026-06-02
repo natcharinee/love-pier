@@ -1,0 +1,67 @@
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+
+const NAV_ITEMS = [
+  { href: '/',           label: 'Home' },
+  { href: '/menu',       label: 'Menu' },
+  { href: '/gallery',    label: 'Gallery' },
+  { href: '/reservation',label: 'Reservation' },
+  { href: '/location',   label: 'Location' },
+  { href: '/events',     label: 'Events' },
+  { href: '/promotion',  label: 'Promotion' },
+  { href: '/about',      label: 'About Us' },
+  { href: '/contact',    label: 'Contact' },
+]
+
+export default function MenuOverlay({ isOpen, onClose }) {
+  const { pathname } = useRouter()
+  return (
+    <div className={`menu-overlay${isOpen ? ' is-open' : ''}`} aria-hidden={!isOpen}>
+      {/* top bar */}
+      <div className="px-10 py-[14px] flex items-center justify-between border-b border-white/[0.08]">
+        <Link href="/" onClick={onClose}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/uploads/logo-8dc1f126.png" alt="Love Pier" className="h-11 block" style={{ filter: 'invert(1) brightness(2) opacity(0.85)' }} />
+        </Link>
+        <button onClick={onClose} className="bg-transparent border border-white/[0.15] w-[38px] h-[38px] flex items-center justify-center text-white/70 text-lg hover:border-white hover:text-white transition-colors" aria-label="Close menu">✕</button>
+      </div>
+      {/* body */}
+      <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 items-center p-8 lg:p-10 gap-10 lg:gap-20 overflow-y-auto">
+        <nav className="flex flex-col gap-1">
+          {NAV_ITEMS.map((item, i) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={onClose}
+              className={`font-display font-light leading-[1.05] tracking-[-0.02em] flex items-baseline gap-5 transition-all duration-200 hover:text-bg hover:translate-x-2 text-[clamp(40px,5.5vw,70px)] ${pathname === item.href ? 'text-gold' : 'text-white/45'}`}
+            >
+              <span className="font-sans text-[11px] tracking-[0.2em] font-light text-white/30 -translate-y-2">{String(i + 1).padStart(2, '0')}</span>
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+        <aside className="border-t border-white/[0.08] pt-8 lg:border-t-0 lg:border-l lg:border-white/[0.08] lg:pl-16 flex flex-col gap-8">
+          <div>
+            <h4 className="text-[10px] tracking-[0.35em] uppercase text-white/40 mb-2.5">Visit</h4>
+            <p className="text-[13px] text-white/70 leading-[1.8] font-light">123 Moo 4, Narathat Beach Rd<br/>Cha-am, Phetchaburi 76120</p>
+          </div>
+          <div>
+            <h4 className="text-[10px] tracking-[0.35em] uppercase text-white/40 mb-2.5">Hours</h4>
+            <p className="text-[13px] text-white/70 leading-[1.8] font-light">Mon–Fri · 08:00 – 21:00<br/>Sat–Sun · 07:00 – 22:00</p>
+          </div>
+          <div>
+            <h4 className="text-[10px] tracking-[0.35em] uppercase text-white/40 mb-2.5">Contact</h4>
+            <p className="text-[13px] text-white/70 leading-[1.8] font-light">
+              <a href="tel:+6632123456" className="hover:text-gold transition-colors">+66 32 123 456</a><br/>
+              <a href="mailto:hello@lovepier.cafe" className="hover:text-gold transition-colors">hello@lovepier.cafe</a>
+            </p>
+          </div>
+        </aside>
+      </div>
+      {/* bottom */}
+      <div className="px-10 py-[18px] border-t border-white/[0.08] flex justify-between items-center text-[10px] tracking-[0.2em] uppercase text-white/30">
+        <div>© 2026 Love Pier Beach Cafe</div>
+      </div>
+    </div>
+  )
+}

@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rm -rf \"/Users/warenarunkeereewat/LOVE-PIER WEBSITE/node_modules\")",
+      "Bash(npm install *)"
+    ]
+  }
+}

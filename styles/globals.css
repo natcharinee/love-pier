@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #f5f3ef;
+  --color-ink: #1a1a1a;
+  --color-muted: #888888;
+  --color-gold: #c9a96e;
+  --font-family-display: "Cormorant Garamond", serif;
+  --font-family-sans: Jost, sans-serif;
+}
+
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: clip; }
+body.menu-open { overflow: hidden; }
+
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity 1.2s cubic-bezier(0.25,0.1,0.25,1), transform 1.2s cubic-bezier(0.25,0.1,0.25,1); will-change: opacity, transform; }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+.reveal-img { overflow: hidden; position: relative; }
+.reveal-img::after { content: ''; position: absolute; inset: 0; background: #f5f3ef; transform: scaleY(1); transform-origin: bottom; transition: transform 1.4s cubic-bezier(0.77,0,0.175,1); pointer-events: none; z-index: 2; }
+.reveal-img.is-visible::after { transform: scaleY(0); }
+.reveal-img img { transform: scale(1.1); transition: transform 1.6s cubic-bezier(0.25,0.1,0.25,1); }
+.reveal-img.is-visible img { transform: scale(1); }
+
+.menu-overlay { position: fixed; inset: 0; background: #0e0e0e; z-index: 999; opacity: 0; pointer-events: none; transition: opacity 0.5s cubic-bezier(0.77,0,0.175,1); display: flex; flex-direction: column; }
+.menu-overlay.is-open { opacity: 1; pointer-events: auto; }
+
+/* Form input underline style */
+.res-input, .c-input {
+  font-family: 'Jost', sans-serif;
+  font-size: 14px;
+  border: none;
+  border-bottom: 1px solid rgba(0,0,0,0.15);
+  background: transparent;
+  padding: 8px 0;
+  color: #1a1a1a;
+  outline: none;
+  font-weight: 300;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+.res-input:focus, .c-input:focus { border-bottom-color: #1a1a1a; }
+textarea.res-input, textarea.c-input { resize: vertical; min-height: 80px; }
+
+/* Gallery tile caption overlay */
+.g-tile { overflow: hidden; background: #e8e4de; position: relative; cursor: pointer; }
+.g-tile img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.6); transition: transform 0.6s, filter 0.6s; }
+.g-tile:hover img { transform: scale(1.04); filter: saturate(0.95); }
+.g-tile-caption { position: absolute; inset: auto 0 0 0; padding: 14px 16px; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); color: #f5f3ef; font-family: 'Cormorant Garamond', serif; font-size: 16px; font-weight: 300; opacity: 0; transition: opacity 0.3s; }
+.g-tile:hover .g-tile-caption { opacity: 1; }
