@@ -220,7 +220,7 @@ export default function Home() {
           </div>
           <div>
             <span className="block text-[9px] tracking-[0.35em] uppercase text-[#bbb] mb-2">{t.contact}</span>
-            <div className="text-[13px] text-[#444] leading-[1.7] font-light"><a href="tel:0642523293" className="text-muted hover:text-ink transition-colors">064-252-3293</a><br/><a href="mailto:cafe.lovepier@gmail.com" className="text-muted hover:text-ink transition-colors">cafe.lovepier@gmail.com</a></div>
+            <div className="text-[13px] text-[#444] leading-[1.7] font-light"><a href="tel:0642523293" className="text-muted hover:text-ink transition-colors">064-252-3293</a><br/><a href="mailto:cafe.lovepier@gmail.com" className="text-muted hover:text-ink transition-colors break-all">cafe.lovepier@gmail.com</a></div>
           </div>
           <div>
             <span className="block text-[9px] tracking-[0.35em] uppercase text-[#bbb] mb-2">{t.follow}</span>

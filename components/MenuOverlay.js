@@ -61,7 +61,7 @@ const COPY = {
 
 export default function MenuOverlay({ isOpen, onClose }) {
   const { pathname } = useRouter()
-  const { lang } = useLanguage()
+  const { lang, setLang } = useLanguage()
   const dict = COPY[lang] || COPY.en
   return (
     <div className={`menu-overlay${isOpen ? ' is-open' : ''}`} aria-hidden={!isOpen}>
@@ -107,8 +107,13 @@ export default function MenuOverlay({ isOpen, onClose }) {
         </aside>
       </div>
       {/* bottom */}
-      <div className="px-4 py-4 sm:px-6 lg:px-10 lg:py-[18px] border-t border-white/[0.08] flex justify-between items-center text-[10px] tracking-[0.2em] uppercase text-white/30">
+      <div className="px-4 py-4 sm:px-6 lg:px-10 lg:py-[18px] border-t border-white/[0.08] flex flex-wrap justify-between items-center gap-3 text-[10px] tracking-[0.2em] uppercase text-white/30">
         <div className="leading-relaxed">© 2026 Love Pier Beach Cafe</div>
+        <div className="flex items-center border border-white/[0.2]">
+          <button onClick={() => setLang('en')} className={`px-2.5 py-1 transition-colors ${lang === 'en' ? 'bg-white text-ink' : 'text-white/60 hover:text-white'}`} aria-label="Switch to English">EN</button>
+          <button onClick={() => setLang('th')} className={`px-2.5 py-1 transition-colors ${lang === 'th' ? 'bg-white text-ink' : 'text-white/60 hover:text-white'}`} aria-label="Switch to Thai">TH</button>
+          <button onClick={() => setLang('zh')} className={`px-2.5 py-1 transition-colors ${lang === 'zh' ? 'bg-white text-ink' : 'text-white/60 hover:text-white'}`} aria-label="Switch to Chinese">ZH</button>
+        </div>
       </div>
     </div>
   )
