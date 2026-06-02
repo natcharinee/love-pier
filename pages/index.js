@@ -184,19 +184,43 @@ export default function Home() {
         <div className="overflow-hidden bg-[#e8e4de] md:col-span-2 lg:col-span-7 lg:row-span-2"><img className="w-full h-full object-cover [filter:saturate(0.6)] hover:[filter:saturate(0.9)] hover:scale-[1.03] transition-all duration-700" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1000&q=80" alt="beach" /></div>
         <div className="overflow-hidden bg-[#e8e4de] md:col-span-1 lg:col-span-5"><img className="w-full h-full object-cover [filter:saturate(0.6)] hover:[filter:saturate(0.9)] hover:scale-[1.03] transition-all duration-700" src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=600&q=80" alt="cafe" /></div>
         <div className="overflow-hidden bg-[#e8e4de] md:col-span-1 lg:col-span-3"><img className="w-full h-full object-cover [filter:saturate(0.6)] hover:[filter:saturate(0.9)] hover:scale-[1.03] transition-all duration-700" src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&q=80" alt="coffee" /></div>
-        <div className="overflow-hidden bg-[#e8e4de] md:col-span-1 lg:col-span-2"><img className="w-full h-full object-cover [filter:saturate(0.6)] hover:[filter:saturate(0.9)] hover:scale-[1.03] transition-all duration-700" src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=400&q=80" alt="interior" /></div>
       </div>
 
       {/* Map section */}
       <div className="reveal">
-        <div className="w-full h-72 sm:h-80 bg-[#dedad3] relative overflow-hidden">
-          <div className="absolute inset-0" style={{ backgroundImage:'linear-gradient(rgba(0,0,0,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,0.06) 1px,transparent 1px)', backgroundSize:'40px 40px' }}></div>
-          <svg style={{ position:'absolute', inset:0, width:'100%', height:'100%', opacity:0.5 }} viewBox="0 0 1200 320" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-            <line x1="0" y1="120" x2="1200" y2="120" stroke="white" strokeWidth="8" opacity="0.6"/>
-            <line x1="0" y1="200" x2="1200" y2="200" stroke="white" strokeWidth="4" opacity="0.4"/>
-            <line x1="300" y1="0" x2="300" y2="320" stroke="white" strokeWidth="6" opacity="0.5"/>
-            <line x1="600" y1="0" x2="600" y2="320" stroke="white" strokeWidth="4" opacity="0.4"/>
-            <line x1="900" y1="0" x2="900" y2="320" stroke="white" strokeWidth="5" opacity="0.45"/>
+        <div className="w-full h-72 sm:h-80 bg-[#d9d7d1] relative overflow-hidden">
+          <div className="absolute inset-0 opacity-55" style={{ backgroundImage:'linear-gradient(rgba(255,255,255,0.3) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.3) 1px,transparent 1px)', backgroundSize:'44px 44px' }}></div>
+          <svg style={{ position:'absolute', inset:0, width:'100%', height:'100%', opacity:0.96 }} viewBox="0 0 1200 320" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="1200" height="320" fill="#d9d7d1" />
+            <path d="M0 0 H430 C470 35, 472 82, 448 116 C430 143, 430 172, 448 201 C471 239, 468 287, 430 320 H0 Z" fill="#9fc4ce" />
+            <path d="M430 0 C470 35, 472 82, 448 116 C430 143, 430 172, 448 201 C471 239, 468 287, 430 320" fill="none" stroke="#c9a96e" strokeWidth="10" opacity="0.36" />
+
+            <path d="M160 -20 V360" stroke="#b8b1a8" strokeWidth="8" />
+            <path d="M640 -20 V360" stroke="#b4ada4" strokeWidth="9" />
+            <path d="M960 -20 V360" stroke="#b4ada4" strokeWidth="9" />
+            <path d="M-20 86 H1220" stroke="#b9b2a9" strokeWidth="7" />
+            <path d="M-20 214 H1220" stroke="#b9b2a9" strokeWidth="6" />
+
+            <g stroke="#b2aca2" strokeWidth="4" fill="none" opacity="0.95">
+              <path d="M520 62 L580 62 L580 122 L700 122 L700 84 L760 84" />
+              <path d="M548 154 L618 154 L618 198 L710 198" />
+              <path d="M520 246 L606 246 L606 286 L742 286" />
+              <path d="M792 52 L842 52 L842 132 L932 132 L932 92 L1010 92" />
+              <path d="M794 176 L860 176 L860 236 L938 236 L938 270 L1032 270" />
+              <path d="M690 236 L732 236 L732 270 L780 270" />
+            </g>
+
+            <g stroke="#94bcc7" strokeWidth="4" fill="none" opacity="0.82">
+              <path d="M474 134 C512 150, 538 166, 560 188 C584 212, 604 238, 626 264" />
+              <path d="M516 106 C546 116, 572 132, 598 158" />
+            </g>
+
+            <g fontFamily="Jost, sans-serif" fontSize="11" letterSpacing="1" fill="#736e66" opacity="0.78">
+              <text x="72" y="52">GULF OF THAILAND</text>
+              <text x="742" y="58">SAENSUK ROAD</text>
+              <text x="986" y="166" transform="rotate(-90 986,166)">SUKHUMVIT ROAD</text>
+              <text x="700" y="304">MUEANG CHONBURI</text>
+            </g>
           </svg>
           <a
             href="https://maps.app.goo.gl/CYDRrd6hoxRv7z4j8"

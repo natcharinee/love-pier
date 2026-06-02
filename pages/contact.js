@@ -3,15 +3,6 @@ import Link from 'next/link'
 import Footer from '../components/Footer'
 import { useLanguage } from '../lib/language'
 
-const FAQ = [
-  { q: 'Do I need a reservation?', a: 'Walk-ins are always welcome. Reservations are recommended for weekends, sunset hour, and groups larger than four.' },
-  { q: 'Are you dog-friendly?', a: 'Yes — well-behaved dogs are welcome on the outdoor terrace. We even keep a water bowl by the door.' },
-  { q: 'Do you have parking?', a: 'Free on-site parking for 18 cars, with separate motorbike and bicycle racks. EV charging available.' },
-  { q: 'Is the cafe accessible?', a: 'The main floor and terrace are step-free with a wheelchair-accessible restroom. Please call ahead for group bookings.' },
-  { q: 'Can I host a private event?', a: 'Yes — the whole cafe is available for private bookings on Mondays. Capacity is 60 standing, 38 seated.' },
-  { q: 'Do you have vegetarian options?', a: 'About half of our menu is vegetarian; we mark vegan and gluten-free options clearly. Anything else can usually be adjusted.' },
-]
-
 import { useState } from 'react'
 
 export default function Contact() {
@@ -30,9 +21,31 @@ export default function Contact() {
         message: 'ข้อความ', send: 'ส่งข้อความ', privacy: 'การส่งแบบฟอร์มถือว่ายอมรับนโยบายความเป็นส่วนตัว',
         subjects: ['ทั่วไป', 'อีเวนต์ส่วนตัว', 'สื่อ', 'ขายส่ง', 'ร่วมงาน'],
         messagePlaceholder: 'บอกรายละเอียดที่ต้องการได้เลย…',
+        namePlaceholder: 'ชื่อของคุณ',
+        emailPlaceholder: 'you@example.com',
+        companyPlaceholder: 'หากมี',
+        sentMessage: 'ส่งข้อความเรียบร้อย',
         followTitle: 'ติดตามเรา',
         followDesc: 'แท็ก #lovepiercafe เพื่อให้เรารีแชร์',
         quick: 'คำถามที่พบบ่อย',
+        phoneNote: 'ติดต่อสะดวกในเวลาทำการ',
+        emailNote: 'ตอบกลับภายใน 24 ชั่วโมง',
+        lineNote: 'ช่องทางเร็วสุดสำหรับการจองด่วน',
+        reservationNote: 'ยืนยันการจองภายใน 2 ชั่วโมง',
+        highlights: [
+          ['งานส่วนตัว', 'สามารถปิดพื้นที่ร้าน รองรับได้ 60 คนแบบยืน หรือ 38 คนแบบนั่ง'],
+          ['สื่อและคอนเทนต์', 'ยินดีต้อนรับงานถ่ายภาพ บทสัมภาษณ์ และสื่อทุกรูปแบบ'],
+          ['ขายส่ง', 'เมล็ดกาแฟของเราพร้อมสำหรับโรงแรมและคาเฟ่ขนาดเล็ก'],
+          ['ร่วมงานกับเรา', 'ตำแหน่งงานอัปเดตผ่าน LINE Official เป็นหลัก'],
+        ],
+        faq: [
+          { q: 'จำเป็นต้องจองโต๊ะล่วงหน้าไหม?', a: 'Walk-in ยินดีต้อนรับเสมอ แต่แนะนำให้จองล่วงหน้าสำหรับช่วงสุดสัปดาห์ เวลาพระอาทิตย์ตก และกลุ่มมากกว่า 4 ท่าน' },
+          { q: 'พาสัตว์เลี้ยงเข้าร้านได้ไหม?', a: 'สามารถพาสัตว์เลี้ยงเข้าร้านได้ เรามีโซนพิเศษเฉพาะสำหรับลูกค้าที่มาพร้อมสัตว์เลี้ยง' },
+          { q: 'มีที่จอดรถหรือไม่?', a: 'มีที่จอดรถฟรีในพื้นที่ร้าน 18 คัน พร้อมโซนจอดมอเตอร์ไซค์และจักรยาน' },
+          { q: 'ร้านรองรับผู้ใช้วีลแชร์ไหม?', a: 'โซนหลักและเทอเรซเป็นทางเรียบไร้ขั้น พร้อมห้องน้ำที่รองรับวีลแชร์ แนะนำให้โทรแจ้งล่วงหน้าหากมาเป็นกลุ่ม' },
+          { q: 'สามารถจัดงานส่วนตัวได้หรือเปล่า?', a: 'ได้ เราเปิดรับจองพื้นที่ร้านสำหรับงานส่วนตัว รองรับได้ 60 คนแบบยืน และ 38 คนแบบนั่ง' },
+          { q: 'มีเมนูมังสวิรัติหรือวีแกนไหม?', a: 'ประมาณครึ่งหนึ่งของเมนูเป็นมังสวิรัติ และมีการระบุเมนูวีแกน/กลูเตนฟรีอย่างชัดเจน หลายเมนูสามารถปรับตามความต้องการได้' },
+        ],
       }
     : lang === 'zh'
       ? {
@@ -48,9 +61,31 @@ export default function Contact() {
           message: '留言内容', send: '发送消息', privacy: '提交即表示同意隐私政策。',
           subjects: ['一般咨询', '包场活动', '媒体', '批发', '招聘'],
           messagePlaceholder: '请告诉我们您的需求…',
+          namePlaceholder: '您的姓名',
+          emailPlaceholder: 'you@example.com',
+          companyPlaceholder: '如适用',
+          sentMessage: '消息已发送',
           followTitle: '关注我们',
           followDesc: '使用 #lovepiercafe 标记，我们会定期精选分享。',
           quick: '常见问题',
+          phoneNote: '营业时段来电最方便',
+          emailNote: '通常 24 小时内回复',
+          lineNote: '临时需求建议走 LINE',
+          reservationNote: '预订约 2 小时内确认',
+          highlights: [
+            ['包场活动', '整店可包场，最多可容纳 60 人站立或 38 人就座'],
+            ['媒体合作', '欢迎拍摄许可、专题采访与内容合作'],
+            ['批发合作', '我们的咖啡豆可供应酒店与精品小店'],
+            ['招聘信息', '职位更新主要发布在 LINE Official'],
+          ],
+          faq: [
+            { q: '需要提前预订吗？', a: '欢迎直接到店，但周末、日落时段和 4 人以上团体，建议提前预订以确保座位。' },
+            { q: '可以带宠物吗？', a: '可以。我们设有专属宠物友好区域，方便与毛孩一起安心用餐。' },
+            { q: '有停车位吗？', a: '店内提供 18 个免费停车位，并设有摩托车与自行车专区。' },
+            { q: '咖啡馆无障碍吗？', a: '主楼层与露台为无台阶设计，并配有无障碍卫生间。若为团体来店，建议提前来电。' },
+            { q: '可以包场举办活动吗？', a: '可以。我们提供包场与私人活动服务，最多可容纳 60 人站立或 38 人就座。' },
+            { q: '有素食选择吗？', a: '约一半菜单为素食，并清楚标注纯素与无麸质选项；多数菜品也可依需求调整。' },
+          ],
         }
       : {
           title: 'Contact — Love Pier Beach Cafe',
@@ -65,9 +100,31 @@ export default function Contact() {
           message: 'Your message', send: 'Send Message', privacy: 'By submitting you agree to our privacy policy.',
           subjects: ['General', 'Private Event', 'Press', 'Wholesale', 'Careers'],
           messagePlaceholder: 'Tell us what you have in mind…',
+          namePlaceholder: 'Your name',
+          emailPlaceholder: 'you@example.com',
+          companyPlaceholder: 'If applicable',
+          sentMessage: 'Message sent.',
           followTitle: 'Follow us, say hello',
           followDesc: 'Tag #lovepiercafe to be featured.',
           quick: 'Quick answers',
+          phoneNote: 'Open hours only',
+          emailNote: 'Reply within 24h',
+          lineNote: 'Fastest for last-minute',
+          reservationNote: 'Confirmed in 2 hours',
+          highlights: [
+            ['Private events', 'The whole cafe seats 60 standing, 38 seated.'],
+            ['Press & media', 'Photo permits, features, and interviews welcome.'],
+            ['Wholesale', 'Our beans are available for hotels and small shops.'],
+            ['Careers', 'Open positions are posted via LINE Official.'],
+          ],
+          faq: [
+            { q: 'Do I need a reservation?', a: 'Walk-ins are always welcome, though we recommend booking ahead for weekends, sunset hours, and groups of more than four.' },
+            { q: 'Are pets welcome?', a: 'Absolutely. We provide a dedicated pet-friendly zone for guests visiting with their furry companions.' },
+            { q: 'Do you have parking?', a: 'Yes — we offer 18 complimentary on-site parking spaces, plus dedicated areas for motorbikes and bicycles.' },
+            { q: 'Is the cafe accessible?', a: 'The main floor and terrace are step-free, with a wheelchair-accessible restroom. For group visits, a quick call in advance is appreciated.' },
+            { q: 'Can I host a private event?', a: 'Yes. We welcome private events and can accommodate up to 60 guests standing or 38 guests seated.' },
+            { q: 'Do you have vegetarian options?', a: 'Roughly half of our menu is vegetarian, with vegan and gluten-free choices clearly marked. Many dishes can also be tailored on request.' },
+          ],
         }
   const [subject, setSubject] = useState(t.subjects[0])
 
@@ -88,22 +145,22 @@ export default function Contact() {
           <a href="tel:0642523293" className="flex flex-col gap-2 p-6 sm:p-7 lg:p-8 bg-white border border-black/10 hover:bg-[#fffdf6] hover:border-gold transition-all duration-200">
             <span className="text-[10px] tracking-[0.3em] uppercase text-gold">{t.phone}</span>
             <div className="font-display text-[22px] font-normal text-ink leading-[1.2]">064-252-3293</div>
-            <div className="text-xs text-muted font-light mt-1">Open hours only</div>
+            <div className="text-xs text-muted font-light mt-1">{t.phoneNote}</div>
           </a>
           <a href="mailto:cafe.lovepier@gmail.com" className="flex flex-col gap-2 p-6 sm:p-7 lg:p-8 bg-white border border-black/10 hover:bg-[#fffdf6] hover:border-gold transition-all duration-200">
             <span className="text-[10px] tracking-[0.3em] uppercase text-gold">{t.email}</span>
             <div className="font-display text-[20px] sm:text-[22px] font-normal text-ink leading-[1.2] break-all">cafe.lovepier@gmail.com</div>
-            <div className="text-xs text-muted font-light mt-1">Reply within 24h</div>
+            <div className="text-xs text-muted font-light mt-1">{t.emailNote}</div>
           </a>
           <a href="#" className="flex flex-col gap-2 p-6 sm:p-7 lg:p-8 bg-white border border-black/10 hover:bg-[#fffdf6] hover:border-gold transition-all duration-200">
             <span className="text-[10px] tracking-[0.3em] uppercase text-gold">{t.line}</span>
             <div className="font-display text-[22px] font-normal text-ink leading-[1.2]">@lovepier</div>
-            <div className="text-xs text-muted font-light mt-1">Fastest for last-minute</div>
+            <div className="text-xs text-muted font-light mt-1">{t.lineNote}</div>
           </a>
           <Link href="/reservation" className="flex flex-col gap-2 p-6 sm:p-7 lg:p-8 bg-white border border-black/10 hover:bg-[#fffdf6] hover:border-gold transition-all duration-200">
             <span className="text-[10px] tracking-[0.3em] uppercase text-gold">{t.reservation}</span>
             <div className="font-display text-[22px] font-normal text-ink leading-[1.2]">{t.bookArrow}</div>
-            <div className="text-xs text-muted font-light mt-1">Confirmed in 2 hours</div>
+            <div className="text-xs text-muted font-light mt-1">{t.reservationNote}</div>
           </Link>
         </div>
       </section>
@@ -114,12 +171,7 @@ export default function Contact() {
           <h2 className="font-display font-light leading-[1.05] mb-5 text-[clamp(36px,4.5vw,56px)]">{t.sendTitle.split('\n').map((l,i)=><span key={i}>{l}{i===0?<br/>:null}</span>)}</h2>
           <p className="text-sm text-[#666] leading-[1.9] mb-8 font-light">{t.sendDesc}</p>
           <ul className="list-none">
-            {[
-              ['Private events', 'The whole cafe sleeps 60 standing, 38 seated.'],
-              ['Press & media', 'Photo permits, features, interviews welcome.'],
-              ['Wholesale', 'Our beans available to hotels & small shops.'],
-              ['Careers', 'Open positions posted via LINE Official.'],
-            ].map(([label, text]) => (
+            {t.highlights.map(([label, text]) => (
               <li key={label} className="flex items-baseline gap-4 py-3.5 border-b border-black/10 text-[13px] text-[#555] font-light before:content-['·'] before:text-gold before:text-2xl">
                 <strong className="text-ink font-medium min-w-[100px] inline-block">{label}</strong>{text}
               </li>
@@ -128,7 +180,7 @@ export default function Contact() {
         </div>
         <form
           className="grid grid-cols-1 lg:grid-cols-2 gap-6 gap-x-5"
-          onSubmit={e => { e.preventDefault(); alert('Message sent.') }}
+          onSubmit={e => { e.preventDefault(); alert(t.sentMessage) }}
         >
           <div className="flex flex-col lg:col-span-2">
             <label className="text-[10px] tracking-[0.3em] uppercase text-[#aaa] mb-2">{t.subject}</label>
@@ -147,11 +199,11 @@ export default function Contact() {
           </div>
           <div className="flex flex-col">
             <label className="text-[10px] tracking-[0.3em] uppercase text-[#aaa] mb-2" htmlFor="cname">{t.fullName}</label>
-            <input className="c-input" type="text" id="cname" placeholder="Your name" required />
+            <input className="c-input" type="text" id="cname" placeholder={t.namePlaceholder} required />
           </div>
           <div className="flex flex-col">
             <label className="text-[10px] tracking-[0.3em] uppercase text-[#aaa] mb-2" htmlFor="cemail">{t.email}</label>
-            <input className="c-input" type="email" id="cemail" placeholder="you@example.com" required />
+            <input className="c-input" type="email" id="cemail" placeholder={t.emailPlaceholder} required />
           </div>
           <div className="flex flex-col">
             <label className="text-[10px] tracking-[0.3em] uppercase text-[#aaa] mb-2" htmlFor="cphone">{t.phoneLabel}</label>
@@ -159,7 +211,7 @@ export default function Contact() {
           </div>
           <div className="flex flex-col">
             <label className="text-[10px] tracking-[0.3em] uppercase text-[#aaa] mb-2" htmlFor="ccompany">{t.company}</label>
-            <input className="c-input" type="text" id="ccompany" placeholder="If applicable" />
+            <input className="c-input" type="text" id="ccompany" placeholder={t.companyPlaceholder} />
           </div>
           <div className="flex flex-col lg:col-span-2">
             <label className="text-[10px] tracking-[0.3em] uppercase text-[#aaa] mb-2" htmlFor="cmessage">{t.message}</label>
@@ -190,7 +242,7 @@ export default function Contact() {
           <h3 className="font-display font-light leading-[1.05] text-[clamp(32px,4vw,48px)]">{t.quick}</h3>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16">
-          {FAQ.map(({ q, a }) => (
+          {t.faq.map(({ q, a }) => (
             <div key={q} className="py-6 border-b border-black/10">
               <h4 className="font-display text-[20px] font-normal text-ink mb-2">{q}</h4>
               <p className="text-[13px] text-[#666] leading-[1.8] font-light">{a}</p>

@@ -4,14 +4,11 @@ import Footer from '../components/Footer'
 import { useLanguage } from '../lib/language'
 
 const TILES = [
-  { cat:'beach',    col:6, row:2, ratio:'4/5',  src:'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&q=80',  cap:'Morning by the pier' },
-  { cat:'food',     col:3, row:1, ratio:'1',    src:'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=500&q=80',  cap:'Cold brew' },
-  { cat:'food',     col:3, row:1, ratio:'1',    src:'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=500&q=80',  cap:'Espresso pour' },
-  { cat:'interior', col:4, row:1, ratio:'1',    src:'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=500&q=80',     cap:'Interior' },
-  { cat:'interior', col:4, row:1, ratio:'1',    src:'https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=500&q=80',  cap:'Corner seat' },
-  { cat:'food',     col:4, row:1, ratio:'1',    src:'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&q=80',  cap:'Caramel latte' },
-  { cat:'beach',    col:5, row:1, ratio:'16/9', src:'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=900&q=80',  cap:'The old pier' },
-  { cat:'events',   col:7, row:1, ratio:'16/9', src:'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1000&q=80', cap:'Evening lights' },
+  { cat:'beach',    col:6, row:2, ratio:'4/5',  src:'/uploads/gallery-sunset-boat.png',  cap:'Sunset by the pier', tone:'warm' },
+  { cat:'food',     col:3, row:1, ratio:'1',    src:'/uploads/gallery-espresso-cup.png',  cap:'Love Pier espresso', tone:'softWarm' },
+  { cat:'food',     col:3, row:1, ratio:'1',    src:'/uploads/gallery-can-coffee.png',  cap:'Love Pier canned latte', tone:'brandWarm' },
+  { cat:'interior', col:6, row:2, ratio:'4/5',  src:'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=500&q=80',     cap:'Interior' },
+  { cat:'events',   col:6, row:1, ratio:'16/9', src:'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1000&q=80', cap:'Evening lights' },
   { cat:'food',     col:4, row:1, ratio:'4/5',  src:'https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=600&q=80',  cap:'Brunch plate' },
   { cat:'guests',   col:4, row:1, ratio:'4/5',  src:'https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&q=80',    cap:'Beach walk' },
   { cat:'beach',    col:4, row:1, ratio:'4/5',  src:'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=600&q=80',  cap:'Sand & surf' },
@@ -60,7 +57,7 @@ export default function Gallery() {
       </div>
 
       {/* Gallery grid */}
-      <div className="gallery-grid p-1.5 reveal">
+      <div className="gallery-grid p-0 reveal">
         {visible.map((tile, i) => (
           <div
             key={i}
@@ -68,7 +65,19 @@ export default function Gallery() {
             style={{ '--col': tile.col, '--row': tile.row, '--mcol': tile.col >= 6 ? 2 : 1, '--mrow': 1, aspectRatio: tile.ratio }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={tile.src} alt="" />
+            <img
+              src={tile.src}
+              alt=""
+              style={
+                tile.tone === 'warm'
+                  ? { filter:'saturate(0.78) contrast(0.97) brightness(0.96) sepia(0.06)' }
+                  : tile.tone === 'softWarm'
+                    ? { filter:'saturate(0.74) contrast(0.95) brightness(0.97) sepia(0.08)' }
+                    : tile.tone === 'brandWarm'
+                      ? { filter:'saturate(0.82) contrast(0.96) brightness(0.98) sepia(0.07)' }
+                    : undefined
+              }
+            />
             <div className="g-tile-caption">{tile.cap}</div>
           </div>
         ))}
