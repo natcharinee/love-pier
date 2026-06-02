@@ -5,17 +5,17 @@ import { useLanguage } from '../lib/language'
 const COPY = {
   en: {
     left: [{ href: '/', label: 'Home' }, { href: '/menu', label: 'Menu' }, { href: '/gallery', label: 'Gallery' }],
-    right: [{ href: '/location', label: 'Location' }, { href: '/contact', label: 'Contact' }],
+    right: [],
     reserve: 'Reserve',
   },
   th: {
     left: [{ href: '/', label: 'หน้าหลัก' }, { href: '/menu', label: 'เมนู' }, { href: '/gallery', label: 'แกลเลอรี' }],
-    right: [{ href: '/location', label: 'ที่ตั้ง' }, { href: '/contact', label: 'ติดต่อ' }],
+    right: [],
     reserve: 'จองโต๊ะ',
   },
   zh: {
     left: [{ href: '/', label: '首页' }, { href: '/menu', label: '菜单' }, { href: '/gallery', label: '图库' }],
-    right: [{ href: '/location', label: '地址' }, { href: '/contact', label: '联系' }],
+    right: [],
     reserve: '预订',
   },
 }
