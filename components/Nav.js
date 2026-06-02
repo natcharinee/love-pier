@@ -46,7 +46,7 @@ export default function Nav({ onOpenMenu }) {
           <button onClick={() => setLang('th')} className={`px-2.5 py-1 text-[10px] tracking-[0.2em] uppercase ${lang === 'th' ? 'bg-ink text-bg' : 'text-muted hover:text-ink'}`} aria-label="Switch to Thai">TH</button>
           <button onClick={() => setLang('zh')} className={`px-2.5 py-1 text-[10px] tracking-[0.2em] uppercase ${lang === 'zh' ? 'bg-ink text-bg' : 'text-muted hover:text-ink'}`} aria-label="Switch to Chinese">ZH</button>
         </div>
-        <Link href="/reservation" className="text-[9px] sm:text-[10px] tracking-[0.2em] sm:tracking-[0.25em] uppercase text-bg bg-ink px-3 py-2 sm:px-[18px] sm:py-[9px] hover:bg-gold hover:text-ink transition-colors duration-200 whitespace-nowrap">{dict.reserve}</Link>
+        <Link href="/reservation" className="text-[9px] sm:text-[10px] tracking-[0.12em] sm:tracking-[0.2em] uppercase text-bg bg-ink px-3 py-2 sm:px-[18px] sm:py-[9px] hover:bg-gold hover:text-ink transition-colors duration-200 whitespace-nowrap">{dict.reserve}</Link>
       </div>
     </nav>
   )

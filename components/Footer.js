@@ -20,7 +20,7 @@ export default function Footer({ tagline }) {
         dangerouslySetInnerHTML={{ __html: html }}
       />
       <div className="mt-8 sm:mt-10 pt-5 border-t border-white/[0.08] flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-        <div className="text-[10px] tracking-[0.2em] text-white/30 uppercase">{copy.rights}</div>
+        <div className="text-[10px] tracking-[0.08em] sm:tracking-[0.2em] text-white/30 uppercase leading-relaxed break-words">{copy.rights}</div>
         <div className="font-display text-base font-light text-white/50 tracking-[0.2em]">{copy.brand}</div>
       </div>
     </footer>

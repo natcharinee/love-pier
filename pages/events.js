@@ -75,8 +75,8 @@ export default function Events() {
               </div>
               <div className="text-[10px] tracking-[0.25em] uppercase text-gold lg:justify-self-start">{ev.cat}</div>
               {ev.free
-                ? <div className="text-[11px] tracking-[0.2em] uppercase text-gold border border-gold/50 px-2.5 py-1">Free</div>
-                : <div className="font-display text-lg text-ink">{ev.price}</div>
+                ? <div className="text-[11px] tracking-[0.2em] uppercase text-gold border border-gold/50 px-2.5 py-1 w-fit">Free</div>
+                : <div className="font-display text-lg text-ink w-fit">{ev.price}</div>
               }
               <div className="hidden lg:block text-muted text-base group-hover:text-ink group-hover:translate-x-1 transition-all duration-200">→</div>
             </div>
