@@ -66,29 +66,36 @@ export default function MenuOverlay({ isOpen, onClose }) {
   return (
     <div className={`menu-overlay${isOpen ? ' is-open' : ''}`} aria-hidden={!isOpen}>
       {/* top bar */}
-      <div className="px-4 py-3 sm:px-6 lg:px-10 lg:py-[14px] flex items-center justify-between border-b border-white/[0.08] gap-3">
-        <Link href="/" onClick={onClose}>
+      <div className="shrink-0 px-4 py-3 sm:px-6 lg:px-10 lg:py-[14px] flex items-center justify-between border-b border-white/[0.08] gap-3">
+        <Link href="/" onClick={onClose} className="shrink-0">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/uploads/logo-8dc1f126.png" alt="Love Pier" className="h-9 sm:h-10 lg:h-11 block" style={{ filter: 'invert(1) brightness(2) opacity(0.85)' }} />
         </Link>
-        <button onClick={onClose} className="bg-transparent border border-white/[0.15] w-9 h-9 sm:w-[38px] sm:h-[38px] flex items-center justify-center text-white/70 text-lg hover:border-white hover:text-white transition-colors shrink-0" aria-label="Close menu">✕</button>
+        <div className="flex items-center gap-2 sm:gap-3 ml-auto">
+          <div className="flex items-center border border-white/[0.2] text-[10px] tracking-[0.2em] uppercase shrink-0">
+            <button onClick={() => setLang('en')} className={`px-2 py-1 sm:px-2.5 transition-colors ${lang === 'en' ? 'bg-white text-ink' : 'text-white/60 hover:text-white'}`} aria-label="Switch to English">EN</button>
+            <button onClick={() => setLang('th')} className={`px-2 py-1 sm:px-2.5 transition-colors ${lang === 'th' ? 'bg-white text-ink' : 'text-white/60 hover:text-white'}`} aria-label="Switch to Thai">TH</button>
+            <button onClick={() => setLang('zh')} className={`px-2 py-1 sm:px-2.5 transition-colors ${lang === 'zh' ? 'bg-white text-ink' : 'text-white/60 hover:text-white'}`} aria-label="Switch to Chinese">ZH</button>
+          </div>
+          <button onClick={onClose} className="bg-transparent border border-white/[0.15] w-9 h-9 sm:w-[38px] sm:h-[38px] flex items-center justify-center text-white/70 text-lg hover:border-white hover:text-white transition-colors shrink-0" aria-label="Close menu">✕</button>
+        </div>
       </div>
       {/* body */}
-      <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 items-center p-5 sm:p-7 lg:p-10 gap-8 lg:gap-20 overflow-y-auto">
-        <nav className="flex flex-col gap-1">
+      <div className="flex-1 min-h-0 grid grid-cols-1 md:grid-cols-2 md:items-stretch content-start md:content-center px-4 py-5 sm:px-6 sm:py-7 md:px-8 md:py-8 lg:px-10 lg:py-10 gap-6 sm:gap-8 md:gap-10 lg:gap-14 xl:gap-20 overflow-y-auto overscroll-contain">
+        <nav className="flex min-w-0 flex-col gap-0 sm:gap-0.5 md:justify-center md:py-4">
           {dict.navItems.map((item, i) => (
             <Link
               key={item.href}
               href={item.href}
               onClick={onClose}
-              className={`font-display font-light leading-[1.05] tracking-[-0.02em] flex items-baseline gap-5 transition-all duration-200 hover:text-bg hover:translate-x-2 text-[clamp(34px,4.8vw,60px)] ${pathname === item.href ? 'text-gold' : 'text-white/45'}`}
+              className={`font-display font-light leading-[1.05] tracking-[-0.02em] flex items-baseline gap-3 sm:gap-4 md:gap-5 transition-all duration-200 hover:text-bg hover:translate-x-1 sm:hover:translate-x-2 text-[clamp(26px,7.2vw,40px)] sm:text-[clamp(30px,5.5vw,48px)] lg:text-[clamp(34px,3.8vw,56px)] ${pathname === item.href ? 'text-gold' : 'text-white/45'}`}
             >
-              <span className="font-sans text-[11px] tracking-[0.2em] font-light text-white/30 -translate-y-2">{String(i + 1).padStart(2, '0')}</span>
+              <span className="font-sans text-[10px] sm:text-[11px] tracking-[0.2em] font-light text-white/30 -translate-y-1 sm:-translate-y-2 shrink-0">{String(i + 1).padStart(2, '0')}</span>
               {item.label}
             </Link>
           ))}
         </nav>
-        <aside className="border-t border-white/[0.08] pt-6 sm:pt-8 lg:border-t-0 lg:border-l lg:border-white/[0.08] lg:pl-16 flex flex-col gap-7 sm:gap-8">
+        <aside className="flex shrink-0 flex-col gap-5 border-t border-white/[0.08] pt-5 sm:gap-6 sm:pt-6 md:justify-center md:border-t-0 md:border-l md:pt-0 md:pl-8 lg:pl-12 xl:pl-16 md:gap-7">
           <div>
             <h4 className="text-[10px] tracking-[0.35em] uppercase text-white/40 mb-2.5">{dict.visit}</h4>
             <p className="text-[13px] text-white/70 leading-[1.8] font-light" dangerouslySetInnerHTML={{ __html: dict.address }} />
@@ -107,13 +114,8 @@ export default function MenuOverlay({ isOpen, onClose }) {
         </aside>
       </div>
       {/* bottom */}
-      <div className="px-4 py-4 sm:px-6 lg:px-10 lg:py-[18px] border-t border-white/[0.08] flex flex-wrap justify-between items-center gap-3 text-[10px] tracking-[0.2em] uppercase text-white/30">
+      <div className="shrink-0 px-4 py-4 sm:px-6 lg:px-10 lg:py-[18px] border-t border-white/[0.08] text-[10px] tracking-[0.2em] uppercase text-white/30">
         <div className="leading-relaxed">© 2026 Love Pier Beach Cafe</div>
-        <div className="flex items-center border border-white/[0.2]">
-          <button onClick={() => setLang('en')} className={`px-2.5 py-1 transition-colors ${lang === 'en' ? 'bg-white text-ink' : 'text-white/60 hover:text-white'}`} aria-label="Switch to English">EN</button>
-          <button onClick={() => setLang('th')} className={`px-2.5 py-1 transition-colors ${lang === 'th' ? 'bg-white text-ink' : 'text-white/60 hover:text-white'}`} aria-label="Switch to Thai">TH</button>
-          <button onClick={() => setLang('zh')} className={`px-2.5 py-1 transition-colors ${lang === 'zh' ? 'bg-white text-ink' : 'text-white/60 hover:text-white'}`} aria-label="Switch to Chinese">ZH</button>
-        </div>
       </div>
     </div>
   )
