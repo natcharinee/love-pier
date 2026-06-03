@@ -180,9 +180,9 @@ export default function Home() {
 
       {/* Mosaic grid */}
       <div className="grid gap-[3px] mt-[3px] reveal grid-cols-1 md:grid-cols-2 lg:grid-cols-12 auto-rows-[220px] sm:auto-rows-[240px] lg:auto-rows-[280px]">
-        <div className="overflow-hidden bg-[#e8e4de] md:col-span-2 lg:col-span-7 lg:row-span-2"><img className="w-full h-full object-cover [filter:saturate(0.6)] hover:[filter:saturate(0.9)] hover:scale-[1.03] transition-all duration-700" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1000&q=80" alt="beach" /></div>
-        <div className="overflow-hidden bg-[#e8e4de] md:col-span-1 lg:col-span-5"><img className="w-full h-full object-cover [filter:saturate(0.6)] hover:[filter:saturate(0.9)] hover:scale-[1.03] transition-all duration-700" src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=600&q=80" alt="cafe" /></div>
-        <div className="overflow-hidden bg-[#e8e4de] md:col-span-1 lg:col-span-3"><img className="w-full h-full object-cover object-top [filter:saturate(0.6)] hover:[filter:saturate(0.9)] hover:scale-[1.03] transition-all duration-700" src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&q=80" alt="coffee" /></div>
+        <div className="overflow-hidden bg-[#e8e4de] md:col-span-2 lg:col-span-7 lg:row-span-2"><img className="w-full h-full object-cover object-[50%_55%] [filter:saturate(0.72)_contrast(0.96)_brightness(0.94)_sepia(0.05)] hover:[filter:saturate(0.88)_contrast(0.98)_brightness(0.97)_sepia(0.03)] hover:scale-[1.03] transition-all duration-700" src="/uploads/home-beach-panorama.png" alt="beach" /></div>
+        <div className="overflow-hidden bg-[#e8e4de] md:col-span-1 lg:col-span-5"><img className="w-full h-full object-cover object-[50%_45%] [filter:saturate(0.72)_contrast(0.96)_brightness(0.94)_sepia(0.05)] hover:[filter:saturate(0.88)_contrast(0.98)_brightness(0.97)_sepia(0.03)] hover:scale-[1.03] transition-all duration-700" src="/uploads/home-cafe-interior.png" alt="cafe" /></div>
+        <div className="overflow-hidden bg-[#e8e4de] md:col-span-1 lg:col-span-5"><img className="w-full h-full object-cover object-[50%_72%] [filter:saturate(0.72)_contrast(0.96)_brightness(0.94)_sepia(0.05)] hover:[filter:saturate(0.88)_contrast(0.98)_brightness(0.97)_sepia(0.03)] hover:scale-[1.03] transition-all duration-700" src="/uploads/home-espresso.png" alt="coffee" /></div>
       </div>
 
       {/* Map section */}
