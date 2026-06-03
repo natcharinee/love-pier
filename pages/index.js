@@ -34,6 +34,7 @@ export default function Home() {
         hoursCompact: 'เปิดทุกวัน (ยกเว้นวันพุธ) · 09:00-18:00',
         contact: 'ติดต่อ',
         follow: 'ติดตาม',
+        heroVideoAlt: 'Love Pier Beach Cafe',
       }
     : lang === 'zh'
       ? {
@@ -64,6 +65,7 @@ export default function Home() {
           hoursCompact: '每日营业（周三除外） · 09:00-18:00',
           contact: '联系',
           follow: '关注我们',
+          heroVideoAlt: 'Love Pier Beach Cafe',
         }
       : {
         title: 'Love Pier Beach Cafe — Home',
@@ -93,6 +95,7 @@ export default function Home() {
       hoursCompact: 'Open daily (except Wednesday) · 09:00-18:00',
         contact: 'Contact',
         follow: 'Follow',
+        heroVideoAlt: 'Love Pier Beach Cafe',
       }
   const renderLines = (text) => text.split('\n').map((line, idx, arr) => (
     <span key={`${line}-${idx}`}>
@@ -123,8 +126,21 @@ export default function Home() {
         </div>
       </header>
 
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img className="w-full aspect-video object-cover [filter:saturate(0.75)] reveal-img" src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1600&q=85" alt="Love Pier Beach Cafe" />
+      <div className="reveal-img w-full aspect-video overflow-hidden bg-[#e8e4de]">
+        <video
+          className="home-hero-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1600&q=85"
+          aria-label={t.heroVideoAlt}
+        >
+          <source src="/uploads/hero-video.mov" type="video/quicktime" />
+          <source src="/uploads/hero-video.mp4" type="video/mp4" />
+        </video>
+      </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-[3px] mt-[3px] reveal">
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -180,9 +196,9 @@ export default function Home() {
 
       {/* Mosaic grid */}
       <div className="grid gap-[3px] mt-[3px] reveal grid-cols-1 md:grid-cols-2 lg:grid-cols-12 auto-rows-[220px] sm:auto-rows-[240px] lg:auto-rows-[280px]">
-        <div className="overflow-hidden bg-[#e8e4de] md:col-span-2 lg:col-span-7 lg:row-span-2"><img className="w-full h-full object-cover object-[50%_55%] [filter:saturate(0.72)_contrast(0.96)_brightness(0.94)_sepia(0.05)] hover:[filter:saturate(0.88)_contrast(0.98)_brightness(0.97)_sepia(0.03)] hover:scale-[1.03] transition-all duration-700" src="/uploads/home-beach-panorama.png" alt="beach" /></div>
-        <div className="overflow-hidden bg-[#e8e4de] md:col-span-1 lg:col-span-5"><img className="w-full h-full object-cover object-[50%_45%] [filter:saturate(0.72)_contrast(0.96)_brightness(0.94)_sepia(0.05)] hover:[filter:saturate(0.88)_contrast(0.98)_brightness(0.97)_sepia(0.03)] hover:scale-[1.03] transition-all duration-700" src="/uploads/home-cafe-interior.png" alt="cafe" /></div>
-        <div className="overflow-hidden bg-[#e8e4de] md:col-span-1 lg:col-span-5"><img className="w-full h-full object-cover object-[50%_72%] [filter:saturate(0.72)_contrast(0.96)_brightness(0.94)_sepia(0.05)] hover:[filter:saturate(0.88)_contrast(0.98)_brightness(0.97)_sepia(0.03)] hover:scale-[1.03] transition-all duration-700" src="/uploads/home-espresso.png" alt="coffee" /></div>
+        <div className="overflow-hidden bg-[#e8e4de] md:col-span-2 lg:col-span-7 lg:row-span-2"><img className="home-mosaic-img w-full h-full object-cover object-[50%_55%]" src="/uploads/home-beach-panorama.png" alt="beach" /></div>
+        <div className="overflow-hidden bg-[#e8e4de] md:col-span-1 lg:col-span-5"><img className="home-mosaic-img w-full h-full object-cover object-[50%_45%]" src="/uploads/home-cafe-interior.png" alt="cafe" /></div>
+        <div className="overflow-hidden bg-[#e8e4de] md:col-span-1 lg:col-span-5"><img className="home-mosaic-img w-full h-full object-cover object-[50%_72%]" src="/uploads/home-espresso.png" alt="coffee" /></div>
       </div>
 
       {/* Map section */}
