@@ -282,6 +282,12 @@ const SECTION_COPY = {
   },
 }
 
+const FOOTER_TAGLINE = {
+  th: 'ทานให้อิ่ม <em>นั่งให้นาน</em>',
+  zh: '吃好 <em>坐久一点</em>',
+  en: 'EAT WELL, <em>STAY LONGER</em>',
+}
+
 const BREAKFAST_DESC_COPY = {
   en: {
     '01': { badge: 'Signature', desc: 'Two eggs any style, sourdough, avocado, smoked salmon, and garden greens.' },
@@ -803,7 +809,7 @@ export default function Menu() {
         </div>
       </section>
 
-      <Footer tagline="EAT WELL, <em>STAY LONGER</em>" />
+      <Footer tagline={FOOTER_TAGLINE[lang] || FOOTER_TAGLINE.en} />
     </>
   )
 }

@@ -40,6 +40,14 @@ body.menu-open { overflow: hidden; }
 }
 .reveal-img.is-visible img { transform: scale(1); }
 
+/* Footer big tagline — all pages */
+.footer-tagline {
+  font-size: clamp(28px, 7vw, 92px);
+}
+.footer-tagline--long {
+  font-size: clamp(22px, 4.8vw, 72px);
+}
+
 /* ── MENU OVERLAY OPEN STATE ── */
 .menu-overlay.is-open {
   opacity: 1;

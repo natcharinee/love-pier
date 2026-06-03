@@ -34,7 +34,6 @@ export default function Home() {
         hoursCompact: 'เปิดทุกวัน (ยกเว้นวันพุธ) · 09:00-18:00',
         contact: 'ติดต่อ',
         follow: 'ติดตาม',
-        heroVideoAlt: 'Love Pier Beach Cafe',
       }
     : lang === 'zh'
       ? {
@@ -65,7 +64,6 @@ export default function Home() {
           hoursCompact: '每日营业（周三除外） · 09:00-18:00',
           contact: '联系',
           follow: '关注我们',
-          heroVideoAlt: 'Love Pier Beach Cafe',
         }
       : {
         title: 'Love Pier Beach Cafe — Home',
@@ -95,7 +93,6 @@ export default function Home() {
       hoursCompact: 'Open daily (except Wednesday) · 09:00-18:00',
         contact: 'Contact',
         follow: 'Follow',
-        heroVideoAlt: 'Love Pier Beach Cafe',
       }
   const renderLines = (text) => text.split('\n').map((line, idx, arr) => (
     <span key={`${line}-${idx}`}>
@@ -126,21 +123,8 @@ export default function Home() {
         </div>
       </header>
 
-      <div className="reveal-img w-full aspect-video overflow-hidden bg-[#e8e4de]">
-        <video
-          className="home-hero-video"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          poster="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1600&q=85"
-          aria-label={t.heroVideoAlt}
-        >
-          <source src="/uploads/hero-video.mov" type="video/quicktime" />
-          <source src="/uploads/hero-video.mp4" type="video/mp4" />
-        </video>
-      </div>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img className="w-full aspect-video object-cover [filter:saturate(0.75)] reveal-img" src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1600&q=85" alt="Love Pier Beach Cafe" />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-[3px] mt-[3px] reveal">
         {/* eslint-disable-next-line @next/next/no-img-element */}

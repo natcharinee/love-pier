@@ -103,13 +103,19 @@
       </div>`;
   }
 
+  function footerTaglineSizeClass(text) {
+    const len = text.replace(/<[^>]+>/g, '').trim().length;
+    return len > 20 ? 'footer-tagline footer-tagline--long' : 'footer-tagline';
+  }
+
   // ── Footer (big tagline) ─────────────────────────────────
   const footerMount = document.querySelector('[data-mount="footer"]');
   if (footerMount) {
     const tagline = footerMount.getAttribute('data-tagline') || 'THE SEA IS <em>ALWAYS OPEN</em>';
+    const taglineClass = footerTaglineSizeClass(tagline);
     footerMount.outerHTML = `
-      <footer class="bg-ink px-10 pt-16 pb-10 overflow-hidden reveal">
-        <div class="font-display font-light text-bg tracking-[-0.03em] leading-[0.9] whitespace-nowrap overflow-hidden text-[clamp(36px,10vw,140px)]">${tagline}</div>
+      <footer class="bg-ink px-4 pt-12 pb-8 overflow-hidden reveal sm:px-6 sm:pt-14 sm:pb-10 lg:px-10 lg:pt-16">
+        <div class="font-display font-light text-bg tracking-[-0.03em] leading-[0.9] whitespace-nowrap overflow-hidden max-w-full ${taglineClass}">${tagline}</div>
         <div class="mt-10 pt-5 border-t border-[rgba(255,255,255,0.08)] flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
           <div class="text-[10px] tracking-[0.2em] text-[rgba(245,243,239,0.3)] uppercase">© 2026 Love Pier Beach Cafe · All Rights Reserved</div>
           <div class="font-display text-base font-light text-[rgba(245,243,239,0.5)] tracking-[0.2em]">Love Pier</div>
