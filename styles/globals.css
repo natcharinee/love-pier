@@ -24,6 +24,8 @@ body.menu-open { overflow: hidden; }
 
 /* Footer big tagline — all pages / languages */
 .footer-tagline {
+  width: 100%;
+  text-align: center;
   font-size: clamp(28px, 7vw, 92px);
 }
 .footer-tagline--long {
