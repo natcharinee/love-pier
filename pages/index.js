@@ -124,13 +124,25 @@ export default function Home() {
       </header>
 
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img className="w-full aspect-video object-cover [filter:saturate(0.75)] reveal-img" src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1600&q=85" alt="Love Pier Beach Cafe" />
+      <img
+        className="w-full aspect-video object-cover object-[50%_40%] [filter:saturate(0.75)] reveal-img"
+        src="/uploads/home-hero.png"
+        alt="Love Pier Beach Cafe"
+      />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-[3px] mt-[3px] reveal">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="w-full aspect-[4/3] object-cover [filter:saturate(0.7)] hover:[filter:saturate(1)] transition-[filter] duration-500" src="/uploads/drink-can-set.png" alt="Love Pier canned drinks" />
+        <img
+          className="w-full aspect-[4/3] object-cover object-center [filter:saturate(0.7)] hover:[filter:saturate(1)] transition-[filter] duration-500"
+          src="/uploads/home-cafe-interior.png"
+          alt="Love Pier Beach Cafe interior"
+        />
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="w-full aspect-[4/3] object-cover [filter:saturate(0.7)] hover:[filter:saturate(1)] transition-[filter] duration-500" src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=1000&q=80" alt="cafe" />
+        <img
+          className="w-full aspect-[4/3] object-cover object-center [filter:saturate(0.7)] hover:[filter:saturate(1)] transition-[filter] duration-500"
+          src="/uploads/drink-can-set.png"
+          alt="Love Pier canned drinks"
+        />
       </div>
 
       <section className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] px-4 py-14 items-start reveal sm:px-6 sm:py-16 lg:px-10 lg:py-20 gap-10 lg:gap-0">
