@@ -123,7 +123,7 @@ function LangFlagDropdown({ lang, setLang }) {
   )
 }
 
-export default function Nav() {
+export default function Nav({ onOpenMenu }) {
   const { pathname } = useRouter()
   const { lang, setLang } = useLanguage()
   const dict = COPY[lang] || COPY.en
@@ -135,6 +135,16 @@ export default function Nav() {
   return (
     <nav className="w-full sticky top-0 z-[100] border-b border-black/10 bg-[rgba(245,243,239,0.92)] backdrop-blur-sm">
       <div className="px-4 py-2.5 sm:px-6 sm:py-3 lg:px-10 flex items-center gap-3 sm:gap-4">
+        <button
+          type="button"
+          onClick={onOpenMenu}
+          className="lg:hidden flex flex-col justify-center items-center gap-[5px] bg-transparent border border-black/[0.12] w-9 h-9 shrink-0 hover:border-ink transition-colors"
+          aria-label="Open menu"
+        >
+          <span className="block w-4 h-px bg-ink" />
+          <span className="block w-4 h-px bg-ink" />
+          <span className="block w-4 h-px bg-ink" />
+        </button>
         <Link href="/" className="shrink-0">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -143,7 +153,7 @@ export default function Nav() {
             className="h-8 sm:h-9 lg:h-11 w-auto mix-blend-multiply block"
           />
         </Link>
-        <div className="flex-1 min-w-0 overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div className="hidden lg:flex flex-1 min-w-0 overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           <div className="flex items-center gap-3 sm:gap-4 lg:gap-5 py-0.5 min-w-max lg:min-w-0 lg:w-full lg:flex-wrap lg:justify-center">
             {dict.navItems.map((item) => (
               <Link key={item.href} href={item.href} className={linkClass(item.href)}>
@@ -162,7 +172,9 @@ export default function Nav() {
             </Link>
           </div>
         </div>
-        <LangFlagDropdown lang={lang} setLang={setLang} />
+        <div className="ml-auto lg:ml-0 shrink-0">
+          <LangFlagDropdown lang={lang} setLang={setLang} />
+        </div>
       </div>
     </nav>
   )
