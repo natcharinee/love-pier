@@ -1,9 +1,11 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { LANG_OPTIONS } from '../lib/langOptions'
 import { useLanguage } from '../lib/language'
 
 const COPY = {
   en: {
+    language: 'Language',
     navItems: [
       { href: '/',           label: 'Home' },
       { href: '/menu',       label: 'Menu' },
@@ -22,6 +24,7 @@ const COPY = {
     hoursValue: 'Open daily (except Wed) · 09:00-18:00',
   },
   th: {
+    language: 'ภาษา',
     navItems: [
       { href: '/',           label: 'หน้าหลัก' },
       { href: '/menu',       label: 'เมนู' },
@@ -40,6 +43,7 @@ const COPY = {
     hoursValue: 'เปิดทุกวัน (ยกเว้นวันพุธ) · 09:00-18:00',
   },
   zh: {
+    language: '语言',
     navItems: [
       { href: '/',           label: '首页' },
       { href: '/menu',       label: '菜单' },
@@ -71,18 +75,33 @@ export default function MenuOverlay({ isOpen, onClose }) {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/uploads/logo-8dc1f126.png" alt="Love Pier" className="h-9 sm:h-10 lg:h-11 block" style={{ filter: 'invert(1) brightness(2) opacity(0.85)' }} />
         </Link>
-        <div className="flex items-center gap-2 sm:gap-3 ml-auto">
-          <div className="flex items-center border border-white/[0.2] text-[10px] tracking-[0.2em] uppercase shrink-0">
-            <button onClick={() => setLang('en')} className={`px-2 py-1 sm:px-2.5 transition-colors ${lang === 'en' ? 'bg-white text-ink' : 'text-white/60 hover:text-white'}`} aria-label="Switch to English">EN</button>
-            <button onClick={() => setLang('th')} className={`px-2 py-1 sm:px-2.5 transition-colors ${lang === 'th' ? 'bg-white text-ink' : 'text-white/60 hover:text-white'}`} aria-label="Switch to Thai">TH</button>
-            <button onClick={() => setLang('zh')} className={`px-2 py-1 sm:px-2.5 transition-colors ${lang === 'zh' ? 'bg-white text-ink' : 'text-white/60 hover:text-white'}`} aria-label="Switch to Chinese">ZH</button>
-          </div>
-          <button onClick={onClose} className="bg-transparent border border-white/[0.15] w-9 h-9 sm:w-[38px] sm:h-[38px] flex items-center justify-center text-white/70 text-lg hover:border-white hover:text-white transition-colors shrink-0" aria-label="Close menu">✕</button>
-        </div>
+        <button onClick={onClose} className="ml-auto bg-transparent border border-white/[0.15] w-9 h-9 sm:w-[38px] sm:h-[38px] flex items-center justify-center text-white/70 text-lg hover:border-white hover:text-white transition-colors shrink-0" aria-label="Close menu">✕</button>
       </div>
       {/* body */}
       <div className="flex-1 min-h-0 grid grid-cols-1 md:grid-cols-2 md:items-stretch content-start md:content-center px-4 py-5 sm:px-6 sm:py-7 md:px-8 md:py-8 lg:px-10 lg:py-10 gap-6 sm:gap-8 md:gap-10 lg:gap-14 xl:gap-20 overflow-y-auto overscroll-contain">
         <nav className="flex min-w-0 flex-col gap-0 sm:gap-0.5 md:justify-center md:py-4">
+          <div className="mb-6 pb-6 border-b border-white/[0.08]">
+            <h4 className="text-[10px] tracking-[0.35em] uppercase text-white/40 mb-3">{dict.language}</h4>
+            <div className="flex items-center border border-white/[0.2] w-fit">
+              {LANG_OPTIONS.map(({ value, flag, label }) => (
+                <button
+                  key={value}
+                  type="button"
+                  onClick={() => setLang(value)}
+                  aria-label={label}
+                  aria-pressed={lang === value}
+                  title={label}
+                  className={`px-3 py-2 text-[20px] leading-none transition-colors cursor-pointer ${
+                    lang === value
+                      ? 'bg-white/95 shadow-[inset_0_-2px_0_0_#c9a84c]'
+                      : 'text-white/80 hover:bg-white/10'
+                  }`}
+                >
+                  {flag}
+                </button>
+              ))}
+            </div>
+          </div>
           {dict.navItems.map((item, i) => (
             <Link
               key={item.href}

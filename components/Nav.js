@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useRef, useState } from 'react'
+import { LANG_OPTIONS } from '../lib/langOptions'
 import { useLanguage } from '../lib/language'
 
 const COPY = {
@@ -44,12 +45,6 @@ const COPY = {
     reserve: '预订',
   },
 }
-
-const LANG_OPTIONS = [
-  { value: 'th', flag: '🇹🇭', label: 'ภาษาไทย' },
-  { value: 'en', flag: '🇬🇧', label: 'English' },
-  { value: 'zh', flag: '🇨🇳', label: '中文' },
-]
 
 function LangFlagDropdown({ lang, setLang }) {
   const [open, setOpen] = useState(false)
@@ -135,16 +130,6 @@ export default function Nav({ onOpenMenu }) {
   return (
     <nav className="w-full sticky top-0 z-[100] border-b border-black/10 bg-[rgba(245,243,239,0.92)] backdrop-blur-sm">
       <div className="px-4 py-2.5 sm:px-6 sm:py-3 lg:px-10 flex items-center gap-3 sm:gap-4">
-        <button
-          type="button"
-          onClick={onOpenMenu}
-          className="lg:hidden flex flex-col justify-center items-center gap-[5px] bg-transparent border border-black/[0.12] w-9 h-9 shrink-0 hover:border-ink transition-colors"
-          aria-label="Open menu"
-        >
-          <span className="block w-4 h-px bg-ink" />
-          <span className="block w-4 h-px bg-ink" />
-          <span className="block w-4 h-px bg-ink" />
-        </button>
         <Link href="/" className="shrink-0">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -172,7 +157,18 @@ export default function Nav({ onOpenMenu }) {
             </Link>
           </div>
         </div>
-        <div className="ml-auto lg:ml-0 shrink-0">
+        <div className="flex-1 lg:hidden" aria-hidden />
+        <button
+          type="button"
+          onClick={onOpenMenu}
+          className="lg:hidden flex flex-col justify-center items-center gap-[5px] bg-transparent border border-black/[0.12] w-9 h-9 shrink-0 hover:border-ink transition-colors"
+          aria-label="Open menu"
+        >
+          <span className="block w-4 h-px bg-ink" />
+          <span className="block w-4 h-px bg-ink" />
+          <span className="block w-4 h-px bg-ink" />
+        </button>
+        <div className="hidden lg:block shrink-0">
           <LangFlagDropdown lang={lang} setLang={setLang} />
         </div>
       </div>
