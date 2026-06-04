@@ -4,6 +4,8 @@ import Footer from '../components/Footer'
 import { FOOTER_TAGLINES } from '../lib/footerTagline'
 import { useLanguage } from '../lib/language'
 
+const FACEBOOK_MESSENGER_URL = 'https://m.me/61590549024692'
+
 const PROMOTION_COPY = {
   th: {
     title: 'Promotion — Love Pier Beach Cafe',
@@ -301,7 +303,7 @@ export default function Promotion() {
         <div>
           <h2 className="font-display font-light leading-none tracking-[-0.02em] mb-5 text-[clamp(40px,5vw,60px)]">{t.loyalty}</h2>
           <p className="text-sm text-[rgba(245,243,239,0.65)] leading-[1.9] font-light mb-7 max-w-[460px]">{t.loyaltyDesc}</p>
-          <a href="#" className="inline-block bg-gold text-ink text-[11px] tracking-[0.25em] uppercase px-7 py-3.5 hover:bg-bg transition-colors duration-300">{t.join}</a>
+          <a href={FACEBOOK_MESSENGER_URL} target="_blank" rel="noopener noreferrer" className="inline-block bg-gold text-ink text-[11px] tracking-[0.25em] uppercase px-7 py-3.5 hover:bg-bg transition-colors duration-300">{t.join}</a>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-1 bg-white/[0.06] p-1">
           {t.tiers.map(({ tier, visits, perks }) => (
