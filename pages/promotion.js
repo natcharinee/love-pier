@@ -21,9 +21,9 @@ const PROMOTION_COPY = {
     heroImageAlt: 'โปรโมชัน',
     finePrint: 'โปรทั้งหมดอ้างอิงราคาในเมนู ใช้ได้เฉพาะทานที่ร้าน และขึ้นกับสต็อก ไม่สามารถใช้ร่วมกันในออเดอร์เดียวกัน Love Pier ขอสงวนสิทธิ์ปรับเงื่อนไขให้สอดคล้องกับเมนู — สอบถามพนักงานก่อนสั่ง',
     tiers: [
-      { tier: 'Sand', visits: '5 ครั้ง', perks: 'อัปเกรดไซส์ใหญ่\nส่วนลด แก้วละ ฿5-10' },
-      { tier: 'Tide', visits: '15 ครั้ง', perks: 'เครื่องดื่มฟรี 1 แก้ว\n+ ที่นั่งลำดับความสำคัญ' },
-      { tier: 'Horizon', visits: '30 ครั้ง', perks: 'บรันช์ฟรีทุกเดือน\n+ ส่วนลดเวิร์กช็อป' },
+      { tier: 'Sand', visits: '5 ครั้ง', perks: 'ฟรีเครื่องดื่มมูลค่าไม่เกิน 100 บาท 1 รายการ\nหรือ ส่วนลด 10% สำหรับบิลถัดไป' },
+      { tier: 'Tide', visits: '15 ครั้ง', perks: 'ฟรีเครื่องดื่ม Signature 1 รายการ\nจองโต๊ะล่วงหน้าได้ก่อนลูกค้าทั่วไป\nรับคูปองวันเกิด 15%' },
+      { tier: 'Horizon', visits: '30 ครั้ง', perks: 'ฟรีอาหารหรือเครื่องดื่มมูลค่าไม่เกิน 250 บาท 1 รายการ\nส่วนลด 15% ทุกวันจันทร์–พฤหัส\nสิทธิ์เข้าร่วมกิจกรรมพิเศษของร้านก่อนใคร' },
     ],
     dealList: [
       {
@@ -98,9 +98,9 @@ const PROMOTION_COPY = {
     heroImageAlt: '优惠活动',
     finePrint: '所有优惠以菜单标价为依据，仅限堂食，视供应情况而定。同一订单不可叠加多项优惠。Love Pier 保留根据菜单调整优惠的权利——下单前请咨询店员。',
     tiers: [
-      { tier: 'Sand', visits: '5 次', perks: '免费升级大杯\n每杯减 ฿5-10' },
-      { tier: 'Tide', visits: '15 次', perks: '免费饮品 1 杯\n+ 优先座位' },
-      { tier: 'Horizon', visits: '30 次', perks: '每月免费早午餐\n+ 工作坊折扣' },
+      { tier: 'Sand', visits: '5 次', perks: '免费饮品 1 份（最高 100 泰铢）\n或下次账单 9 折' },
+      { tier: 'Tide', visits: '15 次', perks: '免费 Signature 饮品 1 份\n优先预订座位\n生日优惠券 15%' },
+      { tier: 'Horizon', visits: '30 次', perks: '免费餐饮或饮品 1 份（最高 ฿250）\n每周一至周四 85 折\n优先参与店内特别活动' },
     ],
     dealList: [
       {
@@ -175,9 +175,9 @@ const PROMOTION_COPY = {
     heroImageAlt: 'promotion hero',
     finePrint: 'All promos reference menu prices, are dine-in only, and subject to availability. One promo per order. Love Pier may adjust offers to match the menu — ask staff before ordering.',
     tiers: [
-      { tier: 'Sand', visits: '5 visits', perks: 'Free upgrade to large\n฿5–10 off per drink' },
-      { tier: 'Tide', visits: '15 visits', perks: 'One free drink\n+ priority seating' },
-      { tier: 'Horizon', visits: '30 visits', perks: 'Free brunch each month\n+ workshop discount' },
+      { tier: 'Sand', visits: '5 visits', perks: 'One free drink up to 100 THB\nor 10% off your next bill' },
+      { tier: 'Tide', visits: '15 visits', perks: 'One free Signature drink\nPriority reservations\n15% birthday coupon' },
+      { tier: 'Horizon', visits: '30 visits', perks: 'One free item up to ฿250\n15% off Mon–Thu\nEarly access to special events' },
     ],
     dealList: [
       {
