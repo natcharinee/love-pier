@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import Footer from '../components/Footer'
+import FormFeedbackModal from '../components/FormFeedbackModal'
 import { FOOTER_TAGLINES } from '../lib/footerTagline'
 import { useLanguage } from '../lib/language'
 import { submitToApi } from '../lib/submitToApi'
@@ -26,6 +27,9 @@ export default function Contact() {
         emailPlaceholder: 'you@example.com',
         companyPlaceholder: 'หากมี',
         sentMessage: 'ส่งข้อความเรียบร้อย เราจะตอบกลับทางอีเมลของคุณ',
+        modalSuccessTitle: 'ส่งข้อความแล้ว',
+        modalErrorTitle: 'ส่งไม่สำเร็จ',
+        modalClose: 'ปิด',
         sending: 'กำลังส่ง…',
         sendError: 'ส่งไม่สำเร็จ กรุณาลองอีกครั้งหรืออีเมล cafe.lovepier@gmail.com',
         sendConfigError: 'ระบบอีเมลยังไม่พร้อม กรุณาติดต่อ 064-252-3293 หรือ cafe.lovepier@gmail.com',
@@ -69,6 +73,9 @@ export default function Contact() {
           emailPlaceholder: 'you@example.com',
           companyPlaceholder: '如适用',
           sentMessage: '消息已发送，我们会通过邮件回复您。',
+          modalSuccessTitle: '已发送',
+          modalErrorTitle: '发送失败',
+          modalClose: '关闭',
           sending: '发送中…',
           sendError: '发送失败，请重试或直接发邮件至 cafe.lovepier@gmail.com',
           sendConfigError: '邮件服务尚未配置，请致电 064-252-3293 或发送邮件至 cafe.lovepier@gmail.com',
@@ -111,6 +118,9 @@ export default function Contact() {
           emailPlaceholder: 'you@example.com',
           companyPlaceholder: 'If applicable',
           sentMessage: 'Message sent. We will reply to your email.',
+          modalSuccessTitle: 'Message sent',
+          modalErrorTitle: 'Could not send',
+          modalClose: 'Close',
           sending: 'Sending…',
           sendError: 'Could not send. Please try again or email cafe.lovepier@gmail.com',
           sendConfigError: 'Email is not set up yet. Please call 064-252-3293 or email cafe.lovepier@gmail.com',
@@ -165,11 +175,26 @@ export default function Contact() {
     }
   }
 
+  const showModal = status === 'success' || status === 'error'
+  const closeModal = () => {
+    setStatus('idle')
+    setErrorMessage('')
+  }
+
   return (
     <>
       <Head>
         <title>{t.title}</title>
       </Head>
+
+      <FormFeedbackModal
+        open={showModal}
+        variant={status === 'error' ? 'error' : 'success'}
+        title={status === 'error' ? t.modalErrorTitle : t.modalSuccessTitle}
+        message={status === 'error' ? errorMessage : t.sentMessage}
+        closeLabel={t.modalClose}
+        onClose={closeModal}
+      />
 
       {/* Contact hero */}
       <section className="px-4 pt-12 pb-10 grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-9 lg:gap-20 items-start border-b border-black/10 reveal sm:px-6 lg:pt-20 lg:pb-16">
@@ -254,23 +279,15 @@ export default function Contact() {
             <label className="text-[10px] tracking-[0.3em] uppercase text-[#aaa] mb-2" htmlFor="cmessage">{t.message}</label>
             <textarea className="c-input" id="cmessage" name="message" placeholder={t.messagePlaceholder} required disabled={status === 'sending'}></textarea>
           </div>
-          <div className="lg:col-span-2 flex flex-col gap-3 mt-4">
-            {status === 'success' && (
-              <p className="text-[13px] text-gold font-light">{t.sentMessage}</p>
-            )}
-            {status === 'error' && errorMessage && (
-              <p className="text-[13px] text-[#a44] font-light">{errorMessage}</p>
-            )}
-            <div className="flex flex-wrap sm:flex-col justify-between items-center sm:items-start gap-6 sm:gap-3.5">
-              <span className="text-[11px] text-[#aaa] tracking-[0.1em]">{t.privacy}</span>
-              <button
-                type="submit"
-                disabled={status === 'sending'}
-                className="inline-block bg-ink text-bg text-[11px] tracking-[0.25em] uppercase px-7 py-3.5 hover:bg-gold hover:text-ink transition-colors duration-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {status === 'sending' ? t.sending : t.send}
-              </button>
-            </div>
+          <div className="lg:col-span-2 flex flex-wrap sm:flex-col justify-between items-center sm:items-start gap-6 mt-4 sm:gap-3.5">
+            <span className="text-[11px] text-[#aaa] tracking-[0.1em]">{t.privacy}</span>
+            <button
+              type="submit"
+              disabled={status === 'sending'}
+              className="inline-block bg-ink text-bg text-[11px] tracking-[0.25em] uppercase px-7 py-3.5 hover:bg-gold hover:text-ink transition-colors duration-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {status === 'sending' ? t.sending : t.send}
+            </button>
           </div>
         </form>
       </section>

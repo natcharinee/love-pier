@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import Footer from '../components/Footer'
+import FormFeedbackModal from '../components/FormFeedbackModal'
 import { FOOTER_TAGLINES } from '../lib/footerTagline'
 import { useLanguage } from '../lib/language'
 import { submitToApi } from '../lib/submitToApi'
@@ -20,6 +21,9 @@ const RESERVATION_COPY = {
     namePlaceholder: 'ชื่อของคุณ',
     emailPlaceholder: 'you@example.com',
     sentMessage: 'ส่งคำขอจองโต๊ะแล้ว เราจะยืนยันทางอีเมลหรือ LINE ภายใน 2 ชั่วโมง',
+    modalSuccessTitle: 'ส่งคำขอแล้ว',
+    modalErrorTitle: 'ส่งไม่สำเร็จ',
+    modalClose: 'ปิด',
     sending: 'กำลังส่ง…',
     sendError: 'ส่งไม่สำเร็จ กรุณาลองอีกครั้งหรือโทร 064-252-3293',
     sendConfigError: 'ระบบอีเมลยังไม่พร้อม กรุณาโทร 064-252-3293 หรืออีเมล cafe.lovepier@gmail.com',
@@ -50,6 +54,9 @@ const RESERVATION_COPY = {
     namePlaceholder: '您的姓名',
     emailPlaceholder: 'you@example.com',
     sentMessage: '预订请求已发送，我们将在 2 小时内通过邮件或 LINE 确认。',
+    modalSuccessTitle: '已提交',
+    modalErrorTitle: '发送失败',
+    modalClose: '关闭',
     sending: '发送中…',
     sendError: '发送失败，请重试或直接致电 064-252-3293',
     sendConfigError: '邮件服务尚未配置，请致电 064-252-3293 或发送邮件至 cafe.lovepier@gmail.com',
@@ -80,6 +87,9 @@ const RESERVATION_COPY = {
     namePlaceholder: 'Your name',
     emailPlaceholder: 'you@example.com',
     sentMessage: 'Your reservation request has been sent. We will confirm by email or LINE within 2 hours.',
+    modalSuccessTitle: 'Request sent',
+    modalErrorTitle: 'Could not send',
+    modalClose: 'Close',
     sending: 'Sending…',
     sendError: 'Could not send. Please try again or call 064-252-3293',
     sendConfigError: 'Email is not set up yet. Please call 064-252-3293 or email cafe.lovepier@gmail.com',
@@ -138,11 +148,26 @@ export default function Reservation() {
     setOccasion(RESERVATION_COPY[lang]?.occasions[0] || RESERVATION_COPY.en.occasions[0])
   }, [lang])
 
+  const showModal = status === 'success' || status === 'error'
+  const closeModal = () => {
+    setStatus('idle')
+    setErrorMessage('')
+  }
+
   return (
     <>
       <Head>
         <title>{t.title}</title>
       </Head>
+
+      <FormFeedbackModal
+        open={showModal}
+        variant={status === 'error' ? 'error' : 'success'}
+        title={status === 'error' ? t.modalErrorTitle : t.modalSuccessTitle}
+        message={status === 'error' ? errorMessage : t.sentMessage}
+        closeLabel={t.modalClose}
+        onClose={closeModal}
+      />
 
       <section className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] min-h-screen border-b border-black/10">
         {/* Image side */}
@@ -225,23 +250,15 @@ export default function Reservation() {
               <label className="text-[10px] tracking-[0.3em] uppercase text-[#aaa] mb-2" htmlFor="notes">{t.notes}</label>
               <textarea className="res-input" id="notes" name="notes" placeholder={t.notesPlaceholder} disabled={status === 'sending'}></textarea>
             </div>
-            <div className="lg:col-span-2 flex flex-col gap-3 mt-9">
-              {status === 'success' && (
-                <p className="text-[13px] text-gold font-light">{t.sentMessage}</p>
-              )}
-              {status === 'error' && errorMessage && (
-                <p className="text-[13px] text-[#a44] font-light">{errorMessage}</p>
-              )}
-              <div className="flex flex-wrap items-center gap-6 sm:flex-col sm:items-start sm:gap-3.5">
-                <button
-                  type="submit"
-                  disabled={status === 'sending'}
-                  className="inline-block bg-ink text-bg text-[11px] tracking-[0.25em] uppercase px-7 py-3.5 border-none hover:bg-gold hover:text-ink transition-colors duration-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {status === 'sending' ? t.sending : t.request}
-                </button>
-                <div className="text-[11px] text-[#aaa] tracking-[0.1em] leading-relaxed">{t.policy}</div>
-              </div>
+            <div className="lg:col-span-2 flex flex-wrap items-center gap-6 mt-9 sm:flex-col sm:items-start sm:gap-3.5">
+              <button
+                type="submit"
+                disabled={status === 'sending'}
+                className="inline-block bg-ink text-bg text-[11px] tracking-[0.25em] uppercase px-7 py-3.5 border-none hover:bg-gold hover:text-ink transition-colors duration-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {status === 'sending' ? t.sending : t.request}
+              </button>
+              <div className="text-[11px] text-[#aaa] tracking-[0.1em] leading-relaxed">{t.policy}</div>
             </div>
           </form>
         </div>
