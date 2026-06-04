@@ -1,66 +1,168 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useEffect, useRef, useState } from 'react'
 import { useLanguage } from '../lib/language'
 
 const COPY = {
   en: {
-    left: [{ href: '/', label: 'Home' }, { href: '/menu', label: 'Menu' }, { href: '/gallery', label: 'Gallery' }],
-    right: [],
+    navItems: [
+      { href: '/', label: 'Home' },
+      { href: '/menu', label: 'Menu' },
+      { href: '/gallery', label: 'Gallery' },
+      { href: '/location', label: 'Location' },
+      { href: '/events', label: 'Events' },
+      { href: '/promotion', label: 'Promotion' },
+      { href: '/about', label: 'About Us' },
+      { href: '/contact', label: 'Contact' },
+    ],
     reserve: 'Reserve',
   },
   th: {
-    left: [{ href: '/', label: 'หน้าหลัก' }, { href: '/menu', label: 'เมนู' }, { href: '/gallery', label: 'แกลเลอรี' }],
-    right: [],
+    navItems: [
+      { href: '/', label: 'หน้าหลัก' },
+      { href: '/menu', label: 'เมนู' },
+      { href: '/gallery', label: 'แกลเลอรี' },
+      { href: '/location', label: 'ที่ตั้ง' },
+      { href: '/events', label: 'อีเวนต์' },
+      { href: '/promotion', label: 'โปรโมชัน' },
+      { href: '/about', label: 'เกี่ยวกับเรา' },
+      { href: '/contact', label: 'ติดต่อ' },
+    ],
     reserve: 'จองโต๊ะ',
   },
   zh: {
-    left: [{ href: '/', label: '首页' }, { href: '/menu', label: '菜单' }, { href: '/gallery', label: '图库' }],
-    right: [],
+    navItems: [
+      { href: '/', label: '首页' },
+      { href: '/menu', label: '菜单' },
+      { href: '/gallery', label: '图库' },
+      { href: '/location', label: '地址' },
+      { href: '/events', label: '活动' },
+      { href: '/promotion', label: '优惠' },
+      { href: '/about', label: '关于我们' },
+      { href: '/contact', label: '联系' },
+    ],
     reserve: '预订',
   },
 }
 
 const LANG_OPTIONS = [
-  { value: 'th', label: 'TH' },
-  { value: 'en', label: 'EN' },
-  { value: 'zh', label: 'ZH' },
+  { value: 'th', flag: '🇹🇭', label: 'ภาษาไทย' },
+  { value: 'en', flag: '🇬🇧', label: 'English' },
+  { value: 'zh', flag: '🇨🇳', label: '中文' },
 ]
 
-export default function Nav({ onOpenMenu }) {
+function LangFlagDropdown({ lang, setLang }) {
+  const [open, setOpen] = useState(false)
+  const rootRef = useRef(null)
+  const current = LANG_OPTIONS.find((o) => o.value === lang) || LANG_OPTIONS[0]
+
+  useEffect(() => {
+    if (!open) return undefined
+
+    const onPointerDown = (e) => {
+      if (!rootRef.current?.contains(e.target)) setOpen(false)
+    }
+    const onKeyDown = (e) => {
+      if (e.key === 'Escape') setOpen(false)
+    }
+
+    document.addEventListener('mousedown', onPointerDown)
+    document.addEventListener('keydown', onKeyDown)
+    return () => {
+      document.removeEventListener('mousedown', onPointerDown)
+      document.removeEventListener('keydown', onKeyDown)
+    }
+  }, [open])
+
+  return (
+    <div ref={rootRef} className="relative shrink-0">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        aria-label={`Language: ${current.label}`}
+        className="flex items-center gap-1.5 border border-black/[0.12] bg-[rgba(245,243,239,0.92)] px-2 py-1 sm:px-2.5 sm:py-1.5 hover:border-ink/40 focus:outline-none focus:border-ink transition-colors cursor-pointer"
+      >
+        <span className="text-[17px] sm:text-[19px] leading-none">{current.flag}</span>
+        <span className="text-[7px] text-muted leading-none" aria-hidden>
+          ▼
+        </span>
+      </button>
+      {open && (
+        <ul
+          role="listbox"
+          aria-label="Language"
+          className="absolute right-0 top-full z-[110] mt-1 min-w-[52px] border border-black/10 bg-bg py-1 shadow-[0_8px_24px_rgba(0,0,0,0.1)]"
+        >
+          {LANG_OPTIONS.map(({ value, flag, label }) => (
+            <li key={value} role="presentation">
+              <button
+                type="button"
+                role="option"
+                aria-selected={lang === value}
+                aria-label={label}
+                title={label}
+                onClick={() => {
+                  setLang(value)
+                  setOpen(false)
+                }}
+                className={`w-full px-3 py-2 text-[17px] sm:text-[19px] leading-none transition-colors cursor-pointer ${
+                  lang === value
+                    ? 'bg-[#fffdf6] shadow-[inset_0_-2px_0_0_#c9a84c]'
+                    : 'hover:bg-black/[0.04]'
+                }`}
+              >
+                {flag}
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  )
+}
+
+export default function Nav() {
   const { pathname } = useRouter()
   const { lang, setLang } = useLanguage()
   const dict = COPY[lang] || COPY.en
-  const lc = (href) => `hidden lg:block text-[10px] tracking-[0.25em] uppercase transition-colors duration-200 ${pathname === href ? 'text-ink' : 'text-muted hover:text-ink'}`
+  const linkClass = (href) =>
+    `shrink-0 text-[9px] sm:text-[10px] tracking-[0.18em] sm:tracking-[0.22em] uppercase whitespace-nowrap transition-colors duration-200 ${
+      pathname === href ? 'text-ink' : 'text-muted hover:text-ink'
+    }`
+
   return (
-    <nav className="w-full px-4 py-3 sm:px-6 lg:px-10 lg:py-[14px] flex items-center justify-between border-b border-black/10 bg-[rgba(245,243,239,0.92)] backdrop-blur-sm sticky top-0 z-[100] gap-2">
-      <div className="flex items-center gap-3 sm:gap-5 lg:gap-8">
-        <button onClick={onOpenMenu} className="flex flex-col justify-center items-center gap-[5px] bg-transparent border border-black/[0.12] w-9 h-9 sm:w-[38px] sm:h-[38px] hover:border-ink transition-colors shrink-0" aria-label="Open menu">
-          <span className="block w-4 h-px bg-ink" />
-          <span className="block w-4 h-px bg-ink" />
-          <span className="block w-4 h-px bg-ink" />
-        </button>
-        {dict.left.map(n => <Link key={n.href} href={n.href} className={lc(n.href)}>{n.label}</Link>)}
+    <nav className="w-full sticky top-0 z-[100] border-b border-black/10 bg-[rgba(245,243,239,0.92)] backdrop-blur-sm">
+      <div className="px-4 py-3 sm:px-6 lg:px-10 flex items-center justify-between gap-3 border-b border-black/[0.06]">
+        <Link href="/" className="shrink-0">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/uploads/logo-8dc1f126.png"
+            alt="Love Pier Beach Cafe"
+            className="h-9 sm:h-10 lg:h-[48px] w-auto mix-blend-multiply block"
+          />
+        </Link>
+        <LangFlagDropdown lang={lang} setLang={setLang} />
       </div>
-      <Link href="/" className="shrink-0">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/uploads/logo-8dc1f126.png" alt="Love Pier Beach Cafe" className="h-10 sm:h-11 lg:h-[52px] w-auto mix-blend-multiply block" />
-      </Link>
-      <div className="flex items-center gap-2 sm:gap-4 lg:gap-6 min-w-0">
-        {dict.right.map(n => <Link key={n.href} href={n.href} className={lc(n.href)}>{n.label}</Link>)}
-        <div className="hidden lg:block relative shrink-0">
-          <select
-            value={lang}
-            onChange={(e) => setLang(e.target.value)}
-            aria-label="Language"
-            className="nav-lang-select appearance-none border border-black/[0.12] bg-[rgba(245,243,239,0.92)] text-[10px] tracking-[0.2em] uppercase text-ink pl-2.5 pr-7 py-1 cursor-pointer hover:border-ink/40 focus:outline-none focus:border-ink transition-colors"
+      <div className="overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden px-4 sm:px-6 lg:px-10">
+        <div className="flex items-center gap-4 sm:gap-5 lg:gap-6 py-2.5 sm:py-3 min-w-max lg:min-w-0 lg:w-full lg:flex-wrap lg:justify-center">
+          {dict.navItems.map((item) => (
+            <Link key={item.href} href={item.href} className={linkClass(item.href)}>
+              {item.label}
+            </Link>
+          ))}
+          <Link
+            href="/reservation"
+            className={`shrink-0 text-[9px] sm:text-[10px] tracking-[0.12em] sm:tracking-[0.2em] uppercase whitespace-nowrap px-3 py-1.5 sm:px-4 sm:py-2 border transition-colors duration-200 ${
+              pathname === '/reservation'
+                ? 'border-gold/50 bg-[#fffdf6] text-ink'
+                : 'border-black/[0.12] bg-white/60 text-ink hover:border-gold/40 hover:bg-[#fffdf6]'
+            }`}
           >
-            {LANG_OPTIONS.map(({ value, label }) => (
-              <option key={value} value={value}>{label}</option>
-            ))}
-          </select>
-          <span className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[7px] text-muted leading-none" aria-hidden>▼</span>
+            {dict.reserve}
+          </Link>
         </div>
-        <Link href="/reservation" className="text-[9px] sm:text-[10px] tracking-[0.12em] sm:tracking-[0.2em] uppercase text-bg bg-ink px-3 py-2 sm:px-[18px] sm:py-[9px] hover:bg-gold hover:text-ink transition-colors duration-200 whitespace-nowrap">{dict.reserve}</Link>
       </div>
     </nav>
   )

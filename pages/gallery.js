@@ -101,18 +101,6 @@ const TILES = [
     src: '/uploads/gallery-can-citrus.png',
     cap: { th: 'คอฟฟี่ผสมส้ม', en: 'Citrus coffee blend', zh: '柑橘咖啡' },
   },
-  {
-    id: 'frappe-sand',
-    cat: 'beach',
-    col: 12,
-    row: 1,
-    mcol: 2,
-    mrow: 1,
-    layout: 'wide',
-    pos: '50% 30%',
-    src: '/uploads/gallery-frappe-sand.png',
-    cap: { th: 'เฟรปเป้บนผืนทราย', en: 'Frappe on warm sand', zh: '沙滩冰沙' },
-  },
 ]
 
 const FILTER_COPY = {
