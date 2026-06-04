@@ -134,35 +134,35 @@ export default function Nav() {
 
   return (
     <nav className="w-full sticky top-0 z-[100] border-b border-black/10 bg-[rgba(245,243,239,0.92)] backdrop-blur-sm">
-      <div className="px-4 py-3 sm:px-6 lg:px-10 flex items-center justify-between gap-3 border-b border-black/[0.06]">
+      <div className="px-4 py-2.5 sm:px-6 sm:py-3 lg:px-10 flex items-center gap-3 sm:gap-4">
         <Link href="/" className="shrink-0">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/uploads/logo-8dc1f126.png"
             alt="Love Pier Beach Cafe"
-            className="h-9 sm:h-10 lg:h-[48px] w-auto mix-blend-multiply block"
+            className="h-8 sm:h-9 lg:h-11 w-auto mix-blend-multiply block"
           />
         </Link>
-        <LangFlagDropdown lang={lang} setLang={setLang} />
-      </div>
-      <div className="overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden px-4 sm:px-6 lg:px-10">
-        <div className="flex items-center gap-4 sm:gap-5 lg:gap-6 py-2.5 sm:py-3 min-w-max lg:min-w-0 lg:w-full lg:flex-wrap lg:justify-center">
-          {dict.navItems.map((item) => (
-            <Link key={item.href} href={item.href} className={linkClass(item.href)}>
-              {item.label}
+        <div className="flex-1 min-w-0 overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div className="flex items-center gap-3 sm:gap-4 lg:gap-5 py-0.5 min-w-max lg:min-w-0 lg:w-full lg:flex-wrap lg:justify-center">
+            {dict.navItems.map((item) => (
+              <Link key={item.href} href={item.href} className={linkClass(item.href)}>
+                {item.label}
+              </Link>
+            ))}
+            <Link
+              href="/reservation"
+              className={`shrink-0 text-[9px] sm:text-[10px] tracking-[0.12em] sm:tracking-[0.2em] uppercase whitespace-nowrap px-3 py-1.5 sm:px-4 sm:py-2 border transition-colors duration-200 ${
+                pathname === '/reservation'
+                  ? 'border-gold/50 bg-[#fffdf6] text-ink'
+                  : 'border-black/[0.12] bg-white/60 text-ink hover:border-gold/40 hover:bg-[#fffdf6]'
+              }`}
+            >
+              {dict.reserve}
             </Link>
-          ))}
-          <Link
-            href="/reservation"
-            className={`shrink-0 text-[9px] sm:text-[10px] tracking-[0.12em] sm:tracking-[0.2em] uppercase whitespace-nowrap px-3 py-1.5 sm:px-4 sm:py-2 border transition-colors duration-200 ${
-              pathname === '/reservation'
-                ? 'border-gold/50 bg-[#fffdf6] text-ink'
-                : 'border-black/[0.12] bg-white/60 text-ink hover:border-gold/40 hover:bg-[#fffdf6]'
-            }`}
-          >
-            {dict.reserve}
-          </Link>
+          </div>
         </div>
+        <LangFlagDropdown lang={lang} setLang={setLang} />
       </div>
     </nav>
   )
