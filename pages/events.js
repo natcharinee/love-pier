@@ -36,7 +36,6 @@ const EVENTS_COPY = {
       { day: '24', month: 'พ.ค. 2026', title: 'เวิร์กช็อปบาริสต้า · พื้นฐาน Pour-Over', sub: '10:00 – 13:00 · 8 ที่นั่ง', cat: 'เวิร์กช็อป', price: '฿1,400', free: false },
       { day: '01', month: 'มิ.ย. 2026', title: 'Beach BBQ & Live Acoustic', sub: '17:30 – 22:00 · กลางแจ้ง', cat: 'ปาร์ตี้', price: '฿890', free: false },
       { day: '08', month: 'มิ.ย. 2026', title: 'คลาสขนมปัง Sourdough', sub: '14:00 – 17:00 · 6 ที่นั่ง', cat: 'เวิร์กช็อป', price: '฿1,800', free: false },
-      { day: '15', month: 'มิ.ย. 2026', title: 'บรันช์วันพ่อ', sub: '09:00 – 14:00 · 2 รอบ', cat: 'พิเศษ', price: '฿650', free: false },
       { day: '22', month: 'มิ.ย. 2026', title: 'Vinyl Sunday · Soul & Jazz', sub: '14:00 – 18:00 · นำแผ่นมาได้', cat: 'ดนตรี', price: null, free: true },
     ],
     recurring: [
@@ -76,7 +75,6 @@ const EVENTS_COPY = {
       { day: '24', month: '2026年5月', title: '咖啡师工作坊 · 手冲基础', sub: '10:00 – 13:00 · 8 席', cat: '工作坊', price: '฿1,400', free: false },
       { day: '01', month: '2026年6月', title: '海滩烧烤 & 现场原声', sub: '17:30 – 22:00 · 户外', cat: '派对', price: '฿890', free: false },
       { day: '08', month: '2026年6月', title: '酸种面包慢烘课', sub: '14:00 – 17:00 · 6 席', cat: '工作坊', price: '฿1,800', free: false },
-      { day: '15', month: '2026年6月', title: '父亲节早午餐', sub: '09:00 – 14:00 · 两场', cat: '特别', price: '฿650', free: false },
       { day: '22', month: '2026年6月', title: 'Vinyl Sunday · Soul & Jazz', sub: '14:00 – 18:00 · 欢迎自带唱片', cat: '音乐', price: null, free: true },
     ],
     recurring: [
@@ -116,7 +114,6 @@ const EVENTS_COPY = {
       { day: '24', month: 'May 2026', title: 'Barista Workshop · Pour-Over Basics', sub: '10:00 – 13:00 · 8 seats', cat: 'Workshop', price: '฿1,400', free: false },
       { day: '01', month: 'Jun 2026', title: 'Beach BBQ & Live Acoustic', sub: '17:30 – 22:00 · Outdoor', cat: 'Party', price: '฿890', free: false },
       { day: '08', month: 'Jun 2026', title: 'Sourdough & Slow Bread Class', sub: '14:00 – 17:00 · 6 seats', cat: 'Workshop', price: '฿1,800', free: false },
-      { day: '15', month: 'Jun 2026', title: "Father's Day Brunch", sub: '09:00 – 14:00 · Two seatings', cat: 'Special', price: '฿650', free: false },
       { day: '22', month: 'Jun 2026', title: 'Vinyl Sunday · Soul & Jazz', sub: '14:00 – 18:00 · Bring records', cat: 'Music', price: null, free: true },
     ],
     recurring: [

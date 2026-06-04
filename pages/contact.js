@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Footer from '../components/Footer'
 import { FOOTER_TAGLINES } from '../lib/footerTagline'
 import { useLanguage } from '../lib/language'
-
+import { submitToApi } from '../lib/submitToApi'
 import { useState } from 'react'
 
 export default function Contact() {
@@ -25,7 +25,10 @@ export default function Contact() {
         namePlaceholder: 'ชื่อของคุณ',
         emailPlaceholder: 'you@example.com',
         companyPlaceholder: 'หากมี',
-        sentMessage: 'ส่งข้อความเรียบร้อย',
+        sentMessage: 'ส่งข้อความเรียบร้อย เราจะตอบกลับทางอีเมลของคุณ',
+        sending: 'กำลังส่ง…',
+        sendError: 'ส่งไม่สำเร็จ กรุณาลองอีกครั้งหรืออีเมล cafe.lovepier@gmail.com',
+        sendConfigError: 'ระบบอีเมลยังไม่พร้อม กรุณาติดต่อ 064-252-3293 หรือ cafe.lovepier@gmail.com',
         followTitle: 'ติดตามเรา',
         followDesc: 'แท็ก #lovepiercafe เพื่อให้เรารีแชร์',
         quick: 'คำถามที่พบบ่อย',
@@ -65,7 +68,10 @@ export default function Contact() {
           namePlaceholder: '您的姓名',
           emailPlaceholder: 'you@example.com',
           companyPlaceholder: '如适用',
-          sentMessage: '消息已发送',
+          sentMessage: '消息已发送，我们会通过邮件回复您。',
+          sending: '发送中…',
+          sendError: '发送失败，请重试或直接发邮件至 cafe.lovepier@gmail.com',
+          sendConfigError: '邮件服务尚未配置，请致电 064-252-3293 或发送邮件至 cafe.lovepier@gmail.com',
           followTitle: '关注我们',
           followDesc: '使用 #lovepiercafe 标记，我们会定期精选分享。',
           quick: '常见问题',
@@ -104,7 +110,10 @@ export default function Contact() {
           namePlaceholder: 'Your name',
           emailPlaceholder: 'you@example.com',
           companyPlaceholder: 'If applicable',
-          sentMessage: 'Message sent.',
+          sentMessage: 'Message sent. We will reply to your email.',
+          sending: 'Sending…',
+          sendError: 'Could not send. Please try again or email cafe.lovepier@gmail.com',
+          sendConfigError: 'Email is not set up yet. Please call 064-252-3293 or email cafe.lovepier@gmail.com',
           followTitle: 'Follow us, say hello',
           followDesc: 'Tag #lovepiercafe to be featured.',
           quick: 'Quick answers',
@@ -128,6 +137,33 @@ export default function Contact() {
           ],
         }
   const [subject, setSubject] = useState(t.subjects[0])
+  const [status, setStatus] = useState('idle')
+  const [errorMessage, setErrorMessage] = useState('')
+
+  async function handleSubmit(e) {
+    e.preventDefault()
+    setStatus('sending')
+    setErrorMessage('')
+    const form = e.currentTarget
+    const payload = {
+      subject,
+      name: form.name.value,
+      email: form.email.value,
+      phone: form.phone.value,
+      company: form.company.value,
+      message: form.message.value,
+    }
+    try {
+      await submitToApi('/api/contact', payload)
+      setStatus('success')
+      form.reset()
+    } catch (err) {
+      setStatus('error')
+      setErrorMessage(
+        err.status === 503 ? t.sendConfigError : t.sendError
+      )
+    }
+  }
 
   return (
     <>
@@ -181,7 +217,7 @@ export default function Contact() {
         </div>
         <form
           className="grid grid-cols-1 lg:grid-cols-2 gap-6 gap-x-5"
-          onSubmit={e => { e.preventDefault(); alert(t.sentMessage) }}
+          onSubmit={handleSubmit}
         >
           <div className="flex flex-col lg:col-span-2">
             <label className="text-[10px] tracking-[0.3em] uppercase text-[#aaa] mb-2">{t.subject}</label>
@@ -200,27 +236,41 @@ export default function Contact() {
           </div>
           <div className="flex flex-col">
             <label className="text-[10px] tracking-[0.3em] uppercase text-[#aaa] mb-2" htmlFor="cname">{t.fullName}</label>
-            <input className="c-input" type="text" id="cname" placeholder={t.namePlaceholder} required />
+            <input className="c-input" type="text" id="cname" name="name" placeholder={t.namePlaceholder} required disabled={status === 'sending'} />
           </div>
           <div className="flex flex-col">
             <label className="text-[10px] tracking-[0.3em] uppercase text-[#aaa] mb-2" htmlFor="cemail">{t.email}</label>
-            <input className="c-input" type="email" id="cemail" placeholder={t.emailPlaceholder} required />
+            <input className="c-input" type="email" id="cemail" name="email" placeholder={t.emailPlaceholder} required disabled={status === 'sending'} />
           </div>
           <div className="flex flex-col">
             <label className="text-[10px] tracking-[0.3em] uppercase text-[#aaa] mb-2" htmlFor="cphone">{t.phoneLabel}</label>
-            <input className="c-input" type="tel" id="cphone" placeholder="+66" />
+            <input className="c-input" type="tel" id="cphone" name="phone" placeholder="+66" disabled={status === 'sending'} />
           </div>
           <div className="flex flex-col">
             <label className="text-[10px] tracking-[0.3em] uppercase text-[#aaa] mb-2" htmlFor="ccompany">{t.company}</label>
-            <input className="c-input" type="text" id="ccompany" placeholder={t.companyPlaceholder} />
+            <input className="c-input" type="text" id="ccompany" name="company" placeholder={t.companyPlaceholder} disabled={status === 'sending'} />
           </div>
           <div className="flex flex-col lg:col-span-2">
             <label className="text-[10px] tracking-[0.3em] uppercase text-[#aaa] mb-2" htmlFor="cmessage">{t.message}</label>
-            <textarea className="c-input" id="cmessage" placeholder={t.messagePlaceholder} required></textarea>
+            <textarea className="c-input" id="cmessage" name="message" placeholder={t.messagePlaceholder} required disabled={status === 'sending'}></textarea>
           </div>
-          <div className="lg:col-span-2 flex flex-wrap sm:flex-col justify-between items-center sm:items-start gap-6 mt-4 sm:gap-3.5">
-            <span className="text-[11px] text-[#aaa] tracking-[0.1em]">{t.privacy}</span>
-            <button type="submit" className="inline-block bg-ink text-bg text-[11px] tracking-[0.25em] uppercase px-7 py-3.5 hover:bg-gold hover:text-ink transition-colors duration-300 cursor-pointer">{t.send}</button>
+          <div className="lg:col-span-2 flex flex-col gap-3 mt-4">
+            {status === 'success' && (
+              <p className="text-[13px] text-gold font-light">{t.sentMessage}</p>
+            )}
+            {status === 'error' && errorMessage && (
+              <p className="text-[13px] text-[#a44] font-light">{errorMessage}</p>
+            )}
+            <div className="flex flex-wrap sm:flex-col justify-between items-center sm:items-start gap-6 sm:gap-3.5">
+              <span className="text-[11px] text-[#aaa] tracking-[0.1em]">{t.privacy}</span>
+              <button
+                type="submit"
+                disabled={status === 'sending'}
+                className="inline-block bg-ink text-bg text-[11px] tracking-[0.25em] uppercase px-7 py-3.5 hover:bg-gold hover:text-ink transition-colors duration-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {status === 'sending' ? t.sending : t.send}
+              </button>
+            </div>
           </div>
         </form>
       </section>

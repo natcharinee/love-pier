@@ -3,13 +3,14 @@ import { useEffect, useState } from 'react'
 import Footer from '../components/Footer'
 import { FOOTER_TAGLINES } from '../lib/footerTagline'
 import { useLanguage } from '../lib/language'
+import { submitToApi } from '../lib/submitToApi'
 
 const RESERVATION_COPY = {
   th: {
     title: 'Reservation — Love Pier Beach Cafe',
     heroTag: 'จองโต๊ะ',
     heroTitle: 'จองที่นั่ง\nริมทะเล',
-    step: '— ขั้นตอน 01 จาก 01',
+    step: '— สำรองที่นั่ง',
     formTitle: 'บอกวันเวลา\nที่คุณจะมา',
     intro: 'เราจะยืนยันการจองภายใน 2 ชั่วโมงทางอีเมลหรือ LINE',
     fullName: 'ชื่อ-นามสกุล', phone: 'เบอร์โทร', email: 'อีเมล', date: 'วันที่', time: 'เวลา', guests: 'จำนวนแขก',
@@ -18,7 +19,10 @@ const RESERVATION_COPY = {
     selectTime: 'เลือกเวลา',
     namePlaceholder: 'ชื่อของคุณ',
     emailPlaceholder: 'you@example.com',
-    sentMessage: 'ส่งคำขอจองโต๊ะแล้ว',
+    sentMessage: 'ส่งคำขอจองโต๊ะแล้ว เราจะยืนยันทางอีเมลหรือ LINE ภายใน 2 ชั่วโมง',
+    sending: 'กำลังส่ง…',
+    sendError: 'ส่งไม่สำเร็จ กรุณาลองอีกครั้งหรือโทร 064-252-3293',
+    sendConfigError: 'ระบบอีเมลยังไม่พร้อม กรุณาโทร 064-252-3293 หรืออีเมล cafe.lovepier@gmail.com',
     imageAlt: 'บรรยากาศภายในร้าน',
     guestOptions: ['1 คน', '2 คน', '3 คน', '4 คน', '5–6 คน', '7+ คน (กลุ่ม)'],
     seatingOptions: ['ไม่ระบุ', 'ริมหน้าต่าง', 'โซนเทอเรซ', 'เคาน์เตอร์บาร์', 'มุมส่วนตัว'],
@@ -36,7 +40,7 @@ const RESERVATION_COPY = {
     title: 'Reservation — Love Pier Beach Cafe',
     heroTag: '预订座位',
     heroTitle: '预留海边\n座位',
-    step: '— 第 01 步（共 01 步）',
+    step: '— 预订座位',
     formTitle: '告诉我们\n您的到店时间',
     intro: '我们会在 2 小时内通过邮件或 LINE 确认预订。',
     fullName: '姓名', phone: '电话', email: '邮箱', date: '日期', time: '时间', guests: '人数',
@@ -45,7 +49,10 @@ const RESERVATION_COPY = {
     selectTime: '选择时间',
     namePlaceholder: '您的姓名',
     emailPlaceholder: 'you@example.com',
-    sentMessage: '预订请求已发送',
+    sentMessage: '预订请求已发送，我们将在 2 小时内通过邮件或 LINE 确认。',
+    sending: '发送中…',
+    sendError: '发送失败，请重试或直接致电 064-252-3293',
+    sendConfigError: '邮件服务尚未配置，请致电 064-252-3293 或发送邮件至 cafe.lovepier@gmail.com',
     imageAlt: '店内环境',
     guestOptions: ['1 位', '2 位', '3 位', '4 位', '5–6 位', '7 位以上（团体）'],
     seatingOptions: ['无偏好', '靠窗', '露台', '吧台', '安静角落'],
@@ -63,7 +70,7 @@ const RESERVATION_COPY = {
     title: 'Reservation — Love Pier Beach Cafe',
     heroTag: 'Reserve a table',
     heroTitle: 'Save a seat\nby the sea',
-    step: '— Step 01 of 01',
+    step: '— Reserve a table',
     formTitle: "Tell us when\nyou're coming",
     intro: 'Reservations are confirmed within 2 hours by email or LINE.',
     fullName: 'Full name', phone: 'Phone', email: 'Email', date: 'Date', time: 'Time', guests: 'Guests',
@@ -72,7 +79,10 @@ const RESERVATION_COPY = {
     selectTime: 'Select time',
     namePlaceholder: 'Your name',
     emailPlaceholder: 'you@example.com',
-    sentMessage: 'Your reservation request has been sent.',
+    sentMessage: 'Your reservation request has been sent. We will confirm by email or LINE within 2 hours.',
+    sending: 'Sending…',
+    sendError: 'Could not send. Please try again or call 064-252-3293',
+    sendConfigError: 'Email is not set up yet. Please call 064-252-3293 or email cafe.lovepier@gmail.com',
     imageAlt: 'Cafe interior',
     guestOptions: ['1 person', '2 people', '3 people', '4 people', '5–6 people', '7+ people (group)'],
     seatingOptions: ['No preference', 'Window seat', 'Outdoor terrace', 'Counter / bar', 'Private corner'],
@@ -92,6 +102,37 @@ export default function Reservation() {
   const { lang } = useLanguage()
   const t = RESERVATION_COPY[lang] || RESERVATION_COPY.en
   const [occasion, setOccasion] = useState(t.occasions[0])
+  const [status, setStatus] = useState('idle')
+  const [errorMessage, setErrorMessage] = useState('')
+
+  async function handleSubmit(e) {
+    e.preventDefault()
+    setStatus('sending')
+    setErrorMessage('')
+    const form = e.currentTarget
+    const payload = {
+      name: form.name.value,
+      phone: form.phone.value,
+      email: form.email.value,
+      date: form.date.value,
+      time: form.time.value,
+      guests: form.guests.value,
+      seating: form.seating.value,
+      occasion,
+      notes: form.notes.value,
+    }
+    try {
+      await submitToApi('/api/reservation', payload)
+      setStatus('success')
+      form.reset()
+      setOccasion(t.occasions[0])
+    } catch (err) {
+      setStatus('error')
+      setErrorMessage(
+        err.status === 503 ? t.sendConfigError : t.sendError
+      )
+    }
+  }
 
   useEffect(() => {
     setOccasion(RESERVATION_COPY[lang]?.occasions[0] || RESERVATION_COPY.en.occasions[0])
@@ -122,27 +163,27 @@ export default function Reservation() {
 
           <form
             className="grid grid-cols-1 lg:grid-cols-2 gap-6 gap-x-5 max-w-[560px] sm:max-w-none"
-            onSubmit={e => { e.preventDefault(); alert(t.sentMessage) }}
+            onSubmit={handleSubmit}
           >
             <div className="flex flex-col">
               <label className="text-[10px] tracking-[0.3em] uppercase text-[#aaa] mb-2" htmlFor="name">{t.fullName}</label>
-              <input className="res-input" type="text" id="name" placeholder={t.namePlaceholder} required />
+              <input className="res-input" type="text" id="name" name="name" placeholder={t.namePlaceholder} required disabled={status === 'sending'} />
             </div>
             <div className="flex flex-col">
               <label className="text-[10px] tracking-[0.3em] uppercase text-[#aaa] mb-2" htmlFor="phone">{t.phone}</label>
-              <input className="res-input" type="tel" id="phone" placeholder="+66" required />
+              <input className="res-input" type="tel" id="phone" name="phone" placeholder="+66" required disabled={status === 'sending'} />
             </div>
             <div className="flex flex-col lg:col-span-2">
               <label className="text-[10px] tracking-[0.3em] uppercase text-[#aaa] mb-2" htmlFor="email">{t.email}</label>
-              <input className="res-input" type="email" id="email" placeholder={t.emailPlaceholder} required />
+              <input className="res-input" type="email" id="email" name="email" placeholder={t.emailPlaceholder} required disabled={status === 'sending'} />
             </div>
             <div className="flex flex-col">
               <label className="text-[10px] tracking-[0.3em] uppercase text-[#aaa] mb-2" htmlFor="date">{t.date}</label>
-              <input className="res-input" type="date" id="date" required />
+              <input className="res-input" type="date" id="date" name="date" required disabled={status === 'sending'} />
             </div>
             <div className="flex flex-col">
               <label className="text-[10px] tracking-[0.3em] uppercase text-[#aaa] mb-2" htmlFor="time">{t.time}</label>
-              <select key={`time-${lang}`} className="res-input" id="time" required>
+              <select key={`time-${lang}`} className="res-input" id="time" name="time" required disabled={status === 'sending'}>
                 <option value="">{t.selectTime}</option>
                 {['08:00','09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00'].map((slot) => (
                   <option key={slot}>{slot}</option>
@@ -151,7 +192,7 @@ export default function Reservation() {
             </div>
             <div className="flex flex-col">
               <label className="text-[10px] tracking-[0.3em] uppercase text-[#aaa] mb-2" htmlFor="guests">{t.guests}</label>
-              <select key={`guests-${lang}`} className="res-input" id="guests" required>
+              <select key={`guests-${lang}`} className="res-input" id="guests" name="guests" required disabled={status === 'sending'}>
                 {t.guestOptions.map(g => (
                   <option key={g}>{g}</option>
                 ))}
@@ -159,7 +200,7 @@ export default function Reservation() {
             </div>
             <div className="flex flex-col">
               <label className="text-[10px] tracking-[0.3em] uppercase text-[#aaa] mb-2" htmlFor="seating">{t.seating}</label>
-              <select key={`seating-${lang}`} className="res-input" id="seating">
+              <select key={`seating-${lang}`} className="res-input" id="seating" name="seating" disabled={status === 'sending'}>
                 {t.seatingOptions.map(s => (
                   <option key={s}>{s}</option>
                 ))}
@@ -182,11 +223,25 @@ export default function Reservation() {
             </div>
             <div className="flex flex-col lg:col-span-2">
               <label className="text-[10px] tracking-[0.3em] uppercase text-[#aaa] mb-2" htmlFor="notes">{t.notes}</label>
-              <textarea className="res-input" id="notes" placeholder={t.notesPlaceholder}></textarea>
+              <textarea className="res-input" id="notes" name="notes" placeholder={t.notesPlaceholder} disabled={status === 'sending'}></textarea>
             </div>
-            <div className="lg:col-span-2 flex flex-wrap items-center gap-6 mt-9 sm:flex-col sm:items-start sm:gap-3.5">
-              <button type="submit" className="inline-block bg-ink text-bg text-[11px] tracking-[0.25em] uppercase px-7 py-3.5 border-none hover:bg-gold hover:text-ink transition-colors duration-300 cursor-pointer">{t.request}</button>
-              <div className="text-[11px] text-[#aaa] tracking-[0.1em] leading-relaxed">{t.policy}</div>
+            <div className="lg:col-span-2 flex flex-col gap-3 mt-9">
+              {status === 'success' && (
+                <p className="text-[13px] text-gold font-light">{t.sentMessage}</p>
+              )}
+              {status === 'error' && errorMessage && (
+                <p className="text-[13px] text-[#a44] font-light">{errorMessage}</p>
+              )}
+              <div className="flex flex-wrap items-center gap-6 sm:flex-col sm:items-start sm:gap-3.5">
+                <button
+                  type="submit"
+                  disabled={status === 'sending'}
+                  className="inline-block bg-ink text-bg text-[11px] tracking-[0.25em] uppercase px-7 py-3.5 border-none hover:bg-gold hover:text-ink transition-colors duration-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {status === 'sending' ? t.sending : t.request}
+                </button>
+                <div className="text-[11px] text-[#aaa] tracking-[0.1em] leading-relaxed">{t.policy}</div>
+              </div>
             </div>
           </form>
         </div>
