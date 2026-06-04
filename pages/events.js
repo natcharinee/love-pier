@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import Footer from '../components/Footer'
+import { FOOTER_TAGLINES } from '../lib/footerTagline'
 import { useLanguage } from '../lib/language'
 
 const EVENTS_COPY = {
@@ -18,7 +19,6 @@ const EVENTS_COPY = {
     weeklyDesc: 'กิจกรรมที่คุณมาได้ทุกสัปดาห์',
     freeLabel: 'ฟรี',
     featuredImageAlt: 'กิจกรรมแนะนำ',
-    footerTagline: 'ช่วงเวลา <em>ไม่ใช่แค่นาที</em>',
     featuredEvent: {
       title: 'Sunset Jazz',
       titleEm: 'Session',
@@ -59,7 +59,6 @@ const EVENTS_COPY = {
     weeklyDesc: '无需预订，直接到店即可。',
     freeLabel: '免费',
     featuredImageAlt: '精选活动',
-    footerTagline: '珍贵的是 <em>时刻</em>',
     featuredEvent: {
       title: 'Sunset Jazz',
       titleEm: 'Session',
@@ -100,7 +99,6 @@ const EVENTS_COPY = {
     weeklyDesc: 'Things you can count on. No reservation needed — just show up.',
     freeLabel: 'Free',
     featuredImageAlt: 'featured event',
-    footerTagline: 'MOMENTS, <em>NOT MINUTES</em>',
     featuredEvent: {
       title: 'Sunset Jazz',
       titleEm: 'Session',
@@ -209,7 +207,7 @@ export default function Events() {
         </div>
       </section>
 
-      <Footer tagline={t.footerTagline} />
+      <Footer tagline={FOOTER_TAGLINES.events} />
     </>
   )
 }

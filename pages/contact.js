@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import Footer from '../components/Footer'
+import { FOOTER_TAGLINES } from '../lib/footerTagline'
 import { useLanguage } from '../lib/language'
 
 import { useState } from 'react'
@@ -46,7 +47,6 @@ export default function Contact() {
           { q: 'สามารถจัดงานส่วนตัวได้หรือเปล่า?', a: 'ได้ เราเปิดรับจองพื้นที่ร้านสำหรับงานส่วนตัว รองรับได้ 60 คนแบบยืน และ 38 คนแบบนั่ง' },
             { q: 'มีเมนูมังสวิรัติหรือวีแกนไหม?', a: 'ประมาณครึ่งหนึ่งของเมนูเป็นมังสวิรัติ และมีการระบุเมนูวีแกน/กลูเตนฟรีอย่างชัดเจน หลายเมนูสามารถปรับตามความต้องการได้' },
         ],
-        footerTagline: 'เราจะ <em>ตอบเร็วๆ</em>',
       }
     : lang === 'zh'
       ? {
@@ -87,7 +87,6 @@ export default function Contact() {
             { q: '可以包场举办活动吗？', a: '可以。我们提供包场与私人活动服务，最多可容纳 60 人站立或 38 人就座。' },
             { q: '有素食选择吗？', a: '约一半菜单为素食，并清楚标注纯素与无麸质选项；多数菜品也可依需求调整。' },
           ],
-          footerTagline: '我们会 <em>尽快回复</em>',
         }
       : {
           title: 'Contact — Love Pier Beach Cafe',
@@ -127,7 +126,6 @@ export default function Contact() {
             { q: 'Can I host a private event?', a: 'Yes. We welcome private events and can accommodate up to 60 guests standing or 38 guests seated.' },
             { q: 'Do you have vegetarian options?', a: 'Roughly half of our menu is vegetarian, with vegan and gluten-free choices clearly marked. Many dishes can also be tailored on request.' },
           ],
-          footerTagline: "WE'LL <em>ANSWER SOON</em>",
         }
   const [subject, setSubject] = useState(t.subjects[0])
 
@@ -254,7 +252,7 @@ export default function Contact() {
         </div>
       </section>
 
-      <Footer tagline={t.footerTagline} />
+      <Footer tagline={FOOTER_TAGLINES.contact} />
     </>
   )
 }

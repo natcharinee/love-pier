@@ -20,6 +20,12 @@ const COPY = {
   },
 }
 
+const LANG_OPTIONS = [
+  { value: 'th', label: 'TH' },
+  { value: 'en', label: 'EN' },
+  { value: 'zh', label: 'ZH' },
+]
+
 export default function Nav({ onOpenMenu }) {
   const { pathname } = useRouter()
   const { lang, setLang } = useLanguage()
@@ -41,10 +47,18 @@ export default function Nav({ onOpenMenu }) {
       </Link>
       <div className="flex items-center gap-2 sm:gap-4 lg:gap-6 min-w-0">
         {dict.right.map(n => <Link key={n.href} href={n.href} className={lc(n.href)}>{n.label}</Link>)}
-        <div className="hidden lg:flex items-center border border-black/[0.12] shrink-0">
-          <button onClick={() => setLang('th')} className={`px-2.5 py-1 text-[10px] tracking-[0.2em] uppercase ${lang === 'th' ? 'bg-ink text-bg' : 'text-muted hover:text-ink'}`} aria-label="Switch to Thai">TH</button>
-          <button onClick={() => setLang('en')} className={`px-2.5 py-1 text-[10px] tracking-[0.2em] uppercase ${lang === 'en' ? 'bg-ink text-bg' : 'text-muted hover:text-ink'}`} aria-label="Switch to English">EN</button>
-          <button onClick={() => setLang('zh')} className={`px-2.5 py-1 text-[10px] tracking-[0.2em] uppercase ${lang === 'zh' ? 'bg-ink text-bg' : 'text-muted hover:text-ink'}`} aria-label="Switch to Chinese">ZH</button>
+        <div className="hidden lg:block relative shrink-0">
+          <select
+            value={lang}
+            onChange={(e) => setLang(e.target.value)}
+            aria-label="Language"
+            className="nav-lang-select appearance-none border border-black/[0.12] bg-[rgba(245,243,239,0.92)] text-[10px] tracking-[0.2em] uppercase text-ink pl-2.5 pr-7 py-1 cursor-pointer hover:border-ink/40 focus:outline-none focus:border-ink transition-colors"
+          >
+            {LANG_OPTIONS.map(({ value, label }) => (
+              <option key={value} value={value}>{label}</option>
+            ))}
+          </select>
+          <span className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[7px] text-muted leading-none" aria-hidden>▼</span>
         </div>
         <Link href="/reservation" className="text-[9px] sm:text-[10px] tracking-[0.12em] sm:tracking-[0.2em] uppercase text-bg bg-ink px-3 py-2 sm:px-[18px] sm:py-[9px] hover:bg-gold hover:text-ink transition-colors duration-200 whitespace-nowrap">{dict.reserve}</Link>
       </div>

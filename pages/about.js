@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Footer from '../components/Footer'
+import { FOOTER_TAGLINES } from '../lib/footerTagline'
 import { useLanguage } from '../lib/language'
 
 export default function About() {
@@ -26,7 +27,6 @@ export default function About() {
         quoteMiddle:'ไม่ใช่แค่คาเฟ่ แต่คือ',
         quoteHighlight:'คาเฟ่ติดทะเลที่สวยที่สุดในบางแสน',
         values:'สิ่งที่เราให้ความสำคัญ',
-        footerTagline: 'ยัง <em>เปิดอยู่เสมอ</em>',
       }
     : lang === 'zh'
       ? {
@@ -50,7 +50,6 @@ export default function About() {
           quoteMiddle:'不只是咖啡馆，更是',
           quoteHighlight:'邦盛最美的海边咖啡馆',
           values:'我们的坚持',
-          footerTagline: '依然 <em>敞开</em>',
         }
       : {
           title:'About — Love Pier Beach Cafe',
@@ -73,7 +72,6 @@ export default function About() {
           quoteMiddle:'is not just a cafe, but',
           quoteHighlight:'the most beautiful seaside cafe in Bangsaen',
           values:'What we care about',
-          footerTagline: 'STILL <em>WIDE OPEN</em>',
         }
   return (
     <>
@@ -117,7 +115,7 @@ export default function About() {
         </blockquote>
       </section>
 
-      <Footer tagline={t.footerTagline} />
+      <Footer tagline={FOOTER_TAGLINES.about} />
     </>
   )
 }

@@ -1,10 +1,9 @@
 import { useLanguage } from '../lib/language'
-import { FOOTER_TAGLINE_FALLBACK, footerTaglineSizeClass } from '../lib/footerTagline'
+import { FOOTER_TAGLINE_DEFAULT, footerTaglineSizeClass } from '../lib/footerTagline'
 
 export default function Footer({ tagline }) {
   const { lang } = useLanguage()
-  const fallbackTagline = FOOTER_TAGLINE_FALLBACK[lang] || FOOTER_TAGLINE_FALLBACK.en
-  const raw = tagline || fallbackTagline
+  const raw = tagline || FOOTER_TAGLINE_DEFAULT
   const html = raw.replace(/<em>/g, '<em class="italic text-gold">')
   const sizeClass = footerTaglineSizeClass(raw)
   const copy = lang === 'th'

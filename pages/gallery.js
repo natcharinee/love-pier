@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { useState } from 'react'
 import Footer from '../components/Footer'
+import { FOOTER_TAGLINES } from '../lib/footerTagline'
 import { useLanguage } from '../lib/language'
 
 const TILES = [
@@ -143,7 +144,6 @@ const PAGE_COPY = {
     d: 'กาแฟ มัทฉะ แสงทอง และท้องฟ้ายามเย็น — ภาพจาก Love Pier Beach Cafe',
     share: 'ทุกภาพมีเรื่องราว',
     shareD: 'บันทึกช่วงเวลาดี ๆ แท็ก #lovepiercafe แบ่งปันความจำของคุณกับเรา',
-    footer: 'สถานที่ที่ควรค่า <em>แก่การจดจำ</em>',
   },
   zh: {
     title: 'Gallery — Love Pier Beach Cafe',
@@ -152,7 +152,6 @@ const PAGE_COPY = {
     d: '咖啡、抹茶、金色波光与日落——Love Pier Beach Cafe 的真实瞬间。',
     share: '每张影像都有故事',
     shareD: '记录美好时刻，标记 #lovepiercafe，与我们分享您的回忆。',
-    footer: '值得<em>铭记</em>的地方',
   },
   en: {
     title: 'Gallery — Love Pier Beach Cafe',
@@ -161,7 +160,6 @@ const PAGE_COPY = {
     d: 'Coffee, matcha, golden water, and slow sunsets — captured at Love Pier Beach Cafe.',
     share: 'Every image has a story',
     shareD: 'Capture a good moment, tag #lovepiercafe, and share your memories with us.',
-    footer: 'A PLACE <em>WORTH REMEMBERING</em>',
   },
 }
 
@@ -247,7 +245,7 @@ export default function Gallery() {
         </a>
       </section>
 
-      <Footer tagline={t.footer} />
+      <Footer tagline={FOOTER_TAGLINES.gallery} />
     </>
   )
 }

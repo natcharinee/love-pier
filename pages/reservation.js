@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import Footer from '../components/Footer'
+import { FOOTER_TAGLINES } from '../lib/footerTagline'
 import { useLanguage } from '../lib/language'
 
 const RESERVATION_COPY = {
@@ -19,7 +20,6 @@ const RESERVATION_COPY = {
     emailPlaceholder: 'you@example.com',
     sentMessage: 'ส่งคำขอจองโต๊ะแล้ว',
     imageAlt: 'บรรยากาศภายในร้าน',
-    footerTagline: 'ที่นั่ง <em>รอคุณอยู่</em>',
     guestOptions: ['1 คน', '2 คน', '3 คน', '4 คน', '5–6 คน', '7+ คน (กลุ่ม)'],
     seatingOptions: ['ไม่ระบุ', 'ริมหน้าต่าง', 'โซนเทอเรซ', 'เคาน์เตอร์บาร์', 'มุมส่วนตัว'],
     occasions: ['มาทานทั่วไป', 'วันเกิด', 'วันครบรอบ', 'เดต', 'ธุรกิจ', 'อื่นๆ'],
@@ -47,7 +47,6 @@ const RESERVATION_COPY = {
     emailPlaceholder: 'you@example.com',
     sentMessage: '预订请求已发送',
     imageAlt: '店内环境',
-    footerTagline: '座位 <em>为您保留</em>',
     guestOptions: ['1 位', '2 位', '3 位', '4 位', '5–6 位', '7 位以上（团体）'],
     seatingOptions: ['无偏好', '靠窗', '露台', '吧台', '安静角落'],
     occasions: ['日常到访', '生日', '纪念日', '约会', '商务', '其他'],
@@ -75,7 +74,6 @@ const RESERVATION_COPY = {
     emailPlaceholder: 'you@example.com',
     sentMessage: 'Your reservation request has been sent.',
     imageAlt: 'Cafe interior',
-    footerTagline: 'A SEAT, <em>WAITING FOR YOU</em>',
     guestOptions: ['1 person', '2 people', '3 people', '4 people', '5–6 people', '7+ people (group)'],
     seatingOptions: ['No preference', 'Window seat', 'Outdoor terrace', 'Counter / bar', 'Private corner'],
     occasions: ['Just visiting', 'Birthday', 'Anniversary', 'Date', 'Business', 'Other'],
@@ -208,7 +206,7 @@ export default function Reservation() {
         </div>
       </section>
 
-      <Footer tagline={t.footerTagline} />
+      <Footer tagline={FOOTER_TAGLINES.reservation} />
     </>
   )
 }

@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { useState } from 'react'
 import Footer from '../components/Footer'
+import { FOOTER_TAGLINES } from '../lib/footerTagline'
 import { useLanguage } from '../lib/language'
 
 const COFFEE_PRICE_KEYS = ['hot', 'iced', 'blended']
@@ -280,12 +281,6 @@ const SECTION_COPY = {
     breakfast: { title: '早餐', titleEm: '全天供应', subtitle: '轻食与三明治，从早到晚都能点，海边吃更舒服。' },
     sweets: { title: 'Sweet', titleEm: 'Desserts', subtitle: '自制蛋糕与派点，甜度适中，收尾刚好。' },
   },
-}
-
-const FOOTER_TAGLINE = {
-  th: 'ทานให้อิ่ม <em>นั่งให้นาน</em>',
-  zh: '吃好 <em>坐久一点</em>',
-  en: 'EAT WELL, <em>STAY LONGER</em>',
 }
 
 const BREAKFAST_DESC_COPY = {
@@ -809,7 +804,7 @@ export default function Menu() {
         </div>
       </section>
 
-      <Footer tagline={FOOTER_TAGLINE[lang] || FOOTER_TAGLINE.en} />
+      <Footer tagline={FOOTER_TAGLINES.menu} />
     </>
   )
 }

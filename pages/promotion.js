@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import Footer from '../components/Footer'
+import { FOOTER_TAGLINES } from '../lib/footerTagline'
 import { useLanguage } from '../lib/language'
 
 const PROMOTION_COPY = {
@@ -18,7 +19,6 @@ const PROMOTION_COPY = {
     loyaltyDesc: 'สะสมทุกครั้งที่สั่ง — รวมข้าวมันไก่ กาแฟ และมัทฉะจากเมนู ถึงระดับใหม่แล้วปลดล็อกสิทธิพิเศษ',
     join: 'สมัครฟรี',
     heroImageAlt: 'โปรโมชัน',
-    footerTagline: 'ของดี <em>ทุกวัน</em>',
     finePrint: 'โปรทั้งหมดอ้างอิงราคาในเมนู ใช้ได้เฉพาะทานที่ร้าน และขึ้นกับสต็อก ไม่สามารถใช้ร่วมกันในออเดอร์เดียวกัน Love Pier ขอสงวนสิทธิ์ปรับเงื่อนไขให้สอดคล้องกับเมนู — สอบถามพนักงานก่อนสั่ง',
     tiers: [
       { tier: 'Sand', visits: '5 ครั้ง', perks: 'อัปเกรดไซส์ใหญ่\nฟรีทุกเครื่องดื่ม' },
@@ -96,7 +96,6 @@ const PROMOTION_COPY = {
     loyaltyDesc: '每次消费均可累计——含鸡饭、咖啡与抹茶。升级解锁专属礼遇。',
     join: '免费加入',
     heroImageAlt: '优惠活动',
-    footerTagline: '每天 <em>多一点美好</em>',
     finePrint: '所有优惠以菜单标价为依据，仅限堂食，视供应情况而定。同一订单不可叠加多项优惠。Love Pier 保留根据菜单调整优惠的权利——下单前请咨询店员。',
     tiers: [
       { tier: 'Sand', visits: '5 次', perks: '任意饮品\n免费升级大杯' },
@@ -174,7 +173,6 @@ const PROMOTION_COPY = {
     loyaltyDesc: 'Every order counts — chicken rice, coffee, and matcha from the menu. Unlock perks as you move up tiers.',
     join: 'Join free',
     heroImageAlt: 'promotion hero',
-    footerTagline: 'A LITTLE EXTRA, <em>EVERY DAY</em>',
     finePrint: 'All promos reference menu prices, are dine-in only, and subject to availability. One promo per order. Love Pier may adjust offers to match the menu — ask staff before ordering.',
     tiers: [
       { tier: 'Sand', visits: '5 visits', perks: 'Free upgrade to large\non any drink' },
@@ -320,7 +318,7 @@ export default function Promotion() {
         <p className="text-[11px] text-[#aaa] leading-[1.8] tracking-[0.05em] max-w-[760px] mx-auto">{t.finePrint}</p>
       </section>
 
-      <Footer tagline={t.footerTagline} />
+      <Footer tagline={FOOTER_TAGLINES.promotion} />
     </>
   )
 }

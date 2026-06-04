@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Footer from '../components/Footer'
+import { FOOTER_TAGLINES } from '../lib/footerTagline'
 import { useLanguage } from '../lib/language'
 
 export default function Location() {
@@ -35,7 +36,6 @@ export default function Location() {
           'ที่จอดมอเตอร์ไซค์และจักรยาน',
           'ทางเข้าและห้องน้ำรองรับรถเข็น',
         ],
-        footerTagline: 'หาเจอง่าย <em>ทุกครั้งที่มา</em>',
         parkingImageAlt: 'บรรยากาศรอบร้าน',
       }
     : lang === 'zh'
@@ -69,7 +69,6 @@ export default function Location() {
             '摩托车与自行车停放区',
             '无障碍入口与洗手间',
           ],
-          footerTagline: '总是 <em>容易找到</em>',
           parkingImageAlt: '门店外观',
         }
       : {
@@ -102,7 +101,6 @@ export default function Location() {
             'Dedicated motorbike & bicycle racks',
             'Wheelchair-accessible entrance & restroom',
           ],
-          footerTagline: 'ALWAYS <em>EASY TO FIND</em>',
           parkingImageAlt: 'Cafe exterior',
         }
   const renderLines = (s) => s.split('\n').map((line, idx, arr) => <span key={`${line}-${idx}`}>{line}{idx < arr.length - 1 ? <br/> : null}</span>)
@@ -200,7 +198,7 @@ export default function Location() {
         </div>
       </section>
 
-      <Footer tagline={t.footerTagline} />
+      <Footer tagline={FOOTER_TAGLINES.location} />
     </>
   )
 }
