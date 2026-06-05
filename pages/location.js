@@ -28,15 +28,6 @@ export default function Location() {
         countryLabel: 'ประเทศไทย',
         kitchenNote: 'ครัวปิดก่อนเวลาปิด 30 นาที',
         mapTitle: 'แผนที่ Love Pier Beach Cafe',
-        parkingTitle: 'ที่จอดรถ',
-        parkingTitleEm: '& ทางเข้า',
-        parkingDesc: 'จอดฟรีในที่ มีที่จอดรถให้บริการ — เดินไปชายหาดได้ในระยะใกล้',
-        parkingItems: [
-          'ที่จอดรถในพื้นที่',
-          'ที่จอดมอเตอร์ไซค์และจักรยาน',
-          'ทางเข้าและห้องน้ำรองรับรถเข็น',
-        ],
-        parkingImageAlt: 'บรรยากาศรอบร้าน',
       }
     : lang === 'zh'
       ? {
@@ -61,15 +52,6 @@ export default function Location() {
           countryLabel: '泰国',
           kitchenNote: '厨房在关店前 30 分钟停止接单',
           mapTitle: 'Love Pier Beach Cafe 地图',
-          parkingTitle: '停车',
-          parkingTitleEm: '与到达',
-          parkingDesc: '流程简单：店内免费代客停车，步行即可到海边。',
-          parkingItems: [
-            '店内免费车位',
-            '摩托车与自行车停放区',
-            '无障碍入口与洗手间',
-          ],
-          parkingImageAlt: '门店外观',
         }
       : {
           title: 'Location — Love Pier Beach Cafe',
@@ -93,15 +75,6 @@ export default function Location() {
           countryLabel: 'Thailand',
           kitchenNote: 'Kitchen closes 30 min before',
           mapTitle: 'Love Pier Beach Cafe location',
-          parkingTitle: 'Parking',
-          parkingTitleEm: '& access',
-          parkingDesc: "We've kept things simple. Free, attended parking on site — and the beach is one short walk away.",
-          parkingItems: [
-            'Free on-site parking',
-            'Dedicated motorbike & bicycle racks',
-            'Wheelchair-accessible entrance & restroom',
-          ],
-          parkingImageAlt: 'Cafe exterior',
         }
   const renderLines = (s) => s.split('\n').map((line, idx, arr) => <span key={`${line}-${idx}`}>{line}{idx < arr.length - 1 ? <br/> : null}</span>)
   return (
@@ -176,25 +149,6 @@ export default function Location() {
               </div>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* Parking strip */}
-      <section className="bg-ink text-bg px-4 py-14 grid grid-cols-1 lg:grid-cols-2 gap-9 lg:gap-16 items-center reveal sm:px-6 sm:py-14 lg:px-10 lg:py-20">
-        <div className="reveal-img">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="w-full aspect-[4/3] object-cover [filter:saturate(0.55)_brightness(0.8)]" src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=900&q=80" alt={t.parkingImageAlt} />
-        </div>
-        <div>
-          <h2 className="font-display font-light mb-4 leading-[1.05] text-[clamp(32px,4vw,52px)]">
-            {t.parkingTitle} <em className="italic text-gold">{t.parkingTitleEm}</em>
-          </h2>
-          <p className="text-sm text-[rgba(245,243,239,0.65)] leading-[1.8] mb-4 font-light">{t.parkingDesc}</p>
-          <ul className="list-none text-[13px] text-[rgba(245,243,239,0.7)] font-light">
-            {t.parkingItems.map(item => (
-              <li key={item} className="py-2.5 border-b border-white/[0.08] before:content-['·'] before:text-gold before:mr-3">{item}</li>
-            ))}
-          </ul>
         </div>
       </section>
 

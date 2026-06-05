@@ -129,7 +129,7 @@ const PAGE_COPY = {
     title: 'Gallery — Love Pier Beach Cafe',
     g: 'แกลเลอรี',
     h: 'ช่วงเวลา\nริมทะเล',
-    d: 'กาแฟ มัทฉะ แสงทอง และท้องฟ้ายามเย็น — ภาพจาก Love Pier Beach Cafe',
+    d: 'บรรยากาศสุดพิเศษ - Love Pier Beach Cafe',
     share: 'ทุกภาพมีเรื่องราว',
     shareD: 'บันทึกช่วงเวลาดี ๆ แท็ก #lovepiercafe แบ่งปันความจำของคุณกับเรา',
   },

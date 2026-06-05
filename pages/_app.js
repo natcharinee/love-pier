@@ -1,20 +1,24 @@
 import '../styles/globals.css'
 import { useEffect } from 'react'
+import { useRouter } from 'next/router'
 import Layout from '../components/Layout'
 import { LanguageProvider } from '../lib/language'
+import {
+  destroySmoothScroll,
+  initSmoothScroll,
+  resetSmoothScroll,
+} from '../lib/smoothScroll'
 
 export default function App({ Component, pageProps }) {
-  useEffect(() => {
-    let lenis
-    import('lenis').then(({ default: Lenis }) => {
-      lenis = new Lenis({ duration: 1.4, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true })
-      function raf(time) { lenis.raf(time); requestAnimationFrame(raf) }
-      requestAnimationFrame(raf)
-    }).catch(() => {})
+  const router = useRouter()
 
-    // Reveal animation observer
+  useEffect(() => {
+    let cancelled = false
+
+    initSmoothScroll().catch(() => {})
+
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible')
         }
@@ -22,7 +26,7 @@ export default function App({ Component, pageProps }) {
     }, { threshold: 0.08 })
 
     function observeReveal() {
-      document.querySelectorAll('.reveal, .reveal-img').forEach(el => {
+      document.querySelectorAll('.reveal, .reveal-img').forEach((el) => {
         if (!el.classList.contains('is-visible')) {
           observer.observe(el)
         }
@@ -30,16 +34,24 @@ export default function App({ Component, pageProps }) {
     }
 
     observeReveal()
-    // Re-observe after route changes
     const mo = new MutationObserver(observeReveal)
     mo.observe(document.body, { childList: true, subtree: true })
 
+    const onRouteDone = () => {
+      if (!cancelled) resetSmoothScroll()
+      observeReveal()
+    }
+
+    router.events.on('routeChangeComplete', onRouteDone)
+
     return () => {
-      lenis?.destroy()
+      cancelled = true
+      router.events.off('routeChangeComplete', onRouteDone)
+      destroySmoothScroll()
       observer.disconnect()
       mo.disconnect()
     }
-  }, [])
+  }, [router.events])
 
   return (
     <LanguageProvider>

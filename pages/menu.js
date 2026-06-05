@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Footer from '../components/Footer'
 import { FOOTER_TAGLINES } from '../lib/footerTagline'
 import { useLanguage } from '../lib/language'
@@ -27,65 +27,80 @@ const COFFEE_ADDONS_COPY = {
   ],
 }
 
+function formatMenuPrice(price) {
+  if (!price) return '–'
+  if (price === 'Free') return 'Free'
+  return `฿${price}`
+}
+
 function CoffeePriceHeader({ priceLabels }) {
   return (
-    <div
-      aria-hidden
-      className="grid grid-cols-[44px_1fr_auto] sm:grid-cols-[60px_1fr_auto] gap-3 sm:gap-5 pb-2 -mb-1 lg:col-span-2"
-    >
-      <span />
-      <span />
-      <div className="flex justify-end gap-5 sm:gap-6 shrink-0 min-w-[108px] sm:min-w-[120px]">
-        {COFFEE_PRICE_KEYS.map((key) => (
-          <span
-            key={key}
-            className="font-sans text-[9px] tracking-[0.12em] uppercase text-muted w-9 sm:w-10 text-center shrink-0"
-          >
-            {priceLabels[key]}
-          </span>
-        ))}
-      </div>
+    <div aria-hidden className="flex justify-end gap-5 sm:gap-6 pb-3 -mb-1 pr-0.5">
+      {COFFEE_PRICE_KEYS.map((key) => (
+        <span
+          key={key}
+          className="font-sans text-[9px] tracking-[0.14em] uppercase text-muted w-10 text-center shrink-0"
+        >
+          {priceLabels[key]}
+        </span>
+      ))}
     </div>
   )
 }
 
-function MenuItem({ num, name, badge, desc, price, prices, showDrinkPrices }) {
+function FloreMenuItem({ name, badge, desc, price, prices, showDrinkPrices }) {
   const priceCell = prices && showDrinkPrices ? (
-    <div className="flex justify-end gap-5 sm:gap-6 shrink-0 min-w-[108px] sm:min-w-[120px] pt-0.5">
+    <div className="flex justify-end gap-5 sm:gap-6 shrink-0 min-w-[120px]">
       {COFFEE_PRICE_KEYS.map((key) => (
         <span
           key={key}
-          className={`font-display text-[17px] sm:text-[19px] tabular-nums leading-none w-9 sm:w-10 text-center shrink-0 ${prices[key] ? 'text-gold' : 'text-[#ccc]'}`}
+          className={`font-display text-[15px] sm:text-[16px] tabular-nums leading-none w-10 text-center shrink-0 ${prices[key] ? 'text-gold' : 'text-[#ccc]'}`}
         >
-          {prices[key] ?? '–'}
+          {prices[key] ? formatMenuPrice(prices[key]) : '–'}
         </span>
       ))}
     </div>
   ) : (
-    <div className="font-display text-[20px] sm:text-[22px] text-gold whitespace-nowrap pt-0.5 shrink-0">{price}</div>
+    <span className="font-display text-[15px] sm:text-[16px] text-gold tabular-nums whitespace-nowrap shrink-0">
+      {formatMenuPrice(price)}
+    </span>
   )
 
   return (
-    <div className="grid grid-cols-[44px_1fr_auto] sm:grid-cols-[60px_1fr_auto] gap-3 sm:gap-5 py-5 sm:py-6 border-b border-dashed border-black/[0.08] items-start cursor-pointer">
-      <span className="text-[10px] tracking-[0.25em] text-[#bbb] pt-1">{num}</span>
-      <div className="min-w-0">
-        <div className="font-display text-[20px] sm:text-[22px] font-light text-ink leading-[1.1]">
-          {name}{badge && <span className="font-sans text-[9px] tracking-[0.25em] text-gold uppercase ml-2 align-middle">{badge}</span>}
-        </div>
-        {desc ? <div className="text-xs text-muted mt-1.5 leading-relaxed font-light">{desc}</div> : null}
+    <div className="py-3.5 sm:py-4 border-b border-dotted border-black/15 last:border-b-0">
+      <div className={`flex items-baseline gap-2 min-w-0 ${showDrinkPrices ? 'pr-0' : ''}`}>
+        <span className="shrink-0 max-w-[58%] sm:max-w-none text-[11px] sm:text-[12px] font-semibold tracking-[0.1em] uppercase text-ink leading-snug">
+          {name}
+          {badge ? (
+            <span className="font-sans text-[8px] tracking-[0.18em] text-gold uppercase ml-2 align-middle font-medium">
+              {badge}
+            </span>
+          ) : null}
+        </span>
+        {!showDrinkPrices ? (
+          <span className="flore-menu-leader flex-1 min-w-[12px] mb-[3px]" aria-hidden />
+        ) : (
+          <span className="flex-1 min-w-[8px]" aria-hidden />
+        )}
+        {priceCell}
       </div>
-      {priceCell}
+      {desc ? (
+        <p className="mt-1.5 text-[11px] sm:text-xs italic text-[#888] font-light leading-relaxed pr-2">
+          {desc}
+        </p>
+      ) : null}
     </div>
   )
 }
 
 function CoffeeAddOns({ items }) {
   return (
-    <div className="mt-8 pt-6 border-t border-dashed border-black/10 lg:col-span-2 space-y-4">
+    <div className="mt-6 pt-5 border-t border-dotted border-black/15 space-y-3">
       {items.map((item) => (
-        <div key={item.name} className="flex justify-between items-baseline gap-6 text-sm font-light text-[#555]">
-          <span>{item.name}</span>
-          <span className="font-display text-[18px] text-gold tabular-nums shrink-0">฿{item.price}</span>
+        <div key={item.name} className="flex items-baseline gap-2 text-[11px] sm:text-xs font-light text-[#666]">
+          <span className="shrink-0 uppercase tracking-[0.06em]">{item.name}</span>
+          <span className="flore-menu-leader flex-1 min-w-[12px] mb-[3px]" aria-hidden />
+          <span className="font-display text-[15px] text-gold tabular-nums shrink-0">฿{item.price}</span>
         </div>
       ))}
     </div>
@@ -94,14 +109,14 @@ function CoffeeAddOns({ items }) {
 
 function MatchaTasteNotes({ notes }) {
   return (
-    <div className="mt-10 pt-8 border-t border-dashed border-black/10 lg:col-span-2">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14">
+    <div className="mt-6 pt-5 border-t border-dotted border-black/15">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
         {notes.map((note) => (
-          <div key={note.title} className="flex gap-4 items-start">
-            <div className={`w-11 h-11 rounded-full shrink-0 mt-0.5 ring-1 ring-black/10 ${note.swatch}`} aria-hidden />
+          <div key={note.title} className="flex gap-3 items-start">
+            <div className={`w-9 h-9 rounded-full shrink-0 mt-0.5 ring-1 ring-black/10 ${note.swatch}`} aria-hidden />
             <div>
-              <h3 className="text-[11px] tracking-[0.15em] uppercase text-[#888] font-light leading-snug mb-2.5">{note.title}</h3>
-              <p className="text-sm text-[#555] font-light leading-[1.85]">{note.desc}</p>
+              <h3 className="text-[10px] tracking-[0.14em] uppercase text-[#888] font-light leading-snug mb-1.5">{note.title}</h3>
+              <p className="text-[11px] sm:text-xs text-[#666] font-light leading-[1.75]">{note.desc}</p>
             </div>
           </div>
         ))}
@@ -112,28 +127,51 @@ function MatchaTasteNotes({ notes }) {
 
 const TIERED_PRICE_CATEGORIES = ['coffee']
 
-function MenuSection({ num, cat, title, titleEm, subtitle, items, bg, priceLabels, menuAddOns, tasteNotes }) {
+function FloreMenuPanel({ section, items, priceLabels, menuAddOns, tasteNotes }) {
+  if (!section) return null
   return (
-    <section className={`px-4 py-14 border-b border-black/10 reveal sm:px-6 sm:py-14 lg:px-10 lg:py-20${bg ? ' bg-white' : ''}`} data-cat={cat}>
-      <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-8 lg:gap-16 mb-10 lg:mb-16 sm:gap-4 sm:mb-9">
-        <div><div className="font-display text-6xl lg:text-[80px] text-black/[0.08] leading-none font-light sm:text-5xl">{num}</div></div>
-        <div>
-          <h2 className="font-display font-light leading-[1.05] text-ink text-[clamp(36px,4vw,52px)]">
-            {title}
-            {titleEm ? <> <em className="italic text-gold">{titleEm}</em></> : null}
-          </h2>
-          <p className="text-sm text-[#777] leading-[1.8] font-light mt-3.5 max-w-[540px]">{subtitle}</p>
-        </div>
-      </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16">
-        {priceLabels && <CoffeePriceHeader priceLabels={priceLabels} />}
+    <div className="flore-menu-panel px-6 sm:px-10 lg:px-12 py-7 sm:py-9" data-lenis-prevent>
+      {section.subtitle ? (
+        <p className="text-[11px] sm:text-xs italic text-[#888] font-light leading-relaxed mb-5 max-w-xl">
+          {section.subtitle}
+        </p>
+      ) : null}
+      {priceLabels ? <CoffeePriceHeader priceLabels={priceLabels} /> : null}
+      <div>
         {items.map((item) => (
-          <MenuItem key={item.num} {...item} showDrinkPrices={!!priceLabels} />
+          <FloreMenuItem key={`${section.cat}-${item.num}`} {...item} showDrinkPrices={!!priceLabels} />
         ))}
-        {menuAddOns?.length ? <CoffeeAddOns items={menuAddOns} /> : null}
-        {tasteNotes?.length ? <MatchaTasteNotes notes={tasteNotes} /> : null}
       </div>
-    </section>
+      {menuAddOns?.length ? <CoffeeAddOns items={menuAddOns} /> : null}
+      {tasteNotes?.length ? <MatchaTasteNotes notes={tasteNotes} /> : null}
+    </div>
+  )
+}
+
+function FloreSignaturePanel({ menuData }) {
+  const groups = menuData
+    .map((section) => ({
+      section,
+      items: section.items.filter((item) => item.badge),
+    }))
+    .filter((group) => group.items.length > 0)
+
+  return (
+    <div className="flore-menu-panel px-6 sm:px-10 lg:px-12 py-7 sm:py-9" data-lenis-prevent>
+      {groups.map(({ section, items }) => (
+        <div key={section.cat} className="mb-6 last:mb-0">
+          <h3 className="text-[10px] tracking-[0.2em] uppercase text-gold mb-3">
+            {section.title}
+            {section.titleEm ? ` ${section.titleEm}` : ''}
+          </h3>
+          <div>
+            {items.map((item) => (
+              <FloreMenuItem key={`${section.cat}-${item.num}`} {...item} />
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
   )
 }
 
@@ -639,15 +677,35 @@ const TAB_SECTION_CATS = {
   sweets: ['sweets'],
 }
 
-function sectionMatchesTab(section, activeTab) {
-  if (!activeTab) return true
-  if (activeTab === 'signature') return section.items.some((item) => item.badge)
-  return TAB_SECTION_CATS[activeTab]?.includes(section.cat) ?? false
-}
-
-function itemsForTab(section, activeTab) {
-  if (activeTab === 'signature') return section.items.filter((item) => item.badge)
-  return section.items
+function primaryTabsForLang(lang) {
+  if (lang === 'th') {
+    return [
+      { id: 'signature', label: 'Signature' },
+      { id: 'food', label: 'อาหาร' },
+      { id: 'coffee', label: 'กาแฟ' },
+      { id: 'matcha', label: 'มัทฉะ' },
+      { id: 'drinks', label: 'เครื่องดื่ม' },
+      { id: 'sweets', label: 'ของหวาน' },
+    ]
+  }
+  if (lang === 'zh') {
+    return [
+      { id: 'signature', label: 'Signature' },
+      { id: 'food', label: '餐食' },
+      { id: 'coffee', label: '咖啡' },
+      { id: 'matcha', label: '抹茶' },
+      { id: 'drinks', label: '饮品' },
+      { id: 'sweets', label: '甜品' },
+    ]
+  }
+  return [
+    { id: 'signature', label: 'Signature' },
+    { id: 'food', label: 'Food' },
+    { id: 'coffee', label: 'Coffee' },
+    { id: 'matcha', label: 'Matcha' },
+    { id: 'drinks', label: 'Drinks' },
+    { id: 'sweets', label: 'Sweets' },
+  ]
 }
 
 function drinkPriceLabels(lang) {
@@ -704,39 +762,32 @@ function localizeMenuData(data, lang) {
 
 export default function Menu() {
   const { lang } = useLanguage()
-  const tabs = lang === 'th'
-    ? [
-        { label: 'ทั้งหมด', cat: null },
-        { label: 'Signatrue', cat: 'signature' },
-        { label: 'อาหาร', cat: 'food' },
-        { label: 'กาแฟ', cat: 'coffee' },
-        { label: 'มัทฉะ', cat: 'matcha' },
-        { label: 'เครื่องดื่ม', cat: 'drinks' },
-        { label: 'ของหวาน', cat: 'sweets' },
-      ]
-    : lang === 'zh'
-      ? [
-          { label: '全部', cat: null },
-          { label: 'Signatrue', cat: 'signature' },
-          { label: '餐食', cat: 'food' },
-          { label: '咖啡', cat: 'coffee' },
-          { label: '抹茶', cat: 'matcha' },
-          { label: '饮品', cat: 'drinks' },
-          { label: '甜品', cat: 'sweets' },
-        ]
-      : [
-          { label: 'All', cat: null },
-          { label: 'Signatrue', cat: 'signature' },
-          { label: 'Food', cat: 'food' },
-          { label: 'Coffee', cat: 'coffee' },
-          { label: 'Matcha', cat: 'matcha' },
-          { label: 'Drinks', cat: 'drinks' },
-          { label: 'Sweets', cat: 'sweets' },
-        ]
+  const primaryTabs = primaryTabsForLang(lang)
   const t = MENU_PAGE_COPY[lang] || MENU_PAGE_COPY.en
-  const [activeTab, setActiveTab] = useState(null)
+  const [activeTab, setActiveTab] = useState('signature')
+  const [activeSubCat, setActiveSubCat] = useState('chickenRice')
   const menuData = localizeMenuData(MENU_DATA, lang)
   const featured = FEATURED_COPY[lang] || FEATURED_COPY.en
+
+  const subSections = activeTab === 'signature'
+    ? []
+    : menuData.filter((section) => TAB_SECTION_CATS[activeTab]?.includes(section.cat))
+
+  const activeSection = menuData.find((section) => section.cat === activeSubCat)
+
+  useEffect(() => {
+    if (activeTab === 'signature') return
+    const cats = TAB_SECTION_CATS[activeTab] || []
+    if (cats.length && !cats.includes(activeSubCat)) {
+      setActiveSubCat(cats[0])
+    }
+  }, [lang, activeTab, activeSubCat])
+
+  function handlePrimaryTab(id) {
+    setActiveTab(id)
+    const cats = TAB_SECTION_CATS[id]
+    if (cats?.length) setActiveSubCat(cats[0])
+  }
 
   return (
     <>
@@ -754,34 +805,58 @@ export default function Menu() {
         <img className="w-full aspect-[4/5] object-cover object-[50%_62%] [filter:saturate(0.7)]" src="/uploads/menu-hero-custom.png" alt="menu hero" />
       </section>
 
-      {/* Category tabs */}
-      <div className="flex gap-5 lg:gap-7 px-4 py-5 lg:py-8 border-b border-black/10 overflow-x-auto [scrollbar-width:none] bg-white sticky top-[61px] lg:top-[67px] z-50 reveal sm:px-6 sm:gap-4">
-        {tabs.map(({ label, cat }) => (
-          <button
-            key={cat ?? 'all'}
-            onClick={() => setActiveTab(cat)}
-            className={`font-display text-[22px] font-light whitespace-nowrap cursor-pointer border-none bg-transparent px-0 py-1 border-b transition-colors sm:text-lg ${activeTab === cat ? 'text-ink border-gold' : 'text-[#aaa] border-transparent hover:text-ink'}`}
-          >
-            {label}
-          </button>
-        ))}
-      </div>
+      {/* Flore-style tabbed menu */}
+      <section className="px-3 py-6 sm:px-4 sm:py-8 lg:px-6 lg:py-10 border-b border-black/10 bg-[#e8e4de] reveal min-h-[calc(100svh-4.25rem)] flex flex-col justify-center">
+        <div className="w-full max-w-7xl mx-auto flore-menu">
+          <div className="flex overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden border border-black/10 border-b-0 bg-[#ddd8d0]">
+            {primaryTabs.map(({ id, label }) => (
+              <button
+                key={id}
+                type="button"
+                onClick={() => handlePrimaryTab(id)}
+                className={`flore-menu-tab flex-1 min-w-[5.5rem] px-4 sm:px-5 py-4 sm:py-[1.125rem] text-[10px] sm:text-xs tracking-[0.16em] uppercase font-semibold transition-colors cursor-pointer border-none ${
+                  activeTab === id
+                    ? 'bg-white text-ink'
+                    : 'bg-transparent text-gold hover:text-ink'
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
 
-      {/* Menu sections */}
-      {menuData.map((section) => {
-        if (!sectionMatchesTab(section, activeTab)) return null
-        const items = itemsForTab(section, activeTab)
-        return (
-          <MenuSection
-            key={section.cat}
-            {...section}
-            items={items}
-            priceLabels={TIERED_PRICE_CATEGORIES.includes(section.cat) ? drinkPriceLabels(lang) : undefined}
-            menuAddOns={menuAddOnsForCategory(section.cat, lang)}
-            tasteNotes={section.cat === 'matcha' ? matchaTasteNotes(lang) : undefined}
-          />
-        )
-      })}
+          {subSections.length > 1 ? (
+            <div className="flex gap-5 sm:gap-8 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden px-6 sm:px-10 lg:px-12 py-3.5 bg-white border-x border-black/10">
+              {subSections.map((section) => (
+                <button
+                  key={section.cat}
+                  type="button"
+                  onClick={() => setActiveSubCat(section.cat)}
+                  className={`shrink-0 text-[10px] sm:text-[11px] tracking-[0.14em] uppercase font-medium transition-colors cursor-pointer border-none bg-transparent px-0 py-1 ${
+                    activeSubCat === section.cat ? 'text-ink' : 'text-gold hover:text-ink'
+                  }`}
+                >
+                  {section.title}
+                </button>
+              ))}
+            </div>
+          ) : null}
+
+          <div className="bg-white border border-black/10 border-t-0 shadow-[0_12px_40px_rgba(26,26,26,0.06)]">
+            {activeTab === 'signature' ? (
+              <FloreSignaturePanel menuData={menuData} />
+            ) : (
+              <FloreMenuPanel
+                section={activeSection}
+                items={activeSection?.items ?? []}
+                priceLabels={TIERED_PRICE_CATEGORIES.includes(activeSubCat) ? drinkPriceLabels(lang) : undefined}
+                menuAddOns={menuAddOnsForCategory(activeSubCat, lang)}
+                tasteNotes={activeSubCat === 'matcha' ? matchaTasteNotes(lang) : undefined}
+              />
+            )}
+          </div>
+        </div>
+      </section>
 
       {/* Featured */}
       <section className="bg-ink text-bg px-4 py-14 reveal sm:px-6 sm:py-14 lg:px-10 lg:py-20">

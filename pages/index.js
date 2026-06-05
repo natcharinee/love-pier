@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import Footer from '../components/Footer'
+import { ScrollStack, ScrollStackPanel } from '../components/ScrollStack'
 import { useLanguage } from '../lib/language'
 
 export default function Home() {
@@ -107,6 +108,8 @@ export default function Home() {
         <title>{t.title}</title>
       </Head>
 
+      <ScrollStack>
+      <ScrollStackPanel>
       {/* HERO HEADER */}
       <header className="px-4 pt-10 pb-7 text-center reveal sm:px-6 lg:px-10 lg:pt-12 lg:pb-8">
         <div className="text-[10px] tracking-[0.4em] uppercase text-muted mb-3">{t.city}</div>
@@ -144,7 +147,9 @@ export default function Home() {
           alt="Love Pier canned drinks"
         />
       </div>
+      </ScrollStackPanel>
 
+      <ScrollStackPanel>
       <section className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] px-4 py-14 items-start reveal sm:px-6 sm:py-16 lg:px-10 lg:py-20 gap-10 lg:gap-0">
         <div>
           <h2 className="font-display font-light leading-[0.92] text-ink tracking-[-0.02em] text-[clamp(40px,6vw,72px)]">
@@ -171,8 +176,10 @@ export default function Home() {
         <img className="w-full h-full object-cover [filter:brightness(0.55)_saturate(0.5)]" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600&q=85" alt="atmosphere" />
         <div className="absolute bottom-10 left-10 font-display font-light text-[rgba(255,255,255,0.85)] leading-[1.1] text-[clamp(28px,4vw,48px)] sm:bottom-6 sm:left-6" dangerouslySetInnerHTML={{ __html: t.where.replace(/\n/g, '<br/>') }} />
       </div>
+      </ScrollStackPanel>
 
-      <section className="bg-white px-4 py-14 reveal sm:px-6 sm:py-16 lg:px-10">
+      <ScrollStackPanel tone="white">
+      <section className="px-4 py-14 reveal sm:px-6 sm:py-16 lg:px-10">
         <div className="mb-12">
           <h3 className="font-display font-light leading-[1.05] text-ink text-[clamp(28px,3.5vw,44px)]" dangerouslySetInnerHTML={{ __html: t.little.replace(/\n/g, '<br/>') }} />
         </div>
@@ -196,7 +203,9 @@ export default function Home() {
         <div className="overflow-hidden bg-[#e8e4de] md:col-span-1 lg:col-span-5"><img className="home-mosaic-img w-full h-full object-cover object-[50%_45%]" src="/uploads/home-cafe-interior.png" alt="cafe" /></div>
         <div className="overflow-hidden bg-[#e8e4de] md:col-span-1 lg:col-span-5"><img className="home-mosaic-img w-full h-full object-cover object-[50%_72%]" src="/uploads/home-espresso.png" alt="coffee" /></div>
       </div>
+      </ScrollStackPanel>
 
+      <ScrollStackPanel>
       {/* Map section */}
       <div className="reveal">
         <div className="w-full h-72 sm:h-80 bg-[#d9d7d1] relative overflow-hidden">
@@ -270,6 +279,8 @@ export default function Home() {
       </div>
 
       <Footer />
+      </ScrollStackPanel>
+      </ScrollStack>
     </>
   )
 }

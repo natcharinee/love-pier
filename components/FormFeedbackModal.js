@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
+import { startSmoothScroll, stopSmoothScroll } from '../lib/smoothScroll'
 
 export default function FormFeedbackModal({
   open,
@@ -23,12 +24,11 @@ export default function FormFeedbackModal({
     }
 
     document.addEventListener('keydown', onKeyDown)
-    const prevOverflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
+    stopSmoothScroll()
 
     return () => {
       document.removeEventListener('keydown', onKeyDown)
-      document.body.style.overflow = prevOverflow
+      startSmoothScroll()
     }
   }, [open, onClose])
 

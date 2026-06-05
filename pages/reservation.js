@@ -9,6 +9,15 @@ import { submitToApi } from '../lib/submitToApi'
 const RESERVATION_COPY = {
   th: {
     title: 'Reservation — Love Pier Beach Cafe',
+    addressLine1: '800 108 แสนสุข',
+    addressLine2: 'อำเภอเมือง จังหวัดชลบุรี 20130',
+    hoursLabel: 'เปิดทุกวัน (ยกเว้นวันพุธ)',
+    hoursValue: '09:00 – 18:00',
+    phoneLabel: 'โทร',
+    emailLabel: 'อีเมล',
+    badge: 'ยืนยันภายใน 2 ชม.',
+    mapTitle: 'แผนที่ Love Pier Beach Cafe',
+    openMaps: 'เปิดใน Google Maps',
     heroTag: 'จองโต๊ะ',
     heroTitle: 'จองที่นั่ง\nริมทะเล',
     step: '— สำรองที่นั่ง',
@@ -42,6 +51,15 @@ const RESERVATION_COPY = {
   },
   zh: {
     title: 'Reservation — Love Pier Beach Cafe',
+    addressLine1: '800 108 Saensuk',
+    addressLine2: 'Mueang Chonburi, Chonburi 20130',
+    hoursLabel: '每日营业（周三除外）',
+    hoursValue: '09:00 – 18:00',
+    phoneLabel: '电话',
+    emailLabel: '邮箱',
+    badge: '2 小时内确认',
+    mapTitle: 'Love Pier Beach Cafe 地图',
+    openMaps: '在 Google Maps 打开',
     heroTag: '预订座位',
     heroTitle: '预留海边\n座位',
     step: '— 预订座位',
@@ -75,6 +93,15 @@ const RESERVATION_COPY = {
   },
   en: {
     title: 'Reservation — Love Pier Beach Cafe',
+    addressLine1: '800 108 Saensuk',
+    addressLine2: 'Mueang Chonburi, Chonburi 20130',
+    hoursLabel: 'Open daily (except Wednesday)',
+    hoursValue: '09:00 – 18:00',
+    phoneLabel: 'Phone',
+    emailLabel: 'Email',
+    badge: 'Confirmed within 2 hours',
+    mapTitle: 'Love Pier Beach Cafe location',
+    openMaps: 'Open in Google Maps',
     heroTag: 'Reserve a table',
     heroTitle: 'Save a seat\nby the sea',
     step: '— Reserve a table',
@@ -169,112 +196,168 @@ export default function Reservation() {
         onClose={closeModal}
       />
 
-      <section className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] min-h-screen border-b border-black/10">
-        {/* Image side */}
-        <div className="relative overflow-hidden aspect-[16/11] sm:aspect-[16/10] lg:aspect-auto reveal-img">
+      <section className="grid grid-cols-1 lg:grid-cols-[11fr_9fr] lg:items-stretch border-b border-black/10 bg-white">
+        {/* Left — poster image */}
+        <div className="relative overflow-hidden border-b border-black/10 lg:border-b-0 lg:border-r min-h-[58vh] sm:min-h-[66vh] lg:min-h-[calc(100svh-4.25rem)] lg:h-full">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="w-full h-full object-cover [filter:saturate(0.7)]" src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=900&q=85" alt={t.imageAlt} />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent"></div>
-          <div className="absolute bottom-6 left-4 sm:bottom-6 sm:left-6 lg:bottom-10 lg:left-10 text-bg max-w-[85%] sm:max-w-[80%]">
-            <span className="block text-[10px] tracking-[0.4em] uppercase text-[rgba(245,243,239,0.6)] mb-3">{t.heroTag}</span>
-            <h1 className="font-display font-light leading-none tracking-[-0.02em] text-[clamp(40px,5vw,60px)]">{t.heroTitle.split('\n').map((l,i)=><span key={i}>{l}{i===0?<br/>:null}</span>)}</h1>
+          <img
+            className="absolute inset-0 w-full h-full object-cover object-[50%_42%] scale-[1.1] origin-center [filter:saturate(0.82)]"
+            src="/uploads/reservation-interior.png"
+            alt={t.imageAlt}
+          />
+        </div>
+
+        {/* Middle — info + form */}
+        <div className="px-5 py-10 sm:px-8 sm:py-12 lg:px-10 lg:py-14 border-b border-black/10 lg:border-b-0 flex flex-col justify-center reveal">
+          <div className="mb-8 lg:mb-10">
+            <h1 className="text-[13px] sm:text-sm font-medium tracking-[0.14em] uppercase text-ink leading-snug">
+              {t.addressLine1}
+            </h1>
+            <p className="mt-1 text-[11px] sm:text-xs tracking-[0.12em] uppercase text-muted">{t.addressLine2}</p>
+            <a
+              href="https://maps.app.goo.gl/CYDRrd6hoxRv7z4j8"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 mt-2 text-[10px] tracking-[0.14em] uppercase text-muted hover:text-ink transition-colors"
+            >
+              <span aria-hidden>◎</span>
+              {t.openMaps}
+            </a>
           </div>
-        </div>
-        {/* Form side */}
-        <div className="px-4 py-12 flex flex-col justify-center reveal sm:px-6 sm:py-12 lg:px-16 lg:py-20">
-          <div className="text-[10px] tracking-[0.4em] uppercase text-gold mb-4">{t.step}</div>
-          <h2 className="font-display font-light mb-3 leading-[1.1] text-[clamp(32px,3.5vw,44px)]">{t.formTitle.split('\n').map((l,i)=><span key={i}>{l}{i===0?<br/>:null}</span>)}</h2>
-          <p className="text-[13px] text-[#777] font-light mb-10 leading-[1.7] max-w-[420px]">{t.intro}</p>
 
-          <form
-            className="grid grid-cols-1 lg:grid-cols-2 gap-6 gap-x-5 max-w-[560px] sm:max-w-none"
-            onSubmit={handleSubmit}
-          >
-            <div className="flex flex-col">
-              <label className="text-[10px] tracking-[0.3em] uppercase text-[#aaa] mb-2" htmlFor="name">{t.fullName}</label>
-              <input className="res-input" type="text" id="name" name="name" placeholder={t.namePlaceholder} required disabled={status === 'sending'} />
-            </div>
-            <div className="flex flex-col">
-              <label className="text-[10px] tracking-[0.3em] uppercase text-[#aaa] mb-2" htmlFor="phone">{t.phone}</label>
-              <input className="res-input" type="tel" id="phone" name="phone" placeholder="+66" required disabled={status === 'sending'} />
-            </div>
-            <div className="flex flex-col lg:col-span-2">
-              <label className="text-[10px] tracking-[0.3em] uppercase text-[#aaa] mb-2" htmlFor="email">{t.email}</label>
-              <input className="res-input" type="email" id="email" name="email" placeholder={t.emailPlaceholder} required disabled={status === 'sending'} />
-            </div>
-            <div className="flex flex-col">
-              <label className="text-[10px] tracking-[0.3em] uppercase text-[#aaa] mb-2" htmlFor="date">{t.date}</label>
-              <input className="res-input" type="date" id="date" name="date" required disabled={status === 'sending'} />
-            </div>
-            <div className="flex flex-col">
-              <label className="text-[10px] tracking-[0.3em] uppercase text-[#aaa] mb-2" htmlFor="time">{t.time}</label>
-              <select key={`time-${lang}`} className="res-input" id="time" name="time" required disabled={status === 'sending'}>
-                <option value="">{t.selectTime}</option>
-                {['08:00','09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00'].map((slot) => (
-                  <option key={slot}>{slot}</option>
-                ))}
-              </select>
-            </div>
-            <div className="flex flex-col">
-              <label className="text-[10px] tracking-[0.3em] uppercase text-[#aaa] mb-2" htmlFor="guests">{t.guests}</label>
-              <select key={`guests-${lang}`} className="res-input" id="guests" name="guests" required disabled={status === 'sending'}>
-                {t.guestOptions.map(g => (
-                  <option key={g}>{g}</option>
-                ))}
-              </select>
-            </div>
-            <div className="flex flex-col">
-              <label className="text-[10px] tracking-[0.3em] uppercase text-[#aaa] mb-2" htmlFor="seating">{t.seating}</label>
-              <select key={`seating-${lang}`} className="res-input" id="seating" name="seating" disabled={status === 'sending'}>
-                {t.seatingOptions.map(s => (
-                  <option key={s}>{s}</option>
-                ))}
-              </select>
-            </div>
-            <div className="flex flex-col lg:col-span-2">
-              <label className="text-[10px] tracking-[0.3em] uppercase text-[#aaa] mb-2">{t.occasion}</label>
-              <div className="flex gap-2 flex-wrap">
-                {t.occasions.map(occ => (
-                  <button
-                    key={occ}
-                    type="button"
-                    onClick={() => setOccasion(occ)}
-                    className={`text-[11px] tracking-[0.15em] uppercase px-[14px] py-[7px] border cursor-pointer transition-all duration-200 ${occasion === occ ? 'bg-ink text-bg border-ink' : 'border-black/[0.12] text-[#888] hover:border-ink hover:text-ink'}`}
-                  >
-                    {occ}
-                  </button>
-                ))}
-              </div>
-            </div>
-            <div className="flex flex-col lg:col-span-2">
-              <label className="text-[10px] tracking-[0.3em] uppercase text-[#aaa] mb-2" htmlFor="notes">{t.notes}</label>
-              <textarea className="res-input" id="notes" name="notes" placeholder={t.notesPlaceholder} disabled={status === 'sending'}></textarea>
-            </div>
-            <div className="lg:col-span-2 flex flex-wrap items-center gap-6 mt-9 sm:flex-col sm:items-start sm:gap-3.5">
-              <button
-                type="submit"
+          <div className="flex flex-wrap gap-x-6 gap-y-2 text-[10px] sm:text-[11px] tracking-[0.14em] uppercase text-ink mb-6">
+            <a href="tel:0642523293" className="hover:text-gold transition-colors">
+              {t.phoneLabel} 064-252-3293
+            </a>
+            <a href="mailto:cafe.lovepier@gmail.com" className="hover:text-gold transition-colors break-all">
+              {t.emailLabel} cafe.lovepier@gmail.com
+            </a>
+          </div>
+
+          <p className="text-[10px] sm:text-[11px] tracking-[0.16em] uppercase text-ink mb-5">
+            {t.hoursLabel} : {t.hoursValue}
+          </p>
+
+          <span className="inline-flex w-fit items-center rounded-full bg-[#1e3d2f] text-white text-[9px] sm:text-[10px] tracking-[0.2em] uppercase px-4 py-2 mb-8 lg:mb-10">
+            {t.badge}
+          </span>
+
+          <div className="mb-6">
+            <p className="text-[10px] tracking-[0.4em] uppercase text-gold mb-3">{t.step}</p>
+            <h2 className="font-display font-light leading-[1.05] text-[clamp(28px,3.2vw,38px)] text-ink">
+              {t.formTitle.split('\n').map((line, i) => (
+                <span key={i}>{line}{i === 0 ? <br /> : null}</span>
+              ))}
+            </h2>
+            <p className="mt-3 text-[12px] text-[#777] font-light leading-[1.7] max-w-[420px]">{t.intro}</p>
+          </div>
+
+          <form className="flex flex-col gap-3 max-w-[520px]" onSubmit={handleSubmit}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <input
+                className="flore-input"
+                type="text"
+                id="name"
+                name="name"
+                placeholder={t.fullName}
+                required
                 disabled={status === 'sending'}
-                className="inline-block bg-ink text-bg text-[11px] tracking-[0.25em] uppercase px-7 py-3.5 border-none hover:bg-gold hover:text-ink transition-colors duration-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+              />
+              <input
+                className="flore-input"
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder={t.phone}
+                required
+                disabled={status === 'sending'}
+              />
+            </div>
+            <input
+              className="flore-input"
+              type="email"
+              id="email"
+              name="email"
+              placeholder={t.email}
+              required
+              disabled={status === 'sending'}
+            />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <input
+                className="flore-input normal-case tracking-[0.06em]"
+                type="date"
+                id="date"
+                name="date"
+                required
+                disabled={status === 'sending'}
+              />
+              <select
+                key={`time-${lang}`}
+                className="flore-input"
+                id="time"
+                name="time"
+                required
+                disabled={status === 'sending'}
+                defaultValue=""
               >
-                {status === 'sending' ? t.sending : t.request}
-              </button>
-              <div className="text-[11px] text-[#aaa] tracking-[0.1em] leading-relaxed">{t.policy}</div>
+                <option value="" disabled>{t.time}</option>
+                {['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00'].map((slot) => (
+                  <option key={slot} value={slot}>{slot}</option>
+                ))}
+              </select>
             </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <select
+                key={`guests-${lang}`}
+                className="flore-input"
+                id="guests"
+                name="guests"
+                required
+                disabled={status === 'sending'}
+              >
+                {t.guestOptions.map((g) => (
+                  <option key={g} value={g}>{g}</option>
+                ))}
+              </select>
+              <select
+                key={`seating-${lang}`}
+                className="flore-input"
+                id="seating"
+                name="seating"
+                disabled={status === 'sending'}
+              >
+                {t.seatingOptions.map((s) => (
+                  <option key={s} value={s}>{s}</option>
+                ))}
+              </select>
+            </div>
+            <select
+              key={`occasion-${lang}`}
+              className="flore-input"
+              id="occasion"
+              value={occasion}
+              onChange={(e) => setOccasion(e.target.value)}
+              disabled={status === 'sending'}
+            >
+              {t.occasions.map((occ) => (
+                <option key={occ} value={occ}>{occ}</option>
+              ))}
+            </select>
+            <textarea
+              className="flore-input"
+              id="notes"
+              name="notes"
+              placeholder={t.notes}
+              disabled={status === 'sending'}
+            />
+            <button
+              type="submit"
+              disabled={status === 'sending'}
+              className="mt-4 w-full sm:w-auto self-start bg-ink text-bg text-[10px] tracking-[0.22em] uppercase px-8 py-3.5 hover:bg-gold hover:text-ink transition-colors duration-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {status === 'sending' ? t.sending : t.request}
+            </button>
           </form>
-        </div>
-      </section>
-
-      {/* Policy strip */}
-      <section className="bg-white px-4 py-12 border-b border-black/10 reveal sm:px-6 sm:py-12 lg:px-10 lg:py-16">
-        <h3 className="font-display font-light mb-8 text-[clamp(28px,3vw,40px)]">{t.fine}</h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-7">
-          {t.finePrint.map(({ n, title, text }) => (
-            <div key={n}>
-              <div className="font-display text-[36px] text-gold font-light leading-none">{n}</div>
-              <h4 className="font-display text-lg font-normal mt-3.5 mb-2">{title}</h4>
-              <p className="text-[13px] text-[#777] leading-[1.7] font-light">{text}</p>
-            </div>
-          ))}
         </div>
       </section>
 
