@@ -106,19 +106,23 @@ export default function Home() {
         alt="Love Pier Beach Cafe"
       />
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-[3px] mt-[3px] reveal">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          className="w-full aspect-[4/3] object-cover object-center [filter:saturate(0.7)] hover:[filter:saturate(1)] transition-[filter] duration-500"
-          src="/uploads/home-cafe-interior.png"
-          alt="Love Pier Beach Cafe interior"
-        />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          className="w-full aspect-[4/3] object-cover object-center [filter:saturate(0.7)] hover:[filter:saturate(1)] transition-[filter] duration-500"
-          src="/uploads/drink-can-set.png"
-          alt="Love Pier canned drinks"
-        />
+      <div className="grid grid-cols-2 gap-0 reveal">
+        <div className="relative overflow-hidden aspect-[4/3] sm:aspect-[5/4] lg:aspect-auto lg:min-h-[300px]">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            className="absolute inset-0 w-full h-full object-cover object-[50%_45%] scale-[1.12] origin-center [filter:saturate(0.7)] hover:[filter:saturate(1)] transition-[filter] duration-500"
+            src="/uploads/home-cafe-interior.png"
+            alt="Love Pier Beach Cafe interior"
+          />
+        </div>
+        <div className="relative overflow-hidden aspect-[4/3] sm:aspect-[5/4] lg:aspect-auto lg:min-h-[300px]">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            className="absolute inset-0 w-full h-full object-cover object-center scale-[1.12] origin-center [filter:saturate(0.7)] hover:[filter:saturate(1)] transition-[filter] duration-500"
+            src="/uploads/drink-can-set.png"
+            alt="Love Pier canned drinks"
+          />
+        </div>
       </div>
       </ScrollStackPanel>
 
@@ -147,9 +151,13 @@ export default function Home() {
 
       <ScrollStackPanel tone="white">
       {/* Mosaic grid */}
-      <div className="grid gap-[3px] mt-[3px] reveal grid-cols-1 md:grid-cols-2 lg:grid-cols-12 auto-rows-[220px] sm:auto-rows-[240px] lg:auto-rows-[280px]">
-        <div className="overflow-hidden bg-[#e8e4de] md:col-span-1 lg:col-span-5"><img className="home-mosaic-img w-full h-full object-cover object-[50%_45%]" src="/uploads/home-cafe-interior.png" alt="cafe" /></div>
-        <div className="overflow-hidden bg-[#e8e4de] md:col-span-1 lg:col-span-5"><img className="home-mosaic-img w-full h-full object-cover object-[50%_72%]" src="/uploads/home-espresso.png" alt="coffee" /></div>
+      <div className="grid grid-cols-2 gap-0 reveal auto-rows-[220px] sm:auto-rows-[260px] lg:auto-rows-[300px]">
+        <div className="relative overflow-hidden h-full">
+          <img className="home-mosaic-img absolute inset-0 w-full h-full object-cover object-[50%_45%] scale-[1.12] origin-center" src="/uploads/home-cafe-interior.png" alt="cafe" />
+        </div>
+        <div className="relative overflow-hidden h-full">
+          <img className="home-mosaic-img absolute inset-0 w-full h-full object-cover object-[50%_72%] scale-[1.12] origin-center" src="/uploads/home-espresso.png" alt="coffee" />
+        </div>
       </div>
       </ScrollStackPanel>
 
