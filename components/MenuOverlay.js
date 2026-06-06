@@ -31,7 +31,7 @@ const COPY = {
       { href: '/gallery',    label: 'แกลเลอรี' },
       { href: '/reservation',label: 'จองโต๊ะ' },
       { href: '/location',   label: 'ที่ตั้ง' },
-      { href: '/events',     label: 'อีเวนต์' },
+      { href: '/events',     label: 'อีเวนต์และกิจกรรม' },
       { href: '/promotion',  label: 'โปรโมชัน' },
       { href: '/about',      label: 'เกี่ยวกับเรา' },
       { href: '/contact',    label: 'ติดต่อ' },

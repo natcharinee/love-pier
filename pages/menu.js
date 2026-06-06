@@ -801,14 +801,20 @@ export default function Menu() {
           <h1 className="font-display font-light leading-[0.95] text-ink tracking-[-0.02em] mb-5 text-[clamp(48px,6vw,76px)]" dangerouslySetInnerHTML={{ __html: t.hero.replace(/\n/g, '<br/>') }} />
           <p className="text-[15px] leading-[1.9] text-[#555] font-light max-w-[480px]">{t.desc}</p>
         </div>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="w-full aspect-[4/5] object-cover object-[50%_62%] [filter:saturate(0.7)]" src="/uploads/menu-hero-custom.png" alt="menu hero" />
+        <div className="relative overflow-hidden w-full aspect-[4/5]">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            className="absolute top-0 left-0 h-full w-[168%] max-w-none object-cover object-left [filter:saturate(0.7)]"
+            src="/uploads/menu-hero-custom.png"
+            alt="menu hero"
+          />
+        </div>
       </section>
 
       {/* Flore-style tabbed menu */}
       <section className="px-3 py-6 sm:px-4 sm:py-8 lg:px-6 lg:py-10 border-b border-black/10 bg-[#e8e4de] reveal min-h-[calc(100svh-4.25rem)] flex flex-col justify-center">
-        <div className="w-full max-w-7xl mx-auto flore-menu">
-          <div className="flex overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden border border-black/10 border-b-0 bg-[#ddd8d0]">
+        <div className="w-full max-w-7xl mx-auto flore-menu overflow-hidden border border-black/20 bg-white shadow-[0_8px_32px_rgba(26,26,26,0.08)]">
+          <div className="flex overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden border-b border-black/15 bg-[#ddd8d0]">
             {primaryTabs.map(({ id, label }) => (
               <button
                 key={id}
@@ -826,7 +832,7 @@ export default function Menu() {
           </div>
 
           {subSections.length > 1 ? (
-            <div className="flex gap-5 sm:gap-8 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden px-6 sm:px-10 lg:px-12 py-3.5 bg-white border-x border-black/10">
+            <div className="flex gap-5 sm:gap-8 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden px-6 sm:px-10 lg:px-12 py-3.5 bg-white border-b border-black/15">
               {subSections.map((section) => (
                 <button
                   key={section.cat}
@@ -842,7 +848,7 @@ export default function Menu() {
             </div>
           ) : null}
 
-          <div className="bg-white border border-black/10 border-t-0 shadow-[0_12px_40px_rgba(26,26,26,0.06)]">
+          <div className="bg-white">
             {activeTab === 'signature' ? (
               <FloreSignaturePanel menuData={menuData} />
             ) : (

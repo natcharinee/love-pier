@@ -1,23 +1,16 @@
 import { useState } from 'react'
 import Nav from './Nav'
 import MenuOverlay from './MenuOverlay'
-import { startSmoothScroll, stopSmoothScroll } from '../lib/smoothScroll'
 
 export default function Layout({ children }) {
   const [menuOpen, setMenuOpen] = useState(false)
   const openMenu = () => {
     setMenuOpen(true)
-    if (typeof document !== 'undefined') {
-      document.body.classList.add('menu-open')
-      stopSmoothScroll()
-    }
+    if (typeof document !== 'undefined') document.body.classList.add('menu-open')
   }
   const closeMenu = () => {
     setMenuOpen(false)
-    if (typeof document !== 'undefined') {
-      document.body.classList.remove('menu-open')
-      startSmoothScroll()
-    }
+    if (typeof document !== 'undefined') document.body.classList.remove('menu-open')
   }
 
   return (

@@ -9,22 +9,9 @@
   --font-family-sans: Jost, sans-serif;
 }
 
-html.lenis,
-html.lenis body {
-  height: auto;
-}
-
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
-html.lenis body {
-  overflow-x: hidden;
-}
-
-.lenis.lenis-stopped {
-  overflow: clip;
-}
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: clip; }
 
 body.menu-open {
   overflow: hidden;
@@ -93,6 +80,10 @@ body.menu-open {
 .home-mosaic-img:hover {
   filter: saturate(1);
   transform: scale(1.03);
+}
+.home-mosaic-video {
+  display: block;
+  pointer-events: none;
 }
 
 .menu-overlay { position: fixed; inset: 0; background: #0e0e0e; z-index: 999; opacity: 0; pointer-events: none; transition: opacity 0.5s cubic-bezier(0.77,0,0.175,1); display: flex; flex-direction: column; }
@@ -182,7 +173,12 @@ select.flore-input option {
 }
 
 .flore-menu-tab + .flore-menu-tab {
-  border-left: 1px solid rgba(26, 26, 26, 0.08);
+  border-left: 1px solid rgba(26, 26, 26, 0.12);
+}
+
+.flore-menu {
+  outline: 1px solid rgba(26, 26, 26, 0.06);
+  outline-offset: -1px;
 }
 
 /* Gallery tile caption overlay */
@@ -218,7 +214,6 @@ select.flore-input option {
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-auto-flow: dense;
   gap: 5px;
   background: #e8e4de;
 }
@@ -228,16 +223,26 @@ select.flore-input option {
   grid-row: span var(--mrow, 1);
 }
 
+.gallery-grid--equal .gallery-item {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
 .gallery-item--hero { min-height: 280px; }
 .gallery-item--tall { min-height: 300px; }
 .gallery-item--wide { min-height: 200px; }
 .gallery-item--sq { aspect-ratio: 1; min-height: 0; }
+.gallery-item--equal { min-height: 240px; aspect-ratio: 4 / 5; }
 
 @media (min-width: 768px) {
   .gallery-grid {
     grid-template-columns: repeat(12, minmax(0, 1fr));
-    grid-auto-rows: minmax(160px, auto);
+    grid-auto-rows: minmax(140px, auto);
     gap: 6px;
+  }
+  .gallery-grid--equal {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-rows: auto;
   }
   .gallery-item {
     grid-column: span var(--col, 3);
@@ -246,4 +251,8 @@ select.flore-input option {
   .gallery-item--hero { min-height: 480px; }
   .gallery-item--tall { min-height: 440px; }
   .gallery-item--wide { min-height: 240px; }
+  .gallery-item--equal {
+    min-height: 0;
+    aspect-ratio: 4 / 5;
+  }
 }

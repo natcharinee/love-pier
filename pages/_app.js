@@ -1,21 +1,16 @@
 import '../styles/globals.css'
 import { useEffect } from 'react'
-import { useRouter } from 'next/router'
 import Layout from '../components/Layout'
 import { LanguageProvider } from '../lib/language'
-import {
-  destroySmoothScroll,
-  initSmoothScroll,
-  resetSmoothScroll,
-} from '../lib/smoothScroll'
 
 export default function App({ Component, pageProps }) {
-  const router = useRouter()
-
   useEffect(() => {
-    let cancelled = false
-
-    initSmoothScroll().catch(() => {})
+    let lenis
+    import('lenis').then(({ default: Lenis }) => {
+      lenis = new Lenis({ duration: 1.4, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true })
+      function raf(time) { lenis.raf(time); requestAnimationFrame(raf) }
+      requestAnimationFrame(raf)
+    }).catch(() => {})
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -37,21 +32,12 @@ export default function App({ Component, pageProps }) {
     const mo = new MutationObserver(observeReveal)
     mo.observe(document.body, { childList: true, subtree: true })
 
-    const onRouteDone = () => {
-      if (!cancelled) resetSmoothScroll()
-      observeReveal()
-    }
-
-    router.events.on('routeChangeComplete', onRouteDone)
-
     return () => {
-      cancelled = true
-      router.events.off('routeChangeComplete', onRouteDone)
-      destroySmoothScroll()
+      lenis?.destroy()
       observer.disconnect()
       mo.disconnect()
     }
-  }, [router.events])
+  }, [])
 
   return (
     <LanguageProvider>

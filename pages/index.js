@@ -21,15 +21,6 @@ export default function Home() {
         about2: 'สัมผัสรสชาติของ <em class="italic text-gold">"ข้าวมันไก่สิงคโปร์และข้าวมันไก่ไหหลำ สูตรต้นตำรับ"</em> พร้อมจิบเครื่องดื่มซิกเนเจอร์ ที่ได้แรงบันดาลใจจาก <em class="italic text-gold">"ข้าวหลามหนองมน"</em> เอกลักษณ์แห่งบางแสนที่ถูกถ่ายทอดออกมาในรูปแบบใหม่ อย่างละมุน ทุกเมนูถูกออกแบบให้กินชิล ๆ ไม่เร่ง ไม่รีบ แค่ได้นั่งลงมาพักใจกับรสที่คุ้นเคย',
         about3: 'นั่งรับลมทะเล ฟังเสียงคลื่นเบา ๆ ท่ามกลางบรรยากาศอบอุ่นริมชายหาด และเก็บภาพความทรงจำที่มุมท่าเรือสุดโรแมนติก',
         about4: 'เพราะบางช่วงเวลาที่สวยงาม ไม่ได้ต้องการอะไรมากไปกว่าอาหารดี ๆ เครื่องดื่มแก้วโปรด และคนพิเศษที่นั่งมองพระอาทิตย์ตกไปด้วยกัน<br />ที่ <strong class="italic text-gold font-normal tracking-[0.12em]">LOVE PIER BEACH CAFE</strong>',
-        where: 'เมื่อชายฝั่ง\nมาเจอกับ\n<em class="italic text-gold">จานโปรด</em>',
-        numbers: 'ตัวเลขของเรา',
-        little: 'เกี่ยวกับ\n<em class="italic text-gold">Love Pier</em>',
-        yearsOpen: 'ปีที่เปิดบริการ',
-        yearsDesc: 'ให้บริการชุมชนริมทะเลตั้งแต่ปี 2026',
-        toShore: 'ระยะถึงชายหาด',
-        toShoreDesc: 'เดินเพียงไม่กี่นาที ก็ถึงหาดทราย',
-        menuItems: 'รายการเมนู',
-        menuItemsDesc: 'กาแฟและอาหารที่ตั้งใจทำสดใหม่ทุกวัน',
         address: 'ที่อยู่',
         addressValue: '800 108 แสนสุข\nอำเภอเมือง จังหวัดชลบุรี 20130',
         hoursCompact: 'เปิดทุกวัน (ยกเว้นวันพุธ) · 09:00-18:00',
@@ -51,15 +42,6 @@ export default function Home() {
           about2: '品尝<em class="italic text-gold">“新加坡鸡饭与海南鸡饭（传统原味）”</em>，再搭配受<em class="italic text-gold">“农蒙竹筒糯米饭”</em>启发的招牌饮品，把邦盛在地风味以更细腻的方式重新呈现。我们希望您放慢脚步，多坐一会儿，安心品尝熟悉的味道。',
           about3: '在温暖的海边氛围里吹着海风、听着轻柔浪声，也在通往海面的浪漫码头留下属于你的回忆。',
           about4: '有些美好时刻，其实只需要好食物、喜欢的那杯饮品，以及一起看夕阳的人。<br />就在 <strong class="italic text-gold font-normal tracking-[0.12em]">LOVE PIER BEACH CAFE</strong>。',
-          where: '当海岸\n遇见\n<em class="italic text-gold">一杯咖啡</em>',
-          numbers: '我们的数据',
-          little: '关于\n<em class="italic text-gold">Love Pier</em>',
-          yearsOpen: '营业年数',
-          yearsDesc: '自 2026 年起服务海边社区。',
-          toShore: '到海边距离',
-          toShoreDesc: '步行片刻即可踏上沙滩。',
-          menuItems: '菜单数量',
-          menuItemsDesc: '咖啡与餐点每日新鲜制作。',
           address: '地址',
           addressValue: '800 108 Saensuk\nMueang Chonburi, Chonburi 20130',
           hoursCompact: '每日营业（周三除外） · 09:00-18:00',
@@ -80,15 +62,6 @@ export default function Home() {
         about2: 'Enjoy <em class="italic text-gold">Singaporean and Hainanese chicken rice (original recipes)</em>, paired with signature drinks inspired by <em class="italic text-gold">Nong Mon khao lam</em>, reimagined with a softer, modern touch. We cook with care so you can linger longer and taste something familiar in peace.',
         about3: 'Sit by the sea breeze, listen to the gentle waves, and capture memories at our romantic pier stretching out toward the water.',
         about4: 'Some beautiful moments only need great food, a favorite drink, and someone special to watch the sunset with<br />at <strong class="italic text-gold font-normal tracking-[0.12em]">LOVE PIER BEACH CAFE</strong>.',
-        where: 'Where the\nshore meets\n<em class="italic text-gold">the cup</em>',
-        numbers: 'The Numbers',
-        little: 'About\n<em class="italic text-gold">Love Pier</em>',
-        yearsOpen: 'Years Open',
-        yearsDesc: 'Serving our beachside community since 2026.',
-        toShore: 'To the Shore',
-        toShoreDesc: 'Only a short walk and your feet are in the sand.',
-        menuItems: 'Menu Items',
-        menuItemsDesc: 'Coffee and dishes prepared fresh every day.',
         address: 'Address',
         addressValue: '800 108 Saensuk\nMueang Chonburi, Chonburi 20130',
       hoursCompact: 'Open daily (except Wednesday) · 09:00-18:00',
@@ -170,36 +143,11 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <div className="relative w-full aspect-[16/10] md:aspect-[16/8] overflow-hidden mt-[3px] reveal-img">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="w-full h-full object-cover [filter:brightness(0.55)_saturate(0.5)]" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600&q=85" alt="atmosphere" />
-        <div className="absolute bottom-10 left-10 font-display font-light text-[rgba(255,255,255,0.85)] leading-[1.1] text-[clamp(28px,4vw,48px)] sm:bottom-6 sm:left-6" dangerouslySetInnerHTML={{ __html: t.where.replace(/\n/g, '<br/>') }} />
-      </div>
       </ScrollStackPanel>
 
       <ScrollStackPanel tone="white">
-      <section className="px-4 py-14 reveal sm:px-6 sm:py-16 lg:px-10">
-        <div className="mb-12">
-          <h3 className="font-display font-light leading-[1.05] text-ink text-[clamp(28px,3.5vw,44px)]" dangerouslySetInnerHTML={{ __html: t.little.replace(/\n/g, '<br/>') }} />
-        </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 border-t border-l border-[#eee]">
-          <div className="px-8 py-10 border-r border-b border-[#eee] sm:px-6 sm:py-7">
-            <div className="font-display text-[44px] sm:text-[56px] font-light text-ink leading-none tracking-[-0.02em]">200m</div>
-            <span className="block text-[10px] tracking-[0.25em] uppercase text-[#bbb] mt-2.5">{t.toShore}</span>
-            <div className="text-[13px] text-[#777] mt-2.5 leading-relaxed font-light max-w-[220px]">{t.toShoreDesc}</div>
-          </div>
-          <div className="px-8 py-10 border-r border-b border-[#eee] sm:px-6 sm:py-7">
-            <div className="font-display text-[44px] sm:text-[56px] font-light text-ink leading-none tracking-[-0.02em]">70+</div>
-            <span className="block text-[10px] tracking-[0.25em] uppercase text-[#bbb] mt-2.5">{t.menuItems}</span>
-            <div className="text-[13px] text-[#777] mt-2.5 leading-relaxed font-light max-w-[220px]">{t.menuItemsDesc}</div>
-          </div>
-        </div>
-      </section>
-
       {/* Mosaic grid */}
       <div className="grid gap-[3px] mt-[3px] reveal grid-cols-1 md:grid-cols-2 lg:grid-cols-12 auto-rows-[220px] sm:auto-rows-[240px] lg:auto-rows-[280px]">
-        <div className="overflow-hidden bg-[#e8e4de] md:col-span-2 lg:col-span-7 lg:row-span-2"><img className="home-mosaic-img w-full h-full object-cover object-[50%_55%]" src="/uploads/home-beach-panorama.png" alt="beach" /></div>
         <div className="overflow-hidden bg-[#e8e4de] md:col-span-1 lg:col-span-5"><img className="home-mosaic-img w-full h-full object-cover object-[50%_45%]" src="/uploads/home-cafe-interior.png" alt="cafe" /></div>
         <div className="overflow-hidden bg-[#e8e4de] md:col-span-1 lg:col-span-5"><img className="home-mosaic-img w-full h-full object-cover object-[50%_72%]" src="/uploads/home-espresso.png" alt="coffee" /></div>
       </div>

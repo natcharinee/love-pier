@@ -7,119 +7,119 @@ import { useLanguage } from '../lib/language'
 const EVENTS_COPY = {
   th: {
     title: 'Events — Love Pier Beach Cafe',
-    up: 'อีเวนต์ที่กำลังจะมา',
     heroBrand: 'Love Pier',
-    heroSuffix: 'เสิร์ฟ',
-    desc: 'ดนตรีสด เวิร์กช็อป และกิจกรรมประจำสัปดาห์',
-    featured: 'แนะนำ · สุดสัปดาห์นี้',
+    heroSuffix: 'เสิร์ฟความสนุก',
+    desc: 'กิจกรรมพิเศษ ภายในร้าน',
+    featured: 'THE SYMPHONY CLUB',
     reserve: 'จองโต๊ะ',
     add: 'เพิ่มลงปฏิทิน',
     next: 'กิจกรรมถัดไป',
-    weekly: 'กิจกรรมประจำสัปดาห์',
-    weeklyDesc: 'กิจกรรมที่คุณมาได้ทุกสัปดาห์',
+    weekly: 'กิจกรรมประจำวัน',
+    weeklyDesc: 'กิจกรรมที่คุณมาได้ทุกวัน',
     freeLabel: 'ฟรี',
-    featuredImageAlt: 'กิจกรรมแนะนำ',
+    featuredImageAlt: 'Flow Sunset — The Symphony Club',
     featuredEvent: {
-      title: 'Sunset Jazz',
-      titleEm: 'Session',
-      date: 'เสาร์ 17 พ.ค.',
+      title: 'Flow',
+      titleEm: 'Sunset',
+      date: 'เสาร์ 27 มิ.ย.',
       year: '2026',
-      time: '18:00 – 22:00',
-      timeSub: 'ดนตรีสดตั้งแต่ 19:00',
-      entry: 'เข้าฟรี',
-      entrySub: 'แนะนำให้จองล่วงหน้า',
-      desc: 'ทรีโอนักดนตรีจากกรุงเทพฯ สองนักร้อง และพระอาทิตย์ตกที่ทาสีทองให้ห้อง ค็อกเทลเสิร์ฟตลอดค่ำคืน อาหารจานเล็กตั้งแต่ 18:30',
+      time: '16:00 – 20:00',
+      timeSub: 'DJ SUPACHAI 18:00 – 20:00',
+      entry: '฿500 ต่อท่าน',
+      entrySub: 'เล่นกิจกรรมในคลับไม่จำกัด',
+      desc: 'Surf Pool · Skimboard · Kayak · Sup Board อาหาร เครื่องดื่ม และสินค้าพาร์ทเนอร์ตลอดงาน รับริสแบนด์และเครื่องดื่มกระป๋องฟรี 1 แก้ว',
     },
     eventList: [
-      { day: '10', month: 'พ.ค. 2026', title: 'Sunset Jazz Session', sub: '18:00 – 22:00 · เทอเรซ', cat: 'ดนตรี', price: null, free: true },
-      { day: '17', month: 'พ.ค. 2026', title: 'Full Moon Night Market', sub: '17:00 – 23:00 · ริมชายหาด', cat: 'ตลาด', price: null, free: true },
-      { day: '24', month: 'พ.ค. 2026', title: 'เวิร์กช็อปบาริสต้า · พื้นฐาน Pour-Over', sub: '10:00 – 13:00 · 8 ที่นั่ง', cat: 'เวิร์กช็อป', price: '฿1,400', free: false },
-      { day: '01', month: 'มิ.ย. 2026', title: 'Beach BBQ & Live Acoustic', sub: '17:30 – 22:00 · กลางแจ้ง', cat: 'ปาร์ตี้', price: '฿890', free: false },
-      { day: '08', month: 'มิ.ย. 2026', title: 'คลาสขนมปัง Sourdough', sub: '14:00 – 17:00 · 6 ที่นั่ง', cat: 'เวิร์กช็อป', price: '฿1,800', free: false },
-      { day: '22', month: 'มิ.ย. 2026', title: 'Vinyl Sunday · Soul & Jazz', sub: '14:00 – 18:00 · นำแผ่นมาได้', cat: 'ดนตรี', price: null, free: true },
+      { day: '27', month: 'มิ.ย. 2026', title: 'Flow Sunset', sub: '16:00 – 20:00 · The Symphony Club', cat: 'ปาร์ตี้', price: '฿500', free: false },
+      { day: '05', month: 'ก.ค. 2026', title: 'Surf Pool · คลาสมือใหม่', sub: '10:00 – 12:00 · สระคลื่นบางแสน', cat: 'กีฬาทางน้ำ', price: '฿890', free: false },
+      { day: '12', month: 'ก.ค. 2026', title: 'พายเรือคายัคยามเย็น', sub: '17:00 – 19:00 · ชายหาดบางแสน', cat: 'กีฬาทางน้ำ', price: '฿650', free: false },
+      { day: '19', month: 'ก.ค. 2026', title: 'Skimboard & Sup Board Day', sub: '10:00 – 16:00 · ริมชายหาด', cat: 'กีฬาทางน้ำ', price: '฿750', free: false },
+      { day: '26', month: 'ก.ค. 2026', title: 'Love Pier Beach Brunch', sub: '08:00 – 13:00 · ข้าวมันไก่ซิกเนเจอร์', cat: 'อาหาร', price: '฿590', free: false },
+      { day: '02', month: 'ส.ค. 2026', title: 'Jet Ski Experience', sub: '10:00 – 17:00 · ทะเลบางแสน', cat: 'กีฬาทางน้ำ', price: '฿1,200', free: false },
     ],
     recurring: [
-      { day: 'ทุกวันพุธ', title: 'โยคะยามเช้า', text: 'โฟลว์ช้าๆ บนเทอเรซริมทะเล นำโดยครูพิม มีเสื่อให้ รับบริจาคตามใจ', time: '06:30 – 07:45' },
-      { day: 'ทุกวันศุกร์', title: 'Wine & Sea Sessions', text: 'ชิมไวน์ 5 แก้ว คู่ชีสและบทสนทนา โฮสต์โดยซอมเมอลิเยร์ประจำสัปดาห์', time: '18:30 – 21:00' },
-      { day: 'ทุกวันอาทิตย์', title: 'บรันช์ยาวๆ', text: 'กาแฟดริปไม่อั้น น้ำผลสด และเมนูบรันช์หมุนเวียน เราไม่รีบ — คุณก็ไม่ต้องรีบ', time: '08:00 – 13:00' },
+      { day: 'ทุกวัน(ยกเว้นวันพุธ)', title: 'Surf Pool', text: 'สัมผัสความสนุกของการโต้คลื่นในสระคลื่นมาตรฐาน เหมาะทั้งมือใหม่และสายเซิร์ฟ', time: '10:00 – 20:00' },
+      { day: 'ทุกวัน (ยกเว้นวันพุธ)', title: 'เจ็ตสกี', text: 'เร่งความเร็วบนผืนน้ำกับเจ็ตสกี สัมผัสความตื่นเต้นแบบเต็มสปีด', time: '10:00 – 20:00' },
+      { day: 'ทุกวัน (ยกเว้นวันพุธ)', title: 'Sup Board & Skim Board', text: 'สองสไตล์ความสนุกบนบอร์ด ทั้งพายเล่นชิล ๆ และไถลสุดมันส์ริมชายหาด', time: '10:00 – 20:00' },
+      { day: 'ทุกวัน (ยกเว้นวันพุธ)', title: 'พายเรือคายัค', text: 'พายเรือคายัคสำรวจชายฝั่งบางแสน สนุกได้ทั้งเดี่ยวและคู่', time: '10:00 – 20:00' },
     ],
   },
   zh: {
     title: 'Events — Love Pier Beach Cafe',
-    up: '即将举行',
     heroBrand: 'Love Pier',
     heroSuffix: '呈献',
     desc: '现场音乐、工作坊与每周固定活动。',
-    featured: '精选 · 本周末',
+    featured: 'THE SYMPHONY CLUB',
     reserve: '预订座位',
     add: '加入日历',
     next: '接下来',
-    weekly: '每周固定活动',
-    weeklyDesc: '无需预订，直接到店即可。',
+    weekly: '每日固定活动',
+    weeklyDesc: '每天都有，直接到店即可。',
     freeLabel: '免费',
-    featuredImageAlt: '精选活动',
+    featuredImageAlt: 'Flow Sunset — The Symphony Club',
     featuredEvent: {
-      title: 'Sunset Jazz',
-      titleEm: 'Session',
-      date: '5月17日 周六',
+      title: 'Flow',
+      titleEm: 'Sunset',
+      date: '6月27日 周六',
       year: '2026',
-      time: '18:00 – 22:00',
-      timeSub: '19:00 现场演出',
-      entry: '免费入场',
-      entrySub: '建议提前预约',
-      desc: '曼谷三重奏、两位歌手与金色落日。鸡尾酒整晚供应，18:30 起提供小食。',
+      time: '16:00 – 20:00',
+      timeSub: 'DJ SUPACHAI 18:00 – 20:00',
+      entry: '每人 ฿500',
+      entrySub: '俱乐部内活动不限次数',
+      desc: 'Surf Pool · Skimboard · Kayak · Sup Board，餐饮与合作伙伴产品供应至活动结束，赠送手环及一罐免费饮料。',
     },
     eventList: [
-      { day: '10', month: '2026年5月', title: 'Sunset Jazz Session', sub: '18:00 – 22:00 · 露台', cat: '音乐', price: null, free: true },
-      { day: '17', month: '2026年5月', title: 'Full Moon Night Market', sub: '17:00 – 23:00 · 海滩侧', cat: '市集', price: null, free: true },
-      { day: '24', month: '2026年5月', title: '咖啡师工作坊 · 手冲基础', sub: '10:00 – 13:00 · 8 席', cat: '工作坊', price: '฿1,400', free: false },
-      { day: '01', month: '2026年6月', title: '海滩烧烤 & 现场原声', sub: '17:30 – 22:00 · 户外', cat: '派对', price: '฿890', free: false },
-      { day: '08', month: '2026年6月', title: '酸种面包慢烘课', sub: '14:00 – 17:00 · 6 席', cat: '工作坊', price: '฿1,800', free: false },
-      { day: '22', month: '2026年6月', title: 'Vinyl Sunday · Soul & Jazz', sub: '14:00 – 18:00 · 欢迎自带唱片', cat: '音乐', price: null, free: true },
+      { day: '27', month: '2026年6月', title: 'Flow Sunset', sub: '16:00 – 20:00 · The Symphony Club', cat: '派对', price: '฿500', free: false },
+      { day: '05', month: '2026年7月', title: 'Surf Pool · 新手班', sub: '10:00 – 12:00 · 邦盛造浪池', cat: '水上运动', price: '฿890', free: false },
+      { day: '12', month: '2026年7月', title: '黄昏皮划艇', sub: '17:00 – 19:00 · 邦盛海滩', cat: '水上运动', price: '฿650', free: false },
+      { day: '19', month: '2026年7月', title: 'Skimboard & Sup Board Day', sub: '10:00 – 16:00 · 海滩边', cat: '水上运动', price: '฿750', free: false },
+      { day: '26', month: '2026年7月', title: 'Love Pier Beach Brunch', sub: '08:00 – 13:00 · 招牌海南鸡饭', cat: '美食', price: '฿590', free: false },
+      { day: '02', month: '2026年8月', title: 'Jet Ski Experience', sub: '10:00 – 17:00 · 邦盛海域', cat: '水上运动', price: '฿1,200', free: false },
     ],
     recurring: [
-      { day: '每周三', title: '日出瑜伽', text: '海滩露台慢流瑜伽，由常驻老师 Pim 带领。提供瑜伽垫，欢迎随喜捐赠。', time: '06:30 – 07:45' },
-      { day: '每周五', title: 'Wine & Sea Sessions', text: '五杯品鉴搭配芝士与轻松交流，每周由不同侍酒师主持。', time: '18:30 – 21:00' },
-      { day: '每周日', title: '慢享早午餐', text: '无限续杯手冲、鲜榨果汁与轮换早午餐菜单。我们不赶时间——您也不必赶。', time: '08:00 – 13:00' },
+      { day: '每天（周三除外）', title: 'Surf Pool', text: '一起度过美好时光——邦盛唯一的 Surf Pool 体验。', time: '10:00 – 20:00' },
+      { day: '每天（周三除外）', title: '水上摩托', text: '喜欢速度就选水上摩托，尽享邦盛海的绝美氛围。', time: '10:00 – 20:00' },
+      { day: '每天（周三除外）', title: 'Sup Board & Skim Board', text: '两种板上乐趣，悠闲划水与海滩滑行。', time: '10:00 – 20:00' },
+      { day: '每天（周三除外）', title: '皮划艇', text: '皮划艇探索邦盛海岸，单人或双人皆宜。', time: '10:00 – 20:00' },
     ],
   },
   en: {
     title: 'Events — Love Pier Beach Cafe',
-    up: 'Upcoming Events',
     heroBrand: 'Love Pier',
     heroSuffix: 'Serves',
     desc: 'Live music, workshops, supper clubs, and sunrise yoga.',
-    featured: 'Featured · This weekend',
+    featured: 'THE SYMPHONY CLUB',
     reserve: 'Reserve a Table',
     add: 'Add to calendar',
     next: "What's next",
-    weekly: 'Every week, without fail',
-    weeklyDesc: 'Things you can count on. No reservation needed — just show up.',
+    weekly: 'Daily activities',
+    weeklyDesc: 'Something to enjoy every day — just show up.',
     freeLabel: 'Free',
-    featuredImageAlt: 'featured event',
+    featuredImageAlt: 'Flow Sunset — The Symphony Club',
     featuredEvent: {
-      title: 'Sunset Jazz',
-      titleEm: 'Session',
-      date: 'Sat 17 May',
+      title: 'Flow',
+      titleEm: 'Sunset',
+      date: 'Sat 27 Jun',
       year: '2026',
-      time: '18:00 – 22:00',
-      timeSub: 'Live from 19:00',
-      entry: 'Free entry',
-      entrySub: 'RSVP encouraged',
-      desc: 'A trio of Bangkok-based musicians, two singers, and a sunset that paints the room gold. Cocktails poured all evening; small plates from 18:30.',
+      time: '16:00 – 20:00',
+      timeSub: 'DJ SUPACHAI 18:00 – 20:00',
+      entry: '฿500 per person',
+      entrySub: 'Unlimited club activities included',
+      desc: 'Surf Pool · Skimboard · Kayak · Sup Board. Food, drinks and partner products all evening. Free wristband and one canned drink.',
     },
     eventList: [
-      { day: '10', month: 'May 2026', title: 'Sunset Jazz Session', sub: '18:00 – 22:00 · The Terrace', cat: 'Music', price: null, free: true },
-      { day: '17', month: 'May 2026', title: 'Full Moon Night Market', sub: '17:00 – 23:00 · Beach side', cat: 'Market', price: null, free: true },
-      { day: '24', month: 'May 2026', title: 'Barista Workshop · Pour-Over Basics', sub: '10:00 – 13:00 · 8 seats', cat: 'Workshop', price: '฿1,400', free: false },
-      { day: '01', month: 'Jun 2026', title: 'Beach BBQ & Live Acoustic', sub: '17:30 – 22:00 · Outdoor', cat: 'Party', price: '฿890', free: false },
-      { day: '08', month: 'Jun 2026', title: 'Sourdough & Slow Bread Class', sub: '14:00 – 17:00 · 6 seats', cat: 'Workshop', price: '฿1,800', free: false },
-      { day: '22', month: 'Jun 2026', title: 'Vinyl Sunday · Soul & Jazz', sub: '14:00 – 18:00 · Bring records', cat: 'Music', price: null, free: true },
+      { day: '27', month: 'Jun 2026', title: 'Flow Sunset', sub: '16:00 – 20:00 · The Symphony Club', cat: 'Party', price: '฿500', free: false },
+      { day: '05', month: 'Jul 2026', title: 'Surf Pool · Beginner Class', sub: '10:00 – 12:00 · Bang Saen wave pool', cat: 'Water sports', price: '฿890', free: false },
+      { day: '12', month: 'Jul 2026', title: 'Sunset Kayak', sub: '17:00 – 19:00 · Bang Saen beach', cat: 'Water sports', price: '฿650', free: false },
+      { day: '19', month: 'Jul 2026', title: 'Skimboard & Sup Board Day', sub: '10:00 – 16:00 · Beachfront', cat: 'Water sports', price: '฿750', free: false },
+      { day: '26', month: 'Jul 2026', title: 'Love Pier Beach Brunch', sub: '08:00 – 13:00 · Signature chicken rice', cat: 'Food', price: '฿590', free: false },
+      { day: '02', month: 'Aug 2026', title: 'Jet Ski Experience', sub: '10:00 – 17:00 · Bang Saen sea', cat: 'Water sports', price: '฿1,200', free: false },
     ],
     recurring: [
-      { day: 'Every Wednesday', title: 'Sunrise Yoga', text: 'Slow flow on the beach terrace led by our resident teacher Pim. Mats provided, donations welcome.', time: '06:30 – 07:45' },
-      { day: 'Every Friday', title: 'Wine & Sea Sessions', text: 'Five-glass tasting flight paired with cheese and conversation. Hosted by our sommelier rotating each week.', time: '18:30 – 21:00' },
-      { day: 'Every Sunday', title: 'Long Slow Brunch', text: "Bottomless filter coffee, fresh juice, and a rotating brunch menu. We don't rush you. You shouldn't rush either.", time: '08:00 – 13:00' },
+      { day: 'Every day (except Wednesday)', title: 'Surf Pool', text: 'Spend good time together — the only Surf Pool experience in Bang Saen.', time: '10:00 – 20:00' },
+      { day: 'Every day (except Wednesday)', title: 'Jet Ski', text: 'Love speed? Jet ski with the beautiful atmosphere of Bang Saen sea.', time: '10:00 – 20:00' },
+      { day: 'Every day (except Wednesday)', title: 'Sup Board & Skim Board', text: 'Two styles of fun on the board — easy paddling and thrilling slides along the beach.', time: '10:00 – 20:00' },
+      { day: 'Every day (except Wednesday)', title: 'Kayaking', text: 'Explore the Bang Saen coastline by kayak — fun solo or as a pair.', time: '10:00 – 20:00' },
     ],
   },
 }
@@ -136,7 +136,6 @@ export default function Events() {
       </Head>
 
       <header className="px-4 pt-12 pb-8 text-center border-b border-black/10 reveal sm:px-6 lg:px-10 lg:pt-16 lg:pb-10">
-        <div className="text-[10px] tracking-[0.4em] uppercase text-muted mb-3">{t.up}</div>
         <h1 className="font-display font-light leading-[0.95] text-ink tracking-[-0.02em] text-[clamp(48px,7vw,88px)]">
           <span>
             <em className="italic text-gold">{t.heroBrand}</em>
@@ -146,9 +145,15 @@ export default function Events() {
         <p className="mt-4 text-sm text-[#666] font-light max-w-[580px] mx-auto leading-[1.8]">{t.desc}</p>
       </header>
 
-      <section className="grid grid-cols-1 lg:grid-cols-2 border-b border-black/10 reveal-img">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="w-full aspect-[4/3] object-cover [filter:saturate(0.7)]" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1000&q=85" alt={t.featuredImageAlt} />
+      <section className="grid grid-cols-1 lg:grid-cols-2 lg:items-stretch border-b border-black/10 reveal-img">
+        <div className="relative overflow-hidden aspect-[4/3] lg:aspect-auto lg:min-h-full">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            className="absolute inset-0 w-full h-full object-cover object-[50%_42%] scale-[1.14] origin-center [filter:saturate(0.58)_brightness(0.9)_contrast(1.04)]"
+            src="/uploads/events-flow-sunset.png"
+            alt={t.featuredImageAlt}
+          />
+        </div>
         <div className="px-4 py-12 flex flex-col justify-center sm:px-6 sm:py-12 lg:px-16 lg:py-20">
           <span className="inline-flex text-[10px] tracking-[0.3em] uppercase text-gold border border-gold/50 px-3 py-1.5 mb-5 w-fit">{t.featured}</span>
           <h2 className="font-display font-light leading-none text-ink tracking-[-0.02em] mb-4 text-[clamp(40px,5vw,64px)]">{fe.title}<br /><em className="italic text-gold">{fe.titleEm}</em></h2>
@@ -192,9 +197,9 @@ export default function Events() {
       <section className="bg-ink text-bg px-4 py-14 reveal sm:px-6 sm:py-14 lg:px-10 lg:py-20">
         <h3 className="font-display font-light mb-3.5 leading-[1.05] text-[clamp(32px,4vw,48px)]">{t.weekly}</h3>
         <p className="text-sm text-[rgba(245,243,239,0.5)] mb-12 max-w-[480px] leading-[1.8]">{t.weeklyDesc}</p>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {t.recurring.map(({ day, title, text, time }) => (
-            <div key={day} className="border border-white/10 px-6 py-7 sm:px-8 sm:py-8 hover:border-gold hover:bg-[rgba(201,169,110,0.05)] transition-all duration-300">
+            <div key={title} className="border border-white/10 px-6 py-7 sm:px-8 sm:py-8 hover:border-gold hover:bg-[rgba(201,169,110,0.05)] transition-all duration-300">
               <div className="text-[11px] tracking-[0.3em] uppercase text-gold mb-4">{day}</div>
               <h4 className="font-display text-[26px] font-light mb-3">{title}</h4>
               <p className="text-[13px] text-[rgba(245,243,239,0.6)] leading-[1.8] font-light">{text}</p>
