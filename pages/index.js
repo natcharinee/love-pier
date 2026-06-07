@@ -107,18 +107,18 @@ export default function Home() {
       />
 
       <div className="grid grid-cols-2 gap-0 reveal">
-        <div className="relative overflow-hidden aspect-[4/3] sm:aspect-[5/4] lg:aspect-auto lg:min-h-[300px]">
+        <div className="relative overflow-hidden aspect-[4/3] sm:aspect-[5/4] lg:aspect-[4/3] xl:aspect-[3/2]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            className="absolute inset-0 w-full h-full object-cover object-[50%_45%] scale-[1.12] origin-center [filter:saturate(0.7)] hover:[filter:saturate(1)] transition-[filter] duration-500"
+            className="absolute inset-0 w-full h-full object-cover object-[50%_42%] [filter:saturate(0.7)] hover:[filter:saturate(1)] transition-[filter] duration-500"
             src="/uploads/home-cafe-interior.png"
             alt="Love Pier Beach Cafe interior"
           />
         </div>
-        <div className="relative overflow-hidden aspect-[4/3] sm:aspect-[5/4] lg:aspect-auto lg:min-h-[300px]">
+        <div className="relative overflow-hidden aspect-[4/3] sm:aspect-[5/4] lg:aspect-[4/3] xl:aspect-[3/2]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            className="absolute inset-0 w-full h-full object-cover object-center scale-[1.12] origin-center [filter:saturate(0.7)] hover:[filter:saturate(1)] transition-[filter] duration-500"
+            className="absolute inset-0 w-full h-full object-cover object-[50%_48%] [filter:saturate(0.7)] hover:[filter:saturate(1)] transition-[filter] duration-500"
             src="/uploads/drink-can-set.png"
             alt="Love Pier canned drinks"
           />
@@ -127,18 +127,16 @@ export default function Home() {
       </ScrollStackPanel>
 
       <ScrollStackPanel>
-      <section className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] px-4 py-14 items-start reveal sm:px-6 sm:py-16 lg:px-10 lg:py-20 gap-10 lg:gap-0">
-        <div>
+      <section className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] px-4 py-14 items-start lg:items-center reveal sm:px-6 sm:py-16 lg:px-10 lg:py-20 gap-12 lg:gap-14 xl:gap-20">
+        <div className="inline-block max-w-full lg:pr-6 xl:pr-10">
           <h2 className="font-display font-light leading-[0.92] text-ink tracking-[-0.02em] text-[clamp(40px,6vw,72px)]">
             Beach Vibes,<br/>
             Cafe by The Sea,<br/>
-            <span className="inline-flex flex-wrap items-baseline gap-x-4 gap-y-3">
-              <em className="italic text-gold">Singapore Chicken Rice</em>
-              <Link href="/menu" className="inline-flex shrink-0 items-center gap-3 text-[11px] tracking-[0.25em] uppercase text-[#5f5a51] bg-[#ece7dc] border border-[#d8cdbb] px-5 py-2.5 hover:bg-[#e4dccd] hover:text-ink transition-colors duration-200 after:content-['→'] after:text-base after:transition-transform after:duration-200 hover:after:translate-x-1">{t.exploreMenu}</Link>
-            </span>
+            <em className="italic text-gold">Singapore Chicken Rice</em>
           </h2>
+          <Link href="/menu" className="mt-8 flex w-full items-center justify-between text-[11px] tracking-[0.25em] uppercase text-[#5f5a51] bg-[#ece7dc] border border-[#d8cdbb] px-5 py-2.5 hover:bg-[#e4dccd] hover:text-ink transition-colors duration-200 after:content-['→'] after:text-base after:transition-transform after:duration-200 hover:after:translate-x-1">{t.exploreMenu}</Link>
         </div>
-        <div className="pt-2">
+        <div className="lg:pl-2 xl:pl-4">
           <div className="text-[9px] tracking-[0.4em] uppercase text-[#bbb] mb-5 flex items-center gap-3 before:content-[''] before:block before:w-6 before:h-px before:bg-[#bbb]">{t.since}</div>
           <div className="text-sm leading-[1.9] text-[#555] font-light max-w-none">
             <p className="mb-4" dangerouslySetInnerHTML={{ __html: t.about1 }} />
@@ -151,12 +149,12 @@ export default function Home() {
 
       <ScrollStackPanel tone="white">
       {/* Mosaic grid */}
-      <div className="grid grid-cols-2 gap-0 reveal auto-rows-[220px] sm:auto-rows-[260px] lg:auto-rows-[300px]">
-        <div className="relative overflow-hidden h-full">
-          <img className="home-mosaic-img absolute inset-0 w-full h-full object-cover object-[50%_45%] scale-[1.12] origin-center" src="/uploads/home-cafe-interior.png" alt="cafe" />
+      <div className="grid grid-cols-2 gap-0 reveal">
+        <div className="relative overflow-hidden aspect-[4/3] sm:aspect-[5/4] lg:aspect-[4/3] xl:aspect-[3/2]">
+          <img className="home-mosaic-img absolute inset-0 w-full h-full object-cover object-[50%_55%]" src="/uploads/home-love-pier-exterior.png" alt="Love Pier Beach Cafe exterior" />
         </div>
-        <div className="relative overflow-hidden h-full">
-          <img className="home-mosaic-img absolute inset-0 w-full h-full object-cover object-[50%_72%] scale-[1.12] origin-center" src="/uploads/home-espresso.png" alt="coffee" />
+        <div className="relative overflow-hidden aspect-[4/3] sm:aspect-[5/4] lg:aspect-[4/3] xl:aspect-[3/2]">
+          <img className="home-mosaic-img absolute inset-0 w-full h-full object-cover object-[50%_72%]" src="/uploads/home-espresso.png" alt="coffee" />
         </div>
       </div>
       </ScrollStackPanel>
