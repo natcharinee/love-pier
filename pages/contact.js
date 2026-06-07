@@ -214,9 +214,9 @@ export default function Contact() {
             <div className="font-display text-[20px] sm:text-[22px] font-normal text-ink leading-[1.2] break-all">cafe.lovepier@gmail.com</div>
             <div className="text-xs text-muted font-light mt-1">{t.emailNote}</div>
           </a>
-          <a href="#" className="flex flex-col gap-2 p-6 sm:p-7 lg:p-8 bg-white border border-black/10 hover:bg-[#fffdf6] hover:border-gold transition-all duration-200">
+          <a href="https://lin.ee/uZWxbGjx" target="_blank" rel="noopener noreferrer" className="flex flex-col gap-2 p-6 sm:p-7 lg:p-8 bg-white border border-black/10 hover:bg-[#fffdf6] hover:border-gold transition-all duration-200">
             <span className="text-[10px] tracking-[0.3em] uppercase text-gold">{t.line}</span>
-            <div className="font-display text-[22px] font-normal text-ink leading-[1.2]">@lovepier</div>
+            <div className="font-display text-[22px] font-normal text-ink leading-[1.2]">@lovepier.cafe</div>
             <div className="text-xs text-muted font-light mt-1">{t.lineNote}</div>
           </a>
           <Link href="/reservation" className="flex flex-col gap-2 p-6 sm:p-7 lg:p-8 bg-white border border-black/10 hover:bg-[#fffdf6] hover:border-gold transition-all duration-200">
