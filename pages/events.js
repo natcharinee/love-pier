@@ -16,6 +16,12 @@ const EVENTS_COPY = {
     next: 'กิจกรรมถัดไป',
     weekly: 'กิจกรรมประจำวัน',
     weeklyDesc: 'กิจกรรมที่คุณมาได้ทุกวัน',
+    weeklyGallery: [
+      { src: '/uploads/events-surf-pool.png', alt: 'Surf Pool' },
+      { src: '/uploads/events-jet-ski.png', alt: 'เจ็ตสกี' },
+      { src: '/uploads/events-skimboard.png', alt: 'Sup Board & Skim Board' },
+      { src: '/uploads/events-kayak.png', alt: 'พายเรือคายัค' },
+    ],
     freeLabel: 'ฟรี',
     featuredImageAlt: 'Flow Sunset — The Symphony Club',
     featuredEvent: {
@@ -55,6 +61,12 @@ const EVENTS_COPY = {
     next: '接下来',
     weekly: '每日固定活动',
     weeklyDesc: '每天都有，直接到店即可。',
+    weeklyGallery: [
+      { src: '/uploads/events-surf-pool.png', alt: 'Surf Pool' },
+      { src: '/uploads/events-jet-ski.png', alt: '水上摩托' },
+      { src: '/uploads/events-skimboard.png', alt: 'Sup Board & Skim Board' },
+      { src: '/uploads/events-kayak.png', alt: '皮划艇' },
+    ],
     freeLabel: '免费',
     featuredImageAlt: 'Flow Sunset — The Symphony Club',
     featuredEvent: {
@@ -94,6 +106,12 @@ const EVENTS_COPY = {
     next: "What's next",
     weekly: 'Daily activities',
     weeklyDesc: 'Something to enjoy every day — just show up.',
+    weeklyGallery: [
+      { src: '/uploads/events-surf-pool.png', alt: 'Surf Pool' },
+      { src: '/uploads/events-jet-ski.png', alt: 'Jet Ski' },
+      { src: '/uploads/events-skimboard.png', alt: 'Sup Board & Skim Board' },
+      { src: '/uploads/events-kayak.png', alt: 'Kayaking' },
+    ],
     freeLabel: 'Free',
     featuredImageAlt: 'Flow Sunset — The Symphony Club',
     featuredEvent: {
@@ -196,7 +214,19 @@ export default function Events() {
 
       <section className="bg-ink text-bg px-4 py-14 reveal sm:px-6 sm:py-14 lg:px-10 lg:py-20">
         <h3 className="font-display font-light mb-3.5 leading-[1.05] text-[clamp(32px,4vw,48px)]">{t.weekly}</h3>
-        <p className="text-sm text-[rgba(245,243,239,0.5)] mb-12 max-w-[480px] leading-[1.8]">{t.weeklyDesc}</p>
+        <p className="text-sm text-[rgba(245,243,239,0.5)] mb-8 max-w-[480px] leading-[1.8]">{t.weeklyDesc}</p>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-12">
+          {t.weeklyGallery.map(({ src, alt }) => (
+            <div key={alt} className="overflow-hidden border border-white/10 bg-[rgba(255,255,255,0.02)]">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                className="w-full aspect-[4/3] object-cover [filter:saturate(0.72)_brightness(0.95)]"
+                src={src}
+                alt={alt}
+              />
+            </div>
+          ))}
+        </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {t.recurring.map(({ day, title, text, time }) => (
             <div key={title} className="border border-white/10 px-6 py-7 sm:px-8 sm:py-8 hover:border-gold hover:bg-[rgba(201,169,110,0.05)] transition-all duration-300">
