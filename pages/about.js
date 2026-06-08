@@ -32,7 +32,7 @@ export default function About() {
       ? {
           title:'About — Love Pier Beach Cafe',
           story:'我们的故事 · 自 2026 年',
-          hero:'一间咖啡馆\n为慢节奏而生',
+          hero:'',
           storyAside:'有时，爱从一件小事开始 — <em class="italic text-gold">Love Pier</em> 也因此诞生',
           storyLead:'一顿好餐 · 海边长谈 · 或与重要的人一起看日落',
           storyBody: [
@@ -54,7 +54,7 @@ export default function About() {
       : {
           title:'About — Love Pier Beach Cafe',
           story:'Our Story · Since 2026',
-          hero:'A cafe\nbuilt on slow time',
+          hero:'',
           storyAside:'Sometimes love begins with something simple — and <em class="italic text-gold">Love Pier</em> was born from that intention',
           storyLead:'A good meal · a long talk by the sea · or watching the sunset with someone special',
           storyBody: [

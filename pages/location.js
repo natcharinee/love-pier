@@ -117,7 +117,7 @@ export default function Location() {
           <p className="text-sm text-ink leading-[1.7] font-light">
             <a href="tel:0642523293" className="hover:text-gold transition-colors">064-252-3293</a><br/>
             <a href="mailto:cafe.lovepier@gmail.com" className="hover:text-gold transition-colors">cafe.lovepier@gmail.com</a><br/>
-            <span className="text-muted text-xs">LINE: @lovepier</span>
+            <span className="text-muted text-xs">LINE: @lovepier.cafe</span>
           </p>
         </div>
         <div>
