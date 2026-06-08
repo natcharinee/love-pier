@@ -99,26 +99,28 @@ export default function Home() {
         </div>
       </header>
 
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        className="w-full aspect-video object-cover object-[50%_40%] [filter:saturate(0.75)] reveal-img"
-        src="/uploads/home-hero.png"
-        alt="Love Pier Beach Cafe"
-      />
+      <div className="w-full bg-[#e8e4de] reveal-img">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          className="block w-full h-auto max-h-[85vh] object-contain [filter:saturate(0.75)] lg:max-h-none lg:aspect-[3/2] lg:object-cover lg:object-[50%_40%]"
+          src="/uploads/home-hero.png"
+          alt="Love Pier Beach Cafe"
+        />
+      </div>
 
-      <div className="grid grid-cols-2 gap-0 reveal">
-        <div className="relative overflow-hidden aspect-[4/3] sm:aspect-[5/4] lg:aspect-[4/3] xl:aspect-[3/2]">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-0 reveal">
+        <div className="bg-[#e8e4de] sm:relative sm:overflow-hidden sm:aspect-[5/4] lg:aspect-[4/3] xl:aspect-[3/2]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            className="absolute inset-0 w-full h-full object-cover object-[50%_42%] [filter:saturate(0.7)] hover:[filter:saturate(1)] transition-[filter] duration-500"
+            className="block w-full h-auto object-contain sm:absolute sm:inset-0 sm:h-full sm:object-cover sm:object-[50%_42%] [filter:saturate(0.7)] hover:[filter:saturate(1)] transition-[filter] duration-500"
             src="/uploads/home-cafe-interior.png"
             alt="Love Pier Beach Cafe interior"
           />
         </div>
-        <div className="relative overflow-hidden aspect-[4/3] sm:aspect-[5/4] lg:aspect-[4/3] xl:aspect-[3/2]">
+        <div className="bg-[#e8e4de] sm:relative sm:overflow-hidden sm:aspect-[5/4] lg:aspect-[4/3] xl:aspect-[3/2]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            className="absolute inset-0 w-full h-full object-cover object-[50%_48%] [filter:saturate(0.7)] hover:[filter:saturate(1)] transition-[filter] duration-500"
+            className="block w-full h-auto object-contain sm:absolute sm:inset-0 sm:h-full sm:object-cover sm:object-[50%_48%] [filter:saturate(0.7)] hover:[filter:saturate(1)] transition-[filter] duration-500"
             src="/uploads/drink-can-set.png"
             alt="Love Pier canned drinks"
           />
@@ -149,12 +151,12 @@ export default function Home() {
 
       <ScrollStackPanel tone="white">
       {/* Mosaic grid */}
-      <div className="grid grid-cols-2 gap-0 reveal">
-        <div className="relative overflow-hidden aspect-[4/3] sm:aspect-[5/4] lg:aspect-[4/3] xl:aspect-[3/2]">
-          <img className="home-mosaic-img absolute inset-0 w-full h-full object-cover object-[50%_55%]" src="/uploads/home-love-pier-exterior.png" alt="Love Pier Beach Cafe exterior" />
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-0 reveal">
+        <div className="bg-[#e8e4de] sm:relative sm:overflow-hidden sm:aspect-[5/4] lg:aspect-[4/3] xl:aspect-[3/2]">
+          <img className="home-mosaic-img block w-full h-auto object-contain sm:absolute sm:inset-0 sm:h-full sm:object-cover sm:object-[50%_55%]" src="/uploads/home-love-pier-exterior.png" alt="Love Pier Beach Cafe exterior" />
         </div>
-        <div className="relative overflow-hidden aspect-[4/3] sm:aspect-[5/4] lg:aspect-[4/3] xl:aspect-[3/2]">
-          <img className="home-mosaic-img absolute inset-0 w-full h-full object-cover object-[50%_72%]" src="/uploads/home-espresso.png" alt="coffee" />
+        <div className="bg-[#e8e4de] sm:relative sm:overflow-hidden sm:aspect-[5/4] lg:aspect-[4/3] xl:aspect-[3/2]">
+          <img className="home-mosaic-img block w-full h-auto object-contain sm:absolute sm:inset-0 sm:h-full sm:object-cover sm:object-[50%_72%]" src="/uploads/home-espresso.png" alt="coffee" />
         </div>
       </div>
       </ScrollStackPanel>
