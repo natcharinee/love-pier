@@ -42,10 +42,9 @@ export default function Contact() {
         lineNote: 'ช่องทางเร็วสุดสำหรับการจองด่วน',
         reservationNote: 'ยืนยันการจองภายใน 2 ชั่วโมง',
         highlights: [
-          ['งานส่วนตัว', 'สามารถปิดพื้นที่ร้าน รองรับได้ 60 คนแบบยืน หรือ 38 คนแบบนั่ง'],
-          ['สื่อและคอนเทนต์', 'ยินดีต้อนรับงานถ่ายภาพ บทสัมภาษณ์ และสื่อทุกรูปแบบ'],
-          ['ขายส่ง', 'เมล็ดกาแฟของเราพร้อมสำหรับโรงแรมและคาเฟ่ขนาดเล็ก'],
-          ['ร่วมงานกับเรา', 'ตำแหน่งงานอัปเดตผ่าน LINE Official เป็นหลัก'],
+          ['งานส่วนตัว', 'สามารถปิดพื้นที่ร้านสำหรับงานเลี้ยง วันเกิด และโอกาสพิเศษ รองรับทั้งแบบนั่งและค็อกเทล'],
+          ['จัดเลี้ยง', 'บริการอาหาร เครื่องดื่ม และเบเกอรี่สำหรับงานประชุม งานเลี้ยง และอีเวนต์นอกสถานที่'],
+          ['ร่วมงานกับเรา', 'เปิดรับคนรักงานบริการและกาแฟ ติดตามตำแหน่งงานว่างผ่าน Facebook fanpage : Lovepier.cafe'],
         ],
         faq: [
           { q: 'จำเป็นต้องจองโต๊ะล่วงหน้าไหม?', a: 'Walk-in ยินดีต้อนรับเสมอ แต่แนะนำให้จองล่วงหน้าสำหรับช่วงสุดสัปดาห์ เวลาพระอาทิตย์ตก และกลุ่มมากกว่า 4 ท่าน' },
@@ -304,7 +303,7 @@ export default function Contact() {
         <div className="flex justify-center gap-4 flex-wrap">
           <a href="#" className="flex items-center gap-3 px-6 py-3.5 border border-black/[0.12] text-[11px] tracking-[0.25em] uppercase text-[#555] hover:bg-ink hover:text-bg hover:border-ink transition-all duration-200"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor"/></svg>Instagram</a>
           <a href="https://www.facebook.com/profile.php?id=61590549024692" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 px-6 py-3.5 border border-black/[0.12] text-[11px] tracking-[0.25em] uppercase text-[#555] hover:bg-ink hover:text-bg hover:border-ink transition-all duration-200"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.5h2.5l.5-3h-3V8.5c0-.9.3-1.5 1.6-1.5H17V4.3c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4.1V10.5H8v3h2.5V21h3z"/></svg>Facebook</a>
-          <a href="#" className="flex items-center gap-3 px-6 py-3.5 border border-black/[0.12] text-[11px] tracking-[0.25em] uppercase text-[#555] hover:bg-ink hover:text-bg hover:border-ink transition-all duration-200"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.5 3 2 6.6 2 11c0 4 3.6 7.3 8.5 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.6 1.1-.5 6-3.5 8.2-6 1.5-1.7 2.6-3.4 2.6-4.9 0-4.4-4.5-8-10-8z"/></svg>LINE Official</a>
+          <a href="https://lin.ee/uZWxbGjx" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 px-6 py-3.5 border border-black/[0.12] text-[11px] tracking-[0.25em] uppercase text-[#555] hover:bg-ink hover:text-bg hover:border-ink transition-all duration-200"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.5 3 2 6.6 2 11c0 4 3.6 7.3 8.5 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.6 1.1-.5 6-3.5 8.2-6 1.5-1.7 2.6-3.4 2.6-4.9 0-4.4-4.5-8-10-8z"/></svg>LINE Official</a>
           <a href="#" className="flex items-center gap-3 px-6 py-3.5 border border-black/[0.12] text-[11px] tracking-[0.25em] uppercase text-[#555] hover:bg-ink hover:text-bg hover:border-ink transition-all duration-200"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.8a4.3 4.3 0 0 1-2.6-1.6 4.3 4.3 0 0 1-.8-2.2h-3v12c0 1-.8 1.9-1.9 1.9a1.9 1.9 0 0 1-1.9-1.9c0-1 .8-1.9 1.9-1.9.2 0 .4 0 .6.1V9.1a5 5 0 0 0-.6 0 5 5 0 1 0 5 5V8.4a7.4 7.4 0 0 0 4.3 1.4V6.7a4.4 4.4 0 0 1-1-.9z"/></svg>TikTok</a>
         </div>
       </section>

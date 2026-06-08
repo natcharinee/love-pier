@@ -870,13 +870,17 @@ export default function Menu() {
         <h2 className="font-display font-light leading-[1.1] mb-12 max-w-[800px] text-[clamp(36px,5vw,60px)]">{t.chefLine1}</h2>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
           {[
-            { img:'/uploads/grilled-sea-bass-custom.png', ...featured[0] },
+            {
+              img: '/uploads/menu-chicken-rice-set.png',
+              imgClass: 'w-full aspect-[4/5] object-cover object-[50%_52%] [filter:saturate(0.58)_brightness(0.74)_contrast(1.06)] group-hover:[filter:saturate(0.92)_brightness(0.88)] transition-[filter] duration-500',
+              ...featured[0],
+            },
             { img:'/uploads/weekend-brunch-custom.png', ...featured[1] },
             { img:'/uploads/caramel-sea-salt-custom.png', ...featured[2] },
-          ].map(({ img, name, sub, price }) => (
+          ].map(({ img, imgClass, name, sub, price }) => (
             <div key={name} className="group flex flex-col gap-3">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img className="w-full aspect-[4/5] object-cover [filter:saturate(0.6)] group-hover:[filter:saturate(1)] transition-[filter] duration-500" src={img} alt={name} />
+              <img className={imgClass || 'w-full aspect-[4/5] object-cover [filter:saturate(0.6)] group-hover:[filter:saturate(1)] transition-[filter] duration-500'} src={img} alt={name} />
               <div className="font-display text-[22px] font-light mt-1.5">{name}</div>
               <div className="text-[11px] tracking-[0.15em] text-[rgba(245,243,239,0.5)] uppercase mt-0.5">{sub}</div>
               <div className="font-display text-lg text-gold mt-1.5">{price}</div>
