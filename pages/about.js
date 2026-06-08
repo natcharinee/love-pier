@@ -9,7 +9,7 @@ export default function About() {
     ? {
         title:'About — Love Pier Beach Cafe',
         story:'เรื่องราวของเรา · ตั้งแต่ปี 2026',
-        hero:'คาเฟ่ที่สร้างขึ้น\nด้วยความตั้งใจ',
+        hero:'',
         storyAside:'บางครั้งความรักก็เริ่มจากเรื่องง่าย ๆ — <em class="italic text-gold">Love Pier</em> เกิดขึ้นจากความตั้งใจนั้น',
         storyLead:'จากมื้ออาหารอร่อยหนึ่งมื้อ · บทสนทนายาว ๆ ริมทะเล · หรือการนั่งมองพระอาทิตย์ตกกับใครสักคน',
         storyBody: [
@@ -85,7 +85,9 @@ export default function About() {
         <img className="w-full h-full object-cover object-[50%_45%] [filter:saturate(0.65)_brightness(0.88)]" src="/uploads/about-hero.png" alt="Love Pier Beach Cafe interior" />
         <div className="absolute inset-0 flex flex-col justify-end p-4 sm:p-6 lg:p-16 text-bg">
           <div className="text-[10px] tracking-[0.4em] uppercase text-[rgba(245,243,239,0.6)] mb-4">{t.story}</div>
-          <h1 className="font-display font-light leading-[0.9] tracking-[-0.03em] max-w-[1000px] text-[clamp(56px,8vw,110px)]">{t.hero.split('\n').map((l,i)=><span key={i}>{l}{i===0?<br/>:null}</span>)}</h1>
+          {t.hero ? (
+            <h1 className="font-display font-light leading-[0.9] tracking-[-0.03em] max-w-[1000px] text-[clamp(56px,8vw,110px)]">{t.hero.split('\n').map((l,i)=><span key={i}>{l}{i===0?<br/>:null}</span>)}</h1>
+          ) : null}
         </div>
       </section>
 
