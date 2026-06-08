@@ -4,6 +4,7 @@ import Footer from '../components/Footer'
 import FormFeedbackModal from '../components/FormFeedbackModal'
 import { FOOTER_TAGLINES } from '../lib/footerTagline'
 import { useLanguage } from '../lib/language'
+import { buildContactEmail } from '../lib/emailContent'
 import { submitToApi } from '../lib/submitToApi'
 import { useState } from 'react'
 
@@ -164,13 +165,17 @@ export default function Contact() {
       message: form.message.value,
     }
     try {
-      await submitToApi('/api/contact', payload)
+      await submitToApi('/api/contact', payload, buildContactEmail(payload))
       setStatus('success')
       form.reset()
     } catch (err) {
       setStatus('error')
       setErrorMessage(
-        err.status === 503 ? t.sendConfigError : t.sendError
+        err.status === 503 && err.message && err.message !== 'FORM_SUBMIT_FAILED'
+          ? err.message
+          : err.status === 503
+            ? t.sendConfigError
+            : t.sendError
       )
     }
   }

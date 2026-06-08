@@ -4,6 +4,7 @@ import Footer from '../components/Footer'
 import FormFeedbackModal from '../components/FormFeedbackModal'
 import { FOOTER_TAGLINES } from '../lib/footerTagline'
 import { useLanguage } from '../lib/language'
+import { buildReservationEmail } from '../lib/emailContent'
 import { submitToApi } from '../lib/submitToApi'
 
 const RESERVATION_COPY = {
@@ -159,14 +160,18 @@ export default function Reservation() {
       notes: form.notes.value,
     }
     try {
-      await submitToApi('/api/reservation', payload)
+      await submitToApi('/api/reservation', payload, buildReservationEmail(payload))
       setStatus('success')
       form.reset()
       setOccasion(t.occasions[0])
     } catch (err) {
       setStatus('error')
       setErrorMessage(
-        err.status === 503 ? t.sendConfigError : t.sendError
+        err.status === 503 && err.message && err.message !== 'FORM_SUBMIT_FAILED'
+          ? err.message
+          : err.status === 503
+            ? t.sendConfigError
+            : t.sendError
       )
     }
   }

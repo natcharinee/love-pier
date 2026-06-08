@@ -1,3 +1,4 @@
+import { buildReservationEmail } from '../../lib/emailContent'
 import { sendRestaurantEmail } from '../../lib/sendEmail'
 
 function pickString(value) {
@@ -16,50 +17,20 @@ export default async function handler(req, res) {
   const date = pickString(req.body?.date)
   const time = pickString(req.body?.time)
   const guests = pickString(req.body?.guests)
-  const seating = pickString(req.body?.seating)
-  const occasion = pickString(req.body?.occasion)
-  const notes = pickString(req.body?.notes)
 
   if (!name || !phone || !email || !date || !time || !guests) {
     return res.status(400).json({ error: 'Missing required fields' })
   }
 
-  const text = [
-    'New reservation request from Love Pier website',
-    '',
-    `Name: ${name}`,
-    `Phone: ${phone}`,
-    `Email: ${email}`,
-    `Date: ${date}`,
-    `Time: ${time}`,
-    `Guests: ${guests}`,
-    `Seating: ${seating || '—'}`,
-    `Occasion: ${occasion || '—'}`,
-    notes ? '' : null,
-    notes ? 'Notes:' : null,
-    notes || null,
-  ]
-    .filter((line) => line !== null)
-    .join('\n')
+  const envelope = buildReservationEmail(req.body)
 
   try {
-    await sendRestaurantEmail({
-      subject: `[Love Pier Reservation] ${date} ${time} — ${name}`,
-      text,
-      replyTo: email,
-      fields: {
-        Name: name,
-        Phone: phone,
-        Email: email,
-        Date: date,
-        Time: time,
-        Guests: guests,
-        Seating: seating || '—',
-        Occasion: occasion || '—',
-      },
-    })
+    await sendRestaurantEmail(envelope)
     return res.status(200).json({ ok: true })
   } catch (err) {
+    if (err.code === 'EMAIL_NOT_CONFIGURED') {
+      return res.status(503).json({ error: 'Email not configured', fallback: 'formsubmit' })
+    }
     console.error('Reservation email failed:', err)
     return res.status(500).json({ error: 'Failed to send email' })
   }
