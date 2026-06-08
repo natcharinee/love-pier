@@ -9,7 +9,7 @@ const EVENTS_COPY = {
     title: 'Events — Love Pier Beach Cafe',
     heroBrand: 'Love Pier',
     heroSuffix: 'เสิร์ฟความสนุก',
-    desc: 'กิจกรรมพิเศษ ภายในร้าน',
+    desc: 'กิจกรรมพิเศษ ภายในร้านของเรา',
     featured: 'THE SYMPHONY CLUB',
     reserve: 'จองโต๊ะ',
     add: 'เพิ่มลงปฏิทิน',
@@ -215,12 +215,12 @@ export default function Events() {
       <section className="bg-ink text-bg px-4 py-14 reveal sm:px-6 sm:py-14 lg:px-10 lg:py-20">
         <h3 className="font-display font-light mb-3.5 leading-[1.05] text-[clamp(32px,4vw,48px)]">{t.weekly}</h3>
         <p className="text-sm text-[rgba(245,243,239,0.5)] mb-8 max-w-[480px] leading-[1.8]">{t.weeklyDesc}</p>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 lg:gap-6 mb-12">
           {t.weeklyGallery.map(({ src, alt }) => (
             <div key={alt} className="overflow-hidden border border-white/10 bg-[rgba(255,255,255,0.02)]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                className="w-full aspect-[4/3] object-cover [filter:saturate(0.72)_brightness(0.95)]"
+                className="w-full aspect-[3/2] object-cover [filter:saturate(0.72)_brightness(0.95)]"
                 src={src}
                 alt={alt}
               />
