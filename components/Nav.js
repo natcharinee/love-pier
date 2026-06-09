@@ -123,7 +123,7 @@ export default function Nav({ onOpenMenu }) {
   const { lang, setLang } = useLanguage()
   const dict = COPY[lang] || COPY.en
   const linkClass = (href) =>
-    `shrink-0 text-[9px] sm:text-[10px] tracking-[0.18em] sm:tracking-[0.22em] uppercase whitespace-nowrap transition-colors duration-200 ${
+    `shrink-0 text-[11px] lg:text-[12px] tracking-[0.16em] lg:tracking-[0.2em] uppercase whitespace-nowrap transition-colors duration-200 ${
       pathname === href ? 'text-ink' : 'text-muted hover:text-ink'
     }`
 
@@ -139,7 +139,7 @@ export default function Nav({ onOpenMenu }) {
           />
         </Link>
         <div className="hidden lg:flex flex-1 min-w-0 overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          <div className="flex items-center gap-3 sm:gap-4 lg:gap-5 py-0.5 min-w-max lg:min-w-0 lg:w-full lg:flex-wrap lg:justify-center">
+          <div className="flex items-center gap-4 lg:gap-6 py-0.5 min-w-max lg:min-w-0 lg:w-full lg:flex-wrap lg:justify-center">
             {dict.navItems.map((item) => (
               <Link key={item.href} href={item.href} className={linkClass(item.href)}>
                 {item.label}
@@ -147,7 +147,7 @@ export default function Nav({ onOpenMenu }) {
             ))}
             <Link
               href="/reservation"
-              className={`shrink-0 text-[9px] sm:text-[10px] tracking-[0.12em] sm:tracking-[0.2em] uppercase whitespace-nowrap px-3 py-1.5 sm:px-4 sm:py-2 border transition-colors duration-200 ${
+              className={`shrink-0 text-[11px] lg:text-[12px] tracking-[0.12em] lg:tracking-[0.18em] uppercase whitespace-nowrap px-3.5 py-2 lg:px-4 lg:py-2 border transition-colors duration-200 ${
                 pathname === '/reservation'
                   ? 'border-gold/50 bg-[#fffdf6] text-ink'
                   : 'border-black/[0.12] bg-white/60 text-ink hover:border-gold/40 hover:bg-[#fffdf6]'
