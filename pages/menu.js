@@ -194,19 +194,7 @@ const MENU_DATA = [
     ],
   },
   {
-    num: '02', cat: 'mains', title: 'Mains', titleEm: '& the Sea', bg: true,
-    subtitle: 'Catch of the day, slow-cooked plates, and bowls built around what came in this morning. Substantial, unhurried, honest.',
-    items: [
-      { num:'32', name:'Grilled Sea Bass', badge:'Signature', desc:'Whole fish, lemon-herb butter, sea salt potatoes, house salad.', price:'420' },
-      { num:'33', name:'Pier Prawn Pasta', desc:'Tiger prawns, cherry tomato, garlic, chilli, linguine, basil oil.', price:'360' },
-      { num:'34', name:'Thai Basil Fish Bowl', desc:'Flash-fried barramundi, holy basil, jasmine rice, fried egg.', price:'280' },
-      { num:'35', name:'Mushroom Risotto', desc:'Porcini, oyster mushroom, parmesan, truffle oil, fresh herb.', price:'320' },
-      { num:'36', name:'Beach BBQ Plate', desc:'Mixed grill — chicken thigh, corn, sweet potato, slaw, BBQ glaze.', price:'380' },
-      { num:'37', name:'Som Tum Salad Bowl', desc:'Green papaya, peanuts, dried shrimp, cherry tomato, lime dressing.', price:'220' },
-    ],
-  },
-  {
-    num: '03', cat: 'breakfast', title: 'Breakfast', titleEm: 'all day', bg: false,
+    num: '02', cat: 'breakfast', title: 'Breakfast', titleEm: 'all day', bg: false,
     subtitle: 'Light plates and sandwiches — served from open to close.',
     items: [
       { num:'01', name:'Pier Breakfast Plate', badge:'Signature', price:'280' },
@@ -217,7 +205,7 @@ const MENU_DATA = [
     ],
   },
   {
-    num: '04', cat: 'coffee', title: 'Coffee', titleEm: '', bg: false,
+    num: '03', cat: 'coffee', title: 'Coffee', titleEm: '', bg: false,
     subtitle: 'Hot, iced, and frappe — prices per menu.',
     items: [
       { num:'01', name:'Americano', prices:{ hot:'90', iced:'100', blended:null } },
@@ -234,7 +222,7 @@ const MENU_DATA = [
     ],
   },
   {
-    num: '05', cat: 'matcha', title: 'Matcha', titleEm: '', bg: true,
+    num: '04', cat: 'matcha', title: 'Matcha', titleEm: '', bg: true,
     subtitle: 'Stone-ground matcha whisked to order — pure, creamy, and gently sweet.',
     items: [
       { num:'00', name:'PANG Signature', badge:'Signature', desc:'Matcha x Khao Lam Latte', price:'179' },
@@ -248,7 +236,7 @@ const MENU_DATA = [
     ],
   },
   {
-    num: '06', cat: 'nonCoffee', title: 'Non Coffee', titleEm: '', bg: true,
+    num: '05', cat: 'nonCoffee', title: 'Non Coffee', titleEm: '', bg: true,
     subtitle: 'Thai tea, chocolate, and creamy frappes — no espresso.',
     items: [
       { num:'01', name:'Premium Thai Tea', price:'100' },
@@ -259,7 +247,7 @@ const MENU_DATA = [
     ],
   },
   {
-    num: '07', cat: 'italianSoda', title: 'Italian Soda', titleEm: '', bg: false,
+    num: '06', cat: 'italianSoda', title: 'Italian Soda', titleEm: '', bg: false,
     subtitle: 'Sparkling sodas with fruit, honey, and coastal brightness.',
     items: [
       { num:'01', name:'Lemon Honey Soda', price:'120' },
@@ -270,7 +258,7 @@ const MENU_DATA = [
     ],
   },
   {
-    num: '08', cat: 'other', title: 'Other', titleEm: '', bg: true,
+    num: '07', cat: 'other', title: 'Other', titleEm: '', bg: true,
     subtitle: 'Still and sparkling water, soft drinks, and everyday essentials.',
     items: [
       { num:'01', name:'Purra Water', price:'20' },
@@ -280,7 +268,7 @@ const MENU_DATA = [
     ],
   },
   {
-    num: '09', cat: 'sweets', title: 'Sweet', titleEm: 'Desserts', bg: false,
+    num: '08', cat: 'sweets', title: 'Sweet', titleEm: 'Desserts', bg: false,
     subtitle: 'House-made cakes, pies, and classics to close the meal.',
     items: [
       { num:'01', name:'Coconut Cake', price:'150' },
@@ -304,7 +292,6 @@ const SECTION_COPY = {
     italianSoda: { title: 'Italian Soda', titleEm: '', subtitle: 'โซดาผสมผลไม้และน้ำผึ้ง สดชื่นเหมาะกับอากาศริมทะเล' },
     other: { title: 'Other', titleEm: '', subtitle: 'น้ำดื่ม น้ำแร่ และเครื่องดื่มอัดลม' },
     chickenRice: { title: 'ข้าวมันไก่', titleEm: 'สิงคโปร์ / ไหหลำ', subtitle: 'ไก่ต้มนุ่ม ข้าวมันหอม น้ำจิ้มสูตรเด็ด 3 แบบ และซุปไก่ร้อนๆ' },
-    mains: { title: 'จานหลัก', titleEm: 'วัตถุดิบชั้นดี', subtitle: 'จานหลักรสกลมกล่อมจากวัตถุดิบสดใหม่ประจำวัน' },
     breakfast: { title: 'อาหารเช้า', titleEm: 'ตลอดวัน', subtitle: 'จานเบาและแซนด์วิช เสิร์ฟได้ทุกเวลา สบายๆ ริมทะเล' },
     sweets: { title: 'Sweet', titleEm: 'Desserts', subtitle: 'เค้กและพายโฮมเมด หวานกำลังดีปิดมื้ออย่างลงตัว' },
   },
@@ -315,7 +302,6 @@ const SECTION_COPY = {
     italianSoda: { title: 'Italian Soda', titleEm: '', subtitle: '气泡苏打配水果与蜂蜜，清爽顺口。' },
     other: { title: 'Other', titleEm: '', subtitle: '饮用水、矿泉水与汽水。' },
     chickenRice: { title: '海南鸡饭', titleEm: '新加坡 / 海南', subtitle: '嫩滑白切鸡、香浓鸡油饭、三款招牌蘸料与热鸡汤。' },
-    mains: { title: '主菜', titleEm: '& 海味', subtitle: '以当日新鲜食材为主角，口味平衡、份量满足。' },
     breakfast: { title: '早餐', titleEm: '全天供应', subtitle: '轻食与三明治，从早到晚都能点，海边吃更舒服。' },
     sweets: { title: 'Sweet', titleEm: 'Desserts', subtitle: '自制蛋糕与派点，甜度适中，收尾刚好。' },
   },
@@ -631,21 +617,18 @@ const MENU_PAGE_COPY = {
   en: {
     title: 'Menu — Love Pier Beach Cafe',
     hero: 'Menu <em class="italic text-gold">Love Pier Beach Cafe</em>',
-    desc: "Every drink and dish is built around what's fresh right now.",
     specialsLabel: "Today's Specials",
     chefLine1: 'Recommended Specials',
   },
   th: {
     title: 'Menu — Love Pier Beach Cafe',
     hero: 'Menu <em class="italic text-gold">Love Pier Beach Cafe</em>',
-    desc: 'เมนูของเราปรับตามวัตถุดิบสดใหม่ในแต่ละช่วงเวลา',
     specialsLabel: 'เมนูพิเศษวันนี้',
     chefLine1: 'เมนูพิเศษ',
   },
   zh: {
     title: 'Menu — Love Pier Beach Cafe',
     hero: 'Menu <em class="italic text-gold">Love Pier Beach Cafe</em>',
-    desc: '我们的菜单根据当季食材与每日新鲜度持续调整。',
     specialsLabel: '今日推荐',
     chefLine1: '精选推荐',
   },
@@ -670,7 +653,7 @@ const FEATURED_COPY = {
 }
 
 const TAB_SECTION_CATS = {
-  food: ['chickenRice', 'mains', 'breakfast'],
+  food: ['chickenRice', 'breakfast'],
   coffee: ['coffee'],
   matcha: ['matcha'],
   drinks: ['nonCoffee', 'italianSoda', 'other'],
@@ -796,18 +779,9 @@ export default function Menu() {
       </Head>
 
       {/* Menu Hero */}
-      <section className="grid grid-cols-1 lg:grid-cols-2 border-b border-black/10 reveal">
-        <div className="px-4 py-12 flex flex-col justify-center sm:px-6 sm:py-12 lg:px-16 lg:py-20">
-          <h1 className="font-display font-light leading-[0.95] text-ink tracking-[-0.02em] mb-5 text-[clamp(48px,6vw,76px)]" dangerouslySetInnerHTML={{ __html: t.hero.replace(/\n/g, '<br/>') }} />
-          <p className="text-[15px] leading-[1.9] text-[#555] font-light max-w-[480px]">{t.desc}</p>
-        </div>
-        <div className="relative overflow-hidden w-full aspect-[4/5]">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            className="absolute top-0 left-0 h-full w-[168%] max-w-none object-cover object-left [filter:saturate(0.7)]"
-            src="/uploads/menu-hero-custom.png"
-            alt="menu hero"
-          />
+      <section className="border-b border-black/10 reveal">
+        <div className="px-4 py-12 text-center sm:px-6 sm:py-12 lg:px-16 lg:py-20">
+          <h1 className="font-display font-light leading-[0.95] text-ink tracking-[-0.02em] text-[clamp(48px,6vw,76px)]" dangerouslySetInnerHTML={{ __html: t.hero.replace(/\n/g, '<br/>') }} />
         </div>
       </section>
 
